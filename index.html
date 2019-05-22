@@ -341,8 +341,24 @@
 <script>
 
   class TerminalPresentation {
-    constructor (containerId) {
+    constructor (containerId, originalSteps) {
       console.log(`Creating terminal presentation in element with id ${containerId}.`)
+
+      let cumulative = ''
+
+      const steps = originalSteps.map ((step, index, theArray) => {
+        if (index > 0) {
+          // Add the previous entry to the start of this one (without any timing-related markup)
+          // So that Typed.js does not do its erase/retype magic.
+          const lastStep = theArray[index-1]
+          const lastStepWithoutTimingDirectives = lastStep.replace(/\^\d+/g, '')
+          cumulative += lastStepWithoutTimingDirectives
+          return cumulative + step
+        } else {
+          // Don’t massage the first entry.
+          return step
+        }
+      })
 
       window.addEventListener('load', () => {
         const container = document.getElementById(containerId)
@@ -365,25 +381,17 @@
         container.appendChild(nextButton)
 
         var typed = new Typed(".terminal-code", {
-          strings: [
-            "⯈ # Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
-            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ # Run local development server ^1000\n⯈ site",
-            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;",
-            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;^C\n💃 Preparing to exit gracefully, please wait…\n\n💖 Goodbye!\n\n⯈ # Run a globally-reachable staging server ^1000\n⯈ site global "
-            ],
+          strings: steps,
           onStringTyped: (arrayPosition) => {
-            console.log(`String typed ${arrayPosition}`)
             if (arrayPosition !== currentStep) {
               terminal.scrollTop = terminal.scrollHeight
 
               typed.toggle()
               nextButton.disabled = false
-              console.log('--- ', scrollToBottomInterval)
               clearInterval(scrollToBottomInterval)
             } else {
               nextButton.disabled = true
               scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
-              console.log('+++ ', scrollToBottomInterval)
             }
             currentStep = arrayPosition
           }
@@ -406,7 +414,14 @@
     }
   }
 
-  new TerminalPresentation('terminal-presentation')
+  const terminalSteps = [
+    "⯈ # Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
+    "\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ # Run local development server ^1000\n⯈ site",
+    "\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;",
+    "^C\n💃 Preparing to exit gracefully, please wait…\n\n💖 Goodbye!\n\n⯈ # Run a globally-reachable staging server ^1000\n⯈ site global "
+  ]
+
+  new TerminalPresentation('terminal-presentation', terminalSteps)
 
   /*
 
