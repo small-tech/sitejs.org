@@ -113,20 +113,26 @@
 
     .console {
       position: relative;
-      margin-left: 3rem;
-      margin-right: 3rem;
       height: 12em;
       background-color: black;
       padding: 1em;
-      margin-bottom: 1rem;
       opacity: 0.9;
       overflow-y: scroll;
     }
 
-    .console > button {
+    #terminalPresentation {
+      position: relative;
+      background-color: red;
+      margin-left: 3rem;
+      margin-right: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    #terminalPresentation > button {
       position: absolute;
       bottom: 1em;
       right: 1em;
+
     }
 
     pre, code {
@@ -232,7 +238,12 @@
       <li>Fund</li>
     </ul></nav>
 
-    <div class='console'><pre><code id='code' class='code'></code></pre><button id='nextButton'>Next</button></div>
+    <div id='terminalPresentation'>
+      <div id='console' class='console'>
+        <pre><code id='code' class='code'></code></pre>
+      </div>
+      <button id='nextButton'>Next</button>
+    </div>
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
 <main>
@@ -341,7 +352,7 @@
     var typed = new Typed(".code", {
       strings: [
         "⯈ #Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
-        "⯈ #Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n<strong>Downloading…</strong>^250\nExtracting…^250\nInstalling…^250\nDone.\n\n⯈ "
+        "⯈ #Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ "
       ],
       onStringTyped: (arrayPosition) => {
         console.log(`String typed ${arrayPosition}`)
@@ -351,6 +362,10 @@
         currentStep++
       }
     })
+
+    // Always keep the console at the end of the output.
+    const terminal = document.getElementById('console')
+    setInterval(() => { terminal.scrollTop = terminal.scrollHeight }, 500)
 
 
     document.getElementById('nextButton').addEventListener('click', (event) => {
