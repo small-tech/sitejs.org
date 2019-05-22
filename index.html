@@ -111,8 +111,7 @@
       /* todo - wrap .console */
     }
 
-    .console {
-      position: relative;
+    .terminal {
       height: 12em;
       background-color: black;
       padding: 1em;
@@ -198,7 +197,7 @@
     }
 
     @media (max-width: 460px) {
-      .console {
+      #terminalPresentation {
         margin-left: 1rem;
         margin-right: 1rem;
         font-size: 0.9em;
@@ -239,7 +238,7 @@
     </ul></nav>
 
     <div id='terminalPresentation'>
-      <div id='console' class='console'>
+      <div id='terminal' class='terminal'>
         <pre><code id='code' class='code'></code></pre>
       </div>
       <button id='nextButton' disabled>Next</button>
@@ -347,30 +346,44 @@
     // Loaded
     console.log('Loaded.')
 
-    let currentStep = -1
-
     const nextButton = document.getElementById('nextButton')
+
+    console.log('tt', terminal.scrollTop, terminal.scrollHeight)
+    // Always keep the console at the end of the output.
+    let currentStep = -1
+    const terminalScrollHandler = () => {
+      const terminal = document.getElementById('terminal')
+      console.log('t', terminal, terminal.scrollTop, terminal.scrollHeight)
+      terminal.scrollTop = terminal.scrollHeight
+    }
+    let scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+    console.log('iii ', scrollToBottomInterval)
 
     var typed = new Typed(".code", {
       strings: [
-        "⯈ #Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
-        "⯈ #Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ "
-      ],
+        "⯈ # Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
+        "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ # Run local development server ^1000\n⯈ site",
+        "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;",
+        "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;^C\n💃 Preparing to exit gracefully, please wait…\n\n💖 Goodbye!\n\n⯈ # Run a globally-reachable staging server ^1000\n⯈ site global "
+        ],
       onStringTyped: (arrayPosition) => {
         console.log(`String typed ${arrayPosition}`)
         if (arrayPosition !== currentStep) {
+          const terminal = document.getElementById('terminal')
+          terminal.scrollTop = terminal.scrollHeight
+
           typed.toggle()
           nextButton.disabled = false
+          console.log('--- ', scrollToBottomInterval)
+          clearInterval(scrollToBottomInterval)
         } else {
           nextButton.disabled = true
+          scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          console.log('+++ ', scrollToBottomInterval)
         }
         currentStep = arrayPosition
       }
     })
-
-    // Always keep the console at the end of the output.
-    const terminal = document.getElementById('console')
-    setInterval(() => { terminal.scrollTop = terminal.scrollHeight }, 500)
 
 
     document.getElementById('nextButton').addEventListener('click', (event) => {
