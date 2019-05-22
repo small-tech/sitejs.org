@@ -242,7 +242,7 @@
       <div id='console' class='console'>
         <pre><code id='code' class='code'></code></pre>
       </div>
-      <button id='nextButton'>Next</button>
+      <button id='nextButton' disabled>Next</button>
     </div>
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
@@ -349,6 +349,8 @@
 
     let currentStep = -1
 
+    const nextButton = document.getElementById('nextButton')
+
     var typed = new Typed(".code", {
       strings: [
         "⯈ #Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
@@ -358,8 +360,11 @@
         console.log(`String typed ${arrayPosition}`)
         if (arrayPosition !== currentStep) {
           typed.toggle()
+          nextButton.disabled = false
+        } else {
+          nextButton.disabled = true
         }
-        currentStep++
+        currentStep = arrayPosition
       }
     })
 
