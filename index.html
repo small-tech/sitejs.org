@@ -8,13 +8,14 @@
   <title>Site.js</title>
   <style>
 
+    /*
       @import url('https://rsms.me/inter/inter.css?v=3.5');
+      */
       html { font-family: 'Inter', sans-serif; }
 
       @supports (font-variation-settings: normal) {
         html { font-family: 'Inter var', sans-serif; }
       }
-
 
     /* Reset */
       html {
@@ -127,11 +128,10 @@
       margin-bottom: 1rem;
     }
 
-    #terminalPresentation > button {
+    .next-button {
       position: absolute;
       bottom: 1em;
       right: 1em;
-
     }
 
     pre, code {
@@ -237,12 +237,9 @@
       <li>Fund</li>
     </ul></nav>
 
-    <div id='terminalPresentation'>
-      <div id='terminal' class='terminal'>
-        <pre><code id='code' class='code'></code></pre>
-      </div>
-      <button id='nextButton' disabled>Next</button>
-    </div>
+    <!-- Terminal presentation -->
+    <div id='terminal-presentation'></div>
+
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
 <main>
@@ -344,12 +341,77 @@
 <script>
 
   class TerminalPresentation {
-    constructor (element) {
-      console.log('Creating terminal presentation using ')
+    constructor (containerId) {
+      console.log(`Creating terminal presentation in element with id ${containerId}.`)
+
+      window.addEventListener('load', () => {
+        const container = document.getElementById(containerId)
+
+        // We are going to position the presentation controls relative to the
+        // container’s bounds.
+        container.style.position = 'relative'
+
+        const terminal = document.createElement('div')
+        terminal.className = 'terminal'
+        const _pre = document.createElement('pre')
+        const _code = document.createElement('code')
+        _code.className = 'terminal-code'
+        const nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
+        nextButton.appendChild(document.createTextNode('Next'))
+        _pre.appendChild(_code)
+        terminal.appendChild(_pre)
+        container.appendChild(terminal)
+        container.appendChild(nextButton)
+
+        var typed = new Typed(".terminal-code", {
+          strings: [
+            "⯈ # Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
+            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…^250\n 📦 Installing…^250\n 🎉 Done!\n\n⯈ # Run local development server ^1000\n⯈ site",
+            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;",
+            "⯈ # Install\n⯈ wget -q0- https://sitejs.org/install | bash\n\n 📡 Downloading Indie Web Server v10.2.0…\n 📦 Installing…\n 🎉 Done!\n\n⯈ # Run local development server \n⯈ site\n\n 💖 Indie Web Server v10.2.0 (running on Node v10.15.3)\n\n 🚧 [Indie Web Server] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;^C\n💃 Preparing to exit gracefully, please wait…\n\n💖 Goodbye!\n\n⯈ # Run a globally-reachable staging server ^1000\n⯈ site global "
+            ],
+          onStringTyped: (arrayPosition) => {
+            console.log(`String typed ${arrayPosition}`)
+            if (arrayPosition !== currentStep) {
+              terminal.scrollTop = terminal.scrollHeight
+
+              typed.toggle()
+              nextButton.disabled = false
+              console.log('--- ', scrollToBottomInterval)
+              clearInterval(scrollToBottomInterval)
+            } else {
+              nextButton.disabled = true
+              scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+              console.log('+++ ', scrollToBottomInterval)
+            }
+            currentStep = arrayPosition
+          }
+        })
+
+        // Always keep the console at the end of the output.
+        let currentStep = -1
+        const terminalScrollHandler = () => {
+          terminal.scrollTop = terminal.scrollHeight
+        }
+
+        let scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+
+        nextButton.addEventListener('click', (event) => {
+          typed.toggle()
+        })
+      })
+
+
     }
   }
 
+  new TerminalPresentation('terminal-presentation')
+
+  /*
+
   window.addEventListener('load', () => {
+
     // Loaded
     console.log('Loaded.')
 
@@ -398,7 +460,7 @@
     })
 
   })
-
+*/
 
 </script>
 </body>
