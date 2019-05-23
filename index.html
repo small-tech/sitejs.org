@@ -405,9 +405,16 @@
               // terminal to the bottom so that the person can scroll back
               // if they want to review any of the steps.
               terminal.scrollTop = terminal.scrollHeight
+              clearInterval(scrollToBottomInterval)
+
+              // Is the presentation over?
+              if (arrayPosition === steps.length - 1) {
+                nextButton.hidden = true
+                return
+              }
+
               typed.toggle()
               nextButton.disabled = false
-              clearInterval(scrollToBottomInterval)
             } else {
               // A new step has started. Disable the Next button until
               // it ends and make sure the terminal is always scrolled
