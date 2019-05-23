@@ -427,11 +427,22 @@
     }
   }
 
+  const NEW_LINE = '\n'
+  const EMPTY_LINE = '\n\n'
+  const WAIT_ONE_SEC = '^1000'
+  const WAIT_QUARTER_SEC = '^250'
+  const VERSION = '1.0.0'
+  const NBSP = '&nbsp;'
+
+  function comment (text) { return `<span style="color: #ccc"># ${text}</span>` }
+  function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
+  function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
+
   new TerminalPresentation('terminal-presentation', [
-    "⯈ # Install^1000\n⯈ wget -q0- https://sitejs.org/install | bash",
-    "\n\n 📡 Downloading Site.js v1.0.0…^250\n 📦 Installing…^250\n 🎉 Done!^250\n\n⯈^1000 # Run local development server ^1000\n⯈ site",
-    "\n\n 💖 Site.js v1.0.0 (running on Node.js v10.15.3)\n\n 🚧 [Site.js] Using locally-trusted certificates.\n 📜 [Nodecert] Local development TLS certificate exists.\n\n 🎉 Serving . on https://localhost\n\n&nbsp;",
-    "^C\n💃 Preparing to exit gracefully, please wait…\n\n💖 Goodbye!\n\n⯈^1000 # Run a globally-reachable staging server ^1000\n⯈ site global "
+    `⯈ ${comment('Install')}${WAIT_ONE_SEC}${NEW_LINE}⯈ wget -q0- https://sitejs.org/install | bash`,
+    `${EMPTY_LINE} 📡 Downloading Site.js v${VERSION}…${WAIT_QUARTER_SEC}${NEW_LINE} 📦 Installing…${WAIT_QUARTER_SEC}${NEW_LINE} 🎉 Done!${EMPTY_LINE}⯈${WAIT_ONE_SEC} ${comment('Run local development server')} ${WAIT_ONE_SEC}${NEW_LINE}⯈ site`,
+    `${EMPTY_LINE} 💖 Site.js v${VERSION} (running on Node.js v10.15.3)${EMPTY_LINE} 🚧 [Site.js] Using locally-trusted certificates.${NEW_LINE} 📜 [Nodecert] Local development TLS certificate exists.${EMPTY_LINE} 🎉 Serving ${inCyan('.')} on ${inGreen('https://localhost')}${EMPTY_LINE}${NBSP}`,
+    `^C${NEW_LINE}💃 Preparing to exit gracefully, please wait…${EMPTY_LINE}💖 Goodbye!${EMPTY_LINE}⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')} ${WAIT_ONE_SEC}${NEW_LINE}⯈ site global `
   ])
 
 </script>
