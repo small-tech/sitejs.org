@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site.js</title>
   <style>
-    <!-- Todo: serve locally -->
-    @import url('https://rsms.me/inter/inter.css?v=3.5');
 
-    html { font-family: 'Inter', sans-serif; }
+    /*
+      @import url('https://rsms.me/inter/inter.css?v=3.5');
+      */
+      html { font-family: 'Inter', sans-serif; }
 
-    @supports (font-variation-settings: normal) {
-      html { font-family: 'Inter var', sans-serif; }
-    }
+      @supports (font-variation-settings: normal) {
+        html { font-family: 'Inter var', sans-serif; }
+      }
 
     /* Reset */
       html {
@@ -109,7 +112,7 @@
       /* todo - wrap .console */
     }
 
-    .terminal, .terminal-aside {
+    .terminal {
       height: 12em;
       background-color: black;
       padding: 1em;
@@ -117,35 +120,12 @@
       overflow-y: scroll;
     }
 
-
     #terminal-presentation {
       position: relative;
-      /*background-color: red;*/
+      background-color: red;
       margin-left: 3rem;
       margin-right: 3rem;
       margin-bottom: 1rem;
-    }
-
-    .terminals {
-      width: 100%;
-      display: grid;
-      grid-gap: 0.5em;
-      grid-template-columns: minmax(50%, 1fr) 50%;
-    }
-
-    .terminal {
-      grid-row-start: 1;
-      grid-row-end: 1;
-      grid-column-start: 1;
-      grid-column-end: span 2;
-    }
-
-    .terminal-aside {
-      display: none;
-      grid-row-start: 1;
-      grid-row-end: 1;
-      grid-column-start: 2;
-      grid-column-end: 2;
     }
 
     .next-button {
@@ -239,12 +219,6 @@
       color: #151D1F;
     }
 
-
-/*    .terminal {
-      width: 49.5%;
-      float: left;
-    }*/
-
     @media (max-width: 920px) {
       body {
         width: 100%;
@@ -264,7 +238,7 @@
     </ul></nav>
 
     <!-- Terminal presentation -->
-    <div class='terminal-presentation' id='terminal-presentation'></div>
+    <div id='terminal-presentation'></div>
 
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
@@ -380,12 +354,6 @@
       let cumulative = ''
       const steps = originalSteps.map(lines => lines.join('\n') + '\n').map ((step, index, theArray) => {
         if (index > 0) {
-
-          // Don’t collate for full-screen steps.
-          if (theArray[index].startsWith('!fullscreen')) {
-            return step
-          }
-
           const lastStep = theArray[index-1]
           const lastStepWithoutTimingDirectives = lastStep.replace(/\^\d+/g, '')
           cumulative += lastStepWithoutTimingDirectives
@@ -397,9 +365,7 @@
       })
 
       window.addEventListener('load', () => {
-        //,
-
-
+        //
         // Lay out the interface.
         //
         const container = document.getElementById(containerId)
@@ -419,25 +385,7 @@
         nextButton.disabled = true
         _pre.appendChild(_code)
         terminal.appendChild(_pre)
-
-
-        // If the terminal is split, this aside is shown.
-        const terminalAside = document.createElement('div')
-        terminalAside.className = 'terminal-aside'
-        const terminalAsidePre = document.createElement('pre')
-        const terminalAsideCode = document.createElement('code')
-        terminalAsideCode.className = 'terminal-aside-code'
-        terminalAsidePre.appendChild(terminalAsideCode)
-        terminalAside.appendChild(terminalAsidePre)
-        //terminalAside.hidden = true
-
-        const terminals = document.createElement('div')
-        terminals.className = 'terminals'
-
-        terminals.appendChild(terminal)
-        terminals.appendChild(terminalAside)
-        container.appendChild(terminals)
-
+        container.appendChild(terminal)
         container.appendChild(nextButton)
 
         // Always keep the console at the end of the output.
@@ -480,24 +428,7 @@
 
         // When the next button is clicked, toggle the typing animation (off).
         nextButton.addEventListener('click', (event) => {
-
-          const nextStep = steps[currentStep+1]
-
-          if (nextStep.startsWith('!fullscreen')) {
-            // Update the whole screen at once, do not toggle the typing.
-            terminal.innerHTML = nextStep.replace('!fullscreen', '').replace(/\n/g, '<br>')
-          } else if (nextStep.includes('!show-aside')) {
-            terminalAside.style.display ='block'
-            terminal.style.gridColumnEnd = 1
-            //terminal.style.position = 'left'
-            //terminal.style.width = '49.5%'
-            //terminalAside.style.float = 'right'
-            //terminalAside.style.width = '49.5%'
-            //terminalAside.style.float = 'right'
-            //terminalAside.style.right = 0
-          } else {
-            typed.toggle()
-          }
+          typed.toggle()
         })
       })
     }
@@ -524,21 +455,7 @@
       `⯈ wget -q0- https://sitejs.org/install | bash`,
     ],
     [
-      '!show-aside',
-      '⯈ ngrok start --all',
-    ],
-    [
-      '!fullscreen',
-      `${inCyan('ngrok')} by ${inCyan('@inconshreveable')}`,
-      '',
-      `${inGreen('Status      online')}`,
-      'Account     Pro (Plan: Ind.ie)',
-      'Region      Europe (eu)',
-      'Forwarding  dev.ar.al -> localhost',
-    ],
-    [
       // Slide 2.
-      '!hide-aside',
       '',
       ` 📡 Downloading Site.js v${VERSION}…${WAIT_QUARTER_SEC}`,
       ` 📦 Installing…${WAIT_QUARTER_SEC}`,
