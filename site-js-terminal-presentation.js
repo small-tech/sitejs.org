@@ -133,28 +133,34 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
 ], {
   controls: false,
   onReady: () => {
-    console.log('>>> On ready')
     nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
     nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
   },
   onStart: () => {
-    console.log('>>> On start')
+    // Disable the Next button while typing animations are in effect.
     nextButton.disabled = true
   },
   onStop: () => {
-    console.log('>>> On stop')
+    // Enable the Next button when typing animations end.
     nextButton.disabled = false
   },
   onSlide: (slide) => {
     //
-    // Split the terminals and create a second terminal animation.
+    // These additional sequences are added after certain slides in the first
+    // terminal presentation have concluded.
     //
     if (slide === 4) {
       //
-      // This sequence runs after slide 4.
+      // This sequence runs after slide 4  in the first terminal presentation.
       //
+
+      // Pause proxying Next button events to the first terminal presentation.
       nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
+      //
+      // Split the terminal (create a second terminal presentation) to show
+      // ngrok running.
+      //
       document.querySelector('#presentation').style.gridTemplateColumns = '50% 50%'
 
       const secondTerminalPresentation = new TerminalPresentation('second-terminal-presentation', [
@@ -170,11 +176,13 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
       ], {
         controls: false,
         onReady: () => {
-          console.log('Second terminal presentation is ready.')
+          // Wire up the next button to effect the second terminal presentation.
           nextButtonSecondTerminalPresentationHandler = event => { secondTerminalPresentation.start() }
           nextButton.addEventListener('click', nextButtonSecondTerminalPresentationHandler)
         },
         onComplete: () => {
+          // Display a mocked up ngrok interface as fullscreen
+          // (without the typing effect).
           const ngrokInterfaceMock = [
             `${inCyan('ngrok')} by ${inCyan('@inconshreveable')}`,
             '',
@@ -196,7 +204,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
 
     } else if (slide === 5) {
       //
-      // This sequence runs after slide 5.
+      // This sequence runs after slide 5 in the first terminal presentation.
       //
 
       // Hide the second terminal window.

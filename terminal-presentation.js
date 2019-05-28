@@ -72,7 +72,7 @@ class TerminalPresentation {
         backDelay: 0,
         preStringTyped: () => {
           // Gets called once, at the start of the animation.
-          scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          scrollToBottomInterval = setInterval(terminalScrollHandler, 50)
           if (typeof this.onReady === 'function') {
             this.onReady(this)
           }
@@ -102,7 +102,7 @@ class TerminalPresentation {
         onStart: () => {
           console.log('Start')
           nextButton.disabled = true
-          scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          scrollToBottomInterval = setInterval(terminalScrollHandler, 50)
           if (typeof this.onStart === 'function') {
             this.onStart()
           }

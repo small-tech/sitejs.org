@@ -38,14 +38,7 @@ html {
   background-color:#151D1F;
   margin: 0;
   padding: 0;
-/*
-    background: url(mountains.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-*/
-  }
+}
 
 body {
   margin-top: 0;
@@ -61,17 +54,6 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
-
-/*
-header:after {
-  content: "";
-  display: block;
-  height: 0;
-  width: 0;
-  background-color: red;
-  padding-bottom: calc(1695/2778 * 100%);
-}
-*/
 
 main {
   padding: 1vw;
@@ -119,10 +101,6 @@ nav li:last-of-type {
 #terminal-presentation, #second-terminal-presentation {
   position: relative;
   background-color: red;
-}
-
-#second-terminal-presentation {
-  /* display: none; */
 }
 
 .next-button {
@@ -194,7 +172,7 @@ main {
 }
 
 @media (max-width: 460px) {
-  #terminalPresentation {
+  #presentation {
     margin-left: 1rem;
     margin-right: 1rem;
     font-size: 0.9em;
