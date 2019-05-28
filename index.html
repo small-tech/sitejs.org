@@ -108,8 +108,7 @@
       padding-right: 0;
     }
 
-    .presentation {
-      /* todo - wrap .console */
+    #presentation {
     }
 
     .terminal {
@@ -120,7 +119,7 @@
       overflow-y: scroll;
     }
 
-    #terminal-presentation {
+    #terminal-presentation, #second-terminal-presentation {
       position: relative;
       background-color: red;
       margin-left: 3rem;
@@ -238,7 +237,10 @@
     </ul></nav>
 
     <!-- Terminal presentation -->
-    <div id='terminal-presentation'></div>
+    <div id='presentation'>
+      <div id='terminal-presentation'></div>
+      <div id='second-terminal-presentation'></div>
+    </div>
 
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
@@ -257,8 +259,10 @@
 <script>
 
   class TerminalPresentation {
-    constructor (containerId, originalSteps) {
+    constructor (containerId, originalSteps, onComplete = null) {
       console.log(`Creating terminal presentation in element with id ${containerId}.`)
+
+      this.onComplete = onComplete
 
       // The way Typed.js works, if you want to add to the text area instead of having it
       // replaced, the string that follows the current string must start with the current
@@ -280,11 +284,13 @@
         }
       })
 
-      window.addEventListener('load', () => {
-        //
-        // Lay out the interface.
-        //
+      const initialiseInterface = () => {
         const container = document.getElementById(containerId)
+
+        console.log('container is', container)
+
+        // Ensure the container is showing.
+        container.style.display = 'block'
 
         // We are going to position the presentation controls relative to the
         // container’s bounds.
@@ -294,7 +300,7 @@
         terminal.className = 'terminal'
         const _pre = document.createElement('pre')
         const _code = document.createElement('code')
-        _code.className = 'terminal-code'
+        _code.className = `terminal-code-${containerId}`
         const nextButton = document.createElement('button')
         nextButton.className = 'next-button'
         nextButton.appendChild(document.createTextNode('Next'))
@@ -311,21 +317,12 @@
         }
 
         // Create the typing animation and start the first frame.
-        var typed = new Typed(".terminal-code", {
+        var typed = new Typed(`.${_code.className}`, {
           strings: steps,
           backDelay: 0,
           preStringTyped: () => {
             // Gets called once, at the start of the animation.
             scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
-          },
-          onStart: () => {
-            console.log('Start')
-            nextButton.disabled = true
-            scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
-          },
-          onStop: () => {
-            console.log('Stop')
-            nextButton.disabled = false
           },
           onStringTyped: (arrayPosition) => {
             console.log('On string typed:', arrayPosition)
@@ -348,6 +345,21 @@
 
             }
             currentStep = arrayPosition
+          },
+          onStart: () => {
+            console.log('Start')
+            nextButton.disabled = true
+            scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          },
+          onStop: () => {
+            console.log('Stop')
+            nextButton.disabled = false
+          },
+          onComplete: () => {
+            console.log('Complete!')
+            if (typeof this.onComplete === 'function') {
+              this.onComplete()
+            }
           }
         })
 
@@ -355,13 +367,24 @@
         nextButton.addEventListener('click', (event) => {
           typed.start()
         })
-      })
+      }
+
+      // Make sure we initialise the interface regardless of whether we are
+      // created before page load or after.
+      if (document.readyState === 'complete') {
+        initialiseInterface()
+      } else {
+        window.addEventListener('load', initialiseInterface)
+      }
     }
   }
 
   //
   // The terminal presentation script.
   //
+
+  let secondPresentation = null
+
   const NEW_LINE = '\n'
   const EMPTY_LINE = '\n\n'
   const WAIT_ONE_SEC = '^1000'
@@ -373,12 +396,12 @@
   function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
   function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
 
-  new TerminalPresentation('terminal-presentation', [
+  const firstPresentation = new TerminalPresentation('terminal-presentation', [
     [
       // Slide 1.
       `⯈ ${comment('Install')}${WAIT_ONE_SEC}`,
       `⯈ wget -q0- https://sitejs.org/install | bash`,
-    ],
+    ],/*
     [
       // Slide 2.
       '',
@@ -410,8 +433,26 @@
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
       '⯈ site global '
-    ]
-  ])
+    ]*/
+  ], () => {
+    //
+    // Split the terminals and create a second terminal animation.
+    //
+    console.log('Second')
+    secondPresentation = new TerminalPresentation('second-terminal-presentation', [
+      [
+        // Slide 1.
+        `⯈ ${comment('Launch ngrok to expose local server globally')}${WAIT_ONE_SEC}`,
+        `⯈ ngrok start --all`,
+      ],
+      [
+        // An empty slide to ensure we pause on the first slide.
+        ''
+      ]
+    ], () => {
+      console.log('Todo: show full-screen ngrok interface mock.')
+    })
+  })
 
 </script>
 </body>
