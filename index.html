@@ -259,9 +259,10 @@
 <script>
 
   class TerminalPresentation {
-    constructor (containerId, originalSteps, onComplete = null) {
+    constructor (containerId, originalSteps, onComplete = null, onStepComplete = null) {
       console.log(`Creating terminal presentation in element with id ${containerId}.`)
 
+      this.onStepComplete = onStepComplete
       this.onComplete = onComplete
 
       // The way Typed.js works, if you want to add to the text area instead of having it
@@ -310,6 +311,8 @@
         container.appendChild(terminal)
         container.appendChild(nextButton)
 
+        this.nextButton = nextButton
+
         // Always keep the console at the end of the output.
         let currentStep = -1, scrollToBottomInterval
         const terminalScrollHandler = () => {
@@ -352,7 +355,10 @@
             scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
           },
           onStop: () => {
-            console.log('Stop')
+            console.log('Stop', currentStep)
+            if (typeof this.onStepComplete === 'function') {
+              this.onStepComplete(currentStep+1)
+            }
             nextButton.disabled = false
           },
           onComplete: () => {
@@ -377,13 +383,19 @@
         window.addEventListener('load', initialiseInterface)
       }
     }
+
+    showControls () {
+      this.nextButton.hidden = false
+    }
+
+    hideControls () {
+      this.nextButton.hidden = true
+    }
   }
 
   //
   // The terminal presentation script.
   //
-
-  let secondPresentation = null
 
   const NEW_LINE = '\n'
   const EMPTY_LINE = '\n\n'
@@ -396,14 +408,14 @@
   function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
   function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
 
-  const firstPresentation = new TerminalPresentation('terminal-presentation', [
+  const firstTerminalPresentation = new TerminalPresentation('terminal-presentation', [
     [
-      // Slide 1.
+      // Slide 0
       `⯈ ${comment('Install')}${WAIT_ONE_SEC}`,
       `⯈ wget -q0- https://sitejs.org/install | bash`,
-    ],/*
+    ],
     [
-      // Slide 2.
+      // Slide 1
       '',
       ` 📡 Downloading Site.js v${VERSION}…${WAIT_QUARTER_SEC}`,
       ` 📦 Installing…${WAIT_QUARTER_SEC}`,
@@ -413,7 +425,7 @@
       `⯈ site`
     ],
     [
-      // Slide 3.
+      // Slide 2
       '',
       ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
@@ -425,7 +437,7 @@
       NBSP
     ],
     [
-      // Slide 4.
+      // Slide 3: Exit local server and show command to start a global server.
       '^C',
       ' 💃 Preparing to exit gracefully, please wait…',
       '',
@@ -433,25 +445,87 @@
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
       '⯈ site global '
-    ]*/
-  ], () => {
+    ],
+    [
+      // Slide 4: The global server output.
+      '',
+      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      '',
+      ' 🌍 [Site.js] Using globally-trusted certificates.',
+      ' 👉 [Site.js] HTTP → HTTPS redirection active.',
+      '',
+      ` 🎉 Serving ${inCyan('.')} on ${inGreen('https://dev.ar.al')}`,
+      '',
+      NBSP
+    ],
+    [
+      // Slide 5: Break out of global server.
+      '^C',
+      ' 💃 Preparing to exit gracefully, please wait…',
+      '',
+      ' 💖 Goodbye!',
+      '',
+      `⯈ ${WAIT_ONE_SEC}${comment('Install and run site as startup daemon')}`,
+      '⯈ site enable '
+    ],
+    [
+      // Slide 6: Output of running as startup daemon.
+      '',
+      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      '',
+      ` 😈 Launched as daemon on ${inGreen('https://aral.hypha.dev')} serving ${inCyan('.')}`,
+      '',
+      ' 😈 Installed for auto-launch at startup.',
+      '',
+      ` 😁👍 You’re all set!`,
+      '',
+      '⯈ '
+    ]
+  ], null, (slide) => {
     //
     // Split the terminals and create a second terminal animation.
     //
-    console.log('Second')
-    secondPresentation = new TerminalPresentation('second-terminal-presentation', [
-      [
-        // Slide 1.
-        `⯈ ${comment('Launch ngrok to expose local server globally')}${WAIT_ONE_SEC}`,
-        `⯈ ngrok start --all`,
-      ],
-      [
-        // An empty slide to ensure we pause on the first slide.
-        ''
-      ]
-    ], () => {
-      console.log('Todo: show full-screen ngrok interface mock.')
-    })
+    if (slide === 4) {
+      //
+      // This sequence runs after slide 4.
+      //
+      firstTerminalPresentation.hideControls()
+
+      new TerminalPresentation('second-terminal-presentation', [
+        [
+          // Slide 1.
+          `⯈ ${comment('Launch ngrok to expose local server globally')}${WAIT_ONE_SEC}`,
+          `⯈ ngrok start --all`,
+        ],
+        [
+          // An empty slide to ensure we pause on the first slide.
+          ''
+        ]
+      ], () => {
+        const ngrokInterfaceMock = [
+          `${inCyan('ngrok')} by ${inCyan('@inconshreveable')}`,
+          '',
+          `${inGreen('Status      online')}`,
+          'Account     Pro (Plan: Ind.ie)',
+          'Region      Europe (eu)',
+          'Forwarding  dev.ar.al -> localhost'
+        ].join('\n')
+
+        const secondPresentationTerminalCode = document.querySelector('#second-terminal-presentation .terminal-code-second-terminal-presentation')
+
+        secondPresentationTerminalCode.innerHTML = ngrokInterfaceMock
+
+        // Return control to the first terminal presentation.
+        firstTerminalPresentation.showControls()
+      })
+    } else if (slide === 5) {
+      //
+      // This sequence runs after slide 5.
+      //
+
+      // Hide the second terminal window.
+      document.querySelector('#second-terminal-presentation').style.display = 'none'
+    }
   })
 
 </script>
