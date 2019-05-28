@@ -70,7 +70,12 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     NBSP
   ],
   [
-    // Slide 5: Break out of global server.
+    // Slide 5: An empty slide to ensure we pause before splitting the screen
+    // so as not to jar the person watching.
+    ''
+  ],
+  [
+    // Slide 6: Break out of global server.
     '^C',
     ' 💃 Preparing to exit gracefully, please wait…',
     '',
@@ -80,7 +85,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     '⯈ site sync my-demo.site '
   ],
   [
-    // Slide 6: Sync output.
+    // Slide 7: Sync output.
     '',
     `💞 [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
     '',
@@ -105,7 +110,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     NBSP
   ],
   [
-    // Slide 7: Break out of local server with sync.
+    // Slide 8: Break out of local server with sync.
     '^C',
     ' 💞 [Sync] Exit request detected.',
     ' 🔎 [Watch] Removing watcher.',
@@ -118,7 +123,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     '⯈ site enable '
   ],
   [
-    // Slide 8: Last slide – output of starting startup daemon.
+    // Slide 9: Last slide – output of starting startup daemon.
     '',
     ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
     '',
@@ -149,7 +154,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     // These additional sequences are added after certain slides in the first
     // terminal presentation have concluded.
     //
-    if (slide === 4) {
+    if (slide === 5) {
       //
       // This sequence runs after slide 4  in the first terminal presentation.
       //
@@ -198,20 +203,23 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
 
           // Return control to the first terminal presentation.
           nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
-          nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+
+          // On the next Next button click, remove the second terminal presentation and return
+          // control to the first terminal presentation.
+          const clearUpSecondTerminalPresentation = event => {
+            nextButton.removeEventListener('click', clearUpSecondTerminalPresentation)
+            nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+
+            document.querySelector('#presentation').style.gridTemplateColumns = '100%'
+            document.querySelector('#second-terminal-presentation').style.display = 'none'
+          }
+          nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
         }
       })
-
-    } else if (slide === 5) {
-      //
-      // This sequence runs after slide 5 in the first terminal presentation.
-      //
-
-      // Hide the second terminal window.
-      setTimeout(() => {
-        document.querySelector('#presentation').style.gridTemplateColumns = '100%'
-        document.querySelector('#second-terminal-presentation').style.display = 'none'
-      }, 1000)
     }
+  },
+  onComplete: () => {
+    // We’re done with the whole presentation; hide the Next button.
+    nextButton.hidden = true
   }
 })
