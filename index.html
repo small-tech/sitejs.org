@@ -109,6 +109,12 @@
     }
 
     #presentation {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-column-gap: 0.5em;
+      margin-left: 3rem;
+      margin-right: 3rem;
+      margin-bottom: 1rem;
     }
 
     .terminal {
@@ -122,9 +128,10 @@
     #terminal-presentation, #second-terminal-presentation {
       position: relative;
       background-color: red;
-      margin-left: 3rem;
-      margin-right: 3rem;
-      margin-bottom: 1rem;
+    }
+
+    #second-terminal-presentation {
+      /* display: none; */
     }
 
     .next-button {
@@ -287,8 +294,6 @@
 
       const initialiseInterface = () => {
         const container = document.getElementById(containerId)
-
-        console.log('container is', container)
 
         // Ensure the container is showing.
         container.style.display = 'block'
@@ -465,15 +470,53 @@
       '',
       ' 💖 Goodbye!',
       '',
-      `⯈ ${WAIT_ONE_SEC}${comment('Install and run site as startup daemon')}`,
+      `⯈ ${comment('Start a local server and sync to remote server')}`,
+      '⯈ site sync my-demo.site '
+    ],
+    [
+      // Slide 6: Sync output.
+      '',
+      `💞 [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
+      '',
+      '💞 [Sync] Starting…',
+      '',
+      '💖 Site.js v1.0.0 (running on Node v10.15.3)',
+      '',
+      '🚧 [Site.js] Using locally-trusted certificates.',
+      '📜 [Nodecert] Local development TLS certificate exists.',
+      '',
+      `🎉 Serving ${inCyan('./')} on ${inGreen('https://localhost')}`,
+      '',
+      '💞 [Sync] Calculating changes…',
+      '💞 [Sync] ↑ 140 bytes ↓ 12 bytes (101.33 bytes/sec)',
+      '💞 [Sync] total size is 497  speedup is 3.27',
+      '💞 [Sync] Complete.',
+      '',
+      `💞 [Sync] Local folder ${inCyan('./')} synced to ${inCyan('my-demo.site')}`,
+      '',
+      `🔎 [Watch] Watching ${inCyan('./')} for changes to sync to ${inCyan('my-demo.site')}…`,
+      '',
+      NBSP
+    ],
+    [
+      // Slide 7: Break out of local server with sync.
+      '^C',
+      ' 💞 [Sync] Exit request detected.',
+      ' 🔎 [Watch] Removing watcher.',
+      '',
+      ' 💃 Preparing to exit gracefully, please wait…',
+      '',
+      ' 💖 Goodbye!',
+      '',
+      `⯈ ${comment('Start a production server (startup daemon)')}`,
       '⯈ site enable '
     ],
     [
-      // Slide 6: Output of running as startup daemon.
+      // Slide 8: Last slide – output of starting startup daemon.
       '',
       ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
-      ` 😈 Launched as daemon on ${inGreen('https://aral.hypha.dev')} serving ${inCyan('.')}`,
+      ` 😈 Launched as daemon on ${inGreen('https://ar.al')} serving ${inCyan('.')}`,
       '',
       ' 😈 Installed for auto-launch at startup.',
       '',
@@ -489,12 +532,13 @@
       //
       // This sequence runs after slide 4.
       //
+      document.querySelector('#presentation').style.gridTemplateColumns = '50% 50%'
       firstTerminalPresentation.hideControls()
 
       new TerminalPresentation('second-terminal-presentation', [
         [
           // Slide 1.
-          `⯈ ${comment('Launch ngrok to expose local server globally')}${WAIT_ONE_SEC}`,
+          `⯈ ${comment('Expose local server globally')}${WAIT_ONE_SEC}`,
           `⯈ ngrok start --all`,
         ],
         [
@@ -524,7 +568,10 @@
       //
 
       // Hide the second terminal window.
-      document.querySelector('#second-terminal-presentation').style.display = 'none'
+      setTimeout(() => {
+        document.querySelector('#presentation').style.gridTemplateColumns = '100%'
+        document.querySelector('#second-terminal-presentation').style.display = 'none'
+      }, 1000)
     }
   })
 
