@@ -1,0 +1,223 @@
+/*
+  @import url('https://rsms.me/inter/inter.css?v=3.5');
+  */
+  html { font-family: 'Inter', sans-serif; }
+
+  @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+  }
+
+/* Reset */
+  html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+/* ----- */
+
+
+html {
+  background-color:#151D1F;
+  margin: 0;
+  padding: 0;
+/*
+    background: url(mountains.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+*/
+  }
+
+body {
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  color: white;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+header:after {
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  background-color: red;
+  padding-bottom: calc(1695/2778 * 100%);
+}
+*/
+
+main {
+  padding: 1vw;
+}
+
+nav {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-size: 1.25em;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav li {
+  color: #4D7072;
+  display: inline;
+  padding-right: 1em;
+}
+
+nav li:last-of-type {
+  padding-right: 0;
+}
+
+#presentation {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: 0.5em;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+
+.terminal {
+  height: 12em;
+  background-color: black;
+  padding: 1em;
+  opacity: 0.9;
+  overflow-y: scroll;
+}
+
+#terminal-presentation, #second-terminal-presentation {
+  position: relative;
+  background-color: red;
+}
+
+#second-terminal-presentation {
+  /* display: none; */
+}
+
+.next-button {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+pre, code {
+  font-family: "Fira Code", monospace;
+  background-color: black;
+  color: white;
+}
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+}
+
+h1 {
+  color: #1D2C2E;
+  font-size: 96px;
+  text-align: center;
+  font-weight: 200;
+  padding-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+h1 > strong {
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 58px;
+}
+
+header > p {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 1em;
+  font-size: 1.75em;
+}
+
+main {
+  width: 100%;
+  background-color: white;
+}
+
+.mainer {
+  background-color: white;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.mainer > p {
+  font-size: 18px;
+}
+
+.background {
+  position: fixed;
+  z-index: -1;
+}
+
+@media (max-width: 460px) {
+  #terminalPresentation {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 0.9em;
+  }
+
+  .mainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header > p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.5em;
+  }
+}
+
+li.selected {
+  color: #151D1F;
+}
+
+@media (max-width: 920px) {
+  body {
+    width: 100%;
+  }
+}
