@@ -243,100 +243,16 @@
     <p><strong>Develop, test, and deploy</strong> your <strong>secure static</strong> or <strong>dynamic personal</strong> web site with <strong>zero configuration.</strong></p>
   </header>
 <main>
-<div class='mainer'>
-  <h2 id="install">Install</h2>
+  <div class='mainer'>
+    <h2 id="install">Install</h2>
 
-  <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="/web-server/install.sh">view the source code</a> and make sure you understand what it does.</strong></p>
+    <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="/web-server/install.sh">view the source code</a> and make sure you understand what it does.</strong></p>
 
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -qO- https://ind.ie/web-server/install.sh | bash</code></pre></div>
-
-  <h2 id="uninstall">Uninstall</h2>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server uninstall</code></pre></div>
-
-  <h2 id="use">Use</h2>
-
-  <h3 id="as-a-development-server">As a development server</h3>
-
-  <p>You can also use Indie Web Server as a local development server <strong>with locally-trusted TLS certificates</strong> (no certificate warnings) on Linux, macOS, and Windows.</p>
-
-  <p>To start serving the current folder at <a href="https://localhost:">https://localhost:</a></p>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server</code></pre></div>
-
-  <h3 id="as-a-local-proxy-server">As a local proxy server</h3>
-
-  <p>Say you’re running <a href="https://gohugo.io/">Hugo</a> locally at its default location (<a href="http://localhost:1313">http://localhost:1313</a>) and you want to test it via TLS:</p>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server proxy localhost:1313</code></pre></div>
-
-  <p>Now you can view it at <a href="https://localhost">https://localhost</a> and even your live reload will work as Indie Web Server in proxy mode also proxies WebSockets.</p>
-
-  <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server sync my-demo.site</code></pre></div>
-
-  <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details via optional flags.</p>
-
-  <h3 id="as-a-staging-server">As a staging server</h3>
-
-  <p>To give others access to your server without running as a deployment server (daemon):</p>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server global</code></pre></div>
-
-  <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <code>/etc/hostname</code> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your Let’s Encrypt certificates are being automatically provisioned by ACME TLS.</p>
-
-  <h3 id="as-a-production-server">As a production server</h3>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server enable</code></pre></div>
-
-  <p>Once your server is running, it will survive crashes and server restarts and you can use the following commands:</p>
-
-  <ul>
-  <li><code>web-server status</code>: display the server status.</li>
-  <li><code>web-server logs</code>: display the server logs.</li>
-  <li><code>web-server disable</code>: stop the server and remove it from startup items.</li>
-  </ul>
-
-  <h2 id="extend">Extend</h2>
-
-  <p>You can extend the server and create your own dynamic servers using Node.js:</p>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm i @ind.ie/web-server</code></pre></div>
-
-  <p>Create your own dynamic web apps in Node.js using the <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#api">API</a>.</p>
-
-  <h2 id="learn-more">Learn more</h2>
-
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">web-server help</code></pre></div>
-
-  <p><a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md">See the docs</a> for full details, like using <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#custom-error-pages">custom error pages</a> and <a href="https://source.ind.ie/hypha/tools/web-server#native-archive-cascade-support">cascading archives</a> and <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#anchor-4042302">the 404→302 technique</a> for an evergreen web.</p>
-
-  <h2 id="about">About</h2>
-
-  <p>Indie Web Server is <a href="https://ar.al/2019/03/04/small-technology/">Small Tech</a> and an early artefact of the <a href="https://ar.al/2019/02/13/on-the-general-architecture-of-the-peer-web/">Hypha project</a>.</p>
-
-  <p>Made with ♥ by Ind.ie.</p>
-
-  <p>If you like our work, <a href="https://ind.ie/fund/">fund us</a>.</p>
-
-      </div>
-    </main>
-
-
-      <footer>
-
-      <h3><a href="/ethical-design" class="ethical-design-badge">We practice <strong>Ethical</strong> Design.</a></h3>
-
-      <p><small>Indie © Article 12. All content, unless specifically stated otherwise, is licensed under Creative Commons Attribution 4.0 International. Our <a href="/privacy/">privacy policy</a> is that we exist to protect your privacy. <a href="https://source.ind.ie/site/www">View source</a></small></p>
-
-  </footer>
-
-</div>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -qO- https://ind.ie/web-server/install.sh | bash</code></pre></div>
+  </div>
 </main>
 
-
-<script src="node_modules/typed.js/lib/typed.min.js"></script>
+<script src="node_modules/typed.js/lib/typed.js"></script>
 
 <script>
 
@@ -389,23 +305,38 @@
         container.appendChild(nextButton)
 
         // Always keep the console at the end of the output.
-        let currentStep = -1
+        let currentStep = -1, scrollToBottomInterval
         const terminalScrollHandler = () => {
           terminal.scrollTop = terminal.scrollHeight
         }
-        let scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
 
         // Create the typing animation and start the first frame.
         var typed = new Typed(".terminal-code", {
           strings: steps,
+          backDelay: 0,
+          preStringTyped: () => {
+            // Gets called once, at the start of the animation.
+            console.log('PRE STRING TYPED')
+            scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          },
+          onStart: () => {
+            console.log('START')
+            nextButton.disabled = true
+            scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+          },
+          onStop: () => {
+            nextButton.disabled = false
+          },
           onStringTyped: (arrayPosition) => {
+            console.log('On string typed:', arrayPosition)
             if (arrayPosition !== currentStep) {
+              console.log(`Array position ${arrayPosition} !== current step ${currentStep}`)
               // A new step has ended. Make sure we’re scrolled to the
               // bottom. Toggle the typing off and stop forcing the
               // terminal to the bottom so that the person can scroll back
               // if they want to review any of the steps.
-              terminal.scrollTop = terminal.scrollHeight
               clearInterval(scrollToBottomInterval)
+              terminal.scrollTop = terminal.scrollHeight
 
               // Is the presentation over?
               if (arrayPosition === steps.length - 1) {
@@ -413,14 +344,8 @@
                 return
               }
 
-              typed.toggle()
-              nextButton.disabled = false
-            } else {
-              // A new step has started. Disable the Next button until
-              // it ends and make sure the terminal is always scrolled
-              // to the bottom as new content is added.
-              nextButton.disabled = true
-              scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
+              typed.stop()
+
             }
             currentStep = arrayPosition
           }
@@ -428,7 +353,7 @@
 
         // When the next button is clicked, toggle the typing animation (off).
         nextButton.addEventListener('click', (event) => {
-          typed.toggle()
+          typed.start()
         })
       })
     }
