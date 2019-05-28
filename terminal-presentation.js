@@ -1,9 +1,19 @@
-// Requires Typed.js
+//////////////////////////////////////////////////////////////////////
+//
+// Terminal Presentation.
+//
+// Create step-by-step linear Terminal-style presentations. As
+// seen on https://sitejs.org.
+//
+// Requires Typed.js.
+//
+// Created with ♥ by Ind.ie. Copyright ⓒ 2019 Aral Balkan.
+// License: AGPLv3 or later.
+//
+//////////////////////////////////////////////////////////////////////
 
 class TerminalPresentation {
   constructor (containerId, originalSteps, options = {}) {
-    console.log(`Creating terminal presentation in element with id ${containerId}.`)
-
     this.onStepComplete = options.onSlide
     this.onComplete = options.onComplete
     this.onStart = options.onStart
@@ -78,9 +88,7 @@ class TerminalPresentation {
           }
         },
         onStringTyped: (arrayPosition) => {
-          console.log('On string typed:', arrayPosition)
           if (arrayPosition !== currentStep) {
-            console.log(`Array position ${arrayPosition} !== current step ${currentStep}`)
             // A new step has ended. Make sure we’re scrolled to the
             // bottom. Toggle the typing off and stop forcing the
             // terminal to the bottom so that the person can scroll back
@@ -100,7 +108,6 @@ class TerminalPresentation {
           currentStep = arrayPosition
         },
         onStart: () => {
-          console.log('Start')
           nextButton.disabled = true
           scrollToBottomInterval = setInterval(terminalScrollHandler, 50)
           if (typeof this.onStart === 'function') {
@@ -108,7 +115,6 @@ class TerminalPresentation {
           }
         },
         onStop: () => {
-          console.log('Stop', currentStep)
           if (typeof this.onStepComplete === 'function') {
             this.onStepComplete(currentStep+1)
           }
@@ -118,7 +124,6 @@ class TerminalPresentation {
           }
         },
         onComplete: () => {
-          console.log('Complete!')
           if (typeof this.onComplete === 'function') {
             this.onComplete()
           }

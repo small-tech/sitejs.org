@@ -1,5 +1,6 @@
 //
 // The terminal presentation.
+// Copyright ⓒ 2019 Aral Balkan. License: AGPLv3 or later.
 //
 const NEW_LINE = '\n'
 const EMPTY_LINE = '\n\n'
