@@ -316,15 +316,15 @@
           backDelay: 0,
           preStringTyped: () => {
             // Gets called once, at the start of the animation.
-            console.log('PRE STRING TYPED')
             scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
           },
           onStart: () => {
-            console.log('START')
+            console.log('Start')
             nextButton.disabled = true
             scrollToBottomInterval = setInterval(terminalScrollHandler, 500)
           },
           onStop: () => {
+            console.log('Stop')
             nextButton.disabled = false
           },
           onStringTyped: (arrayPosition) => {
