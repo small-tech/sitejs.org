@@ -1,3 +1,84 @@
+class BrowserPresentation {
+
+  /*
+  <!-- Spinner, courtesy https://tobiasahlin.com/spinkit/ -->
+  <div style='display: none' id='spinner' class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div>
+
+  <!-- Content -->
+  <div id='content'>
+    <p>Use the <strong>Next</strong> button to progress through the demo.</p>
+  </div>
+  */
+
+
+  constructor (containerId, initialUrl = 'https://localhost', initialContent = '<p>Hello, world!</p>') {
+
+    const initialiseInterface = () => {
+      const container = document.getElementById(containerId)
+      container.classList.add('facade-minimal')
+      container.setAttribute('data-url', initialUrl)
+
+      this.container = container
+
+      const progressIndicator = document.createElement('div')
+      progressIndicator.id = 'spinner'
+      progressIndicator.className = 'spinner'
+      progressIndicator.style.display = 'none';
+
+      [1, 2, 3].forEach(i => {
+        const innerDot = document.createElement('div')
+        innerDot.className = `bounce${i}`
+        progressIndicator.appendChild(innerDot)
+      })
+
+      this.progressIndicator = progressIndicator
+
+      const content = document.createElement('div')
+      content.innerHTML = initialContent
+
+      this.content = content
+
+      container.appendChild(progressIndicator)
+      container.appendChild(content)
+    }
+
+    // Make sure we initialise the interface regardless of whether we are
+    // created before page load or after.
+    if (document.readyState === 'complete') {
+      initialiseInterface()
+    } else {
+      window.addEventListener('load', initialiseInterface)
+    }
+  }
+
+  // Simulates entering a URL, waiting for it to load, and having its content load.
+  browseTo (url, content, readyCallback = () => {}) {
+    let i = 0
+    const interval = setInterval(() => {
+      if (i === url.length + 1) {
+        // URL entry is complete.
+        clearInterval(interval)
+
+        setTimeout(() => {
+          // After a brief breath, to simulate the time taken to press return, how the spinner.
+          this.progressIndicator.style.display = 'block'
+
+          // Two seconds later, show the content.
+          setTimeout(() => {
+            this.content.innerHTML = content
+            this.progressIndicator.style.display = 'none'
+            readyCallback()
+          }, 2000)
+        }, 250)
+      }
+      const urlSubstr = url.substr(0, i++)
+      this.container.setAttribute('data-url', urlSubstr)
+    }, 100)
+  }
+
+}
+
+
 //
 // The terminal presentation.
 // Copyright ⓒ 2019 Aral Balkan. License: AGPLv3 or later.
@@ -12,6 +93,13 @@ const NBSP = '&nbsp;'
 function comment (text) { return `<span style="color: #ccc"># ${text}</span>` }
 function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
 function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
+
+// Initialise the Browser Presentation.
+const browserPresentation = new BrowserPresentation(
+  'browser',
+  'https://sitejs.org/demo-instructions',
+  '<p>Use the <strong>Next</strong> button to progress through the demo.</p>'
+)
 
 // We use our own Next button to step through the presentation as we have
 // more than one terminal window and we don’t want the button to jump around
@@ -162,31 +250,9 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
       nextButton.disabled = true
 
       setTimeout(() => {
-        const browser = document.querySelector('#browser')
-        const url = "https://localhost"
-        let i = 0
-        const interval = setInterval(() => {
-          if (i === url.length + 1) {
-            //
-            // URL entry is complete.
-            //
-            clearInterval(interval)
-
-            setTimeout(() => {
-              // After a brief breath, to simulate the time taken to press return, how the spinner.
-              document.querySelector('#spinner').style.display = 'block'
-
-              // Two seconds later, show the content.
-              setTimeout(() => {
-                document.querySelector('#content').innerHTML = '<p>Hello, world!</p>'
-                document.querySelector('#spinner').style.display = 'none'
-                nextButton.enabled = true
-              }, 2000)
-            }, 250)
-          }
-          const urlSubstr = url.substr(0, i++)
-          browser.setAttribute('data-url', urlSubstr)
-        }, 100)
+        browserPresentation.browseTo('https://localhost', '<p>Hello, world!</p>', () => {
+          nextButton.disabled = false
+        })
       }, 1000)
     }
 
