@@ -96,7 +96,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       NBSP
     ],
     [
-      // An empty slide to ensure we pause before splitting the screen
+      // An empty step to ensure we pause before splitting the screen
       // so as not to jar the person watching.
       '',
       () => {
