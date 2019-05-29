@@ -32,7 +32,7 @@ let nextButtonFirstTerminalPresentationHandler, nextButtonSecondTerminalPresenta
 const firstTerminalPresentation = new TerminalPresentation('terminal-presentation', [
   [
     // Slide 0
-    `⯈ ${comment('Install')}${WAIT_ONE_SEC}`,
+    `⯈ ${comment('Install')}${WAIT_QUARTER_SEC}`,
     `⯈ wget -q0- https://sitejs.org/install | bash`,
   ],
   [
@@ -42,11 +42,17 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     ` 📦 Installing…${WAIT_QUARTER_SEC}`,
     ` 🎉 Done!`,
     '',
-    `⯈ ${WAIT_ONE_SEC}${comment('Run local development server')} ${WAIT_ONE_SEC}`,
-    `⯈ site`
+    `⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+    `⯈ echo 'Hello, world' > index.html`,
   ],
   [
     // Slide 2
+    '',
+    `⯈ ${comment('Run local development server')} ${WAIT_QUARTER_SEC}`,
+    `⯈ site`
+  ],
+  [
+    // Slide 3
     '',
     ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
     '',
@@ -58,7 +64,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     NBSP
   ],
   [
-    // Slide 3: Exit local server and show command to start a global server.
+    // Slide 4: Exit local server and show command to start a global server.
     '^C',
     ' 💃 Preparing to exit gracefully, please wait…',
     '',
@@ -68,7 +74,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     '⯈ site global '
   ],
   [
-    // Slide 4: The global server output.
+    // Slide 5: The global server output.
     '',
     ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
     '',
@@ -80,12 +86,12 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     NBSP
   ],
   [
-    // Slide 5: An empty slide to ensure we pause before splitting the screen
+    // Slide 6: An empty slide to ensure we pause before splitting the screen
     // so as not to jar the person watching.
     ''
   ],
   [
-    // Slide 6: Break out of global server.
+    // Slide 7: Break out of global server.
     '^C',
     ' 💃 Preparing to exit gracefully, please wait…',
     '',
@@ -95,7 +101,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     '⯈ site sync my-demo.site '
   ],
   [
-    // Slide 7: Sync output.
+    // Slide 8: Sync output.
     '',
     `💞 [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
     '',
@@ -120,7 +126,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     NBSP
   ],
   [
-    // Slide 8: Break out of local server with sync.
+    // Slide 9: Break out of local server with sync.
     '^C',
     ' 💞 [Sync] Exit request detected.',
     ' 🔎 [Watch] Removing watcher.',
@@ -133,7 +139,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     '⯈ site enable '
   ],
   [
-    // Slide 9: Last slide – output of starting startup daemon.
+    // Slide 10: Last slide – output of starting startup daemon.
     '',
     ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
     '',
@@ -164,7 +170,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     // These additional sequences are added after certain slides in the first
     // terminal presentation have concluded.
     //
-    if (slide === 2) {
+    if (slide === 3) {
       //
       // After the local server is run, simulate someone hitting it in the browser.
       //
@@ -177,7 +183,7 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
       }, 1000)
     }
 
-    if (slide === 5) {
+    if (slide === 6) {
       //
       // This sequence runs after slide 5 in the first terminal presentation.
       //
