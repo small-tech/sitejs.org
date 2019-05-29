@@ -218,6 +218,8 @@ li.selected {
    *                                                                              *
    ******************************************************************************** */
 
+/* Courtesy: https://tobiasahlin.com/spinkit/ */
+
 .spinner {
   position: absolute;
   right: 60px;
