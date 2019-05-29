@@ -155,9 +155,44 @@ const firstTerminalPresentation = new TerminalPresentation('terminal-presentatio
     // These additional sequences are added after certain slides in the first
     // terminal presentation have concluded.
     //
+    if (slide === 2) {
+      //
+      // After the local server is run, simulate someone hitting it in the browser.
+      //
+      nextButton.disabled = true
+
+      setTimeout(() => {
+        const browser = document.querySelector('#browser')
+        const url = "https://localhost"
+        let i = 0
+        const interval = setInterval(() => {
+          if (i === url.length + 1) {
+            //
+            // URL entry is complete.
+            //
+            clearInterval(interval)
+
+            setTimeout(() => {
+              // After a brief breath, to simulate the time taken to press return, how the spinner.
+              document.querySelector('#spinner').style.display = 'block'
+
+              // Two seconds later, show the content.
+              setTimeout(() => {
+                document.querySelector('#content').innerHTML = '<p>Hello, world!</p>'
+                document.querySelector('#spinner').style.display = 'none'
+                nextButton.enabled = true
+              }, 2000)
+            }, 250)
+          }
+          const urlSubstr = url.substr(0, i++)
+          browser.setAttribute('data-url', urlSubstr)
+        }, 100)
+      }, 1000)
+    }
+
     if (slide === 5) {
       //
-      // This sequence runs after slide 4  in the first terminal presentation.
+      // This sequence runs after slide 5 in the first terminal presentation.
       //
 
       // Pause proxying Next button events to the first terminal presentation.
