@@ -20,6 +20,25 @@ class TerminalPresentation {
     this.onStop = options.onStop
     this.onReady = options.onReady
 
+    // First, iterate over the slides to see if there are any slide callbacks. Slide
+    // callbacks are called when a slide has completed. (You can also use the onSlide()
+    // global callback for this but it’s nicer for authoring to keep the callbacks inline
+    // with the slides – and it means we don’t need to use conditionals if more than one
+    // slide has a callback.)
+    const slideCallbacks = []
+    let i = -1
+    originalSteps.forEach(step => {
+      i++
+      const lastItem = step[step.length-1]
+      if (typeof lastItem === 'function') {
+        slideCallbacks[i] = lastItem
+      }
+    })
+    // Remove the functions from the original steps.
+    slideCallbacks.forEach((value, index) => originalSteps[index].pop())
+
+    this.slideCallbacks = slideCallbacks
+
     // The way Typed.js works, if you want to add to the text area instead of having it
     // replaced, the string that follows the current string must start with the current
     // string. Since we want to emulate a Terminal window where text is always appended,
@@ -117,6 +136,9 @@ class TerminalPresentation {
         onStop: () => {
           if (typeof this.onStepComplete === 'function') {
             this.onStepComplete(currentStep+1)
+          }
+          if (typeof this.slideCallbacks[currentStep+1] === 'function') {
+            this.slideCallbacks[currentStep+1]()
           }
           nextButton.disabled = false
           if (typeof this.onStop === 'function') {
