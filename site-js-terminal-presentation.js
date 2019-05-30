@@ -45,7 +45,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` 🎉 Done!`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `⯈ echo 'Hello, world' > index.html`,
+      `⯈ echo 'Hello, development' > index.html`,
     ],
     [
       '',
@@ -67,7 +67,7 @@ const firstTerminalPresentation = new TerminalPresentation(
         nextButton.disabled = true
 
         setTimeout(() => {
-          browserPresentation.browseTo('https://localhost', '<p>Hello, world!</p>', () => {
+          browserPresentation.browseTo('https://localhost', '<p>Hello, development!</p>', () => {
             nextButton.disabled = false
           })
         }, 1000)
@@ -79,6 +79,9 @@ const firstTerminalPresentation = new TerminalPresentation(
       ' 💃 Preparing to exit gracefully, please wait…',
       '',
       ' 💖 Goodbye!',
+      '',
+      `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
+      `⯈ echo 'Hello, staging!' > index.html`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
       '⯈ site global '
@@ -151,6 +154,15 @@ const firstTerminalPresentation = new TerminalPresentation(
               // Return control to the first terminal presentation.
               nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
 
+              // After the local server is run, simulate it being loaded in the browser.
+              nextButton.disabled = true
+
+              setTimeout(() => {
+                browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
+                  nextButton.disabled = false
+                })
+              }, 1000)
+
               // On the next Next button click, remove the second terminal presentation and return
               // control to the first terminal presentation.
               const clearUpSecondTerminalPresentation = event => {
@@ -159,6 +171,8 @@ const firstTerminalPresentation = new TerminalPresentation(
 
                 document.querySelector('#presentation').style.gridTemplateColumns = '100%'
                 document.querySelector('#second-terminal-presentation').style.display = 'none'
+
+                firstTerminalPresentation.start()
               }
               nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
             }
