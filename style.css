@@ -242,7 +242,7 @@ li.selected {
 }
 
 .blur-out {
-  transition: 3s filter linear;
+  transition: 2s filter ease-in-out;
   filter: blur(15px);
 }
 
