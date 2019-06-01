@@ -9,6 +9,10 @@ class BrowserPresentation {
 
       this.container = container
 
+      const refreshButton = document.createElement('div')
+      refreshButton.className = 'refresh-button'
+      container.appendChild(refreshButton)
+
       const progressIndicator = document.createElement('div')
       progressIndicator.id = 'spinner'
       progressIndicator.className = 'spinner'
@@ -64,4 +68,16 @@ class BrowserPresentation {
       this.container.setAttribute('data-url', urlSubstr)
     }, 100)
   }
+
+  // Simulates the refresh button being hit and loads the specified content after a loading period.
+  refreshWith (content, readyCallback = () => {}) {
+    const refreshButton = document.querySelector('.refresh-button')
+    refreshButton.classList.add('rotates')
+    setTimeout(() => {
+      refreshButton.classList.remove('rotates')
+      this.content.innerHTML = content
+      readyCallback()
+    }, 2500)
+  }
+
 }

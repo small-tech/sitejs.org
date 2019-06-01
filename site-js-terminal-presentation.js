@@ -64,7 +64,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       NBSP,
       () => {
         // After the local server is run, simulate it being loaded in the browser.
-        nextButton.disabled = true
+        setTimeout(() => { nextButton.disabled = true }, 0)
 
         setTimeout(() => {
           browserPresentation.browseTo('https://localhost', '<p>Hello, development!</p>', () => {
@@ -187,6 +187,50 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ' 💖 Goodbye!',
       '',
+      `⯈ ${comment('SSH to production server')}`,
+      '⯈ ssh my-demo.site',
+    ],
+    [
+      '',
+      `😃 (my-demo.site) aral ~ $ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `😃 (my-demo.site) aral ~ $ echo 'Hello, production!' > index.html`,
+      '',
+      `😃 (my-demo.site) aral ~ $ ${comment('Start production server (startup daemon)')}`,
+      '😃 (my-demo.site) aral ~ $ site enable '
+    ],
+    [
+      // Last slide – output of starting startup daemon.
+      '',
+      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      '',
+      ` 😈 Launched as daemon on ${inGreen('https://my-demo.site')} serving ${inCyan('.')}`,
+      '',
+      ' 😈 Installed for auto-launch at startup.',
+      '',
+      ` 😁👍 You’re all set!`,
+      '',
+      () => {
+        // After the production server is run, simulate it being loaded in the browser.
+        nextButton.disabled = true
+
+        setTimeout(() => {
+          browserPresentation.browseTo('https://my-demo.site', '<p>Hello, production!</p>', () => {
+            nextButton.disabled = false
+          })
+        }, 1000)
+      }
+    ],
+    [
+      `😃 (my-demo.site) aral ~ $ ${comment('Close the SSH session')}`,
+      `😃 (my-demo.site) aral ~ $ logout`,
+    ],
+    [
+      '',
+      'Connection to my-demo.site closed.',
+      '',
+      `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
+      `⯈ echo '🎈 🏃‍♀️ There is always hope!' > index.html`,
+      '',
       `⯈ ${comment('Start a local server and sync to remote server')}`,
       '⯈ site sync my-demo.site '
     ],
@@ -213,7 +257,15 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       `🔎 [Watch] Watching ${inCyan('./')} for changes to sync to ${inCyan('my-demo.site')}…`,
       '',
-      NBSP
+      NBSP,
+      () => {
+        // After the sync server is run, simulate the browser being refreshed in the browser.
+        nextButton.disabled = true
+
+        browserPresentation.refreshWith('<p>🎈 🏃‍♀️ There is always hope!</p>', () => {
+          nextButton.disabled = false
+        })
+      }
     ],
     [
       // Break out of local server with sync.
@@ -225,22 +277,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ' 💖 Goodbye!',
       '',
-      `⯈ ${comment('Start a production server (startup daemon)')}`,
-      '⯈ site enable '
+      `⯈ `,
     ],
-    [
-      // Last slide – output of starting startup daemon.
-      '',
-      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
-      '',
-      ` 😈 Launched as daemon on ${inGreen('https://ar.al')} serving ${inCyan('.')}`,
-      '',
-      ' 😈 Installed for auto-launch at startup.',
-      '',
-      ` 😁👍 You’re all set!`,
-      '',
-      '⯈ '
-    ]
   ],
   // Options.
   {
