@@ -96,15 +96,13 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` 🎉 Serving ${inCyan('.')} on ${inGreen('https://dev.ar.al')}`,
       '',
-      NBSP
-    ],
-    [
-      // An empty step to ensure we pause before splitting the screen
-      // so as not to jar the person watching.
-      '',
+      NBSP,
       () => {
         // Pause proxying Next button events to the first terminal presentation.
         nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
+
+        // Hide cursor in first terminal.
+        document.querySelector('.typed-cursor').style.opacity = 0
 
         //
         // Split the terminal (create a second terminal presentation) to show
@@ -172,6 +170,9 @@ const firstTerminalPresentation = new TerminalPresentation(
                 document.querySelector('#presentation').style.gridTemplateColumns = '100%'
                 document.querySelector('#second-terminal-presentation').style.display = 'none'
 
+                // Show cursor in first terminal.
+                document.querySelector('.typed-cursor').style.opacity = 1
+
                 firstTerminalPresentation.start()
               }
               nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
@@ -192,11 +193,11 @@ const firstTerminalPresentation = new TerminalPresentation(
     ],
     [
       '',
-      `😃 (my-demo.site) aral ~ $ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `😃 (my-demo.site) aral ~ $ echo 'Hello, production!' > index.html`,
+      `my-demo.site ⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `my-demo.site ⯈ echo 'Hello, production!' > index.html`,
       '',
-      `😃 (my-demo.site) aral ~ $ ${comment('Start production server (startup daemon)')}`,
-      '😃 (my-demo.site) aral ~ $ site enable '
+      `my-demo.site ⯈ ${comment('Start production server (startup daemon)')}`,
+      'my-demo.site ⯈ site enable '
     ],
     [
       // Last slide – output of starting startup daemon.
@@ -209,6 +210,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` 😁👍 You’re all set!`,
       '',
+      'my-demo.site ⯈ ',
       () => {
         // After the production server is run, simulate it being loaded in the browser.
         nextButton.disabled = true
@@ -221,8 +223,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       }
     ],
     [
-      `😃 (my-demo.site) aral ~ $ ${comment('Close the SSH session')}`,
-      `😃 (my-demo.site) aral ~ $ logout`,
+      `my-demo.site ⯈ ${comment('Close the SSH session')}`,
+      `my-demo.site ⯈ logout`,
     ],
     [
       '',
