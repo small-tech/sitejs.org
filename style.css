@@ -1,39 +1,28 @@
-/*
-  @import url('https://rsms.me/inter/inter.css?v=3.5');
-  */
-  html { font-family: 'Inter', sans-serif; }
+/***********************************************************************
+ *                                                                     *
+ *                      Styles for sitejs.org                          *
+ *                                                                     *
+ *     Copyright ⓒ 2019 Aral Balkan. Published with ♥ by Ind.ie.      *
+ *            License: Released under AGPLv3 or later.                 *
+ *                                                                     *
+ ***********************************************************************/
 
-  @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
-  }
+/* Web fonts */
+@import url('https://rsms.me/inter/inter.css?v=3.5');
+html { font-family: 'Inter', sans-serif; }
 
-/* Reset */
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
 
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
+/* CSS Reset */
+html { box-sizing: border-box; font-size: 16px; }
+*, *:before, *:after { box-sizing: inherit; }
+body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
+ol, ul { list-style: none; }
+img { max-width: 100%; height: auto; }
 
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-  }
-
-  ol, ul {
-    list-style: none;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-/* ----- */
-
-
+/* General elements */
 html {
   background-color:#151D1F;
   margin: 0;
@@ -41,24 +30,17 @@ html {
 }
 
 body {
-  margin-top: 0;
   position: relative;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 0 auto;
 }
 
 header {
-  color: white;
   max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  color: white;
 }
 
-main {
-  padding: 1vw;
-}
-
+/* Navigation */
 nav {
   position: absolute;
   top: 2rem;
@@ -80,6 +62,67 @@ nav li:last-of-type {
   padding-right: 0;
 }
 
+/* Typography */
+
+h1 {
+  color: #1D2C2E;
+  font-size: 96px;
+  text-align: center;
+  font-weight: 200;
+  padding-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+h1 > strong {
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 46px;
+  margin-top: 0.75em;
+  margin-bottom: 0.25em;
+
+}
+
+h2 + h3 {
+  margin-top:0 ;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+header > p {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 1em;
+  font-size: 1.75em;
+}
+
+pre, code {
+  font-family: "Fira Code", monospace;
+  /* font-family: Consolas, "Bitstream Vera Sans Mono", "Andale Mono", Monaco, "DejaVu Sans Mono", "Lucida Console", monospace; */
+}
+
+pre {
+  background-color: black;
+  color: white;
+
+  /* Make sure preformatted text wraps. */
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+
+/* Header area with interactive presentation */
+
 #presentation {
   position: relative;
   display: grid;
@@ -100,7 +143,6 @@ nav li:last-of-type {
 
 #terminal-presentation, #second-terminal-presentation {
   position: relative;
-  background-color: red;
 }
 
 .next-button {
@@ -109,52 +151,19 @@ nav li:last-of-type {
   right: 1em;
 }
 
-pre, code {
-  font-family: "Fira Code", monospace;
-  background-color: black;
-  color: white;
+.highlighted:after {
+  background-color: lightcyan !important;
 }
 
-pre {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
-
-}
-
-h1 {
-  color: #1D2C2E;
-  font-size: 96px;
-  text-align: center;
-  font-weight: 200;
-  padding-top: 0.5em;
-  margin-bottom: 0.25em;
-}
-
-h1 > strong {
-  font-weight: 400;
-}
-
-h2 {
-  font-size: 58px;
-}
-
-header > p {
-  margin-left: 3rem;
-  margin-right: 3rem;
-  margin-bottom: 1em;
-  font-size: 1.75em;
-}
+/* Main content */
 
 main {
-  width: 100%;
   background-color: white;
+  width: 100%;
+  padding: 1vw;
 }
 
-.mainer {
-  background-color: white;
+.content {
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
@@ -162,8 +171,31 @@ main {
   padding-right: 3rem;
 }
 
-.mainer > p {
+main p, main li {
   font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+main pre {
+  padding: 1em;
+}
+
+/* Add the prompt to the terminal examples */
+main pre code:before  {
+  content: '⯈ '
+}
+
+main ul {
+  list-style: disc;
+}
+
+main li {
+  margin-bottom: 0;
+}
+
+p code, li code {
+  font-weight: bold;
 }
 
 .background {
