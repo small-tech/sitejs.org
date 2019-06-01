@@ -286,8 +286,15 @@ const firstTerminalPresentation = new TerminalPresentation(
   {
     controls: false,
     onReady: () => {
-      nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
-      nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+      // The first time the next button is pressed, blur out the background and kick things off.
+      nextButton.addEventListener('click', (event) => {
+        nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
+        // Blur out the background to focus attention on the presentation.
+        document.querySelector('.background > img').classList.add('blur-out')
+
+        nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+        firstTerminalPresentation.start()
+      })
     },
     onStart: () => {
       // Disable the Next button while typing animations are in effect.
