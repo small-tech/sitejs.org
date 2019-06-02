@@ -268,7 +268,7 @@ li.selected {
    ******************************************************************************** */
 
 .shadow {
-  filter: drop-shadow(0 0 50px black);
+  /* filter: drop-shadow(0 0 50px black); */
 }
 
 .background {
