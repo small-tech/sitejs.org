@@ -141,7 +141,7 @@ pre {
   border: 1px solid #e8e8e8;
 }
 
-#terminal-presentation:before {
+#terminal-presentation:before, #second-terminal-presentation:before {
   content: '~/demo';
   width: 100%;
   border-radius: 3px 3px 0 0;
