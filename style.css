@@ -135,7 +135,6 @@ pre {
 
 .terminal {
   height: 12em;
-  background-color: black;
   padding: 1em;
   opacity: 0.9;
   overflow-y: scroll;
@@ -143,6 +142,13 @@ pre {
 
 #terminal-presentation, #second-terminal-presentation {
   position: relative;
+  background-color: black;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+#second-terminal-presentation {
+  display: none;
 }
 
 .next-button {
@@ -237,6 +243,10 @@ li.selected {
    *                                  Terminal                                    *
    *                                                                              *
    ******************************************************************************** */
+
+.shadow {
+  filter: drop-shadow(0 0 50px black);
+}
 
 .background {
 }
