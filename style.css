@@ -127,7 +127,7 @@ pre {
   position: relative;
   display: grid;
   grid-template-columns: 100%;
-  grid-column-gap: 0.5em;
+  grid-column-gap: 1%;
   margin-left: 3rem;
   margin-right: 3rem;
   margin-bottom: 1rem;

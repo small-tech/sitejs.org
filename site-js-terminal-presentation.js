@@ -108,7 +108,7 @@ const firstTerminalPresentation = new TerminalPresentation(
         // Split the terminal (create a second terminal presentation) to show
         // ngrok running.
         //
-        document.querySelector('#presentation').style.gridTemplateColumns = '50% 50%'
+        document.querySelector('#presentation').style.gridTemplateColumns = '49.5% 49.5%'
 
         const secondTerminalPresentation = new TerminalPresentation(
           // Id.
