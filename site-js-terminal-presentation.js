@@ -98,11 +98,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       NBSP,
       () => {
-        // Pause proxying Next button events to the first terminal presentation.
-        nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
-
-        // Hide cursor in first terminal.
-        document.querySelector('.typed-cursor').style.opacity = 0
+        setTimeout(() => { nextButton.disabled = true }, 0)
 
         //
         // Split the terminal (create a second terminal presentation) to show
@@ -129,11 +125,30 @@ const firstTerminalPresentation = new TerminalPresentation(
           {
             controls: false,
             onReady: () => {
+              console.log('Second: ready')
+              // Pause proxying Next button events to the first terminal presentation.
+              nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
+
+              // Hide cursor in first terminal.
+              document.querySelector('.typed-cursor').style.opacity = 0
+
               // Wire up the next button to effect the second terminal presentation.
               nextButtonSecondTerminalPresentationHandler = event => { secondTerminalPresentation.start() }
               nextButton.addEventListener('click', nextButtonSecondTerminalPresentationHandler)
+              nextButton.disabled = true
+            },
+            onStart: () => {
+              console.log('Second: on start, disabling next button')
+              // Disable the Next button while typing animations are in effect.
+              nextButton.disabled = true
+            },
+            onStop: () => {
+              console.log('Second: on stop, enabling next button')
+              // Enable the Next button when typing animations end.
+              nextButton.disabled = false
             },
             onComplete: () => {
+              console.log('Second: on complete')
               // Display a mocked up ngrok interface as fullscreen
               // (without the typing effect).
               const ngrokInterfaceMock = [
@@ -149,17 +164,7 @@ const firstTerminalPresentation = new TerminalPresentation(
 
               secondPresentationTerminalCode.innerHTML = ngrokInterfaceMock
 
-              // Return control to the first terminal presentation.
-              nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
-
-              // After the local server is run, simulate it being loaded in the browser.
               nextButton.disabled = true
-
-              setTimeout(() => {
-                browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
-                  nextButton.disabled = false
-                })
-              }, 1000)
 
               // On the next Next button click, remove the second terminal presentation and return
               // control to the first terminal presentation.
@@ -173,9 +178,18 @@ const firstTerminalPresentation = new TerminalPresentation(
                 // Show cursor in first terminal.
                 document.querySelector('.typed-cursor').style.opacity = 1
 
+                // Restart the first terminal presentation.
                 firstTerminalPresentation.start()
               }
+
+              nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
               nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
+
+              setTimeout(() => {
+                browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
+                  nextButton.disabled = false
+                })
+              }, 1000)
             }
           }
         )
@@ -286,15 +300,22 @@ const firstTerminalPresentation = new TerminalPresentation(
   {
     controls: false,
     onReady: () => {
+      console.log('First: Ready')
       // The first time the next button is pressed, blur out the background and kick things off.
-      nextButton.addEventListener('click', (event) => {
-        nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
+
+      const initialClickEventHandler = (event) => {
+        // Remove the initial click event handler after the first run.
+        nextButton.removeEventListener('click', initialClickEventHandler)
+
         // Blur out the background to focus attention on the presentation.
         document.querySelector('.background > img').classList.add('blur-out')
 
+        // Wire up the correct handler and kick things off.
+        nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
         nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
         firstTerminalPresentation.start()
-      })
+      }
+      nextButton.addEventListener('click', initialClickEventHandler)
     },
     onStart: () => {
       // Disable the Next button while typing animations are in effect.

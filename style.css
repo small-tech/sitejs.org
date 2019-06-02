@@ -166,11 +166,11 @@ pre {
   display: none;
 }
 
-#second-terminal-presentation > div.terminal {
+.terminal {
   padding-top: 0;
 }
 
-#second-terminal-presentation > div.terminal > pre {
+.terminal > pre {
   margin-top: 0.5em;
 }
 
@@ -268,15 +268,15 @@ li.selected {
    ******************************************************************************** */
 
 .shadow {
-  filter: drop-shadow(0 0 50px black);
+  /* filter: drop-shadow(0 0 50px black); */
 }
 
 .background {
 }
 
 .blur-out {
-  transition: 2s filter ease-in-out;
-  filter: blur(15px);
+  /* transition: 2s filter ease-in-out; */
+  /* filter: blur(15px); */
 }
 
 /* ********************************************************************************
