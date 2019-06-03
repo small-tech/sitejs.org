@@ -308,7 +308,7 @@ const firstTerminalPresentation = new TerminalPresentation(
         nextButton.removeEventListener('click', initialClickEventHandler)
 
         // Blur out the background to focus attention on the presentation.
-        document.querySelector('.background > img').classList.add('blur-out')
+        // document.querySelector('.background > img').classList.add('blur-out')
 
         // Wire up the correct handler and kick things off.
         nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }

@@ -35,9 +35,13 @@ body {
 }
 
 header {
-  max-width: 920px;
+  /* max-width: 920px; */
   margin: 0 auto;
   color: white;
+
+  background: url(mountains.jpg) top right no-repeat;
+  background-size: cover;
+  background-attachment: position-fixed;
 }
 
 /* Navigation */
@@ -96,9 +100,9 @@ h3 {
   margin-bottom: 0.5em;
 }
 
-header > p {
-  margin-left: 3rem;
-  margin-right: 3rem;
+header p {
+  /* margin-left: 3rem;
+  margin-right: 3rem; */
   margin-bottom: 1em;
   font-size: 1.75em;
 }
@@ -228,8 +232,8 @@ p code, li code {
 }
 
 .background {
-  position: fixed;
-  z-index: -1;
+/*  position: fixed;
+  z-index: -1; */
 }
 
 @media (max-width: 460px) {
@@ -268,7 +272,7 @@ li.selected {
    ******************************************************************************** */
 
 .shadow {
-  /* filter: drop-shadow(0 0 50px black); */
+  box-shadow: 0 20px 70px black;
 }
 
 .background {
