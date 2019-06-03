@@ -45,7 +45,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` 🎉 Done!`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `⯈ echo 'Hello, development' > index.html`,
+      `⯈ echo 'Hello, &lt;strong&gt;development!&lt;/strong&gt;' > index.html`,
     ],
     [
       '',
@@ -68,7 +68,7 @@ const firstTerminalPresentation = new TerminalPresentation(
 
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
-          browserPresentation.browseTo('https://localhost', '<p>Hello, development!</p>', () => {
+          browserPresentation.browseTo('https://localhost', '<p>Hello, <strong>development!</strong></p>', () => {
             setTimeout(() => {
               nextButton.disabled = false
             }, 1000)
@@ -84,7 +84,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       ' 💖 Goodbye!',
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `⯈ echo 'Hello, staging!' > index.html`,
+      `⯈ echo 'Hello, &lt;strong&gt;staging!&lt;/strong&gt;' > index.html`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
       '⯈ site global '
@@ -181,6 +181,7 @@ const firstTerminalPresentation = new TerminalPresentation(
 
                   // Restart the first terminal presentation.
                   firstTerminalPresentation.focus()
+                  browserPresentation.unfocus()
                   setTimeout(() => {
                     firstTerminalPresentation.start()
                   }, 1000)
@@ -192,7 +193,7 @@ const firstTerminalPresentation = new TerminalPresentation(
                 setTimeout(() => {
                   firstTerminalPresentation.unfocus()
                   secondTerminalPresentation.unfocus()
-                  browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
+                  browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, <strong>staging!</strong></p>', () => {
                     setTimeout(() => {
                       nextButton.disabled = false
                     }, 1000)
@@ -217,7 +218,7 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       '',
       `my-demo.site ⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `my-demo.site ⯈ echo 'Hello, production!' > index.html`,
+      `my-demo.site ⯈ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
       '',
       `my-demo.site ⯈ ${comment('Start production server (startup daemon)')}`,
       'my-demo.site ⯈ site enable '
@@ -240,10 +241,8 @@ const firstTerminalPresentation = new TerminalPresentation(
 
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
-          browserPresentation.browseTo('https://my-demo.site', '<p>Hello, production!</p>', () => {
+          browserPresentation.browseTo('https://my-demo.site', '<p>Hello, <strong>production!</strong></p>', () => {
             setTimeout(() => {
-              browserPresentation.unfocus()
-              firstTerminalPresentation.focus()
               nextButton.disabled = false
             }, 1000)
           })
@@ -259,7 +258,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       'Connection to my-demo.site closed.',
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `⯈ echo '🎈 🏃‍♀️ There is always hope!' > index.html`,
+      `⯈ echo '🎈&lt;br&gt;&amp;nbsp; 🏃‍♀️ There is always hope!' > index.html`,
       '',
       `⯈ ${comment('Start a local server and sync to remote server')}`,
       '⯈ site sync my-demo.site '
@@ -290,14 +289,12 @@ const firstTerminalPresentation = new TerminalPresentation(
       NBSP,
       () => {
         // After the sync server is run, simulate the browser being refreshed in the browser.
-        nextButton.disabled = true
+        setTimeout(() => { nextButton.disabled = true }, 0)
 
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
-          browserPresentation.refreshWith('<p>🎈 🏃‍♀️ There is always hope!</p>', () => {
+          browserPresentation.refreshWith('<p>🎈<br>&nbsp; 🏃‍♀️ There is always hope!</p>', () => {
             setTimeout(() => {
-              browserPresentation.unfocus()
-              firstTerminalPresentation.focus()
               nextButton.disabled = false
             }, 1000)
           })

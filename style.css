@@ -284,6 +284,14 @@ li.selected {
   background-color: white;
 }
 
+.browser-content {
+  height: 3em;
+  display: flex;
+  flex-direction: column;
+  align-content:center;
+  justify-content: center;
+}
+
 @keyframes spin {
   0%   {transform: rotate(0deg)}
   100% {transform: rotate(359deg)}

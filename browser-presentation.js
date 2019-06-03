@@ -27,6 +27,7 @@ class BrowserPresentation {
       this.progressIndicator = progressIndicator
 
       const content = document.createElement('div')
+      content.className = 'browser-content'
       content.innerHTML = initialContent
 
       this.content = content
