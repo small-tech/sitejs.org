@@ -128,7 +128,6 @@ const firstTerminalPresentation = new TerminalPresentation(
           {
             controls: false,
             onReady: () => {
-              console.log('Second: ready')
               // Pause proxying Next button events to the first terminal presentation.
               nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
@@ -141,17 +140,14 @@ const firstTerminalPresentation = new TerminalPresentation(
               nextButton.disabled = true
             },
             onStart: () => {
-              console.log('Second: on start, disabling next button')
               // Disable the Next button while typing animations are in effect.
               nextButton.disabled = true
             },
             onStop: () => {
-              console.log('Second: on stop, enabling next button')
               // Enable the Next button when typing animations end.
               nextButton.disabled = false
             },
             onComplete: () => {
-              console.log('Second: on complete')
               // Display a mocked up ngrok interface as fullscreen
               // (without the typing effect).
               const ngrokInterfaceMock = [
@@ -322,8 +318,6 @@ const firstTerminalPresentation = new TerminalPresentation(
   {
     controls: false,
     onReady: () => {
-      console.log('First: Ready')
-
       // Don’t auto run; wait for the person to read the instructions in the browser window
       // (which has focus), and to press the Next button.
       firstTerminalPresentation.stop()
