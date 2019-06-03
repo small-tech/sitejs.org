@@ -311,7 +311,7 @@ li.selected {
 
 .spinner {
   position: absolute;
-  right: 60px;
+  right: 50px;
   top: -82px;
   z-index: 999;
   margin: 100px auto 0;
