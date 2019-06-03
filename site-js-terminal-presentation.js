@@ -217,11 +217,11 @@ const firstTerminalPresentation = new TerminalPresentation(
     ],
     [
       '',
-      `my-demo.site ⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `my-demo.site ⯈ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
+      `🖧▸ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `🖧▸ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
       '',
-      `my-demo.site ⯈ ${comment('Start production server (startup daemon)')}`,
-      'my-demo.site ⯈ site enable '
+      `🖧▸ ${comment('Start production server (startup daemon)')}`,
+      '🖧▸ site enable '
     ],
     [
       // Last slide – output of starting startup daemon.
@@ -234,7 +234,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` 😁👍 You’re all set!`,
       '',
-      'my-demo.site ⯈ ',
+      '🖧▸ ',
       () => {
         // After the production server is run, simulate it being loaded in the browser.
         nextButton.disabled = true
@@ -250,8 +250,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       }
     ],
     [
-      `my-demo.site ⯈ ${comment('Close the SSH session')}`,
-      `my-demo.site ⯈ logout`,
+      `🖧▸ ${comment('Close the SSH session')}`,
+      `🖧▸ logout`,
     ],
     [
       '',
