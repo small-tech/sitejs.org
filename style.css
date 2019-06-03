@@ -260,10 +260,10 @@ li.selected {
   color: #151D1F;
 }
 
-@media (max-width: 920px) {
-  body {
-    width: 100%;
-  }
+.unfocused {
+  /* -webkit-filter: brightness(60%); */
+  filter: brightness(60%);
+  /* transition: 0.15s filter linear, 0.15s -webkit-filter linear; */
 }
 
 /* ********************************************************************************
@@ -274,14 +274,6 @@ li.selected {
 
 .shadow {
   box-shadow: 0 20px 70px black;
-}
-
-.background {
-}
-
-.blur-out {
-  /* transition: 2s filter ease-in-out; */
-  /* filter: blur(15px); */
 }
 
 /* ********************************************************************************

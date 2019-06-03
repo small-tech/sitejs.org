@@ -69,6 +69,8 @@ class TerminalPresentation {
       // container’s bounds.
       container.style.position = 'relative'
 
+      this.container = container
+
       const terminal = document.createElement('div')
       terminal.className = 'terminal'
       const _pre = document.createElement('pre')
@@ -179,5 +181,13 @@ class TerminalPresentation {
 
   start () {
     this.typed.start()
+  }
+
+  unfocus () {
+    this.container.classList.add('unfocused')
+  }
+
+  focus () {
+    this.container.classList.remove('unfocused')
   }
 }

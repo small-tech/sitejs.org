@@ -46,6 +46,7 @@ class BrowserPresentation {
 
   // Simulates entering a URL, waiting for it to load, and having its content load.
   browseTo (url, content, readyCallback = () => {}) {
+    this.focus()
     this.container.classList.add('highlighted')
     let i = 0
     const interval = setInterval(() => {
@@ -73,6 +74,7 @@ class BrowserPresentation {
 
   // Simulates the refresh button being hit and loads the specified content after a loading period.
   refreshWith (content, readyCallback = () => {}) {
+    this.focus()
     this.container.classList.add('highlighted')
     const refreshButton = document.querySelector('.refresh-button')
     refreshButton.classList.add('rotates')
@@ -82,6 +84,14 @@ class BrowserPresentation {
       this.content.innerHTML = content
       readyCallback()
     }, 2500)
+  }
+
+  unfocus() {
+    this.container.classList.add('unfocused')
+  }
+
+  focus() {
+    this.container.classList.remove('unfocused')
   }
 
 }

@@ -67,8 +67,13 @@ const firstTerminalPresentation = new TerminalPresentation(
         setTimeout(() => { nextButton.disabled = true }, 0)
 
         setTimeout(() => {
+          firstTerminalPresentation.unfocus()
           browserPresentation.browseTo('https://localhost', '<p>Hello, development!</p>', () => {
-            nextButton.disabled = false
+            setTimeout(() => {
+              browserPresentation.unfocus()
+              firstTerminalPresentation.focus()
+              nextButton.disabled = false
+            }, 1000)
           })
         }, 1000)
       }
@@ -186,8 +191,15 @@ const firstTerminalPresentation = new TerminalPresentation(
               nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
 
               setTimeout(() => {
+                firstTerminalPresentation.unfocus()
+                secondTerminalPresentation.unfocus()
                 browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
-                  nextButton.disabled = false
+                  setTimeout(() => {
+                    browserPresentation.unfocus()
+                    firstTerminalPresentation.focus()
+                    secondTerminalPresentation.focus()
+                    nextButton.disabled = false
+                  }, 1000)
                 })
               }, 1000)
             }
@@ -230,8 +242,13 @@ const firstTerminalPresentation = new TerminalPresentation(
         nextButton.disabled = true
 
         setTimeout(() => {
+          firstTerminalPresentation.unfocus()
           browserPresentation.browseTo('https://my-demo.site', '<p>Hello, production!</p>', () => {
-            nextButton.disabled = false
+            setTimeout(() => {
+              browserPresentation.unfocus()
+              firstTerminalPresentation.focus()
+              nextButton.disabled = false
+            }, 1000)
           })
         }, 1000)
       }
@@ -278,9 +295,16 @@ const firstTerminalPresentation = new TerminalPresentation(
         // After the sync server is run, simulate the browser being refreshed in the browser.
         nextButton.disabled = true
 
-        browserPresentation.refreshWith('<p>🎈 🏃‍♀️ There is always hope!</p>', () => {
-          nextButton.disabled = false
-        })
+        setTimeout(() => {
+          firstTerminalPresentation.unfocus()
+          browserPresentation.refreshWith('<p>🎈 🏃‍♀️ There is always hope!</p>', () => {
+            setTimeout(() => {
+              browserPresentation.unfocus()
+              firstTerminalPresentation.focus()
+              nextButton.disabled = false
+            }, 1000)
+          })
+        }, 1000)
       }
     ],
     [
@@ -307,11 +331,14 @@ const firstTerminalPresentation = new TerminalPresentation(
         // Remove the initial click event handler after the first run.
         nextButton.removeEventListener('click', initialClickEventHandler)
 
-        // Blur out the background to focus attention on the presentation.
-        // document.querySelector('.background > img').classList.add('blur-out')
+        // Unfocus the browser so attention is on the terminal.
+        browserPresentation.unfocus()
 
         // Wire up the correct handler and kick things off.
-        nextButtonFirstTerminalPresentationHandler = event => { firstTerminalPresentation.start() }
+        nextButtonFirstTerminalPresentationHandler = event => {
+          browserPresentation.unfocus()
+          firstTerminalPresentation.start()
+        }
         nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
         firstTerminalPresentation.start()
       }
@@ -327,6 +354,7 @@ const firstTerminalPresentation = new TerminalPresentation(
     },
     onComplete: () => {
       // We’re done with the whole presentation; hide the Next button.
+      browserPresentation.focus()
       nextButton.hidden = true
     }
   }
