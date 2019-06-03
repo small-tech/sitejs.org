@@ -261,9 +261,7 @@ li.selected {
 }
 
 .unfocused {
-  /* -webkit-filter: brightness(60%); */
   filter: brightness(60%);
-  /* transition: 0.15s filter linear, 0.15s -webkit-filter linear; */
 }
 
 /* ********************************************************************************

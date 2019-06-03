@@ -107,98 +107,101 @@ const firstTerminalPresentation = new TerminalPresentation(
         // Split the terminal (create a second terminal presentation) to show
         // ngrok running.
         //
-        document.querySelector('#presentation').style.gridTemplateColumns = '49.5% 49.5%'
+        setTimeout(() => {
+          firstTerminalPresentation.unfocus()
+          document.querySelector('#presentation').style.gridTemplateColumns = '49.5% 49.5%'
 
-        const secondTerminalPresentation = new TerminalPresentation(
-          // Id.
-          'second-terminal-presentation',
-          // Slides.
-          [
+          const secondTerminalPresentation = new TerminalPresentation(
+            // Id.
+            'second-terminal-presentation',
+            // Slides.
             [
-              // Slide 1.
-              `⯈ ${comment('Expose local server globally')}${WAIT_ONE_SEC}`,
-              `⯈ ngrok start --all`,
+              [
+                // Slide 1.
+                `⯈ ^1000${comment('Expose local server globally')}${WAIT_ONE_SEC}`,
+                `⯈ ngrok start --all`,
+              ],
+              [
+                // An empty slide to ensure we pause on the first slide.
+                ''
+              ]
             ],
-            [
-              // An empty slide to ensure we pause on the first slide.
-              ''
-            ]
-          ],
-          // Options.
-          {
-            controls: false,
-            onReady: () => {
-              // Pause proxying Next button events to the first terminal presentation.
-              nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
+            // Options.
+            {
+              controls: false,
+              onReady: () => {
+                // Pause proxying Next button events to the first terminal presentation.
+                nextButton.removeEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
-              // Hide cursor in first terminal.
-              document.querySelector('.typed-cursor').style.opacity = 0
+                // Hide cursor in first terminal.
+                document.querySelector('.typed-cursor').style.opacity = 0
 
-              // Wire up the next button to effect the second terminal presentation.
-              nextButtonSecondTerminalPresentationHandler = event => { secondTerminalPresentation.start() }
-              nextButton.addEventListener('click', nextButtonSecondTerminalPresentationHandler)
-              nextButton.disabled = true
-            },
-            onStart: () => {
-              // Disable the Next button while typing animations are in effect.
-              nextButton.disabled = true
-            },
-            onStop: () => {
-              // Enable the Next button when typing animations end.
-              nextButton.disabled = false
-            },
-            onComplete: () => {
-              // Display a mocked up ngrok interface as fullscreen
-              // (without the typing effect).
-              const ngrokInterfaceMock = [
-                `${inCyan('ngrok')} by ${inCyan('@inconshreveable')}`,
-                '',
-                `${inGreen('Status      online')}`,
-                'Account     Pro (Plan: Ind.ie)',
-                'Region      Europe (eu)',
-                'Forwarding  dev.ar.al -> localhost'
-              ].join('\n')
+                // Wire up the next button to effect the second terminal presentation.
+                nextButtonSecondTerminalPresentationHandler = event => { secondTerminalPresentation.start() }
+                nextButton.addEventListener('click', nextButtonSecondTerminalPresentationHandler)
+                nextButton.disabled = true
+              },
+              onStart: () => {
+                // Disable the Next button while typing animations are in effect.
+                nextButton.disabled = true
+              },
+              onStop: () => {
+                // Enable the Next button when typing animations end.
+                nextButton.disabled = false
+              },
+              onComplete: () => {
+                // Display a mocked up ngrok interface as fullscreen
+                // (without the typing effect).
+                const ngrokInterfaceMock = [
+                  `${inCyan('ngrok')} by ${inCyan('@inconshreveable')}`,
+                  '',
+                  `${inGreen('Status      online')}`,
+                  'Account     Pro (Plan: Ind.ie)',
+                  'Region      Europe (eu)',
+                  'Forwarding  dev.ar.al -> localhost'
+                ].join('\n')
 
-              const secondPresentationTerminalCode = document.querySelector('#second-terminal-presentation .terminal-code-second-terminal-presentation')
+                const secondPresentationTerminalCode = document.querySelector('#second-terminal-presentation .terminal-code-second-terminal-presentation')
 
-              secondPresentationTerminalCode.innerHTML = ngrokInterfaceMock
+                secondPresentationTerminalCode.innerHTML = ngrokInterfaceMock
 
-              nextButton.disabled = true
+                nextButton.disabled = true
 
-              // On the next Next button click, remove the second terminal presentation and return
-              // control to the first terminal presentation.
-              const clearUpSecondTerminalPresentation = event => {
-                nextButton.removeEventListener('click', clearUpSecondTerminalPresentation)
-                nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+                // On the next Next button click, remove the second terminal presentation and return
+                // control to the first terminal presentation.
+                const clearUpSecondTerminalPresentation = event => {
+                  nextButton.removeEventListener('click', clearUpSecondTerminalPresentation)
+                  nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
-                document.querySelector('#presentation').style.gridTemplateColumns = '100%'
-                document.querySelector('#second-terminal-presentation').style.display = 'none'
+                  document.querySelector('#presentation').style.gridTemplateColumns = '100%'
+                  document.querySelector('#second-terminal-presentation').style.display = 'none'
 
-                // Show cursor in first terminal.
-                document.querySelector('.typed-cursor').style.opacity = 1
+                  // Show cursor in first terminal.
+                  document.querySelector('.typed-cursor').style.opacity = 1
 
-                // Restart the first terminal presentation.
-                firstTerminalPresentation.start()
-              }
-
-              nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
-              nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
-
-              setTimeout(() => {
-                firstTerminalPresentation.unfocus()
-                secondTerminalPresentation.unfocus()
-                browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
+                  // Restart the first terminal presentation.
+                  firstTerminalPresentation.focus()
                   setTimeout(() => {
-                    browserPresentation.unfocus()
-                    firstTerminalPresentation.focus()
-                    secondTerminalPresentation.focus()
-                    nextButton.disabled = false
+                    firstTerminalPresentation.start()
                   }, 1000)
-                })
-              }, 1000)
+                }
+
+                nextButton.removeEventListener('click', nextButtonSecondTerminalPresentationHandler)
+                nextButton.addEventListener('click', clearUpSecondTerminalPresentation)
+
+                setTimeout(() => {
+                  firstTerminalPresentation.unfocus()
+                  secondTerminalPresentation.unfocus()
+                  browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, staging!</p>', () => {
+                    setTimeout(() => {
+                      nextButton.disabled = false
+                    }, 1000)
+                  })
+                }, 2000)
+              }
             }
-          }
-        )
+          )
+        }, 1000)
       }
     ],
     [
