@@ -135,13 +135,19 @@ pre {
   grid-template-columns: 100%;
   grid-column-gap: 1%;
   margin-bottom: 1rem;
+  /* height: 200px; */
 }
 
 .terminal {
-  height: 12em;
+  background-color: black;
   padding: 1em;
+  padding-top: 0;
   overflow-y: scroll;
   border: 1px solid #e8e8e8;
+}
+
+.terminal > pre {
+  height: 100px;
 }
 
 /* Add Terminal chrome. */
@@ -169,12 +175,12 @@ pre {
   display: none;
 }
 
-.terminal {
-  padding-top: 0;
-}
-
 .terminal > pre {
   margin-top: 0.5em;
+}
+
+.terminal code {
+  padding-bottom: 1em;
 }
 
 .next-button {
@@ -192,9 +198,9 @@ pre {
   grid-template-rows: 100% !important;
 }
 
-.split-terminals .terminal {
+/* .split-terminals .terminal {
   height: 12em;
-}
+} */
 
 /* Main content */
 
@@ -237,47 +243,6 @@ main li {
 
 p code, li code {
   font-weight: bold;
-}
-
-/* Narrow viewport support. */
-
-@media (max-width: 460px) {
-  #presentation {
-    font-size: 0.9em;
-  }
-
-  nav {
-    top: 1rem;
-    right: 1.5rem;
-  }
-
-  .content {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
-  header > p {
-    font-size: 1.5em;
-  }
-
-  /* Split terminals vertically */
-
-  .split-terminals {
-    grid-template-columns: 100% !important;
-    grid-template-rows: 49.5% 49.5% !important;
-  }
-
-  .split-terminals .terminal {
-    height: 6.5em !important;
-  }
-
-  .split-terminals #second-terminal-presentation {
-    border-radius: 0;
-  }
-
-  .split-terminals #second-terminal-presentation:before {
-    display: none;
-  }
 }
 
 li.selected {
@@ -380,5 +345,54 @@ li.selected {
   } 40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
+  }
+}
+
+/* ********************************************************************************
+   *                                                                              *
+   *                               Responsiveness                                 *
+   *                                                                              *
+   ******************************************************************************** */
+
+@media (max-width: 460px) {
+  #presentation {
+    font-size: 0.9em;
+  }
+
+  nav {
+    top: 1rem;
+    right: 1.5rem;
+  }
+
+  .content {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  header > p {
+    font-size: 1.5em;
+  }
+
+  /* Split terminals vertically */
+
+  .split-terminals {
+    grid-template-columns: 100% !important;
+    grid-template-rows: 50% 50% !important;
+  }
+
+  .split-terminals .terminal {
+    height: 100% !important;
+  }
+
+  .split-terminals .terminal > pre {
+    height: 31px !important;
+  }
+
+  .split-terminals #second-terminal-presentation {
+    border-radius: 0;
+  }
+
+  .split-terminals #second-terminal-presentation:before {
+    display: none;
   }
 }
