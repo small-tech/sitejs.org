@@ -13,6 +13,10 @@ class BrowserPresentation {
       refreshButton.className = 'refresh-button'
       container.appendChild(refreshButton)
 
+      const lock = document.createElement('div')
+      lock.className = 'lock'
+      container.appendChild(lock)
+
       const progressIndicator = document.createElement('div')
       progressIndicator.id = 'spinner'
       progressIndicator.className = 'spinner'
