@@ -183,6 +183,10 @@ class TerminalPresentation {
     this.typed.start()
   }
 
+  stop () {
+    this.typed.stop()
+  }
+
   unfocus () {
     this.container.classList.add('unfocused')
   }

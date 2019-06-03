@@ -70,8 +70,6 @@ const firstTerminalPresentation = new TerminalPresentation(
           firstTerminalPresentation.unfocus()
           browserPresentation.browseTo('https://localhost', '<p>Hello, development!</p>', () => {
             setTimeout(() => {
-              browserPresentation.unfocus()
-              firstTerminalPresentation.focus()
               nextButton.disabled = false
             }, 1000)
           })
@@ -325,21 +323,27 @@ const firstTerminalPresentation = new TerminalPresentation(
     controls: false,
     onReady: () => {
       console.log('First: Ready')
-      // The first time the next button is pressed, blur out the background and kick things off.
 
+      // Don’t auto run; wait for the person to read the instructions in the browser window
+      // (which has focus), and to press the Next button.
+      firstTerminalPresentation.stop()
+
+      // This is run the first time the Next button is presssed.
       const initialClickEventHandler = (event) => {
         // Remove the initial click event handler after the first run.
         nextButton.removeEventListener('click', initialClickEventHandler)
 
-        // Unfocus the browser so attention is on the terminal.
-        browserPresentation.unfocus()
-
-        // Wire up the correct handler and kick things off.
+        // Wire up the new button handler.
         nextButtonFirstTerminalPresentationHandler = event => {
           browserPresentation.unfocus()
+          firstTerminalPresentation.focus()
           firstTerminalPresentation.start()
         }
         nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
+
+        // Kick things off.
+        browserPresentation.unfocus()
+        firstTerminalPresentation.focus()
         firstTerminalPresentation.start()
       }
       nextButton.addEventListener('click', initialClickEventHandler)
