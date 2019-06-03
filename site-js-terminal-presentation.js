@@ -109,7 +109,8 @@ const firstTerminalPresentation = new TerminalPresentation(
         //
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
-          document.querySelector('#presentation').style.gridTemplateColumns = '49.5% 49.5%'
+          //document.querySelector('#presentation').style.gridTemplateColumns = '49.5% 49.5%'
+          document.querySelector('#presentation').classList.add('split-terminals')
 
           const secondTerminalPresentation = new TerminalPresentation(
             // Id.
@@ -173,7 +174,7 @@ const firstTerminalPresentation = new TerminalPresentation(
                   nextButton.removeEventListener('click', clearUpSecondTerminalPresentation)
                   nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
-                  document.querySelector('#presentation').style.gridTemplateColumns = '100%'
+                  document.querySelector('#presentation').classList.remove('split-terminals')
                   document.querySelector('#second-terminal-presentation').style.display = 'none'
 
                   // Show cursor in first terminal.

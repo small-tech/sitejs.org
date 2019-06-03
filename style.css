@@ -42,7 +42,6 @@ header {
 
   background: url(mountains.jpg) top right no-repeat;
   background-size: cover;
-  /* background-attachment: position-fixed; */
 }
 
 /* Navigation */
@@ -141,11 +140,11 @@ pre {
 .terminal {
   height: 12em;
   padding: 1em;
-  opacity: 0.9;
   overflow-y: scroll;
   border: 1px solid #e8e8e8;
 }
 
+/* Add Terminal chrome. */
 #terminal-presentation:before, #second-terminal-presentation:before {
   content: '~/demo';
   width: 100%;
@@ -186,6 +185,15 @@ pre {
 
 .highlighted:after {
   background-color: lightcyan !important;
+}
+
+.split-terminals {
+  grid-template-columns: 49.5% 49.5% !important;
+  grid-template-rows: 100% !important;
+}
+
+.split-terminals .terminal {
+  height: 12em;
 }
 
 /* Main content */
@@ -231,10 +239,7 @@ p code, li code {
   font-weight: bold;
 }
 
-.background {
-/*  position: fixed;
-  z-index: -1; */
-}
+/* Narrow viewport support. */
 
 @media (max-width: 460px) {
   #presentation {
@@ -253,6 +258,25 @@ p code, li code {
 
   header > p {
     font-size: 1.5em;
+  }
+
+  /* Split terminals vertically */
+
+  .split-terminals {
+    grid-template-columns: 100% !important;
+    grid-template-rows: 49.5% 49.5% !important;
+  }
+
+  .split-terminals .terminal {
+    height: 6.5em !important;
+  }
+
+  .split-terminals #second-terminal-presentation {
+    border-radius: 0;
+  }
+
+  .split-terminals #second-terminal-presentation:before {
+    display: none;
   }
 }
 
