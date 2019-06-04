@@ -12,10 +12,16 @@ const VERSION = '1.0.0'
 const NBSP = '&nbsp;'
 
 //
-// Emoji used in the header presentation.
+// Prepare the emoji used in the header presentation.
 //
 
-const emoji = (name) => `<span class="emoji emoji-${name}"></span>`
+let emojisToPreload = ''
+
+const emoji = (name) => {
+  const _ = `<span class="emoji emoji-${name}"></span>`
+  emojisToPreload += _
+  return _
+};
 
 const EMOJI_SATELLITE = emoji('satellite')
 const EMOJI_PACKAGE = emoji('package')
@@ -33,6 +39,16 @@ const EMOJI_BALLOON = emoji('balloon')
 const EMOJI_WOMAN_RUNNING = emoji('woman-running')
 const EMOJI_REVOLVING_HEARTS = emoji('revolving-hearts')
 const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right')
+
+const emojiPreloader = document.createElement('div')
+emojiPreloader.className = 'emoji-preloader'
+emojiPreloader.innerHTML = emojisToPreload
+
+document.querySelector('main').appendChild(emojiPreloader)
+
+//
+// Helper functions for colourising text.
+//
 
 function comment (text) { return `<span style="color: #ccc"># ${text}</span>` }
 function inGreen (text) { return `<span style="color: #849900">${text}</span>` }

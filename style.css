@@ -371,9 +371,14 @@ li.selected {
   background-size: 1em 1em;
 }
 
+.emoji-preloader {
+  position:absolute;
+  top: -1000px;
+  left: -1000px;
+  opacity: 0;
+}
+
 /********************************************************************************************************
- *                                                                                                      *
- * TODO: download these images and serve locally.                                                       *
  *                                                                                                      *
  * Note: to find the a compound Twemoji’s URL, find it on emojipedia and then add                       *
  * ===== the codepoints together, separated by dashes, following the base URL of the                    *
