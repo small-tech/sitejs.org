@@ -171,6 +171,7 @@ class TerminalPresentation {
           }
         },
         onComplete: () => {
+          clearInterval(scrollToBottomInterval)
           if (typeof this.onComplete === 'function') {
             this.onComplete()
           }
