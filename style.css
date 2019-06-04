@@ -160,7 +160,7 @@ pre {
 
 /* Add Terminal chrome. */
 #terminal-presentation:before, #second-terminal-presentation:before {
-  content: '~/demo';
+  content: attr(data-window-title) ' ';
   width: 100%;
   border-radius: 3px 3px 0 0;
   background: url('data:image/svg+xml;charset=utf-8,<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="minimal-browser-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g id="Ellipse_1"><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="%23B3B3B3" cx="8" cy="8" r="5"/></g></g></svg>') 16px 8px no-repeat,

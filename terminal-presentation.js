@@ -20,13 +20,28 @@ class TerminalPresentation {
     this.onStop = options.onStop
     this.onReady = options.onReady
 
-    // First, iterate over the slides to see if there are any slide callbacks. Slide
-    // callbacks are called when a slide has completed. (You can also use the onSlide()
-    // global callback for this but it’s nicer for authoring to keep the callbacks inline
+    // First, iterate over the slides to see if there are any slide pre/callbacks. Slide
+    // pre/callbacks are called when a slide starts/completes. (You can also use the onSlide()
+    // global callback for the latter but it’s nicer for authoring to keep the callbacks inline
     // with the slides – and it means we don’t need to use conditionals if more than one
     // slide has a callback.)
-    const slideCallbacks = []
+
+    const slidePrebacks = []
     let i = -1
+    originalSteps.forEach(step => {
+      i++
+      const firstItem = step[0]
+      if (typeof firstItem === 'function') {
+        slidePrebacks[i] = firstItem
+      }
+    })
+    // Remove the pre-back functions from the original steps.
+    slidePrebacks.forEach((value, index) => originalSteps[index].shift())
+
+    this.slidePrebacks = slidePrebacks
+
+    const slideCallbacks = []
+    i = -1
     originalSteps.forEach(step => {
       i++
       const lastItem = step[step.length-1]
@@ -88,6 +103,8 @@ class TerminalPresentation {
       container.appendChild(terminal)
       container.appendChild(nextButton)
 
+      container.dataset.windowTitle = '~/demo'
+
       this.nextButton = nextButton
 
       if (options.controls === false) {
@@ -136,6 +153,9 @@ class TerminalPresentation {
           scrollToBottomInterval = setInterval(terminalScrollHandler, 50)
           if (typeof this.onStart === 'function') {
             this.onStart()
+          }
+          if (typeof this.slidePrebacks[currentStep+1] === 'function') {
+            this.slidePrebacks[currentStep+1]()
           }
         },
         onStop: () => {
@@ -196,5 +216,9 @@ class TerminalPresentation {
 
   focus () {
     this.container.classList.remove('unfocused')
+  }
+
+  setTitle (title) {
+    this.container.dataset.windowTitle = title
   }
 }

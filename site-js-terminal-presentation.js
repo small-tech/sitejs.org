@@ -253,9 +253,12 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `⯈ ${comment('SSH to production server')}`,
-      '⯈ ssh my-demo.site',
+      '⯈ ssh my-demo.site'
     ],
     [
+      () => {
+        firstTerminalPresentation.setTitle('my-demo.site: ~/demo')
+      },
       '',
       `🖧 ▸ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
       `🖧 ▸ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
@@ -294,6 +297,9 @@ const firstTerminalPresentation = new TerminalPresentation(
       `🖧 ▸ logout`,
     ],
     [
+      () => {
+        firstTerminalPresentation.setTitle('~/demo')
+      },
       '',
       'Connection to my-demo.site closed.',
       '',
