@@ -46,6 +46,13 @@ emojiPreloader.innerHTML = emojisToPreload
 
 document.querySelector('main').appendChild(emojiPreloader)
 
+// Other icons
+
+// Note: we start the prompt with a zero-width space so that Typed doesn’t
+// ===== get confused because our strings start with an HTML element and thus
+//       refuse to fire the onReady event.
+const PROMPT = '\u200B<span class="icon icon-right-triangle"></span>'
+
 //
 // Helper functions for colourising text.
 //
@@ -74,8 +81,8 @@ const firstTerminalPresentation = new TerminalPresentation(
   // Slides
   [
     [
-      `⯈ ${comment('Install')}${WAIT_QUARTER_SEC}`,
-      `⯈ wget -q0- https://sitejs.org/install | bash`,
+      `${PROMPT} ${comment('Install')}${WAIT_QUARTER_SEC}`,
+      `${PROMPT} wget -q0- https://sitejs.org/install | bash`,
     ],
     [
       '',
@@ -83,13 +90,13 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_PACKAGE} Installing…${WAIT_QUARTER_SEC}`,
       ` ${EMOJI_PARTY_POPPER} Done!`,
       '',
-      `⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `⯈ echo 'Hello, &lt;strong&gt;development!&lt;/strong&gt;' > index.html`,
+      `${PROMPT} ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `${PROMPT} echo 'Hello, &lt;strong&gt;development!&lt;/strong&gt;' > index.html`,
     ],
     [
       '',
-      `⯈ ${comment('Run local development server')} ${WAIT_QUARTER_SEC}`,
-      `⯈ site`
+      `${PROMPT} ${comment('Run local development server')} ${WAIT_QUARTER_SEC}`,
+      `${PROMPT} site`
     ],
     [
       '',
@@ -122,11 +129,11 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
-      `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `⯈ echo 'Hello, &lt;strong&gt;staging!&lt;/strong&gt;' > index.html`,
+      `${PROMPT} ${WAIT_ONE_SEC}${comment('Update the web page')} `,
+      `${PROMPT} echo 'Hello, &lt;strong&gt;staging!&lt;/strong&gt;' > index.html`,
       '',
-      `⯈ ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
-      '⯈ site global '
+      `${PROMPT} ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
+      `${PROMPT} site global `
     ],
     [
       // The global server output.
@@ -158,8 +165,8 @@ const firstTerminalPresentation = new TerminalPresentation(
             [
               [
                 // Slide 1.
-                `⯈ ^1000${comment('Expose local server globally')}${WAIT_ONE_SEC}`,
-                `⯈ ngrok start --all`,
+                `${PROMPT} ^1000${comment('Expose local server globally')}${WAIT_ONE_SEC}`,
+                `${PROMPT} ngrok start --all`,
               ],
               [
                 // An empty slide to ensure we pause on the first slide.
@@ -252,8 +259,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
-      `⯈ ${comment('SSH to production server')}`,
-      '⯈ ssh my-demo.site'
+      `${PROMPT} ${comment('SSH to production server')}`,
+      `${PROMPT} ssh my-demo.site`
     ],
     [
       () => {
@@ -303,11 +310,11 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       'Connection to my-demo.site closed.',
       '',
-      `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `⯈ echo '${EMOJI_BALLOON}&lt;br&gt;&amp;nbsp; ${EMOJI_WOMAN_RUNNING} There is always hope!' > index.html`,
+      `${PROMPT} ${WAIT_ONE_SEC}${comment('Update the web page')} `,
+      `${PROMPT} echo '${EMOJI_BALLOON}&lt;br&gt;&amp;nbsp; ${EMOJI_WOMAN_RUNNING} There is always hope!' > index.html`,
       '',
-      `⯈ ${comment('Start a local server and sync to remote server')}`,
-      '⯈ site sync my-demo.site '
+      `${PROMPT} ${comment('Start a local server and sync to remote server')}`,
+      `${PROMPT} site sync my-demo.site `
     ],
     [
       // Sync output.
@@ -357,7 +364,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
-      `⯈ `,
+      `${PROMPT} `,
     ],
   ],
   // Options.
@@ -366,6 +373,7 @@ const firstTerminalPresentation = new TerminalPresentation(
     onReady: () => {
       // Don’t auto run; wait for the person to read the instructions in the browser window
       // (which has focus), and to press the Next button.
+      console.log('stopping')
       firstTerminalPresentation.stop()
 
       // This is run the first time the Next button is presssed.

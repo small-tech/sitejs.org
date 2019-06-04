@@ -306,7 +306,7 @@ li.selected {
    *                                                                              *
    *                                Next button                                   *
    *                                                                              *
-   ******************************************************************************** */
+   ********************************************************************************/
 
 button {
   text-align: center;
@@ -337,7 +337,7 @@ button:disabled {
    *                                                                              *
    *                                  Spinner                                     *
    *                                                                              *
-   ******************************************************************************** */
+   ********************************************************************************/
 
 /* Courtesy: https://tobiasahlin.com/spinkit/ */
 
@@ -387,6 +387,9 @@ button:disabled {
   }
 }
 
+/* SVG icons */
+
+.icon-right-triangle { background-image: url('icons/right-triangle.svg') }
 
 /********************************************************************************************************
  *                                                                                                      *
@@ -399,7 +402,7 @@ button:disabled {
  *                                                                                                      *
  ********************************************************************************************************/
 
-.emoji {
+.emoji, .icon {
   display: inline-block;
   height: 1em;
   width: 1em;
@@ -408,6 +411,10 @@ button:disabled {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1em 1em;
+}
+
+.icon {
+  vertical-align: -0.2em;
 }
 
 .emoji-preloader {
