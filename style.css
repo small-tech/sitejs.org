@@ -408,11 +408,11 @@ li.selected {
 .emoji-revolving-hearts { background-image: url('emoji/1f49e.svg')}
 .emoji-magnifying-glass-tilted-right { background-image: url('emoji/1f50e.svg')}
 
-/* ********************************************************************************
-   *                                                                              *
-   *                               Responsiveness                                 *
-   *                                                                              *
-   ******************************************************************************** */
+/********************************************************************************
+ *                                                                              *
+ *                               Responsiveness                                 *
+ *                                                                              *
+ ********************************************************************************/
 
 @media (max-width: 460px) {
   #presentation {
@@ -433,7 +433,7 @@ li.selected {
     font-size: 1.5em;
   }
 
-  /* Split terminals vertically */
+  /* Split terminals vertically. */
 
   .split-terminals {
     grid-template-columns: 100% !important;
