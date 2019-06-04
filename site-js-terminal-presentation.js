@@ -15,11 +15,11 @@ const NBSP = '&nbsp;'
 // Prepare the emoji used in the header presentation.
 //
 
-let emojisToPreload = ''
+let imagesToPreload = ''
 
 const emoji = (name) => {
   const _ = `<span class="emoji emoji-${name}"></span>`
-  emojisToPreload += _
+  imagesToPreload += _
   return _
 };
 
@@ -40,18 +40,21 @@ const EMOJI_WOMAN_RUNNING = emoji('woman-running')
 const EMOJI_REVOLVING_HEARTS = emoji('revolving-hearts')
 const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right')
 
-const emojiPreloader = document.createElement('div')
-emojiPreloader.className = 'emoji-preloader'
-emojiPreloader.innerHTML = emojisToPreload
-
-document.querySelector('main').appendChild(emojiPreloader)
-
 // Other icons
 
 // Note: we start the prompt with a zero-width space so that Typed doesn’t
 // ===== get confused because our strings start with an HTML element and thus
 //       refuse to fire the onReady event.
 const PROMPT = '\u200B<span class="icon icon-right-triangle"></span>'
+const REMOTE_PROMPT = `(<span class="icon icon-cloud"></span>)`
+
+imagesToPreload += PROMPT + REMOTE_PROMPT
+
+// Create and add the image preloader to the page.
+const imagePreloader = document.createElement('div')
+imagePreloader.className = 'image-preloader'
+imagePreloader.innerHTML = imagesToPreload
+document.querySelector('main').appendChild(imagePreloader)
 
 //
 // Helper functions for colourising text.
@@ -267,11 +270,11 @@ const firstTerminalPresentation = new TerminalPresentation(
         firstTerminalPresentation.setTitle('my-demo.site: ~/demo')
       },
       '',
-      `🖧 ▸ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `🖧 ▸ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
+      `${REMOTE_PROMPT} ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `${REMOTE_PROMPT} echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
       '',
-      `🖧 ▸ ${comment('Start production server (startup daemon)')}`,
-      '🖧 ▸ site enable '
+      `${REMOTE_PROMPT} ${comment('Start production server (startup daemon)')}`,
+      `${REMOTE_PROMPT} site enable `
     ],
     [
       // Last slide – output of starting startup daemon.
@@ -284,7 +287,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_GRINNING_FACE_WITH_SMILING_EYES}${EMOJI_THUMBS_UP_SIGN} You’re all set!`,
       '',
-      '🖧 ▸ ',
+      `${REMOTE_PROMPT} `,
       () => {
         // After the production server is run, simulate it being loaded in the browser.
         nextButton.disabled = true
@@ -300,8 +303,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       }
     ],
     [
-      `🖧 ▸ ${comment('Close the SSH session')}`,
-      `🖧 ▸ logout`,
+      `${REMOTE_PROMPT} ${comment('Close the SSH session')}`,
+      `${REMOTE_PROMPT} logout`,
     ],
     [
       () => {
