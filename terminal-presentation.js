@@ -134,7 +134,6 @@ class TerminalPresentation {
             // bottom. Toggle the typing off and stop forcing the
             // terminal to the bottom so that the person can scroll back
             // if they want to review any of the steps.
-            clearInterval(scrollToBottomInterval)
             terminal.scrollTop = terminal.scrollHeight
 
             // Is the presentation over?
@@ -159,6 +158,7 @@ class TerminalPresentation {
           }
         },
         onStop: () => {
+          clearInterval(scrollToBottomInterval)
           if (typeof this.onStepComplete === 'function') {
             this.onStepComplete(currentStep+1)
           }
