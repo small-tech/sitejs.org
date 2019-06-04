@@ -73,6 +73,9 @@ class TerminalPresentation {
 
       const terminal = document.createElement('div')
       terminal.className = 'terminal'
+
+      const ps = new PerfectScrollbar(terminal)
+
       const _pre = document.createElement('pre')
       const _code = document.createElement('code')
       _code.className = `terminal-code-${containerId}`

@@ -139,11 +139,19 @@ pre {
 }
 
 .terminal {
+  width: 100%;
+  position: relative;
   background-color: black;
   padding: 1em;
   padding-top: 0;
   overflow-y: scroll;
   border: 1px solid #e8e8e8;
+}
+
+/* Force perfect scrollbar to appear on the right */
+.ps__rail-y {
+  left: unset !important;
+  right: 0 !important;
 }
 
 .terminal > pre {
