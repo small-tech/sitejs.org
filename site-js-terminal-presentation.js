@@ -11,6 +11,29 @@ const WAIT_QUARTER_SEC = '^250'
 const VERSION = '1.0.0'
 const NBSP = '&nbsp;'
 
+//
+// Emoji used in the header presentation.
+//
+
+const emoji = (name) => `<span class="emoji emoji-${name}"></span>`
+
+const EMOJI_SATELLITE = emoji('satellite')
+const EMOJI_PACKAGE = emoji('package')
+const EMOJI_PARTY_POPPER = emoji('party-popper')
+const EMOJI_SPARKLING_HEART = emoji('sparkling-heart')
+const EMOJI_CONSTRUCTION_SIGN = emoji('construction-sign')
+const EMOJI_SCROLL = emoji('scroll')
+const EMOJI_DANCER = emoji('dancer')
+const EMOJI_EARTH_GLOBE_EUROPE_AFRICA = emoji('earth-globe-europe-africa')
+const EMOJI_WHITE_RIGHT_HAND_POINTING_BACKHAND_INDEX = emoji('white-right-hand-pointing-backhand-index')
+const EMOJI_SMILING_FACE_WITH_HORNS = emoji('smiling-face-with-horns')
+const EMOJI_GRINNING_FACE_WITH_SMILING_EYES = emoji('grinning-face-with-smiling-eyes')
+const EMOJI_THUMBS_UP_SIGN = emoji('thumbs-up-sign')
+const EMOJI_BALLOON = emoji('balloon')
+const EMOJI_WOMAN_RUNNING = emoji('woman-running')
+const EMOJI_REVOLVING_HEARTS = emoji('revolving-hearts')
+const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right')
+
 function comment (text) { return `<span style="color: #ccc"># ${text}</span>` }
 function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
 function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
@@ -40,9 +63,9 @@ const firstTerminalPresentation = new TerminalPresentation(
     ],
     [
       '',
-      ` 📡 Downloading Site.js v${VERSION}…${WAIT_QUARTER_SEC}`,
-      ` 📦 Installing…${WAIT_QUARTER_SEC}`,
-      ` 🎉 Done!`,
+      ` ${EMOJI_SATELLITE} Downloading Site.js v${VERSION}…${WAIT_QUARTER_SEC}`,
+      ` ${EMOJI_PACKAGE} Installing…${WAIT_QUARTER_SEC}`,
+      ` ${EMOJI_PARTY_POPPER} Done!`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
       `⯈ echo 'Hello, &lt;strong&gt;development!&lt;/strong&gt;' > index.html`,
@@ -54,12 +77,12 @@ const firstTerminalPresentation = new TerminalPresentation(
     ],
     [
       '',
-      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
-      ' 🚧 [Site.js] Using locally-trusted certificates.',
-      ' 📜 [Nodecert] Local development TLS certificate exists.',
+      ` ${EMOJI_CONSTRUCTION_SIGN} [Site.js] Using locally-trusted certificates.`,
+      ` ${EMOJI_SCROLL} [Nodecert] Local development TLS certificate exists.`,
       '',
-      ` 🎉 Serving ${inCyan('.')} on ${inGreen('https://localhost')}`,
+      ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('.')} on ${inGreen('https://localhost')}`,
       '',
       NBSP,
       () => {
@@ -79,9 +102,9 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       // Exit local server and show command to start a global server.
       '^C',
-      ' 💃 Preparing to exit gracefully, please wait…',
+      ` ${EMOJI_DANCER} Preparing to exit gracefully, please wait…`,
       '',
-      ' 💖 Goodbye!',
+      ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
       `⯈ echo 'Hello, &lt;strong&gt;staging!&lt;/strong&gt;' > index.html`,
@@ -92,12 +115,12 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       // The global server output.
       '',
-      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
-      ' 🌍 [Site.js] Using globally-trusted certificates.',
-      ' 👉 [Site.js] HTTP → HTTPS redirection active.',
+      ` ${EMOJI_EARTH_GLOBE_EUROPE_AFRICA} [Site.js] Using globally-trusted certificates.`,
+      ` ${EMOJI_WHITE_RIGHT_HAND_POINTING_BACKHAND_INDEX} [Site.js] HTTP → HTTPS redirection active.`,
       '',
-      ` 🎉 Serving ${inCyan('.')} on ${inGreen('https://dev.ar.al')}`,
+      ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('.')} on ${inGreen('https://dev.ar.al')}`,
       '',
       NBSP,
       () => {
@@ -209,33 +232,33 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       // Break out of global server.
       '^C',
-      ' 💃 Preparing to exit gracefully, please wait…',
+      ` ${EMOJI_DANCER} Preparing to exit gracefully, please wait…`,
       '',
-      ' 💖 Goodbye!',
+      ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `⯈ ${comment('SSH to production server')}`,
       '⯈ ssh my-demo.site',
     ],
     [
       '',
-      `🖧▸ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
-      `🖧▸ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
+      `🖧 ▸ ${WAIT_ONE_SEC}${comment('Create a web page')} `,
+      `🖧 ▸ echo 'Hello, &lt;strong&gt;production!&lt;/strong&gt;' > index.html`,
       '',
-      `🖧▸ ${comment('Start production server (startup daemon)')}`,
-      '🖧▸ site enable '
+      `🖧 ▸ ${comment('Start production server (startup daemon)')}`,
+      '🖧 ▸ site enable '
     ],
     [
       // Last slide – output of starting startup daemon.
       '',
-      ` 💖 Site.js v${VERSION} (running on Node.js v10.15.3)`,
+      ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
-      ` 😈 Launched as daemon on ${inGreen('https://my-demo.site')} serving ${inCyan('.')}`,
+      ` ${EMOJI_SMILING_FACE_WITH_HORNS} Launched as daemon on ${inGreen('https://my-demo.site')} serving ${inCyan('.')}`,
       '',
-      ' 😈 Installed for auto-launch at startup.',
+      ` ${EMOJI_SMILING_FACE_WITH_HORNS} Installed for auto-launch at startup.`,
       '',
-      ` 😁👍 You’re all set!`,
+      ` ${EMOJI_GRINNING_FACE_WITH_SMILING_EYES}${EMOJI_THUMBS_UP_SIGN} You’re all set!`,
       '',
-      '🖧▸ ',
+      '🖧 ▸ ',
       () => {
         // After the production server is run, simulate it being loaded in the browser.
         nextButton.disabled = true
@@ -251,15 +274,15 @@ const firstTerminalPresentation = new TerminalPresentation(
       }
     ],
     [
-      `🖧▸ ${comment('Close the SSH session')}`,
-      `🖧▸ logout`,
+      `🖧 ▸ ${comment('Close the SSH session')}`,
+      `🖧 ▸ logout`,
     ],
     [
       '',
       'Connection to my-demo.site closed.',
       '',
       `⯈ ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `⯈ echo '🎈&lt;br&gt;&amp;nbsp; 🏃‍♀️ There is always hope!' > index.html`,
+      `⯈ echo '${EMOJI_BALLOON}&lt;br&gt;&amp;nbsp; ${EMOJI_WOMAN_RUNNING} There is always hope!' > index.html`,
       '',
       `⯈ ${comment('Start a local server and sync to remote server')}`,
       '⯈ site sync my-demo.site '
@@ -267,25 +290,25 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       // Sync output.
       '',
-      `💞 [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
       '',
-      '💞 [Sync] Starting…',
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Starting…`,
       '',
-      '💖 Site.js v1.0.0 (running on Node v10.15.3)',
+      ` ${EMOJI_SPARKLING_HEART} Site.js v1.0.0 (running on Node v10.15.3)`,
       '',
-      '🚧 [Site.js] Using locally-trusted certificates.',
-      '📜 [Nodecert] Local development TLS certificate exists.',
+      ` ${EMOJI_CONSTRUCTION_SIGN} [Site.js] Using locally-trusted certificates.`,
+      ` ${EMOJI_SCROLL} [Nodecert] Local development TLS certificate exists.`,
       '',
-      `🎉 Serving ${inCyan('./')} on ${inGreen('https://localhost')}`,
+      ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('./')} on ${inGreen('https://localhost')}`,
       '',
-      '💞 [Sync] Calculating changes…',
-      '💞 [Sync] ↑ 140 bytes ↓ 12 bytes (101.33 bytes/sec)',
-      '💞 [Sync] total size is 497  speedup is 3.27',
-      '💞 [Sync] Complete.',
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Calculating changes…`,
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] ↑ 140 bytes ↓ 12 bytes (101.33 bytes/sec)`,
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] total size is 497  speedup is 3.27`,
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Complete.`,
       '',
-      `💞 [Sync] Local folder ${inCyan('./')} synced to ${inCyan('my-demo.site')}`,
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Local folder ${inCyan('./')} synced to ${inCyan('my-demo.site')}`,
       '',
-      `🔎 [Watch] Watching ${inCyan('./')} for changes to sync to ${inCyan('my-demo.site')}…`,
+      ` ${EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT} [Watch] Watching ${inCyan('./')} for changes to sync to ${inCyan('my-demo.site')}…`,
       '',
       NBSP,
       () => {
@@ -294,7 +317,7 @@ const firstTerminalPresentation = new TerminalPresentation(
 
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
-          browserPresentation.refreshWith('<p>🎈<br>&nbsp; 🏃‍♀️ There is always hope!</p>', () => {
+          browserPresentation.refreshWith(`<p>${EMOJI_BALLOON}<br>&nbsp; ${EMOJI_WOMAN_RUNNING} There is always hope!</p>`, () => {
             setTimeout(() => {
               nextButton.disabled = false
             }, 1000)
@@ -305,12 +328,12 @@ const firstTerminalPresentation = new TerminalPresentation(
     [
       // Break out of local server with sync.
       '^C',
-      ' 💞 [Sync] Exit request detected.',
-      ' 🔎 [Watch] Removing watcher.',
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Exit request detected.`,
+      ` ${EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT} [Watch] Removing watcher.`,
       '',
-      ' 💃 Preparing to exit gracefully, please wait…',
+      ` ${EMOJI_DANCER} Preparing to exit gracefully, please wait…`,
       '',
-      ' 💖 Goodbye!',
+      ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `⯈ `,
     ],

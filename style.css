@@ -348,6 +348,61 @@ li.selected {
   }
 }
 
+
+/********************************************************************************************************
+ *                                                                                                      *
+ *                                      Cross-platform emoji                                            *
+ *                                                                                                      *
+ * Emoji graphics copyright ⓒ Twitter, Inc and other contributors. Licensed under CC-BY 4.0:           *
+ * https://creativecommons.org/licenses/by/4.0/. With thanks to                                         *
+ * https://github.com/ellekasai/twemoji-awesome for the emoji mappings. We are using the strict subset  *
+ * necessary for the terminal presentation.                                                             *
+ *                                                                                                      *
+ ********************************************************************************************************/
+
+.emoji {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 1em 1em;
+}
+
+/********************************************************************************************************
+ *                                                                                                      *
+ * TODO: download these images and serve locally.                                                       *
+ *                                                                                                      *
+ * Note: to find the a compound Twemoji’s URL, find it on emojipedia and then add                       *
+ * ===== the codepoints together, separated by dashes, following the base URL of the                    *
+ *       second version of the icons.                                                                   *
+ *                                                                                                      *
+ * e.g., From:    https://emojipedia.org/woman-running/                                                 *
+ *       We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg                             *
+ *                                                                                                      *
+ * Or, you can also find them from https://twemoji.maxcdn.com/2/test/preview.html                       *
+ *                                                                                                      *
+ ********************************************************************************************************/
+
+.emoji-satellite { background-image: url('emoji/1f4e1.svg'); }
+.emoji-package { background-image: url('emoji/1f4e6.svg'); }
+.emoji-party-popper { background-image: url('emoji/1f389.svg'); }
+.emoji-sparkling-heart { background-image: url('emoji/1f496.svg'); }
+.emoji-construction-sign { background-image: url('emoji/1f6a7.svg'); }
+.emoji-scroll { background-image: url('emoji/1f4dc.svg'); }
+.emoji-dancer { background-image: url('emoji/1f483.svg'); }
+.emoji-earth-globe-europe-africa { background-image: url('emoji/1f30d.svg'); }
+.emoji-white-right-hand-pointing-backhand-index { background-image: url('emoji/1f449.svg'); }
+.emoji-smiling-face-with-horns { background-image: url('emoji/1f608.svg'); }
+.emoji-grinning-face-with-smiling-eyes { background-image: url('emoji/1f601.svg'); }
+.emoji-thumbs-up-sign { background-image: url('emoji/1f44d.svg'); }
+.emoji-balloon { background-image: url('emoji/1f388.svg'); }
+.emoji-woman-running { background-image: url('emoji/1f3c3-200d-2640-fe0f.svg')}
+.emoji-revolving-hearts { background-image: url('emoji/1f49e.svg')}
+.emoji-magnifying-glass-tilted-right { background-image: url('emoji/1f50e.svg')}
+
 /* ********************************************************************************
    *                                                                              *
    *                               Responsiveness                                 *
