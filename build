@@ -35,7 +35,7 @@ echo " > Inline SVG into minified HTML"
 ./inline-svg.js
 
 # Remove the tmp directory.
-# rm -rf tmp
+rm -rf tmp
 
 # Copy image assets to dist.
 echo " > Copy background image"
