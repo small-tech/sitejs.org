@@ -37,8 +37,7 @@ rm -rf tmp
 
 # Copy image assets to dist.
 echo " > Copy image assets"
-cp -R emoji dist/emoji
-cp -R icons dist/icons
+cp icons.svg dist/
 imagemin mountains.jpg > dist/mountains.jpg
 
 echo "\nDone.\n"

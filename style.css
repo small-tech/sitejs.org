@@ -422,9 +422,6 @@ button:disabled {
  *                                                                              *
  ********************************************************************************/
 
-.icon-right-triangle { background-image: url('icons/right-triangle.svg') }
-.icon-cloud { background-image: url('icons/cloud.svg') }
-
 /********************************************************************************
  *                                                                              *
  *                             Cross-platform emoji                             *
@@ -444,7 +441,7 @@ button:disabled {
   vertical-align: -0.1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 1em 1em;
+  /* background-size: auto 100% !important; */
 }
 
 .icon {
@@ -459,34 +456,46 @@ button:disabled {
 }
 
 /********************************************************************************
- *                                                                              *
- * Note: to find the a compound Twemoji’s URL, find it on emojipedia and add    *
- * ===== the codepoints together, separated by dashes, following the base URL   *
- *       of the second version of the icons.                                    *
- *                                                                              *
- * e.g., From:    https://emojipedia.org/woman-running/                         *
- *       We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg     *
- *                                                                              *
- * You can also find them from https://twemoji.maxcdn.com/2/test/preview.html   *
- *                                                                              *
- ********************************************************************************/
 
-.emoji-satellite { background-image: url('emoji/1f4e1.svg'); }
-.emoji-package { background-image: url('emoji/1f4e6.svg'); }
-.emoji-party-popper { background-image: url('emoji/1f389.svg'); }
-.emoji-sparkling-heart { background-image: url('emoji/1f496.svg'); }
-.emoji-construction-sign { background-image: url('emoji/1f6a7.svg'); }
-.emoji-scroll { background-image: url('emoji/1f4dc.svg'); }
-.emoji-dancer { background-image: url('emoji/1f483.svg'); }
-.emoji-earth-globe-europe-africa { background-image: url('emoji/1f30d.svg'); }
-.emoji-white-right-hand-pointing-backhand-index { background-image: url('emoji/1f449.svg'); }
-.emoji-smiling-face-with-horns { background-image: url('emoji/1f608.svg'); }
-.emoji-grinning-face-with-smiling-eyes { background-image: url('emoji/1f601.svg'); }
-.emoji-thumbs-up-sign { background-image: url('emoji/1f44d.svg'); }
-.emoji-balloon { background-image: url('emoji/1f388.svg'); }
-.emoji-woman-running { background-image: url('emoji/1f3c3-200d-2640-fe0f.svg')}
-.emoji-revolving-hearts { background-image: url('emoji/1f49e.svg')}
-.emoji-magnifying-glass-tilted-right { background-image: url('emoji/1f50e.svg')}
+  Emoji and icons are kept in a single sprite sheet for performance reasons.
+
+  To generate the sprite sheet if you update the icons, use:
+
+  svg-sprite -w=16 -h=16 --css --css-render-css --css-example --css-layout=horizontal --css-prefix=.icon-%s --css-dimensions="" --css-sprite=icons.svg --css-render-css-dest=icons.css --css-example-dest=index.html --dest=out emoji/*.svg icons/*.svg
+
+  Icons are laid out horizontally and each icon is 36px wide so we control the
+  order via an integer prefix (0010, 0020, etc.) and offset the X coordinate of the
+  background by -36px each time.
+
+  To find a compound Twemoji’s URL, find it on emojipedia and add the codepoints
+  together, separated by dashes, following the base URL of the second version of the icons.
+
+  e.g., From:    https://emojipedia.org/woman-running/
+        We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg
+
+  You can also find them from https://twemoji.maxcdn.com/2/test/preview.html
+
+*********************************************************************************/
+
+.emoji-satellite                                { background: url("icons.svg") 0 0 no-repeat; }
+.emoji-package                                  { background: url("icons.svg") -16px 0 no-repeat; }
+.emoji-party-popper                             { background: url("icons.svg") -32px 0 no-repeat; }
+.emoji-sparkling-heart                          { background: url("icons.svg") -48px 0 no-repeat; }
+.emoji-construction-sign                        { background: url("icons.svg") -64px 0 no-repeat; }
+.emoji-scroll                                   { background: url("icons.svg") -80px 0 no-repeat; }
+.emoji-dancer                                   { background: url("icons.svg") -96px 0 no-repeat; }
+.emoji-earth-globe-europe-africa                { background: url("icons.svg") -112px 0 no-repeat; }
+.emoji-white-right-hand-pointing-backhand-index { background: url("icons.svg") -128px 0 no-repeat; }
+.emoji-smiling-face-with-horns                  { background: url("icons.svg") -144px 0 no-repeat; }
+.emoji-grinning-face-with-smiling-eyes          { background: url("icons.svg") -160px 0 no-repeat; }
+.emoji-thumbs-up-sign                           { background: url("icons.svg") -176px 0 no-repeat; }
+.emoji-balloon                                  { background: url("icons.svg") -192px 0 no-repeat; }
+.emoji-woman-running                            { background: url("icons.svg") -208px 0 no-repeat; }
+.emoji-revolving-hearts                         { background: url("icons.svg") -224px 0 no-repeat; }
+.emoji-magnifying-glass-tilted-right            { background: url("icons.svg") -240px 0 no-repeat; }
+
+.icon-right-triangle                            { background: url("icons.svg") -256px 0 no-repeat; }
+.icon-cloud                                     { background: url("icons.svg") -272px 0 no-repeat; }
 
 /********************************************************************************
  *                                                                              *
