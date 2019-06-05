@@ -198,7 +198,7 @@ pre {
 }
 
 .highlighted:after {
-  background-color: lightcyan !important;
+  background-color: #C6C7BC !important;
 }
 
 .split-terminals {
