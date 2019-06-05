@@ -7,7 +7,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 const fs = require('fs')
-const path = require('path')
 
 let index = fs.readFileSync('index.html', 'utf-8')
 const styles = fs.readFileSync('tmp/styles.css', 'utf-8')

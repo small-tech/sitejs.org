@@ -22,22 +22,23 @@ minify terminal-presentation.js >> tmp/scripts.js
 minify browser-presentation.js >> tmp/scripts.js
 minify site-js-terminal-presentation.js >> tmp/scripts.js
 
-# Inline the CSS and JS.
-echo " > Inline minified CSS & JS"
+# Inline the CSS and JS into the HTML.
+echo " > Inline minified CSS & JS into HTML"
 ./inline-css-and-js.js
-
-# TODO: Build/use SVG sprite sheet for emoji and icons
 
 # Minify HTML.
 echo " > Minify HTML"
-minify tmp/index.html >> dist/index.html
+minify tmp/index.html > tmp/index-minified.html
+
+# Inline SVGs into the CSS.
+echo " > Inline SVG into minified HTML"
+./inline-svg.js
 
 # Remove the tmp directory.
-rm -rf tmp
+# rm -rf tmp
 
 # Copy image assets to dist.
-echo " > Copy image assets"
-cp icons.svg dist/
+echo " > Copy background image"
 imagemin mountains.jpg > dist/mountains.jpg
 
 echo "\nDone.\n"

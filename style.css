@@ -441,6 +441,7 @@ button:disabled {
   vertical-align: -0.1em;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: 1em 1em;
   /* background-size: auto 100% !important; */
 }
 
@@ -477,25 +478,25 @@ button:disabled {
 
 *********************************************************************************/
 
-.emoji-satellite                                { background: url("icons.svg") 0 0 no-repeat; }
-.emoji-package                                  { background: url("icons.svg") -16px 0 no-repeat; }
-.emoji-party-popper                             { background: url("icons.svg") -32px 0 no-repeat; }
-.emoji-sparkling-heart                          { background: url("icons.svg") -48px 0 no-repeat; }
-.emoji-construction-sign                        { background: url("icons.svg") -64px 0 no-repeat; }
-.emoji-scroll                                   { background: url("icons.svg") -80px 0 no-repeat; }
-.emoji-dancer                                   { background: url("icons.svg") -96px 0 no-repeat; }
-.emoji-earth-globe-europe-africa                { background: url("icons.svg") -112px 0 no-repeat; }
-.emoji-white-right-hand-pointing-backhand-index { background: url("icons.svg") -128px 0 no-repeat; }
-.emoji-smiling-face-with-horns                  { background: url("icons.svg") -144px 0 no-repeat; }
-.emoji-grinning-face-with-smiling-eyes          { background: url("icons.svg") -160px 0 no-repeat; }
-.emoji-thumbs-up-sign                           { background: url("icons.svg") -176px 0 no-repeat; }
-.emoji-balloon                                  { background: url("icons.svg") -192px 0 no-repeat; }
-.emoji-woman-running                            { background: url("icons.svg") -208px 0 no-repeat; }
-.emoji-revolving-hearts                         { background: url("icons.svg") -224px 0 no-repeat; }
-.emoji-magnifying-glass-tilted-right            { background: url("icons.svg") -240px 0 no-repeat; }
+.emoji-satellite                                { background-image: url('emoji/0010_1f4e1.svg'); }
+.emoji-package                                  { background-image: url('emoji/0020_1f4e6.svg'); }
+.emoji-party-popper                             { background-image: url('emoji/0030_1f389.svg'); }
+.emoji-sparkling-heart                          { background-image: url('emoji/0040_1f496.svg'); }
+.emoji-construction-sign                        { background-image: url('emoji/0050_1f6a7.svg'); }
+.emoji-scroll                                   { background-image: url('emoji/0060_1f4dc.svg'); }
+.emoji-dancer                                   { background-image: url('emoji/0070_1f483.svg'); }
+.emoji-earth-globe-europe-africa                { background-image: url('emoji/0080_1f30d.svg'); }
+.emoji-white-right-hand-pointing-backhand-index { background-image: url('emoji/0090_1f449.svg'); }
+.emoji-smiling-face-with-horns                  { background-image: url('emoji/0100_1f608.svg'); }
+.emoji-grinning-face-with-smiling-eyes          { background-image: url('emoji/0110_1f601.svg'); }
+.emoji-thumbs-up-sign                           { background-image: url('emoji/0120_1f44d.svg'); }
+.emoji-balloon                                  { background-image: url('emoji/0130_1f388.svg'); }
+.emoji-woman-running                            { background-image: url('emoji/0140_1f3c3-200d-2640-fe0f.svg')}
+.emoji-revolving-hearts                         { background-image: url('emoji/0150_1f49e.svg') }
+.emoji-magnifying-glass-tilted-right            { background-image: url('emoji/0160_1f50e.svg') }
 
-.icon-right-triangle                            { background: url("icons.svg") -256px 0 no-repeat; }
-.icon-cloud                                     { background: url("icons.svg") -272px 0 no-repeat; }
+.icon-right-triangle                            { background-image: url('icons/0010_right-triangle.svg') }
+.icon-cloud                                     { background-image: url('icons/0020_cloud.svg') }
 
 /********************************************************************************
  *                                                                              *
