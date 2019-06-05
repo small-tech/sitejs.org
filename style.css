@@ -1,13 +1,18 @@
-/***********************************************************************
- *                                                                     *
- *                      Styles for sitejs.org                          *
- *                                                                     *
- *     Copyright ⓒ 2019 Aral Balkan. Published with ♥ by Ind.ie.      *
- *            License: Released under AGPLv3 or later.                 *
- *                                                                     *
- ***********************************************************************/
+/********************************************************************************
+ *                                                                              *
+ *                            Styles for sitejs.org                             *
+ *                                                                              *
+ *          Copyright ⓒ 2019 Aral Balkan. Published with ♥ by Ind.ie.          *
+ *                  License: Released under AGPLv3 or later.                    *
+ *                                                                              *
+ ********************************************************************************/
 
-/* Web fonts */
+/********************************************************************************
+ *                                                                              *
+ *                                  Web fonts                                   *
+ *                                                                              *
+ ********************************************************************************/
+
 @import url('https://rsms.me/inter/inter.css?v=3.5');
 html { font-family: 'Inter', sans-serif; }
 
@@ -15,14 +20,26 @@ html { font-family: 'Inter', sans-serif; }
   html { font-family: 'Inter var', sans-serif; }
 }
 
-/* CSS Reset */
+
+/********************************************************************************
+ *                                                                              *
+ *                                  CSS reset                                   *
+ *                                                                              *
+ ********************************************************************************/
+
 html { box-sizing: border-box; font-size: 16px; }
 *, *:before, *:after { box-sizing: inherit; }
 body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
 ol, ul { list-style: none; }
 img { max-width: 100%; height: auto; }
 
-/* General elements */
+
+/********************************************************************************
+ *                                                                              *
+ *                               General elements                               *
+ *                                                                              *
+ ********************************************************************************/
+
 html {
   background-color:#151D1F;
   margin: 0;
@@ -44,7 +61,12 @@ header {
   background-size: cover;
 }
 
-/* Navigation */
+/********************************************************************************
+ *                                                                              *
+ *                                  Navigation                                  *
+ *                                                                              *
+ ********************************************************************************/
+
 nav {
   position: absolute;
   top: 2rem;
@@ -66,7 +88,11 @@ nav li:last-of-type {
   padding-right: 0;
 }
 
-/* Typography */
+/********************************************************************************
+ *                                                                              *
+ *                                  Typography                                  *
+ *                                                                              *
+ ********************************************************************************/
 
 h1 {
   color: #1D2C2E;
@@ -117,8 +143,11 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
-
-/* Header area with interactive presentation */
+/********************************************************************************
+ *                                                                              *
+ *                  Header area with interactive presentation                   *
+ *                                                                              *
+ ********************************************************************************/
 
 #summary {
   margin-top: 1em;
@@ -206,11 +235,11 @@ pre {
   grid-template-rows: 100% !important;
 }
 
-/* .split-terminals .terminal {
-  height: 12em;
-} */
-
-/* Main content */
+/********************************************************************************
+ *                                                                              *
+ *                                 Main content                                 *
+ *                                                                              *
+ ********************************************************************************/
 
 main {
   background-color: white;
@@ -261,21 +290,21 @@ li.selected {
   filter: brightness(60%);
 }
 
-/* ********************************************************************************
-   *                                                                              *
-   *                                  Terminal                                    *
-   *                                                                              *
-   ******************************************************************************** */
+/********************************************************************************
+ *                                                                              *
+ *                                  Terminal                                    *
+ *                                                                              *
+ ********************************************************************************/
 
 .shadow {
   box-shadow: 0 20px 70px black;
 }
 
-/* ********************************************************************************
-   *                                                                              *
-   *                                  Browser                                     *
-   *                                                                              *
-   ******************************************************************************** */
+/********************************************************************************
+ *                                                                              *
+ *                                  Browser                                     *
+ *                                                                              *
+ ********************************************************************************/
 
 #browser {
   background-color: white;
@@ -302,11 +331,11 @@ li.selected {
   animation: spin 1s infinite linear;
 }
 
-/* ********************************************************************************
-   *                                                                              *
-   *                                Next button                                   *
-   *                                                                              *
-   ********************************************************************************/
+/********************************************************************************
+ *                                                                              *
+ *                                Next button                                   *
+ *                                                                              *
+ ********************************************************************************/
 
 button {
   text-align: center;
@@ -337,9 +366,9 @@ button:disabled {
  *                                                                              *
  *                                  Spinner                                     *
  *                                                                              *
+ *                Courtesy: https://tobiasahlin.com/spinkit/                    *
+ *                                                                              *
  ********************************************************************************/
-
-/* Courtesy: https://tobiasahlin.com/spinkit/ */
 
 .spinner {
   position: absolute;
@@ -396,16 +425,16 @@ button:disabled {
 .icon-right-triangle { background-image: url('icons/right-triangle.svg') }
 .icon-cloud { background-image: url('icons/cloud.svg') }
 
-/********************************************************************************************************
- *                                                                                                      *
- *                                      Cross-platform emoji                                            *
- *                                                                                                      *
- * Emoji graphics copyright ⓒ Twitter, Inc and other contributors. Licensed under CC-BY 4.0:           *
- * https://creativecommons.org/licenses/by/4.0/. With thanks to                                         *
- * https://github.com/ellekasai/twemoji-awesome for the emoji mappings. We are using the strict subset  *
- * necessary for the terminal presentation.                                                             *
- *                                                                                                      *
- ********************************************************************************************************/
+/********************************************************************************
+ *                                                                              *
+ *                             Cross-platform emoji                             *
+ *                                                                              *
+ * Emoji graphics copyright ⓒ Twitter, Inc and other contributors. Licensed    *
+ * under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/. With thanks   *
+ * to https://github.com/ellekasai/twemoji-awesome for the emoji mappings.      *
+ * (We are using the strict subset necessary for the terminal presentation.     *
+ *                                                                              *
+ ********************************************************************************/
 
 .emoji, .icon {
   display: inline-block;
@@ -429,18 +458,18 @@ button:disabled {
   opacity: 0;
 }
 
-/********************************************************************************************************
- *                                                                                                      *
- * Note: to find the a compound Twemoji’s URL, find it on emojipedia and then add                       *
- * ===== the codepoints together, separated by dashes, following the base URL of the                    *
- *       second version of the icons.                                                                   *
- *                                                                                                      *
- * e.g., From:    https://emojipedia.org/woman-running/                                                 *
- *       We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg                             *
- *                                                                                                      *
- * Or, you can also find them from https://twemoji.maxcdn.com/2/test/preview.html                       *
- *                                                                                                      *
- ********************************************************************************************************/
+/********************************************************************************
+ *                                                                              *
+ * Note: to find the a compound Twemoji’s URL, find it on emojipedia and add    *
+ * ===== the codepoints together, separated by dashes, following the base URL   *
+ *       of the second version of the icons.                                    *
+ *                                                                              *
+ * e.g., From:    https://emojipedia.org/woman-running/                         *
+ *       We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg     *
+ *                                                                              *
+ * You can also find them from https://twemoji.maxcdn.com/2/test/preview.html   *
+ *                                                                              *
+ ********************************************************************************/
 
 .emoji-satellite { background-image: url('emoji/1f4e1.svg'); }
 .emoji-package { background-image: url('emoji/1f4e6.svg'); }
