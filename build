@@ -1,0 +1,44 @@
+#!/bin/sh
+
+echo "\nBuilding site.js site…\n"
+
+# Start fresh.
+rm -rf tmp
+rm -rf dist
+mkdir tmp
+mkdir dist
+
+# CSS (temporary; to be collated into index later).
+echo " > Minify CSS"
+minify perfect-scrollbar.css >> tmp/styles.css
+minify facade.css >> tmp/styles.css
+minify style.css >> tmp/styles.css
+
+# JS (temporary; to be collated into index later).
+echo " > Minify JS"
+minify perfect-scrollbar.js >> tmp/scripts.js
+minify node_modules/typed.js/lib/typed.js >> tmp/scripts.js
+minify terminal-presentation.js >> tmp/scripts.js
+minify browser-presentation.js >> tmp/scripts.js
+minify site-js-terminal-presentation.js >> tmp/scripts.js
+
+# Inline the CSS and JS.
+echo " > Inline minified CSS & JS"
+./inline-css-and-js.js
+
+# TODO: Build/use SVG sprite sheet for emoji and icons
+
+# Minify HTML.
+echo " > Minify HTML"
+minify tmp/index.html >> dist/index.html
+
+# Remove the tmp directory.
+rm -rf tmp
+
+# Copy image assets to dist.
+echo " > Copy image assets"
+cp -R emoji dist/emoji
+cp -R icons dist/icons
+imagemin mountains.jpg > dist/mountains.jpg
+
+echo "\nDone.\n"
