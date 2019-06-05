@@ -267,7 +267,10 @@ main pre {
 
 /* Add the prompt to the terminal examples */
 main pre code:before  {
-  content: '⯈ '
+  content: '  ';
+  /* margin: 0 .05em 0 .1em; */
+  vertical-align: -0.1em;
+  background-image: url('icons/0010_right-triangle.svg');
 }
 
 main ul {

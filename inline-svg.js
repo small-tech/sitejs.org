@@ -18,8 +18,12 @@ const icons = fs.readdirSync('icons').map(f => `icons/${f}`)
 
 const SVGs = emoji.concat(icons)
 
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
 SVGs.forEach(svg => {
-  index = index.replace(`background-image:url(${svg})`, `background-image:url('data:image/svg+xml;utf8,${encodeURIComponent(fs.readFileSync(svg, 'utf8'))}')`)
+  index = index.replace(new RegExp(escapeRegExp(`background-image:url(${svg})`), 'g'), `background-image:url('data:image/svg+xml;utf8,${encodeURIComponent(fs.readFileSync(svg, 'utf8'))}')`)
 })
 
 fs.writeFileSync('dist/index.html', index)
