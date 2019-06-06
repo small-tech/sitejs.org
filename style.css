@@ -14,7 +14,7 @@
  ********************************************************************************/
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Cantarell, Ubuntu,
  Helvetica, Arial, sans-serif
 }
 
@@ -124,7 +124,13 @@ h3 {
 }
 
 pre, code {
-  font-family: "Fira Code", monospace;
+  font-family: "SFMono-Regular",
+  Consolas,
+  "Fira Code",
+  "Liberation Mono",
+  Menlo,
+  Courier,
+  monospace;
 }
 
 pre {
