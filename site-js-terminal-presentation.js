@@ -17,8 +17,10 @@ const NBSP = '&nbsp;'
 
 let imagesToPreload = ''
 
+const ZERO_WIDTH_SPACE = '\u200B'
+
 const emoji = (name) => {
-  const _ = `<span class="emoji emoji-${name}"></span>`
+  const _ = `${ZERO_WIDTH_SPACE}<span class="emoji emoji-${name}"></span>`
   imagesToPreload += _
   return _
 };
@@ -45,7 +47,7 @@ const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right
 // Note: we start the prompt with a zero-width space so that Typed doesn’t
 // ===== get confused because our strings start with an HTML element and thus
 //       refuse to fire the onReady event.
-const PROMPT = '\u200B<span class="icon icon-right-triangle"></span>'
+const PROMPT = `${ZERO_WIDTH_SPACE}<span class="icon icon-right-triangle"></span>`
 const REMOTE_PROMPT = `(<span class="icon icon-cloud"></span>)`
 
 imagesToPreload += PROMPT + REMOTE_PROMPT
@@ -60,9 +62,9 @@ document.querySelector('main').appendChild(imagePreloader)
 // Helper functions for colourising text.
 //
 
-function comment (text) { return `<span style="color: #ccc"># ${text}</span>` }
-function inGreen (text) { return `<span style="color: #849900">${text}</span>` }
-function inCyan (text) { return `<span style="color: #29A097">${text}</span>` }
+function comment (text) { return `${ZERO_WIDTH_SPACE}<span style="color: #ccc"># ${text}</span>` }
+function inGreen (text) { return `${ZERO_WIDTH_SPACE}<span style="color: #849900">${text}</span>` }
+function inCyan (text) { return `${ZERO_WIDTH_SPACE}<span style="color: #29A097">${text}</span>` }
 
 // Initialise the Browser Presentation.
 const browserPresentation = new BrowserPresentation(
