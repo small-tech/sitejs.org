@@ -11,10 +11,10 @@
 
 const fs = require('fs')
 
-let index = fs.readFileSync('tmp/index-minified.html', 'utf8')
+let index = fs.readFileSync('../tmp/index-minified.html', 'utf8')
 
-const emoji = fs.readdirSync('emoji').map(f => `emoji/${f}`)
-const icons = fs.readdirSync('icons').map(f => `icons/${f}`)
+const emoji = fs.readdirSync('../images/emoji').map(f => `../images/emoji/${f}`)
+const icons = fs.readdirSync('../images/icons').map(f => `../images/icons/${f}`)
 
 const SVGs = emoji.concat(icons)
 
@@ -26,4 +26,4 @@ SVGs.forEach(svg => {
   index = index.replace(new RegExp(escapeRegExp(`background-image:url(${svg})`), 'g'), `background-image:url('data:image/svg+xml;utf8,${encodeURIComponent(fs.readFileSync(svg, 'utf8'))}')`)
 })
 
-fs.writeFileSync('dist/index.html', index)
+fs.writeFileSync('../dist/index.html', index)

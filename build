@@ -10,21 +10,21 @@ mkdir dist
 
 # CSS (temporary; to be collated into index later).
 echo " > Minify CSS"
-minify perfect-scrollbar.css >> tmp/styles.css
-minify facade.css >> tmp/styles.css
-minify style.css >> tmp/styles.css
+minify css/perfect-scrollbar.css >> tmp/styles.css
+minify css/facade.css >> tmp/styles.css
+minify css/index.css >> tmp/styles.css
 
 # JS (temporary; to be collated into index later).
 echo " > Minify JS"
-minify perfect-scrollbar.js >> tmp/scripts.js
+minify js/perfect-scrollbar.js >> tmp/scripts.js
 minify node_modules/typed.js/lib/typed.js >> tmp/scripts.js
-minify terminal-presentation.js >> tmp/scripts.js
-minify browser-presentation.js >> tmp/scripts.js
-minify site-js-terminal-presentation.js >> tmp/scripts.js
+minify js/terminal-presentation.js >> tmp/scripts.js
+minify js/browser-presentation.js >> tmp/scripts.js
+minify js/site-js-terminal-presentation.js >> tmp/scripts.js
 
 # Inline the CSS and JS into the HTML.
 echo " > Inline minified CSS & JS into HTML"
-./inline-css-and-js.js
+_build/inline-css-and-js.js
 
 # Minify HTML.
 echo " > Minify HTML"
@@ -32,13 +32,16 @@ minify tmp/index.html > tmp/index-minified.html
 
 # Inline SVGs into the CSS.
 echo " > Inline SVG into minified HTML"
+cd _build
 ./inline-svg.js
+cd ..
 
 # Remove the tmp directory.
 rm -rf tmp
 
 # Copy image assets to dist.
 echo " > Copy background image"
-imagemin mountains.jpg > dist/mountains.jpg
+mkdir dist/images
+cp images/mountains.jpg dist/images/mountains.jpg
 
 echo "\nDone.\n"

@@ -54,7 +54,7 @@ header {
   color: white;
   padding-bottom: 1.75rem;
 
-  background: url(mountains.jpg) top right no-repeat;
+  background: url(../images/mountains.jpg) top right no-repeat;
   background-size: cover;
 }
 
@@ -277,7 +277,7 @@ main pre code:before  {
   content: '  ';
   /* margin: 0 .05em 0 .1em; */
   vertical-align: -0.1em;
-  background-image: url('icons/0010_right-triangle.svg');
+  background-image: url('../images/icons/0010_right-triangle.svg');
 }
 
 main ul {
@@ -488,25 +488,25 @@ button:disabled {
 
 *********************************************************************************/
 
-.emoji-satellite                                { background-image: url('emoji/0010_1f4e1.svg'); }
-.emoji-package                                  { background-image: url('emoji/0020_1f4e6.svg'); }
-.emoji-party-popper                             { background-image: url('emoji/0030_1f389.svg'); }
-.emoji-sparkling-heart                          { background-image: url('emoji/0040_1f496.svg'); }
-.emoji-construction-sign                        { background-image: url('emoji/0050_1f6a7.svg'); }
-.emoji-scroll                                   { background-image: url('emoji/0060_1f4dc.svg'); }
-.emoji-dancer                                   { background-image: url('emoji/0070_1f483.svg'); }
-.emoji-earth-globe-europe-africa                { background-image: url('emoji/0080_1f30d.svg'); }
-.emoji-white-right-hand-pointing-backhand-index { background-image: url('emoji/0090_1f449.svg'); }
-.emoji-smiling-face-with-horns                  { background-image: url('emoji/0100_1f608.svg'); }
-.emoji-grinning-face-with-smiling-eyes          { background-image: url('emoji/0110_1f601.svg'); }
-.emoji-thumbs-up-sign                           { background-image: url('emoji/0120_1f44d.svg'); }
-.emoji-balloon                                  { background-image: url('emoji/0130_1f388.svg'); }
-.emoji-woman-running                            { background-image: url('emoji/0140_1f3c3-200d-2640-fe0f.svg')}
-.emoji-revolving-hearts                         { background-image: url('emoji/0150_1f49e.svg') }
-.emoji-magnifying-glass-tilted-right            { background-image: url('emoji/0160_1f50e.svg') }
+.emoji-satellite                                { background-image: url('../images/emoji/0010_1f4e1.svg'); }
+.emoji-package                                  { background-image: url('../images/emoji/0020_1f4e6.svg'); }
+.emoji-party-popper                             { background-image: url('../images/emoji/0030_1f389.svg'); }
+.emoji-sparkling-heart                          { background-image: url('../images/emoji/0040_1f496.svg'); }
+.emoji-construction-sign                        { background-image: url('../images/emoji/0050_1f6a7.svg'); }
+.emoji-scroll                                   { background-image: url('../images/emoji/0060_1f4dc.svg'); }
+.emoji-dancer                                   { background-image: url('../images/emoji/0070_1f483.svg'); }
+.emoji-earth-globe-europe-africa                { background-image: url('../images/emoji/0080_1f30d.svg'); }
+.emoji-white-right-hand-pointing-backhand-index { background-image: url('../images/emoji/0090_1f449.svg'); }
+.emoji-smiling-face-with-horns                  { background-image: url('../images/emoji/0100_1f608.svg'); }
+.emoji-grinning-face-with-smiling-eyes          { background-image: url('../images/emoji/0110_1f601.svg'); }
+.emoji-thumbs-up-sign                           { background-image: url('../images/emoji/0120_1f44d.svg'); }
+.emoji-balloon                                  { background-image: url('../images/emoji/0130_1f388.svg'); }
+.emoji-woman-running                            { background-image: url('../images/emoji/0140_1f3c3-200d-2640-fe0f.svg')}
+.emoji-revolving-hearts                         { background-image: url('../images/emoji/0150_1f49e.svg') }
+.emoji-magnifying-glass-tilted-right            { background-image: url('../images/emoji/0160_1f50e.svg') }
 
-.icon-right-triangle                            { background-image: url('icons/0010_right-triangle.svg') }
-.icon-cloud                                     { background-image: url('icons/0020_cloud.svg') }
+.icon-right-triangle                            { background-image: url('../images/icons/0010_right-triangle.svg') }
+.icon-cloud                                     { background-image: url('../images/icons/0020_cloud.svg') }
 
 /********************************************************************************
  *                                                                              *
