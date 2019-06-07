@@ -87,7 +87,7 @@ const firstTerminalPresentation = new TerminalPresentation(
   [
     [
       `${PROMPT} ${comment('Install')}${WAIT_QUARTER_SEC}`,
-      `${PROMPT} wget -q0- https://sitejs.org/install | bash`,
+      `${PROMPT} wget -qO- https://sitejs.org/install | bash`,
     ],
     [
       '',
