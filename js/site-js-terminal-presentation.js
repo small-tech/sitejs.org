@@ -41,6 +41,8 @@ const EMOJI_BALLOON = emoji('balloon')
 const EMOJI_WOMAN_RUNNING = emoji('woman-running')
 const EMOJI_REVOLVING_HEARTS = emoji('revolving-hearts')
 const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right')
+const EMOJI_NEW_BUTTON = emoji('new-button')
+const EMOJI_PEN = emoji('pen')
 
 // Other icons
 
@@ -108,7 +110,13 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
       ` ${EMOJI_CONSTRUCTION_SIGN} [Site.js] Using locally-trusted certificates.`,
-      ` ${EMOJI_SCROLL} [Nodecert] Local development TLS certificate exists.`,
+      '',
+      ` ${EMOJI_NEW_BUTTON} [Nodecert] Setting up…`,
+      ` ${EMOJI_PEN} [Nodecert] Creating local certificate authority (local CA) using mkcert…`,
+      ` ${EMOJI_PARTY_POPPER} [Nodecert] Local certificate authority created.`,
+      '',
+      ` ${EMOJI_SCROLL} [Nodecert] Creating local TLS certificates using mkcert…`,
+      ` ${EMOJI_PARTY_POPPER} [Nodecert] Local TLS certificates created.`,
       '',
       ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('.')} on ${inGreen('https://localhost')}`,
       '',

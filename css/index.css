@@ -504,6 +504,8 @@ button:disabled {
 .emoji-woman-running                            { background-image: url('../images/emoji/0140_1f3c3-200d-2640-fe0f.svg')}
 .emoji-revolving-hearts                         { background-image: url('../images/emoji/0150_1f49e.svg') }
 .emoji-magnifying-glass-tilted-right            { background-image: url('../images/emoji/0160_1f50e.svg') }
+.emoji-new-button                               { background-image: url('../images/emoji/0170_1f195.svg') }
+.emoji-pen                                      { background-image: url('../images/emoji/0180_1f58a.svg') }
 
 .icon-right-triangle                            { background-image: url('../images/icons/0010_right-triangle.svg') }
 .icon-cloud                                     { background-image: url('../images/icons/0020_cloud.svg') }
