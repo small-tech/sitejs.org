@@ -391,6 +391,15 @@ var updateGeometry = function(i) {
     i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
   }
 
+  // Site.js site hack: provide a small vertical margin.
+  if (i.scrollbarYTop === i.railYHeight - i.scrollbarYHeight) {
+    i.scrollbarYTop -= 2;
+  }
+
+  if (i.scrollbarYTop === 0) {
+    i.scrollbarYTop = 2;
+  }
+
   updateCss(element, i);
 
   if (i.scrollbarXActive) {

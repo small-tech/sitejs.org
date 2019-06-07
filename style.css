@@ -179,10 +179,15 @@ pre {
   border: 1px solid #e8e8e8;
 }
 
-/* Force perfect scrollbar to appear on the right */
+/* Force perfect scrollbar to appear on the right and make the track narrower. */
 .ps__rail-y {
   left: unset !important;
   right: 0 !important;
+  width: 11px;
+}
+
+.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
+  width: 6px;
 }
 
 .terminal > pre {
