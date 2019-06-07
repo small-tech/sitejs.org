@@ -16,7 +16,7 @@ The web site for Site.js with an interactive presentation to demonstrate it in u
 
 ## Useful components
 
-See:
+You might find these components useful in your own projects:
 
   * [Browser presentation](js/browser-presentation.js): an in-browser browser with location-bar typing animations and animated refresh.
 
