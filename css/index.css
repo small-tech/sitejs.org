@@ -75,10 +75,22 @@ nav > ul {
   list-style: none;
 }
 
-nav li {
+nav li, nav a {
   color: #4D7072;
+}
+
+nav a:hover {
+  color:#334b4c;
+  border-bottom: 2px solid #334b4c;
+}
+
+nav li {
   display: inline;
   padding-right: 1em;
+}
+
+nav a {
+  text-decoration: none;
 }
 
 nav li:last-of-type {
@@ -121,6 +133,16 @@ h3 {
   line-height: 1.5;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+}
+
+a {
+  color: #334b4c;
+  text-decoration: underline;
+  text-decoration-color: #CCD6CE;
+}
+
+a:hover {
+  color: #466B6A;
 }
 
 pre, code {
