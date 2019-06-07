@@ -222,6 +222,7 @@ const firstTerminalPresentation = new TerminalPresentation(
                 // On the next Next button click, remove the second terminal presentation and return
                 // control to the first terminal presentation.
                 const clearUpSecondTerminalPresentation = event => {
+                  nextButton.disabled = true
                   nextButton.removeEventListener('click', clearUpSecondTerminalPresentation)
                   nextButton.addEventListener('click', nextButtonFirstTerminalPresentationHandler)
 
@@ -292,7 +293,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       `${REMOTE_PROMPT} `,
       () => {
         // After the production server is run, simulate it being loaded in the browser.
-        nextButton.disabled = true
+        setTimeout(() => { nextButton.disabled = true }, 0)
 
         setTimeout(() => {
           firstTerminalPresentation.unfocus()
