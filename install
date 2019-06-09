@@ -1,15 +1,39 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "Installing site.js site for development…"
+######################################################################
+#
+# Site.js v11.0.0 Installer
+#
+# To use:
+#
+# wget -qO- https://sitejs.org/install | bash
+#
+# This script is only for Linux and macOS.
+# On Windows, please use Windows Subsystem for Linux.
+#
+######################################################################
 
-# Install build dependencies.
-echo " > Build dependencies"
-npm install --global minify
-npm install --global imagemin-cli
-npm install --global svg-sprite
+set -e
+echo
+echo " 📡 Downloading Site.js v11.0.0…"
 
-# Install Node dependencies.
-echo " > Node dependecies."
-npm install
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Linux
+  wget -q https://sitejs.org/releases/linux/11.0.0.tar.gz
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS
+  wget -q https://sitejs.org/releases/macos/11.0.0.tar.gz
+else
+  # Unsupported
+  echo "\n ❌ Error: this operating system is not supported.\n"
+  exit 1
+fi
 
-echo " Done."
+echo " 📦 Installing…"
+gzip -d 11.0.0.tar.gz
+tar -xvf 11.0.0.tar > /dev/null
+sudo mv site /usr/local/bin/
+rm 11.0.0.tar
+
+echo " 🎉 Done!"
+echo

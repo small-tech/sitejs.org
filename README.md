@@ -5,7 +5,7 @@ The web site for Site.js with an interactive presentation to demonstrate it in u
 ## Install
 
 ```sh
-./install
+./i
 ```
 
 ## Build

@@ -44,4 +44,12 @@ echo " > Copy background image"
 mkdir dist/images
 cp images/mountains.jpg dist/images/mountains.jpg
 
+# Copy binary releases.
+echo " > Copy Site.js binary releases"
+cp -R releases dist/
+
+# Copy install script.
+echo " > Copy install script"
+cp install dist/install
+
 echo "\nDone.\n"
