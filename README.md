@@ -14,6 +14,14 @@ The web site for Site.js with an interactive presentation to demonstrate it in u
 ./build
 ```
 
+## Deploy
+
+If you have SSH access to the Site.js web site:
+
+```sh
+./deploy
+```
+
 ## Useful components
 
 You might find these components useful in your own projects:
