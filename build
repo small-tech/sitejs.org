@@ -50,6 +50,6 @@ cp -R releases dist/
 
 # Copy install script.
 echo " > Copy install script"
-cp install dist/install
+cp installation-script/install dist/install
 
 echo "\nDone.\n"
