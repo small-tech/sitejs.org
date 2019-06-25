@@ -22,6 +22,8 @@ If you have SSH access to the Site.js web site:
 ./deploy
 ```
 
+__Note:__ The scripts use the latest Site.js syntax.
+
 ## Useful components
 
 You might find these components useful in your own projects:

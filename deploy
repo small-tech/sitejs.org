@@ -4,6 +4,6 @@
 
 echo "Deploying Site.js site using Site.js sync…\n"
 
-site sync dist sitejs.org --folder=site --exit-on-sync
+site dist --sync-to=sitejs.org:site --exit-on-sync
 
 echo "\nSite.js web site deployment complete.\n"
