@@ -528,6 +528,8 @@ button:disabled {
 .emoji-magnifying-glass-tilted-right            { background-image: url('../images/emoji/0160_1f50e.svg') }
 .emoji-new-button                               { background-image: url('../images/emoji/0170_1f195.svg') }
 .emoji-pen                                      { background-image: url('../images/emoji/0180_1f58a.svg') }
+.emoji-smiling-face-with-halo                   { background-image: url('../images/emoji/0190_1f607.svg') }
+.emoji-bar-chart                                { background-image: url('../images/emoji/0200_1f4ca.svg') }
 
 .icon-right-triangle                            { background-image: url('../images/icons/0010_right-triangle.svg') }
 .icon-cloud                                     { background-image: url('../images/icons/0020_cloud.svg') }

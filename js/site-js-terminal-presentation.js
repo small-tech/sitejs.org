@@ -8,7 +8,7 @@ const NEW_LINE = '\n'
 const EMPTY_LINE = '\n\n'
 const WAIT_ONE_SEC = '^1000'
 const WAIT_QUARTER_SEC = '^250'
-const VERSION = '1.0.0'
+const VERSION = '12.0.0'
 const NBSP = '&nbsp;'
 
 //
@@ -43,6 +43,8 @@ const EMOJI_REVOLVING_HEARTS = emoji('revolving-hearts')
 const EMOJI_MAGNIFYING_GLASS_TILTED_RIGHT = emoji('magnifying-glass-tilted-right')
 const EMOJI_NEW_BUTTON = emoji('new-button')
 const EMOJI_PEN = emoji('pen')
+const EMOJI_SMILING_FACE_WITH_HALO = emoji('smiling-face-with-halo')
+const EMOJI_BAR_CHART = emoji('bar-chart')
 
 // Other icons
 
@@ -109,6 +111,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node.js v10.15.3)`,
       '',
+      ` ${EMOJI_SMILING_FACE_WITH_HALO} [Site.js] First run on Linux: got privileges to bind to ports < 1024.`,
+      '',
       ` ${EMOJI_CONSTRUCTION_SIGN} [Site.js] Using locally-trusted certificates.`,
       '',
       ` ${EMOJI_NEW_BUTTON} [Nodecert] Setting up…`,
@@ -119,6 +123,8 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_PARTY_POPPER} [Nodecert] Local TLS certificates created.`,
       '',
       ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('.')} on ${inGreen('https://localhost')}`,
+      '',
+      ` ${EMOJI_BAR_CHART} For statistics, see https://localhost/909b721d634e89c44754cc036fb379e1`,
       '',
       NBSP,
       () => {
