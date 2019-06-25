@@ -62,25 +62,29 @@
 
       <pre><code>site</code></pre>
 
-      <h3 id="as-a-local-proxy-server">As a local proxy server</h3>
+      <h3 id="as-a-local-proxy-server">As a proxy server</h3>
 
       <p>Say you’re running <a href="https://gohugo.io/">Hugo</a> locally at its default location (<a href="http://localhost:1313">http://localhost:1313</a>) and you want to test it via TLS:</p>
 
-      <pre><code>site proxy localhost:1313</code></pre>
+      <pre><code>site :1313</code></pre>
 
       <p>Now you can view it at <a href="https://localhost">https://localhost</a> and even your live reload will work as Site.js in proxy mode also proxies WebSockets.</p>
 
       <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
 
-      <pre><code>site sync my-demo.site</code></pre>
+      <pre><code>site --sync-to=my-demo.site</code></pre>
 
-      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details via optional flags.</p>
+      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details by providing a fully-formed rsync remote connection string for the `--sync-to` option.</p>
 
-      <h3 id="as-a-staging-server">As a staging server</h3>
+      <h3 id="as-a-staging-server">As a testing server</h3>
 
       <p>To give others access to your server without running as a deployment server (daemon):</p>
 
-      <pre><code>site global</code></pre>
+      <pre><code>site @hostname</code></pre>
+
+      <p>Similarly, can also test with proxy servers. For example, if you want to test your Hugo site from your phone, you can expose the local port at your hostname:</p>
+
+      <pre><code>site :1313 @hostname</code></pre>
 
       <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <code>/etc/hostname</code> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your Let’s Encrypt certificates are being automatically provisioned by ACME TLS.</p>
 
@@ -102,13 +106,13 @@
 
       <pre><code>npm i @ind.ie/site.js</code></pre>
 
-      <p>Create your own dynamic web apps in Node.js using the <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#api">API</a>.</p>
+      <p>Create your own dynamic web apps in Node.js using the <a href="https://source.ind.ie/site.js/app#api">API</a>.</p>
 
       <h2 id="learn-more">Learn more</h2>
 
       <pre><code>site help</code></pre>
 
-      <p><a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md">See the docs</a> for full details, like using <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#custom-error-pages">custom error pages</a> and <a href="https://source.ind.ie/hypha/tools/web-server#native-archive-cascade-support">cascading archives</a> and <a href="https://source.ind.ie/hypha/tools/web-server/blob/master/README.md#anchor-4042302">the 404→302 technique</a> for an evergreen web.</p>
+      <p><a href="https://source.ind.ie/site.js/app/#sitejs">See the docs</a> for full details, like using <a href="https://source.ind.ie/site.js/app#custom-error-pages">custom error pages</a> and <a href="https://source.ind.ie/site.js/app#native-cascading-archives-support">cascading archives</a> and <a href="https://source.ind.ie/site.js/app#native-404-302-support">the 404→302 technique</a> for an evergreen web.</p>
 
       <h2 id="about">About</h2>
 
@@ -116,7 +120,7 @@
 
       <p>Made with ♥ by Ind.ie.</p>
 
-      <p>If you like our work, <a href="https://ind.ie/fund/">fund us</a>.</p>
+      <p>If you like our work and want to help us exist, <a href="https://ind.ie/fund/">fund us</a>.</p>
     </div>
   </main>
 
