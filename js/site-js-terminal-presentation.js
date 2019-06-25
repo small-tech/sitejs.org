@@ -149,10 +149,10 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `${PROMPT} ${WAIT_ONE_SEC}${comment('Update the web page')} `,
-      `${PROMPT} echo 'Hello, &lt;strong&gt;staging!&lt;/strong&gt;' > index.html`,
+      `${PROMPT} echo 'Hello, &lt;strong&gt;testing!&lt;/strong&gt;' > index.html`,
       '',
-      `${PROMPT} ${WAIT_ONE_SEC}${comment('Run a globally-reachable staging server')}`,
-      `${PROMPT} site global `
+      `${PROMPT} ${WAIT_ONE_SEC}${comment('Run a globally-reachable testing server')}`,
+      `${PROMPT} site @hostname`
     ],
     [
       // The global server output.
@@ -164,6 +164,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       '',
       ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('.')} on ${inGreen('https://dev.ar.al')}`,
       '',
+      ` ${EMOJI_BAR_CHART} For statistics, see https://localhost/909b721d634e89c44754cc036fb379e1`,
       NBSP,
       () => {
         setTimeout(() => { nextButton.disabled = true }, 0)
@@ -260,7 +261,7 @@ const firstTerminalPresentation = new TerminalPresentation(
                 setTimeout(() => {
                   firstTerminalPresentation.unfocus()
                   secondTerminalPresentation.unfocus()
-                  browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, <strong>staging!</strong></p>', () => {
+                  browserPresentation.browseTo('https://dev.ar.al', '<p>Hello, <strong>testing!</strong></p>', () => {
                     setTimeout(() => {
                       nextButton.disabled = false
                     }, 1000)
@@ -280,7 +281,7 @@ const firstTerminalPresentation = new TerminalPresentation(
       ` ${EMOJI_SPARKLING_HEART} Goodbye!`,
       '',
       `${PROMPT} ${comment('SSH to production server')}`,
-      `${PROMPT} ssh my-demo.site`
+      `${PROMPT} ssh my-demo.site `
     ],
     [
       () => {
@@ -334,21 +335,23 @@ const firstTerminalPresentation = new TerminalPresentation(
       `${PROMPT} echo '${EMOJI_BALLOON}&lt;br&gt;&amp;nbsp; ${EMOJI_WOMAN_RUNNING} There is always hope!' > index.html`,
       '',
       `${PROMPT} ${comment('Start a local server and sync to remote server')}`,
-      `${PROMPT} site sync my-demo.site `
+      `${PROMPT} site --sync-to=my-demo.site `
     ],
     [
       // Sync output.
       '',
-      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Will sync folder ${inCyan('./')} to host ${inCyan('my-demo.site')}`,
-      '',
-      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Starting…`,
-      '',
-      ` ${EMOJI_SPARKLING_HEART} Site.js v1.0.0 (running on Node v10.15.3)`,
+      ` ${EMOJI_SPARKLING_HEART} Site.js v${VERSION} (running on Node v10.15.3)`,
       '',
       ` ${EMOJI_CONSTRUCTION_SIGN} [Site.js] Using locally-trusted certificates.`,
       ` ${EMOJI_SCROLL} [Nodecert] Local development TLS certificate exists.`,
       '',
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Syncing folder ${inCyan('./')} to account ${inCyan('demo')} on host ${inCyan('my-demo.site')}`,
+      '',
+      ` ${EMOJI_REVOLVING_HEARTS} [Sync] Starting…`,
+      '',
       ` ${EMOJI_PARTY_POPPER} Serving ${inCyan('./')} on ${inGreen('https://localhost')}`,
+      '',
+      ` ${EMOJI_BAR_CHART} For statistics, see https://localhost/909b721d634e89c44754cc036fb379e1`,
       '',
       ` ${EMOJI_REVOLVING_HEARTS} [Sync] Calculating changes…`,
       ` ${EMOJI_REVOLVING_HEARTS} [Sync] ↑ 140 bytes ↓ 12 bytes (101.33 bytes/sec)`,
