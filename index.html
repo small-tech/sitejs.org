@@ -47,17 +47,17 @@
 
       <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="/web-server/install.sh">view the source code</a> and make sure you understand what it does.</strong></p>
 
-      <pre><code>wget -qO- https://sitejs.org/install | bash</code></pre>
+      <pre><code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
 
       <h2 id="uninstall">Uninstall</h2>
 
-      <pre><code>site uninstall</code></pre>
+      <pre><code>site <span class='token keyword'>uninstall</span></code></pre>
 
       <h2 id="use">Use</h2>
 
       <h3 id="as-a-development-server">As a development server</h3>
 
-      <p>You can also use Site.js as a local development server <strong>with locally-trusted TLS certificates</strong> (no certificate warnings) on Linux, macOS, and Windows.</p>
+      <p>You can use Site.js as a local development server <strong>with locally-trusted TLS certificates</strong> (no certificate warnings) on Linux, macOS, and Windows.</p>
 
       <p>To start serving the current folder at <a href="https://localhost:">https://localhost:</a></p>
 
@@ -67,31 +67,31 @@
 
       <p>Say you’re running <a href="https://gohugo.io/">Hugo</a> locally at its default location (<a href="http://localhost:1313">http://localhost:1313</a>) and you want to test it via TLS:</p>
 
-      <pre><code>site :1313</code></pre>
+      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span></code></pre>
 
       <p>Now you can view it at <a href="https://localhost">https://localhost</a> and even your live reload will work as Site.js in proxy mode also proxies WebSockets.</p>
 
       <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
 
-      <pre><code>site --sync-to=my-demo.site</code></pre>
+      <pre><code>site <span class="token keyword">--sync-to</span>=<span class="token string">my-demo.site</span></code></pre>
 
-      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details by providing a fully-formed rsync remote connection string for the `--sync-to` option.</p>
+      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
 
       <h3 id="as-a-staging-server">As a testing server</h3>
 
       <p>To give others access to your server without running as a deployment server (daemon):</p>
 
-      <pre><code>site @hostname</code></pre>
+      <pre><code>site <span class="token keyword">@hostname</span></code></pre>
 
       <p>Similarly, can also test with proxy servers. For example, if you want to test your Hugo site from your phone, you can expose the local port at your hostname:</p>
 
-      <pre><code>site :1313 @hostname</code></pre>
+      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span> <span class="token keyword">@hostname</span></code></pre>
 
-      <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <code>/etc/hostname</code> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your Let’s Encrypt certificates are being automatically provisioned by ACME TLS.</p>
+      <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <em>/etc/hostname</em> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your <a href='https://letsencrypt.org/'>Let’s Encrypt</a> certificates are being automatically provisioned by <a href='https://source.ind.ie/hypha/tools/acme-tls'>ACME TLS</a>.</p>
 
       <h3 id="as-a-production-server">As a production server</h3>
 
-      <pre><code>site enable</code></pre>
+      <pre><code>site <span class="token keyword">enable</span></code></pre>
 
       <p>Once your server is running, it will survive crashes and server restarts and you can use the following commands:</p>
 
@@ -105,9 +105,9 @@
 
       <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
 
-      <pre><code>mkdir -p count/.dynamic</code>
-<code>echo '<code class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</code>' > count/.dynamic/index.js</code>
-<code>site count</code></pre>
+      <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">count</span>/.dynamic</code>
+<code>echo '<code class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</code>' <span class='token keyword'>></span> count/.dynamic/<span class='token string'>index.js</span></code>
+<code>site <span class="token string">count</span></code></pre>
 
       <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
 
@@ -127,14 +127,16 @@ module.exports = (request, response) => {
 
       <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
 
-      <p>In addition to HTTPS GET and POST routes, you can also specify WebSocket (WSS) routes in DotJS and mix dynamic and static routes. For example, here’s all the server-side code you need to create <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>a very basic chat app</a>:</p>
+      <p>In addition to static routes and dynamic HTTPS routes, you can also specify WebSocket (WSS) routes in DotJS. You can also mix them as you please.</p>
 
-      <pre><code>mkdir -p basic-chat/.dynamic/.wss</code>
+      <p>For example, to create <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>a very basic chat app</a>:</p>
+
+      <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">basic-chat</span>/.dynamic/.wss</code>
 <code>touch basic-chat/.dynamic/.wss/chat.js</code>
-<code># Add the code below to chat.js.</code>
-<code>site basic-chat</code></pre>
+<code><span class="token comment"># Add the code below to chat.js.</span></code>
+<code>site <span class="token string">basic-chat</span></code></pre>
 
-      <p>The code for _chat.js_:</p>
+      <p>The code for <em>chat.js</em>:</p>
 
       <pre><code class='language-js'>module.exports = function (webSocket, request) {
   webSocket.on('message', message => {
@@ -152,9 +154,9 @@ webSocket.send('hello')</code></pre>
 
       <p>To test <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>this example</a> with a web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
 
-      <pre><code>git clone https://source.ind.ie/site.js/app</code>
-<code>cd app</code>
-<code>bin/site.js example/wss-basic-chat</code></pre>
+      <pre><code>git <span class='token keyword'>clone</span> <span class='token string'>https://source.ind.ie/site.js/app</span></code>
+<code>cd <span class='token string'>app</span></code>
+<code>bin/site.js <span class='token string'>example/wss-basic-chat</span></code></pre>
 
       <p>The WebSocket functionality is from <a href='https://github.com/HenningM/express-ws/pull/122'>a slightly modified version</a> of <a href='https://github.com/HenningM/express-ws'>express-ws</a> (which in turn uses <a href=''>ws</a>). Both of those links have more usage details.</p>
 
@@ -162,13 +164,13 @@ webSocket.send('hello')</code></pre>
 
       <h2 id="extend">Use as a module</h2>
 
-      <pre><code>npm i @ind.ie/site.js</code></pre>
+      <pre><code>npm <span class='token keyword'>i</span> <span class='token string'>@ind.ie/site.js</span></code></pre>
 
       <p>You can use Site.js as a module in your Node.js projects. See the <a href="https://source.ind.ie/site.js/app#api">API documentation</a> for details.</p>
 
       <h2 id="learn-more">Learn more</h2>
 
-      <pre><code>site help</code></pre>
+      <pre><code>site <span class='token keyword'>help</span></code></pre>
 
       <p><a href="https://source.ind.ie/site.js/app/#sitejs">See the docs</a> for full details, like using <a href="https://source.ind.ie/site.js/app#custom-error-pages">custom error pages</a> and <a href="https://source.ind.ie/site.js/app#native-cascading-archives-support">cascading archives</a> and <a href="https://source.ind.ie/site.js/app#native-404-302-support">the 404→302 technique</a> for an evergreen web.</p>
 
