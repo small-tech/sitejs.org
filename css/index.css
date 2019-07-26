@@ -304,6 +304,7 @@ main pre code:before  {
 
 main ul {
   list-style: disc;
+  margin-bottom: 1.5em;
 }
 
 main li {
@@ -486,6 +487,10 @@ button:disabled {
   top: -1000px;
   left: -1000px;
   opacity: 0;
+}
+
+.emoji.inline {
+  margin: 0;
 }
 
 /********************************************************************************
