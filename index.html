@@ -122,6 +122,41 @@ module.exports = (request, response) => {
     .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
 }</pre>
 
+      <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, it’s because that’s exactly what it is.</p>
+
+      <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+
+      <p>In addition to HTTPS GET and POST routes, you can also specify WebSocket (WSS) routes in DotJS and mix dynamic and static routes. For example, here’s all the server-side code you need to create <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>a very basic chat app</a>:</p>
+
+      <pre><code>mkdir -p basic-chat/.dynamic/.wss</code>
+<code>touch basic-chat/.dynamic/.wss/chat.js</code>
+<code># Add the code below to chat.js.</code>
+<code>site basic-chat</code></pre>
+
+      <p>The code for _chat.js_:</p>
+
+      <pre>module.exports = function (webSocket, request) {
+  webSocket.on('message', message => {
+    this.getWss('/chat').clients.forEach(client => {
+      client.send(message)
+    })
+  })
+}</pre>
+
+      <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console both of them:</p>
+
+      <pre>const webSocket = new WebSocket('https://localhost/chat')
+webSocket.onmessage = message => console.log(message)
+webSocket.send('hello')</pre>
+
+      <p>To test <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>this example</a> with a web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
+
+      <pre><code>git clone https://source.ind.ie/site.js/app</code>
+<code>cd app</code>
+<code>bin/site.js example/wss-basic-chat</code></pre>
+
+      <p>The WebSocket functionality is from <a href='https://github.com/HenningM/express-ws/pull/122'>a slightly modified version</a> of <a href='https://github.com/HenningM/express-ws'>express-ws</a> (which in turn uses <a href=''>ws</a>). Both of those links have more usage details.</p>
+
       <p>For full details, see the <a href='https://source.ind.ie/site.js/app/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://source.ind.ie/site.js/app/tree/master/examples'>examples</a>.</p>
 
       <h2 id="extend">Use as a module</h2>

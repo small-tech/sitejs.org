@@ -159,6 +159,8 @@ pre {
   background-color: black;
   color: white;
 
+  line-height: 1.5;
+
   /* Make sure preformatted text wraps. */
   white-space: pre-wrap;       /* css-3 */
   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -304,7 +306,7 @@ main pre code:before  {
 
 main pre code {
   display: block;
-  margin-top: -0.5em;
+  margin-top: -1em;
 }
 
 main pre code:nth-of-type(1) {
