@@ -14,6 +14,36 @@ The web site for Site.js with an interactive presentation to demonstrate it in u
 ./build
 ```
 
+The following features require [Site.js](https://sitejs.org):
+
+## Test locally
+
+Test the source:
+
+```sh
+site
+```
+
+Test the distribution build:
+
+```sh
+site dist
+```
+
+## Stage
+
+Stage the source:
+
+```sh
+site @hostname
+```
+
+Stage the distribution build:
+
+```
+site dist @hostname
+```
+
 ## Deploy
 
 If you have SSH access to the Site.js web site:
