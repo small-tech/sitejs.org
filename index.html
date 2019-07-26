@@ -7,6 +7,7 @@
   <!-- Start: styles -->
   <link rel='stylesheet' href='css/perfect-scrollbar.css'>
   <link rel='stylesheet' href='css/facade.css'>
+  <link rel='stylesheet' href='css/prism.css'>
   <link rel='stylesheet' href='css/index.css'>
   <!-- End: styles -->
 </head>
@@ -105,7 +106,7 @@
       <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
 
       <pre><code>mkdir -p count/.dynamic</code>
-<code>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > count/.dynamic/index.js</code>
+<code>echo '<code class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</code>' > count/.dynamic/index.js</code>
 <code>site count</code></pre>
 
       <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
@@ -114,13 +115,13 @@
 
       <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
 
-      <pre>let counter = 0
+      <pre><code class='language-js'>let counter = 0
 
 module.exports = (request, response) => {
   response
     .type('html')
     .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
-}</pre>
+}</code></pre>
 
       <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, it’s because that’s exactly what it is.</p>
 
@@ -135,19 +136,19 @@ module.exports = (request, response) => {
 
       <p>The code for _chat.js_:</p>
 
-      <pre>module.exports = function (webSocket, request) {
+      <pre><code class='language-js'>module.exports = function (webSocket, request) {
   webSocket.on('message', message => {
     this.getWss('/chat').clients.forEach(client => {
       client.send(message)
     })
   })
-}</pre>
+}</code></pre>
 
       <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console both of them:</p>
 
-      <pre>const webSocket = new WebSocket('https://localhost/chat')
+      <pre><code class='language-js'>const webSocket = new WebSocket('https://localhost/chat')
 webSocket.onmessage = message => console.log(message)
-webSocket.send('hello')</pre>
+webSocket.send('hello')</code></pre>
 
       <p>To test <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>this example</a> with a web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
 
@@ -198,6 +199,7 @@ webSocket.send('hello')</pre>
 
   <!-- Start: scripts -->
   <script src='js/perfect-scrollbar.js'></script>
+  <script src='js/prism.js'></script>
   <script src='node_modules/typed.js/lib/typed.js'></script>
   <script src='js/terminal-presentation.js'></script>
   <script src='js/browser-presentation.js'></script>

@@ -297,7 +297,7 @@ main pre {
 }
 
 /* Add the prompt to the terminal examples */
-main pre code:before  {
+main pre code:not(.language-js):before  {
   content: '  ';
   /* margin: 0 .05em 0 .1em; */
   vertical-align: -0.1em;
@@ -328,6 +328,10 @@ p code, li code {
 
 li.selected {
   color: #151D1F;
+}
+
+code > code {
+  display: inline;
 }
 
 .unfocused {
