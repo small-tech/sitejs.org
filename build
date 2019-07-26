@@ -18,7 +18,6 @@ minify css/index.css >> tmp/styles.css
 # JS (temporary; to be collated into index later).
 echo " > Minify JS"
 minify js/perfect-scrollbar.js >> tmp/scripts.js
-minify js/prism.js >> tmp/scripts.js
 minify node_modules/typed.js/lib/typed.js >> tmp/scripts.js
 minify js/terminal-presentation.js >> tmp/scripts.js
 minify js/browser-presentation.js >> tmp/scripts.js

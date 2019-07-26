@@ -106,7 +106,7 @@
       <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
 
       <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">count</span>/.dynamic</code>
-<code>echo '<code class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</code>' <span class='token keyword'>></span> count/.dynamic/<span class='token string'>index.js</span></code>
+<code>echo '<code class='language-js'>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> r</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>r<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">}</span></code>' <span class='token keyword'>></span> count/.dynamic/<span class='token string'>index.js</span></code>
 <code>site <span class="token string">count</span></code></pre>
 
       <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
@@ -115,13 +115,13 @@
 
       <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
 
-      <pre><code class='language-js'>let counter = 0
+      <pre><code class='language-js'><span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span>
 
-module.exports = (request, response) => {
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   response
-    .type('html')
-    .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
-}</code></pre>
+    <span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;You’ve visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> time</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
 
       <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, it’s because that’s exactly what it is.</p>
 
@@ -138,19 +138,19 @@ module.exports = (request, response) => {
 
       <p>The code for <em>chat.js</em>:</p>
 
-      <pre><code class='language-js'>module.exports = function (webSocket, request) {
-  webSocket.on('message', message => {
-    this.getWss('/chat').clients.forEach(client => {
-      client.send(message)
-    })
-  })
-}</code></pre>
+<pre><code class='language-js'>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">webSocket<span class="token punctuation">,</span> request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  webSocket<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getWss</span><span class="token punctuation">(</span><span class="token string">'/chat'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clients<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">client</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      client<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
 
       <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console both of them:</p>
 
-      <pre><code class='language-js'>const webSocket = new WebSocket('https://localhost/chat')
-webSocket.onmessage = message => console.log(message)
-webSocket.send('hello')</code></pre>
+<pre><code class='language-js'><span class="token keyword">const</span> webSocket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'https://localhost/chat'</span><span class="token punctuation">)</span>
+webSocket<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+webSocket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span></code></pre>
 
       <p>To test <a href='https://source.ind.ie/site.js/app/tree/master/examples/wss-basic-chat'>this example</a> with a web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
 
@@ -201,7 +201,6 @@ webSocket.send('hello')</code></pre>
 
   <!-- Start: scripts -->
   <script src='js/perfect-scrollbar.js'></script>
-  <script src='js/prism.js'></script>
   <script src='node_modules/typed.js/lib/typed.js'></script>
   <script src='js/terminal-presentation.js'></script>
   <script src='js/browser-presentation.js'></script>
