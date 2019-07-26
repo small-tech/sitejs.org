@@ -100,6 +100,30 @@
       <li><code>site disable</code>: stop the server and remove it from startup items.</li>
       </ul>
 
+      <h2 id="dynamic">Dynamic sites</h2>
+
+      <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
+
+      <pre><code>mkdir -p count/.dynamic</code>
+<code>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > count/.dynamic/index.js</code>
+<code>site count</code></pre>
+
+      <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
+
+      <p>Congratulations, you just made your first fully-dynamic and secure DotJS site! (Seriously.)</p>
+
+      <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
+
+      <pre>let counter = 0
+
+module.exports = (request, response) => {
+  response
+    .type('html')
+    .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
+}</pre>
+
+      <p>For full details, see the <a href='https://source.ind.ie/site.js/app/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://source.ind.ie/site.js/app/tree/master/examples'>examples</a>.</p>
+
       <h2 id="extend">Use as a module</h2>
 
       <pre><code>npm i @ind.ie/site.js</code></pre>

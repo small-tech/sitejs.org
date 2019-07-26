@@ -302,6 +302,15 @@ main pre code:before  {
   background-image: url('../images/icons/0010_right-triangle.svg');
 }
 
+main pre code {
+  display: block;
+  margin-top: -0.5em;
+}
+
+main pre code:nth-of-type(1) {
+  margin-top: 0;
+}
+
 main ul {
   list-style: disc;
   margin-bottom: 1.5em;
