@@ -602,3 +602,15 @@ button:disabled {
     display: none;
   }
 }
+
+.copyright {
+  margin-top: 1em;
+  text-align: center;
+}
+
+#logo {
+  display: block;
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
