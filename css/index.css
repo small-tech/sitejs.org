@@ -160,7 +160,10 @@ pre {
   color: white;
 
   line-height: 1.5;
+}
 
+/* Make sure all code wraps so we don’t overflow the page width. */
+pre, code[class*="language-"], pre[class*="language-"] {
   /* Make sure preformatted text wraps. */
   white-space: pre-wrap;       /* css-3 */
   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
