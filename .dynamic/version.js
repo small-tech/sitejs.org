@@ -1,1 +1,1 @@
-module.exports = (request, response) => { response.end('12.2.0') }
+module.exports = (request, response) => { response.end('12.4.0') }
