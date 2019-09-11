@@ -47,7 +47,14 @@
 
       <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="https://source.ind.ie/site.js/site/blob/master/installation-script/install">view the source code</a> and make sure you understand what it does.</strong></p>
 
-      <pre><code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+      <pre><code><span id='download-command'>wget -qO-</span> <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+
+      <script>
+        // On Macs, use curl, which is installed by default, instead of wget, which is a pain to install.
+        if (navigator.userAgent.toLowerCase().includes('mac os x')) {
+          document.querySelector('#download-command').innerText = 'curl -s'
+        }
+      </script>
 
       <h2 id="uninstall">Uninstall</h2>
 
