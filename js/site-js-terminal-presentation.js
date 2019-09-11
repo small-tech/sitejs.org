@@ -396,7 +396,6 @@ const firstTerminalPresentation = new TerminalPresentation(
     onReady: () => {
       // Don’t auto run; wait for the person to read the instructions in the browser window
       // (which has focus), and to press the Next button.
-      console.log('stopping')
       firstTerminalPresentation.stop()
 
       // This is run the first time the Next button is presssed.
