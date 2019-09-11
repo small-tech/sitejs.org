@@ -91,7 +91,7 @@ const firstTerminalPresentation = new TerminalPresentation(
   [
     [
       `${PROMPT} ${comment('Install')}${WAIT_QUARTER_SEC}`,
-      `${PROMPT} wget -qO- https://sitejs.org/install | bash`,
+      `${PROMPT} ${navigator.userAgent.toLowerCase().includes('mac os x') ? 'curl -s' : 'wget -qO-'} https://sitejs.org/install | bash`,
     ],
     [
       '',
