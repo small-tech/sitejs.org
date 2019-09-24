@@ -52,6 +52,10 @@ cp images/emoji/0040_1f496.svg dist/images/emoji/0040_1f496.svg
 echo " > Copy Site.js binary releases"
 cp -R releases dist/
 
+# Copy the dynamic routes.
+echo " > Copy dynamic routes"
+cp -R .dynamic dist/
+
 # Copy install script.
 echo " > Copy install script"
 cp installation-script/install dist/install
