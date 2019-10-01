@@ -42,7 +42,7 @@
   </header>
 
   <main>
-      <div class='content'>
+    <div class='content'>
       <h2 id="install">Install</h2>
 
       <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="https://source.ind.ie/site.js/site/blob/master/installation-script/install">view the source code</a> and make sure you understand what it does.</strong></p>
@@ -50,19 +50,19 @@
       <section id='install-linux' class='installation-instructions'>
         <h3>Linux</h3>
 
-        <pre><code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+        <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
       </section>
 
-      <section id='install-mac'>
+      <section id='install-mac' class='installation-instructions'>
         <h3>macOS</h3>
 
-        <pre><code>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+        <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
       </section>
 
-      <section id='install-windows'>
+      <section id='install-windows' class='installation-instructions'>
         <h3>Windows 10 (PowerShell on Windows Terminal)</h3>
 
-        <pre><code>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/windows</span>).Content</code></pre>
+        <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/windows</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
       </section>
 
       <p id='links-to-instructions-for-other-platforms' hidden>
@@ -81,7 +81,7 @@
         if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
         if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
-        displayInstallationInstructionsFor(currentPlatform)
+        displayInstallationInstructionsFor('currentPlatform')
 
         function displayInstallationInstructionsFor(currentPlatform) {
           if (currentPlatform !== 'unknown') {
@@ -96,9 +96,30 @@
 
             // Show links to instructions for other platforms.
             document.querySelector('#links-to-instructions-for-other-platforms').hidden = false
+
+            // Show all the copy to clipboard buttons.
+            document.querySelectorAll('.copy-to-clipboard').forEach(button => button.hidden = false)
           }
         }
 
+        function copyInstallationInstructionsToClipboardFor(platform) {
+          const installationCommand = document.querySelector(`#code-${platform}`)
+
+          const selectedCode = document.createRange()
+          selectedCode.selectNode(installationCommand)
+          window.getSelection().addRange(selectedCode)
+
+          try {
+            const success = document.execCommand('copy')
+            if (!success) console.log('Failed to copy installation command.')
+          } catch(error) {
+            console.log('Copy command threw an error', error)
+          }
+
+          // Remove the selections - NOTE: Should use
+          // removeRange(range) when it is supported
+          window.getSelection().removeRange(selectedCode)
+        }
       </script>
 
       <h2 id="uninstall">Uninstall</h2>

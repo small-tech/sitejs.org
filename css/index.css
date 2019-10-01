@@ -337,6 +337,16 @@ code > code {
   display: inline;
 }
 
+.installation-instructions button {
+  float: right;
+  margin-top: -1.6em;
+}
+
+.installation-instructions pre code {
+  /* Ensure the copy button doesn’t overlap the code itself. */
+  margin-right: 5em;
+}
+
 .unfocused {
   filter: brightness(60%);
 }
