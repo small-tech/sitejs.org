@@ -45,7 +45,7 @@
     <div class='content'>
       <h2 id="install">Install</h2>
 
-      <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="https://source.ind.ie/site.js/site/blob/master/installation-script/install">view the source code</a> and make sure you understand what it does.</strong></p>
+      <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">Linux and macOS</a>, <a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">Windows</a>)</span> and make sure you understand what it does.</strong></p>
 
       <section id='install-linux' class='installation-instructions'>
         <h3>Linux</h3>
@@ -81,7 +81,7 @@
         if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
         if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
-        displayInstallationInstructionsFor('currentPlatform')
+        displayInstallationInstructionsFor(currentPlatform)
 
         function displayInstallationInstructionsFor(currentPlatform) {
           if (currentPlatform !== 'unknown') {
@@ -99,6 +99,10 @@
 
             // Show all the copy to clipboard buttons.
             document.querySelectorAll('.copy-to-clipboard').forEach(button => button.hidden = false)
+
+            // Rewrite the view installation script section copy to simplify it and link directly
+            // to the relevant script.
+            document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
           }
         }
 
