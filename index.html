@@ -72,64 +72,6 @@
         <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
       </p>
 
-      <script>
-        // Progressively enhance the installation instructions to only show the ones for the
-        // detected platform (with links to the others), if we can detect a supported platform.
-        const userAgent = navigator.userAgent.toLowerCase()
-        let currentPlatform = 'unknown'
-        if (userAgent.includes('linux')) { currentPlatform = 'linux' }
-        if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
-        if (userAgent.includes('windows')) { currentPlatform = 'windows'}
-
-        displayInstallationInstructionsFor(currentPlatform)
-
-        function displayInstallationInstructionsFor(currentPlatform) {
-          if (currentPlatform !== 'unknown') {
-            // Show the instructions for the detected platform and hide the ones for the other platforms.
-            ['linux', 'mac', 'windows'].forEach(platform => {
-              document.querySelector(`#install-${platform}`).hidden = !(platform === currentPlatform)
-              document.querySelector(`#link-${platform}`).hidden = (platform === currentPlatform)
-            })
-
-            // Cosmetic: don’t show the last separator if there’s no content after it.
-            document.querySelector('#pipe-before-windows').hidden = (currentPlatform === 'windows')
-
-            // Show links to instructions for other platforms.
-            document.querySelector('#links-to-instructions-for-other-platforms').hidden = false
-
-            // Show all the copy to clipboard buttons.
-            document.querySelectorAll('.copy-to-clipboard').forEach(button => button.hidden = false)
-
-            // Rewrite the view installation script section copy to simplify it and link directly
-            // to the relevant script.
-            document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
-
-            // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
-            // we support on Windows 10.
-            document.querySelector('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
-          }
-        }
-
-        function copyInstallationInstructionsToClipboardFor(platform) {
-          const installationCommand = document.querySelector(`#code-${platform}`)
-
-          const selectedCode = document.createRange()
-          selectedCode.selectNode(installationCommand)
-          window.getSelection().addRange(selectedCode)
-
-          try {
-            const success = document.execCommand('copy')
-            if (!success) console.log('Failed to copy installation command.')
-          } catch(error) {
-            console.log('Copy command threw an error', error)
-          }
-
-          // Remove the selections - NOTE: Should use
-          // removeRange(range) when it is supported
-          window.getSelection().removeRange(selectedCode)
-        }
-      </script>
-
       <h2 id="uninstall">Uninstall</h2>
 
       <pre><code>site <span class='token keyword'>uninstall</span></code></pre>
@@ -162,13 +104,15 @@
 
       <p>To give others access to your server without running as a deployment server (daemon):</p>
 
-      <pre><code>site <span class="token keyword">@hostname</span></code></pre>
+      <pre><code>site <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
 
       <p>Similarly, can also test with proxy servers. For example, if you want to test your Hugo site from your phone, you can expose the local port at your hostname:</p>
 
-      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span> <span class="token keyword">@hostname</span></code></pre>
+      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span> <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
 
       <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <em>/etc/hostname</em> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your <a href='https://letsencrypt.org/'>Let’s Encrypt</a> certificates are being automatically provisioned by <a href='https://source.ind.ie/hypha/tools/acme-tls'>ACME TLS</a>.</p>
+
+      <p class='windows-only'>Note that on Windows, <a href='https://source.ind.ie/site.js/app/blob/master/README.md#windows-10-notes'>your full computer name</a> is used as your hostname and you must put quotation marks around <code>@hostname</code> and <code>@localhost</code>, which you do not need to do on other platforms.</p>
 
       <h3 id="as-a-production-server">As a production server</h3>
 
@@ -278,6 +222,67 @@ webSocket<span class="token punctuation">.</span><span class="token function">se
   </main>
 
   <!-- Start: scripts -->
+  <script>
+    // Progressively enhance the installation instructions to only show the ones for the
+    // detected platform (with links to the others), if we can detect a supported platform.
+    const userAgent = navigator.userAgent.toLowerCase()
+    let currentPlatform = 'unknown'
+    if (userAgent.includes('linux')) { currentPlatform = 'linux' }
+    if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
+    if (userAgent.includes('windows')) { currentPlatform = 'windows'}
+
+    displayInstallationInstructionsFor(currentPlatform)
+
+    function displayInstallationInstructionsFor(currentPlatform) {
+      if (currentPlatform !== 'unknown') {
+        // Show the instructions for the detected platform and hide the ones for the other platforms.
+        ['linux', 'mac', 'windows'].forEach(platform => {
+          document.querySelector(`#install-${platform}`).hidden = !(platform === currentPlatform)
+          document.querySelector(`#link-${platform}`).hidden = (platform === currentPlatform)
+        })
+
+        // Cosmetic: don’t show the last separator if there’s no content after it.
+        document.querySelector('#pipe-before-windows').hidden = (currentPlatform === 'windows')
+
+        // Show links to instructions for other platforms.
+        document.querySelector('#links-to-instructions-for-other-platforms').hidden = false
+
+        // Show all the copy to clipboard buttons.
+        document.querySelectorAll('.copy-to-clipboard').forEach(button => button.hidden = false)
+
+        // Rewrite the view installation script section copy to simplify it and link directly
+        // to the relevant script.
+        document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
+
+        // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
+        // we support on Windows 10.
+        document.querySelector('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
+
+        // Hide/display any Windows-only caveats.
+        document.querySelectorAll('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
+      }
+    }
+
+    function copyInstallationInstructionsToClipboardFor(platform) {
+      const installationCommand = document.querySelector(`#code-${platform}`)
+
+      const selectedCode = document.createRange()
+      selectedCode.selectNode(installationCommand)
+      window.getSelection().addRange(selectedCode)
+
+      try {
+        const success = document.execCommand('copy')
+        if (!success) console.log('Failed to copy installation command.')
+      } catch(error) {
+        console.log('Copy command threw an error', error)
+      }
+
+      // Remove the selections - NOTE: Should use
+      // removeRange(range) when it is supported
+      window.getSelection().removeRange(selectedCode)
+    }
+  </script>
+
   <script src='js/perfect-scrollbar.js'></script>
   <script src='node_modules/typed.js/lib/typed.js'></script>
   <script src='js/terminal-presentation.js'></script>
