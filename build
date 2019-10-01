@@ -59,6 +59,6 @@ cp -R .dynamic dist/
 # Copy install script.
 echo " > Copy installation scripts"
 cp installation-scripts/install dist/install
-cp installation-scripts/windows dist/windows
+cp installation-scripts/install.txt dist/install.txt
 
 echo "\nDone.\n"
