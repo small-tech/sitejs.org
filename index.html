@@ -47,13 +47,58 @@
 
       <p>Copy and paste the following command into your Terminal. <strong>Before you pipe any script into your computer, always <a href="https://source.ind.ie/site.js/site/blob/master/installation-script/install">view the source code</a> and make sure you understand what it does.</strong></p>
 
-      <pre><code><span id='download-command'>wget -qO-</span> <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+      <section id='install-linux' class='installation-instructions'>
+        <h3>Linux</h3>
+
+        <pre><code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+      </section>
+
+      <section id='install-mac'>
+        <h3>macOS</h3>
+
+        <pre><code>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code></pre>
+      </section>
+
+      <section id='install-windows'>
+        <h3>Windows 10 (PowerShell on Windows Terminal)</h3>
+
+        <pre><code>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/windows</span>).Content</code></pre>
+      </section>
+
+      <p id='links-to-instructions-for-other-platforms' hidden>
+        <strong>Instructions for other platforms:</strong>
+        <span id='link-linux'><a onClick='displayInstallationInstructionsFor("linux")'>Linux</a> | </span>
+        <span id='link-mac'><a onClick='displayInstallationInstructionsFor("mac")'>macOS</a><span id='pipe-before-windows'> | </span></span>
+        <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
+      </p>
 
       <script>
-        // On Macs, use curl, which is installed by default, instead of wget, which is a pain to install.
-        if (navigator.userAgent.toLowerCase().includes('mac os x')) {
-          document.querySelector('#download-command').innerText = 'curl -s'
+        // Progressively enhance the installation instructions to only show the ones for the
+        // detected platform (with links to the others), if we can detect a supported platform.
+        const userAgent = navigator.userAgent.toLowerCase()
+        let currentPlatform = 'unknown'
+        if (userAgent.includes('linux')) { currentPlatform = 'linux' }
+        if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
+        if (userAgent.includes('windows')) { currentPlatform = 'windows'}
+
+        displayInstallationInstructionsFor(currentPlatform)
+
+        function displayInstallationInstructionsFor(currentPlatform) {
+          if (currentPlatform !== 'unknown') {
+            // Show the instructions for the detected platform and hide the ones for the other platforms.
+            ['linux', 'mac', 'windows'].forEach(platform => {
+              document.querySelector(`#install-${platform}`).hidden = !(platform === currentPlatform)
+              document.querySelector(`#link-${platform}`).hidden = (platform === currentPlatform)
+            })
+
+            // Cosmetic: don’t show the last separator if there’s no content after it.
+            document.querySelector('#pipe-before-windows').hidden = (currentPlatform === 'windows')
+
+            // Show links to instructions for other platforms.
+            document.querySelector('#links-to-instructions-for-other-platforms').hidden = false
+          }
         }
+
       </script>
 
       <h2 id="uninstall">Uninstall</h2>

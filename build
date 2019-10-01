@@ -57,7 +57,8 @@ echo " > Copy dynamic routes"
 cp -R .dynamic dist/
 
 # Copy install script.
-echo " > Copy install script"
-cp installation-script/install dist/install
+echo " > Copy installation scripts"
+cp installation-scripts/install dist/install
+cp installation-scripts/windows dist/windows
 
 echo "\nDone.\n"

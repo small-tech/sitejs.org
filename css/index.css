@@ -341,6 +341,10 @@ code > code {
   filter: brightness(60%);
 }
 
+#links-to-instructions-for-other-platforms a {
+  cursor: pointer;
+}
+
 /********************************************************************************
  *                                                                              *
  *                                  Terminal                                    *
