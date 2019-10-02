@@ -100,6 +100,8 @@
 
       <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
 
+      <p><strong>The sync feature is not available on Windows</strong> as a viable free and open <a href='https://en.wikipedia.org/wiki/Rsync'>rsync</a> implementation does not exist for that platform.</p>
+
       <h3 id="as-a-staging-server">As a testing server</h3>
 
       <p>To give others access to your server without running as a deployment server (daemon):</p>
