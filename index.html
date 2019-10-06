@@ -45,7 +45,7 @@
     <div class='content'>
       <h2 id="install">Install</h2>
 
-      <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">Linux and macOS</a>, <a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">Windows</a>)</span> and make sure you understand what it does.</strong></p>
+      <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">Linux and macOS</a>, <a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
 
       <section id='install-linux' class='installation-instructions'>
         <h3>Linux</h3>
@@ -254,7 +254,7 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
         // Rewrite the view installation script section copy to simplify it and link directly
         // to the relevant script.
-        document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/windows">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
+        document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
 
         // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
         // we support on Windows 10.
