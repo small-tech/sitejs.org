@@ -48,7 +48,7 @@
       <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">Linux and macOS</a>, <a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
 
       <section id='install-linux' class='installation-instructions'>
-        <h3>Linux</h3>
+        <h3>Linux (x64 and Raspberry Pi)</h3>
 
         <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
       </section>
@@ -71,6 +71,10 @@
         <span id='link-mac'><a onClick='displayInstallationInstructionsFor("mac")'>macOS</a><span id='pipe-before-windows'> | </span></span>
         <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
       </p>
+
+      <h2 id="update">Update</h2>
+
+      <pre><code>site <span class='token keyword'>update</span></code></pre>
 
       <h2 id="uninstall">Uninstall</h2>
 
