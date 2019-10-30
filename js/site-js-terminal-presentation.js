@@ -8,7 +8,7 @@ const NEW_LINE = '\n'
 const EMPTY_LINE = '\n\n'
 const WAIT_ONE_SEC = '^1000'
 const WAIT_QUARTER_SEC = '^250'
-const VERSION = '12.9.6'
+const VERSION = '12.9.7'
 const NBSP = '&nbsp;'
 
 //
