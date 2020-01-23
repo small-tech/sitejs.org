@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 echo "Installing site.js site for development…"
 
 # Install build dependencies.
