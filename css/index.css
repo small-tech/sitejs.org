@@ -54,8 +54,10 @@ header {
   color: white;
   padding-bottom: 1.75rem;
 
-  background: url(../images/mountains.jpg) top right no-repeat;
-  background-size: cover;
+  /* CSS pattern based on Natali Davydova’s Cross-Dots pattern from Lea Verou’s CSS3 Patterns Gallery */
+  background: radial-gradient(#AFE1E8 3px, transparent 4px), radial-gradient(#AFE1E8 3px, transparent 4px), linear-gradient(#fff 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, #AFE1E8 75px, #AFE1E8 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, #AFE1E8 76px, #AFE1E8 77px, transparent 78px, transparent 109px), #fff;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px
 }
 
 /********************************************************************************
@@ -179,8 +181,14 @@ pre, code[class*="language-"], pre[class*="language-"] {
  ********************************************************************************/
 
 #summary {
-  margin-top: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
   font-size: 1.75em;
+  color: black;
+}
+
+#install {
+  margin-top: 0;
 }
 
 #browser p {

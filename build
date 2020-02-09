@@ -43,10 +43,9 @@ cd ..
 rm -rf tmp
 
 # Copy image assets to dist.
-echo " > Copy background image"
+echo " > Copy images"
 mkdir dist/images
 mkdir dist/images/emoji
-cp images/mountains.jpg dist/images/mountains.jpg
 cp images/site-js-logo.svg dist/images/site-js-logo.svg
 cp images/emoji/0040_1f496.svg dist/images/emoji/0040_1f496.svg
 
