@@ -199,6 +199,8 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
       <pre><code>mkdir <span class="token string">my-site</span></code> <code>cd <span class="token string">my-site</span></code> <code>site <span class="token keyword">hugo</span> new site <span class="token string">.hugo</span></code> <code>echo <span class="token string">"&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;"</span> > <span class="token string">.hugo/layouts/index.html</span></code> <code>site</code></pre>
 
+      <p>Note: During development, this feature uses Site.js’s live reload instead of Hugo’s. Your web page must have at least a <code>&lt;body&gt;</code> tag for it to work.</p>
+
       <h3>How it works</h3>
 
       <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
