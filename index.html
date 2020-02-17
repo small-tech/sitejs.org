@@ -191,6 +191,49 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
       <p>For full details, see the <a href='https://source.ind.ie/site.js/app/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://source.ind.ie/site.js/app/tree/master/examples'>examples</a>.</p>
 
+      <h2 id="static">Static Site Generation</h2>
+
+      <p>As of version 12.11.0, Site.js includes the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
+
+      <p>To create a new Hugo site and start serving it:</p>
+
+      <pre><code>mkdir <span class="token string">my-site</span></code> <code>cd <span class="token string">my-site</span></code> <code>site <span class="token keyword">hugo</span> new site <span class="token string">.hugo</span></code> <code>echo <span class="token string">"&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;"</span> > <span class="token string">.hugo/layouts/index.html</span></code> <code>site</code></pre>
+
+      <h3>How it works</h3>
+
+      <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
+
+      <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:<pre><code>site <span class="token keyword">hugo</span> <span class="token string">[any valid Hugo command]</any></span></code></pre></p>
+
+      <p>Please see <a href='https://gohugo.io/documentation/'>the Hugo documentation</a> for detailed information on how Hugo works.</p>
+
+      <h3>Mounting Hugo sites</h3>
+
+      <p>Site.js will automatically mount files in the <em>.hugo</em> directory at your site’s root.</p>
+
+      <p>If you want the generated Hugo site to be mounted at a different path, include the path structure you want in the name of the hugo folder, separating paths using two dashes. For example:</p>
+
+      <table class='paths-table'>
+        <th>Folder name</th>
+        <th>Mount path</th>
+        <tr>
+          <td>.hugo</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>.hugo--docs</td>
+          <td>/docs/</td>
+        </tr>
+        <tr>
+          <td>.hugo--second-level--blog</td>
+          <td>/second-level/blog</td>
+        </tr>
+      </table>
+
+      <p>You can include any number of Hugo sites in your site and mount them at different paths and the results will be weaved together into the <em>.generated</em> folder. We call this feature… <em>ahem</em>… Hugo Weaving (we’ll show ourselves out).</p>
+
+      <p>All regular Site.js functionality is still available when using Hugo generation. So you can, for example, have your blog statically-generated using Hugo and extend it using locally-hosted dynamic comments.</p>
+
       <h2 id="extend">Use as a module</h2>
 
       <pre><code>npm <span class='token keyword'>i</span> <span class='token string'>@small-tech/site.js</span></code></pre>

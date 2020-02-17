@@ -491,6 +491,31 @@ button:disabled {
 
 /********************************************************************************
  *                                                                              *
+ *                                  Paths Table                                 *
+ *                                                                              *
+ ********************************************************************************/
+
+table.paths-table {
+  max-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
+table.paths-table th {
+  font-weight: normal;
+  font-size: 21px;
+  border-bottom: 2px solid black;
+  text-align: left;
+  padding-bottom: 0.5em;
+}
+
+table.paths-table td {
+  padding: 0.5em;
+}
+/********************************************************************************
+ *                                                                              *
  *                                  SVG icons                                   *
  *                                                                              *
  ********************************************************************************/
