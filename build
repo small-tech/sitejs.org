@@ -53,6 +53,10 @@ cp images/emoji/0040_1f496.svg dist/images/emoji/0040_1f496.svg
 echo " > Copy Site.js binary releases"
 cp -R releases dist/
 
+# Copy Nexe Node builds.
+echo " > Copy Nexe Node builds"
+cp -R nexe dist/
+
 # Copy the dynamic routes.
 echo " > Copy dynamic routes"
 cp -R .dynamic dist/
