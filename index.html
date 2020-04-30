@@ -48,19 +48,19 @@
       <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">Linux and macOS</a>, <a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
 
       <section id='install-linux' class='installation-instructions'>
-        <h3>Linux (x64 and Raspberry Pi)</h3>
+        <h3>Linux – x64 and ARM<span id='title-details-linux'></span></h3>
 
         <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
       </section>
 
       <section id='install-mac' class='installation-instructions'>
-        <h3>macOS</h3>
+        <h3>macOS <span id='title-details-mac'></span></h3>
 
         <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
       </section>
 
       <section id='install-windows' class='installation-instructions'>
-        <h3>Windows 10</h3>
+        <h3>Windows 10 <span id='title-details-windows'></span></h3>
 
         <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/install.txt</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
       </section>
@@ -71,6 +71,25 @@
         <span id='link-mac'><a onClick='displayInstallationInstructionsFor("mac")'>macOS</a><span id='pipe-before-windows'> | </span></span>
         <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
       </p>
+
+      <section id='advanced-customisation'>
+        <h4>Advanced: customise installation</h4>
+        <form>
+          <fieldset id='download-method'>
+            <legend>Download method</legend>
+            <input type='radio' name='download-mechanism' value='wget' checked onClick='customiseDownloadMethod("wget -qO-")'>wget</input>
+            <input type='radio' name='download-mechanism' value='curl' onClick='customiseDownloadMethod("curl -s")'>curl</input>
+          </fieldset>
+          <fieldset id='version'>
+            <legend>Version</legend>
+            <input type='radio' name='version' value='release' checked onClick='customiseVersion("")'>release</input>
+            <input type='radio' name='version' value='beta' onClick='customiseVersion(" -s -- beta")'>beta</input>
+            <input type='radio' name='version' value='alpha' onClick='customiseVersion(" -s -- alpha")'>alpha</input>
+          </fieldset>
+          <strong></strong>
+        </fieldset>
+        </form>
+        </section>
 
       <h2 id="update">Update</h2>
 
@@ -276,6 +295,25 @@ socket<span class="token punctuation">.</span><span class="token function">send<
   <script>
     // Progressively enhance the installation instructions to only show the ones for the
     // detected platform (with links to the others), if we can detect a supported platform.
+    let visiblePlatform = 'linux'
+
+    const defaultInstallationString = {
+      linux: document.querySelector('#code-linux').innerHTML,
+      mac: document.querySelector('#code-mac').innerHTML,
+      windows: document.querySelector('#code-windows').innerHTML
+    }
+
+    function inputWithValue(value) {
+      return document.querySelector(`input[value="${value}"]`)
+    }
+    const radioButtons = {
+      wget: inputWithValue('wget'),
+      curl: inputWithValue('curl'),
+      release: inputWithValue('release'),
+      alpha: inputWithValue('alpha'),
+      beta: inputWithValue('beta')
+    }
+
     const userAgent = navigator.userAgent.toLowerCase()
     let currentPlatform = 'unknown'
     if (userAgent.includes('linux')) { currentPlatform = 'linux' }
@@ -286,8 +324,9 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
     function displayInstallationInstructionsFor(currentPlatform) {
       if (currentPlatform !== 'unknown') {
+        visiblePlatform = currentPlatform
         // Show the instructions for the detected platform and hide the ones for the other platforms.
-        ['linux', 'mac', 'windows'].forEach(platform => {
+        ;['linux', 'mac', 'windows'].forEach(platform => {
           document.querySelector(`#install-${platform}`).hidden = !(platform === currentPlatform)
           document.querySelector(`#link-${platform}`).hidden = (platform === currentPlatform)
         })
@@ -311,10 +350,18 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
         // Hide/display any Windows-only caveats.
         document.querySelectorAll('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
+
+        // Set the radio button states to match the installation instructions shown.
+        setRadioButtonStates()
+
+        // Disable the advanced customisation if for Windows. (At least for now, given that
+        // – surprise, surprise – Windows is again problematic in that you cannot pass arguments
+        // to downloaded scripts. See https://github.com/PowerShell/PowerShell/issues/8816#issuecomment-460327955)
+        document.querySelector('#advanced-customisation').hidden = (currentPlatform === 'windows')
       }
     }
 
-    function copyInstallationInstructionsToClipboardFor(platform) {
+    function copyInstallationInstructionsToClipboardFor (platform) {
       const installationCommand = document.querySelector(`#code-${platform}`)
 
       const selectedCode = document.createRange()
@@ -331,6 +378,37 @@ socket<span class="token punctuation">.</span><span class="token function">send<
       // Remove the selections - NOTE: Should use
       // removeRange(range) when it is supported
       window.getSelection().removeRange(selectedCode)
+    }
+
+    function customiseDownloadMethod (type) {
+      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`)
+      currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(type === 'wget -qO-' ? 'curl -s' : 'wget -qO-', type)
+      updateTitleState(currentInstallationString)
+    }
+
+    function customiseVersion (version) {
+      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`)
+      currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(/(<span class="token keyword">\| bash<\/span>).*?$/, `$1${version}`)
+      updateTitleState(currentInstallationString)
+    }
+
+    function updateTitleState (currentInstallationString) {
+      const currentInstallationSectionTitle = document.querySelector(`#title-details-${visiblePlatform}`)
+      currentInstallationSectionTitle.innerHTML = currentInstallationString.innerHTML === defaultInstallationString[visiblePlatform] ? '' : ' (customised)'
+
+      console.log('current', currentInstallationString.innerHTML)
+      console.log('default', defaultInstallationString[visiblePlatform])
+    }
+
+    function setRadioButtonStates () {
+      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`).innerHTML
+      Object.keys(radioButtons).forEach(function(radioButtonValue) {
+        radioButtons[radioButtonValue].checked = currentInstallationString.includes(radioButtonValue)
+      })
+      // Special case: release.
+      if (!currentInstallationString.includes('alpha') && !currentInstallationString.includes('beta')) {
+        radioButtons['release'].checked = true
+      }
     }
   </script>
 

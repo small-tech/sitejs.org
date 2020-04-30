@@ -137,6 +137,18 @@ h3 {
   margin-bottom: 0.5em;
 }
 
+h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+strong {
+  font-weight: 500;
+}
+
 a {
   color: #334b4c;
   text-decoration: underline;
@@ -297,7 +309,7 @@ main {
   padding-right: 3rem;
 }
 
-main p, main li {
+main p, main li, main fieldset {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 1em;
@@ -334,7 +346,7 @@ main li {
 }
 
 p code, li code {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 li.selected {
@@ -362,6 +374,28 @@ code > code {
 #links-to-instructions-for-other-platforms a {
   cursor: pointer;
 }
+
+/********************************************************************************
+ *                                                                              *
+ *                          Custom installation form                            *
+ *                                                                              *
+ ********************************************************************************/
+
+main fieldset {
+  display: inline;
+  border: 0;
+}
+
+main legend {
+  display: inline;
+  /* background-color: gray; */
+}
+
+main fieldset:disabled {
+
+  color: gray;
+}
+
 
 /********************************************************************************
  *                                                                              *
