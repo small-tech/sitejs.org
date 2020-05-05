@@ -367,6 +367,10 @@ code > code {
   margin-right: 5em;
 }
 
+.version-info {
+  font-size: 1em;
+}
+
 .unfocused {
   filter: brightness(60%);
 }
@@ -374,6 +378,7 @@ code > code {
 #links-to-instructions-for-other-platforms a {
   cursor: pointer;
 }
+
 
 /********************************************************************************
  *                                                                              *
