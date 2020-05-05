@@ -53,7 +53,7 @@
       <section id='install-linux' class='installation-instructions'>
         <h3>Linux – x64 and ARM<span id='title-details-linux'></span></h3>
 
-        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span> & Hugo <span class='hugoVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
+        <p><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>).<br><em>(Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.)</em></p>
 
         <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
       </section>
@@ -61,7 +61,7 @@
       <section id='install-mac' class='installation-instructions'>
         <h3>macOS <span id='title-details-mac'></span></h3>
 
-        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
+        <p><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>).<br><em>(Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.)</em></p>
 
         <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
       </section>
@@ -69,7 +69,7 @@
       <section id='install-windows' class='installation-instructions'>
         <h3>Windows 10 <span id='title-details-windows'></span></h3>
 
-        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
+        <p><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>).<br><em>(Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.)</em></p>
 
         <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/install.txt</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
       </section>
@@ -365,6 +365,8 @@ socket<span class="token punctuation">.</span><span class="token function">send<
       $$('.humanReadableBinaryVersion').forEach(span =>
         span.innerHTML = binaryVersionToHumanReadableDateString(_('BinaryVersion'))
       )
+      $$('.packageVersion').forEach(span => span.innerHTML = _('PackageVersion'))
+      $$('.sourceVersion').forEach(span => span.innerHTML = _('SourceVersion'))
       $$('.nodeVersion').forEach(span => span.innerHTML = _('NodeVersion'))
       $$('.hugoVersion').forEach(span => span.innerHTML = _('HugoVersion'))
       $$('.sourceUrl').forEach(a =>
