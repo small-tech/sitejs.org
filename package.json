@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.25.3",
     "typed.js": "^2.0.10"
   }
 }

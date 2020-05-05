@@ -21,7 +21,10 @@
       <nav>
         <ul>
           <li class='selected'>Home</li>
-          <li><a href='https://source.ind.ie/site.js/app/blob/master/CHANGELOG.md'>News</a></li>
+          <li><a href='https://github.com/small-tech/site.js'>Source</a></li>
+          <li><a href='https://github.com/small-tech/site.js/blob/master/README.md'>Docs</a></li>
+          <li><a href='https://github.com/small-tech/site.js/issues'>Issues</a></li>
+          <li><a href='https://github.com/small-tech/site.js/blob/master/CHANGELOG.md'>News</a></li>
           <li><a href='https://small-tech.org/fund-us'>Fund Us!</a></li>
         </ul>
       </nav>
@@ -50,17 +53,23 @@
       <section id='install-linux' class='installation-instructions'>
         <h3>Linux – x64 and ARM<span id='title-details-linux'></span></h3>
 
+        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span> & Hugo <span class='hugoVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
+
         <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
       </section>
 
       <section id='install-mac' class='installation-instructions'>
         <h3>macOS <span id='title-details-mac'></span></h3>
 
+        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
+
         <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
       </section>
 
       <section id='install-windows' class='installation-instructions'>
         <h3>Windows 10 <span id='title-details-windows'></span></h3>
+
+        <p><em>(Built on <span class='humanReadableBinaryVersion'></span>. Includes Node.js <span class='nodeVersion'></span>. <a class='sourceUrl'>View Source</a>.)</em></p>
 
         <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/install.txt</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
       </section>
@@ -74,7 +83,7 @@
 
       <section id='advanced-customisation'>
         <h4>Advanced: customise installation</h4>
-        <form>
+        <form name='advanced'>
           <fieldset id='download-method'>
             <legend>Download method</legend>
             <input type='radio' name='download-mechanism' value='wget' checked onClick='customiseDownloadMethod("wget -qO-")'>wget</input>
@@ -292,19 +301,85 @@ socket<span class="token punctuation">.</span><span class="token function">send<
     </div>
   </main>
 
+  <!-- Start: scripts -->
+  <script src='js/perfect-scrollbar.js'></script>
+  <script src='node_modules/typed.js/lib/typed.js'></script>
+  <script src='node_modules/moment/min/moment.min.js'></script>
+  <script src='js/terminal-presentation.js'></script>
+  <script src='js/browser-presentation.js'></script>
+  <script src='js/site-js-terminal-presentation.js'></script>
+  <!-- End: scripts -->
+
   <script>
+    //////////////////////////////////////////////////////////////////////
+    //
+    // ⚠ GENERATED CODE. Please do not change.
+    //
+    // These are the latest versions of the various release channels.
+    // They are automatically populated by the Site.js build script
+    // on deployment.
+    //
+    //////////////////////////////////////////////////////////////////////
+
+    const versions = {
+      alphaBinaryVersion: 00000000000000,
+      alphaNodeVersion: '00.00.00',
+      alphaHugoVersion: '00.00.00',
+      alphaPackageVersion: '00.00.00',
+      alphaSourceVersion: 'bedface',
+
+      betaBinaryVersion: 00000000000000,
+      betaNodeVersion: '00.00.00',
+      betaHugoVersion: '00.00.00',
+      betaPackageVersion: '00.00.00',
+      betaSourceVersion: 'acecafe',
+
+      releaseBinaryVersion: 00000000000000,
+      releaseNodeVersion: '00.00.00',
+      releaseHugoVersion: '00.00.00',
+      releasePackageVersion: '00.00.00',
+      releaseSourceVersion: 'decafAF',
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    // End of generated code.
+    //////////////////////////////////////////////////////////////////////
+
+    const $  = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
+
+    function binaryVersionToHumanReadableDateString (binaryVersion) {
+      console.log(binaryVersion)
+      const m = moment(binaryVersion, 'YYYYMMDDHHmmss')
+      return `${m.format('MMMM Do, YYYY')} at ${m.format('HH:mm:ss')}`
+    }
+
     // Progressively enhance the installation instructions to only show the ones for the
     // detected platform (with links to the others), if we can detect a supported platform.
     let visiblePlatform = 'linux'
 
+    function displayVersionInformation () {
+
+      const _ = version => versions[`${document.advanced.version.value}${version}`]
+
+      $$('.humanReadableBinaryVersion').forEach(span =>
+        span.innerHTML = binaryVersionToHumanReadableDateString(_('BinaryVersion'))
+      )
+      $$('.nodeVersion').forEach(span => span.innerHTML = _('NodeVersion'))
+      $$('.hugoVersion').forEach(span => span.innerHTML = _('HugoVersion'))
+      $$('.sourceUrl').forEach(a =>
+        a.setAttribute('href', `https://source.small-tech.org/site.js/app/-/tree/${_('SourceVersion')}`)
+      )
+    }
+
     const defaultInstallationString = {
-      linux: document.querySelector('#code-linux').innerHTML,
-      mac: document.querySelector('#code-mac').innerHTML,
-      windows: document.querySelector('#code-windows').innerHTML
+      linux: $('#code-linux').innerHTML,
+      mac: $('#code-mac').innerHTML,
+      windows: $('#code-windows').innerHTML
     }
 
     function inputWithValue(value) {
-      return document.querySelector(`input[value="${value}"]`)
+      return $(`input[value="${value}"]`)
     }
     const radioButtons = {
       wget: inputWithValue('wget'),
@@ -327,42 +402,45 @@ socket<span class="token punctuation">.</span><span class="token function">send<
         visiblePlatform = currentPlatform
         // Show the instructions for the detected platform and hide the ones for the other platforms.
         ;['linux', 'mac', 'windows'].forEach(platform => {
-          document.querySelector(`#install-${platform}`).hidden = !(platform === currentPlatform)
-          document.querySelector(`#link-${platform}`).hidden = (platform === currentPlatform)
+          $(`#install-${platform}`).hidden = !(platform === currentPlatform)
+          $(`#link-${platform}`).hidden = (platform === currentPlatform)
         })
 
         // Cosmetic: don’t show the last separator if there’s no content after it.
-        document.querySelector('#pipe-before-windows').hidden = (currentPlatform === 'windows')
+        $('#pipe-before-windows').hidden = (currentPlatform === 'windows')
 
         // Show links to instructions for other platforms.
-        document.querySelector('#links-to-instructions-for-other-platforms').hidden = false
+        $('#links-to-instructions-for-other-platforms').hidden = false
 
         // Show all the copy to clipboard buttons.
-        document.querySelectorAll('.copy-to-clipboard').forEach(button => button.hidden = false)
+        $$('.copy-to-clipboard').forEach(button => button.hidden = false)
 
         // Rewrite the view installation script section copy to simplify it and link directly
         // to the relevant script.
-        document.querySelector('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
+        $('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install.txt">view the source code</a>' : '<a href="https://source.ind.ie/site.js/site/blob/master/installation-scripts/install">view the source code</a>'
 
         // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
         // we support on Windows 10.
-        document.querySelector('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
+        $('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
 
         // Hide/display any Windows-only caveats.
-        document.querySelectorAll('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
+        $$('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
 
         // Set the radio button states to match the installation instructions shown.
         setRadioButtonStates()
 
+        // Display specific version-related information for the download.
+        displayVersionInformation()
+
         // Disable the advanced customisation if for Windows. (At least for now, given that
         // – surprise, surprise – Windows is again problematic in that you cannot pass arguments
         // to downloaded scripts. See https://github.com/PowerShell/PowerShell/issues/8816#issuecomment-460327955)
-        document.querySelector('#advanced-customisation').hidden = (currentPlatform === 'windows')
+        $('#advanced-customisation').hidden = (currentPlatform === 'windows')
       }
     }
 
     function copyInstallationInstructionsToClipboardFor (platform) {
-      const installationCommand = document.querySelector(`#code-${platform}`)
+      const installationCommand = $(`#code-${platform}`)
 
       const selectedCode = document.createRange()
       selectedCode.selectNode(installationCommand)
@@ -381,19 +459,19 @@ socket<span class="token punctuation">.</span><span class="token function">send<
     }
 
     function customiseDownloadMethod (type) {
-      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`)
+      const currentInstallationString = $(`#code-${visiblePlatform}`)
       currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(type === 'wget -qO-' ? 'curl -s' : 'wget -qO-', type)
       updateTitleState(currentInstallationString)
     }
 
     function customiseVersion (version) {
-      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`)
+      const currentInstallationString = $(`#code-${visiblePlatform}`)
       currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(/(<span class="token keyword">\| bash<\/span>).*?$/, `$1${version}`)
       updateTitleState(currentInstallationString)
     }
 
     function updateTitleState (currentInstallationString) {
-      const currentInstallationSectionTitle = document.querySelector(`#title-details-${visiblePlatform}`)
+      const currentInstallationSectionTitle = $(`#title-details-${visiblePlatform}`)
       currentInstallationSectionTitle.innerHTML = currentInstallationString.innerHTML === defaultInstallationString[visiblePlatform] ? '' : ' (customised)'
 
       console.log('current', currentInstallationString.innerHTML)
@@ -401,9 +479,11 @@ socket<span class="token punctuation">.</span><span class="token function">send<
     }
 
     function setRadioButtonStates () {
-      const currentInstallationString = document.querySelector(`#code-${visiblePlatform}`).innerHTML
+      const currentInstallationString = $(`#code-${visiblePlatform}`).innerHTML
       Object.keys(radioButtons).forEach(function(radioButtonValue) {
-        radioButtons[radioButtonValue].checked = currentInstallationString.includes(radioButtonValue)
+        if (currentInstallationString.includes(radioButtonValue)) {
+          radioButtons[radioButtonValue].checked = true
+        }
       })
       // Special case: release.
       if (!currentInstallationString.includes('alpha') && !currentInstallationString.includes('beta')) {
@@ -411,13 +491,5 @@ socket<span class="token punctuation">.</span><span class="token function">send<
       }
     }
   </script>
-
-  <!-- Start: scripts -->
-  <script src='js/perfect-scrollbar.js'></script>
-  <script src='node_modules/typed.js/lib/typed.js'></script>
-  <script src='js/terminal-presentation.js'></script>
-  <script src='js/browser-presentation.js'></script>
-  <script src='js/site-js-terminal-presentation.js'></script>
-  <!-- End: scripts -->
 </body>
 </html>
