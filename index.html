@@ -159,17 +159,19 @@
 
       <h3 id="as-a-local-proxy-server">As a proxy server</h3>
 
-      <p>Say you’re running <a href="https://gohugo.io/">Hugo</a> locally at its default location (<a href="http://localhost:1313">http://localhost:1313</a>) and you want to test it via TLS:</p>
+      <p>Say you have <a href='https://github.com/small-tech/site.js/blob/master/README.md#proxy-server'>a web app written in Python that runs on port 3000</a> and you want to test it via TLS:</p>
 
-      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span></code></pre>
+      <pre><code>site <span class="token keyword">:</span><span class="token number">3000</span></code></pre>
 
-      <p>Now you can view it at <a href="https://localhost">https://localhost</a> and even your live reload will work as Site.js in proxy mode also proxies WebSockets.</p>
+      <p>Now you can view it at <a href="https://localhost">https://localhost</a>.</p>
+
+      <p>(Site.js’s proxy mode also proxies WebSockets.)</p>
 
       <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
 
       <pre><code>site <span class="token keyword">--sync-to</span>=<span class="token string">my-demo.site</span></code></pre>
 
-      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/_current-folder-name. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
+      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/<em>current-folder-name</em>. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
 
       <p><strong>The sync feature is not available on Windows</strong> as a viable free and open <a href='https://en.wikipedia.org/wiki/Rsync'>rsync</a> implementation does not exist for that platform.</p>
 
@@ -211,7 +213,7 @@
 
       <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
 
-      <p>Congratulations, you just made your first fully-dynamic and secure DotJS site! (Seriously.)</p>
+      <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
 
       <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
 
@@ -223,9 +225,11 @@ module<span class="token punctuation">.</span><span class="token function-variab
     <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;You’ve visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> time</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
 
-      <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, it’s because that’s exactly what it is.</p>
+      <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
 
       <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+
+      <h3>WebSockets</h3>
 
       <p>In addition to static routes and dynamic HTTPS routes, you can also specify WebSocket (WSS) routes in DotJS. You can also mix them as you please.</p>
 
