@@ -72,14 +72,14 @@
 
       <pre><code><span class='token comment'># Install.</span></code>
 <code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><pre class='token comment'># Create a basic web page.</pre>
-<code>echo <span class='token keyword'>'Hello, world' > index.html</span></code><pre class='token comment'># Start secure local development server.</pre>
+<code>echo <span class='token keyword'>'Hello, world' > index.html</span></code><pre class='token comment'># Start a secure local development server.</pre>
 <code>site</code></pre>
-
-      <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
 
       <p>Visit <a href='https://localhost'>https://localhost</a> to view your site.</p>
 
-      <p><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web server daemon that survives errors/reboots and auto-updates itself.</p>
+      <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
+
+      <p><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web daemon that survives errors/reboots and auto-updates itself.</p>
 
       <h2 id="install">Install</h2>
 
@@ -137,9 +137,13 @@
 
       <h2 id="update">Update</h2>
 
+      <p>Production servers check for updates every six hours and automatically update themselves when necessary. On your development machine, manually check for updates using:</p>
+
       <pre><code>site <span class='token keyword'>update</span></code></pre>
 
       <h2 id="uninstall">Uninstall</h2>
+
+      <p>Uninstalling Site.js removes the app as well as any generated certificates and other data from your machine. You will be prompted for confirmation before any destructive action is taken.</p>
 
       <pre><code>site <span class='token keyword'>uninstall</span></code></pre>
 

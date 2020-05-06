@@ -377,7 +377,13 @@ code > code {
   cursor: pointer;
 }
 
+#install-linux > h3 {
+  margin-top: 0;
+}
 
+#update {
+  margin-top: 0;
+}
 /********************************************************************************
  *                                                                              *
  *                          Custom installation form                            *
