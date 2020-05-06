@@ -126,7 +126,7 @@ h2 {
 }
 
 h2 + h3 {
-  margin-top:0 ;
+  margin-top:0;
 }
 
 h3 {
@@ -172,7 +172,6 @@ pre, code {
 pre {
   background-color: black;
   color: white;
-
   line-height: 1.5;
 }
 
@@ -186,6 +185,17 @@ pre, code[class*="language-"], pre[class*="language-"] {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+main pre > pre {
+  /* margin-top: 1em; */
+  padding: 0;
+  line-height: 1;
+  /* margin-left: 1.25em; */
+  margin-bottom: 1.5em;
+  background-color: transparent;
+  display: inline-block;
+  /* border: 1px solid red; */
+}
+
 /********************************************************************************
  *                                                                              *
  *                  Header area with interactive presentation                   *
@@ -197,10 +207,6 @@ pre, code[class*="language-"], pre[class*="language-"] {
   margin-bottom: 1em;
   font-size: 1.75em;
   color: black;
-}
-
-#install {
-  margin-top: 0;
 }
 
 #browser p {
@@ -317,14 +323,6 @@ main p, main li, main fieldset {
 
 main pre {
   padding: 1em;
-}
-
-/* Add the prompt to the terminal examples */
-main pre code:not(.language-js):before  {
-  content: '  ';
-  /* margin: 0 .05em 0 .1em; */
-  vertical-align: -0.1em;
-  background-image: url('../images/icons/0010_right-triangle.svg');
 }
 
 main pre code {
