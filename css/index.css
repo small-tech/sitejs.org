@@ -46,18 +46,69 @@ html {
 body {
   position: relative;
   margin-top: 0 auto;
+  background-color: whitesmoke;
 }
+
 
 header {
   /* max-width: 920px; */
   margin: 0 auto;
-  color: white;
   padding-bottom: 1.75rem;
 
-  /* CSS pattern based on Natali Davydova’s Cross-Dots pattern from Lea Verou’s CSS3 Patterns Gallery */
-  background: radial-gradient(#AFE1E8 3px, transparent 4px), radial-gradient(#AFE1E8 3px, transparent 4px), linear-gradient(#fff 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, #AFE1E8 75px, #AFE1E8 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, #AFE1E8 76px, #AFE1E8 77px, transparent 78px, transparent 109px), #fff;
-  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
-  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px
+}
+
+header h2 {
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  margin-top: -0.5em;
+  margin-bottom: 1.75em;
+}
+
+#small-web {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6em;
+}
+
+#small-web div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 27.5%;
+  margin-bottom: 3em;
+}
+
+#small-web div h2 {
+  margin-bottom: 1em;
+  /* flex-basis: 10%; */
+}
+
+#small-web div p {
+  margin-top: 1em;
+  text-align: center;
+  /* flex-basis: 10%; */
+}
+
+
+#small-web h2 {
+  margin: 0;
+  padding: 0;
+}
+
+#small-web div img {
+  max-width: 100%;
+}
+
+@media(max-width: 764px) {
+  #small-web {
+    display: block;
+  }
+
+  #small-web div p {
+    margin-top: 1.5em;
+    text-align: center;
+  }
 }
 
 /********************************************************************************
@@ -69,8 +120,11 @@ header {
 nav {
   font-size: 1.25em;
   text-align: center;
-  margin-top: -0.5em;
-  margin-bottom: 2em;
+  margin-top: -1.5em;
+  margin-bottom: 2.5em;
+  background-color: rgb(230,230,230);
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
 }
 
 nav > ul {
@@ -302,7 +356,6 @@ main pre > pre {
  ********************************************************************************/
 
 main {
-  background-color: white;
   width: 100%;
   padding: 1vw;
 }
@@ -653,14 +706,20 @@ table.paths-table td {
  *                                                                              *
  ********************************************************************************/
 
-@media (max-width: 460px) {
+@media (max-width: 620px) {
+
   #presentation {
-    font-size: 0.9em;
+    font-size: 0.78em;
+  }
+
+  #browser {
+    font-size: 0.78em;
   }
 
   nav {
     top: 1rem;
     right: 1.5rem;
+    font-size: 1em;
   }
 
   .content {
