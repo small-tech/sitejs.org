@@ -13,7 +13,6 @@
 </head>
 <body>
   <header>
-    <div class='content'>
       <!-- Title -->
       <h1><strong>Site</strong>.js</h1>
 
@@ -21,7 +20,7 @@
       <img src='/images/person.svg' style='margin-top: -3em'>
 
       <!-- Navigation -->
-      <nav style='padding-top: 1em;'>
+      <nav>
         <ul>
           <li class='selected'>Home</li>
           <li><a href='https://github.com/small-tech/site.js'>Source</a></li>
@@ -31,6 +30,58 @@
           <li><a href='https://small-tech.org/fund-us'>Fund Us!</a></li>
         </ul>
       </nav>
+  </header>
+
+  <main>
+
+    <section id='small-web'>
+      <h2><strong>The Small Web is for people</strong> <small>(not startups, enterprises, or governments)</small></h2>
+      <div id='small-web-details'>
+        <div>
+          <h3>One person.</h2>
+          <img src='/images/person.svg'>
+          <p>Develop and test on <strong>your own device</strong> using Site.js.</p>
+        </div>
+        <div>
+          <h3>One server.</h2>
+          <img src='/images/server.svg'>
+          <p>Sync and deploy to <strong>your VPS</strong> that runs Site.js.</p>
+        </div>
+        <div>
+          <h3>One site.</h2>
+          <img src='/images/site.svg'>
+          <p>Host your site at your domain.</p>
+        </div>
+    </section>
+
+    <section id='highlights'>
+      <h2><strong>Develop, test, sync, and deploy</strong> <small>(using a single tool that comes in a single binary).</small></h2>
+
+      <ul>
+        <li>
+          <h3>✅ It just works.</h3>
+          <p>No configuration or setup; install and go.</p>
+        </li>
+        <li>
+          <h3>✅ Secure by default.</h3>
+          <p>Automatic TLS with Let’s Encrypt and, on localhost, mkcert.</p>
+        </li>
+        <li>
+          <h3>✅ Make static sites.</h3>
+          <p>Just write HTML, CSS, JS or use Hugo.</p></li>
+        <li>
+          <h3>✅ Make dynamic sites.</h3>
+          <p>Use simple DotJS or the full power of Node.js and Express.js.</p>
+        </li>
+        <li>
+          <h3>✅ And lots more…</h3>
+          <p>WebSocket support, live reload, auto-updates, etc.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id='demo'>
+      <h2>Interactive demo</h2>
 
       <!-- Browser presentation -->
       <div id='browser' class='shadow' aria-hidden='true'></div>
@@ -41,326 +92,287 @@
         <div id='second-terminal-presentation' class='shadow'></div>
         <button id='next-button' class='next-button' disabled>Next</button>
       </div>
+    </section>
 
-      <div id='small-web'>
-        <div>
-          <h2>One person.</h2>
-          <img src='/images/person.svg'>
-          <p>Develop and test on <strong>your own device</strong> using Site.js.</p>
-        </div>
-        <div>
-          <h2>One server.</h2>
-          <img src='/images/server.svg'>
-          <p>Sync and deploy to <strong>your VPS</strong> that runs Site.js.</p>
-        </div>
-        <div>
-          <h2>One site.</h2>
-          <img src='/images/site.svg'>
-          <p>Host your site at your domain.</p>
-        </div>
-      </div>
+    <p>On the Small Web, each site or app runs on its own (tiny) server and is owned by one person. Site.js is tool for individuals (not startups or enterprises) to easily create and deploy such personal web sites and web apps.</p>
 
-      <!-- Short description -->
-      <!-- <p id='summary'><strong>A personal web tool for people, not startups or enterprises.</strong></p>
+    <p>It is <a href='https://small-tech.org/about/#small-technology'>Small Tech</a>.</p>
 
-      <p id='summary'>A secure web server + Node.js + Hugo + more. Free and open source.</p> -->
-    </div>
-  </header>
+    <h2>Get started in 30 seconds…</h2>
 
-  <main>
-    <div class='content'>
-      <p>On the Small Web, each site or app runs on its own (tiny) server and is owned by one person. Site.js is tool for individuals (not startups or enterprises) to easily create and deploy such personal web sites and web apps.</p>
+    <p>In terminal, enter:</p>
 
-      <p>It is <a href='https://small-tech.org/about/#small-technology'>Small Tech</a>.</p>
-
-      <ul style='list-style-type: none;'>
-        <li>✅ Create, test and deploy <strong>secure</strong> static and dynamic web sites.</li>
-        <li>✅ Includes Hugo, Node.js, and Express.js.</li>
-        <li>✅ Zero configuration.</li>
-        <li>✅ Automatic TLS.</li>
-        <li>✅ WebSocket support.</li>
-        <li>✅ DotJS for simple server-side scripting.</li>
-        <li>✅ Single binary.</li>
-      </ul>
-
-      <p>And much more…</p>
-
-      <h2>Get started in 30 seconds…</h2>
-
-      <p>In terminal, enter:</p>
-
-      <pre><code><span class='token comment'># Install.</span></code>
+    <pre><code><span class='token comment'># Install.</span></code>
 <code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><pre class='token comment'># Create a basic web page.</pre>
 <code>echo <span class='token keyword'>'Hello, world' > index.html</span></code><pre class='token comment'># Start a secure local development server.</pre>
 <code>site</code></pre>
 
-      <p>Visit <a href='https://localhost'>https://localhost</a> to view your site.</p>
+    <p>Visit <a href='https://localhost'>https://localhost</a> to view your site.</p>
 
-      <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
+    <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
 
-      <p><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web daemon that survives errors/reboots and auto-updates itself.</p>
+    <p><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web daemon that survives errors/reboots and auto-updates itself.</p>
 
-      <h2 id="install">Install</h2>
+    <h2 id="install">Install</h2>
 
-      <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
+    <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
 
-      <section id='install-linux' class='installation-instructions'>
-        <h3>Linux – x64 and ARM<span id='title-details-linux'></span></h3>
+    <section id='install-linux' class='installation-instructions'>
+      <h3>Linux – x64 and ARM<span id='title-details-linux'></span></h3>
 
-        <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
+      <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
 
-        <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
-      </section>
+      <pre><code id='code-linux'>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("linux")'>Copy</button></pre>
+    </section>
 
-      <section id='install-mac' class='installation-instructions'>
-        <h3>macOS <span id='title-details-mac'></span></h3>
+    <section id='install-mac' class='installation-instructions'>
+      <h3>macOS <span id='title-details-mac'></span></h3>
 
-        <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
+      <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
 
-        <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
-      </section>
+      <pre><code id='code-mac'>curl -s <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("mac")'>Copy</button></pre>
+    </section>
 
-      <section id='install-windows' class='installation-instructions'>
-        <h3>Windows 10 <span id='title-details-windows'></span></h3>
+    <section id='install-windows' class='installation-instructions'>
+      <h3>Windows 10 <span id='title-details-windows'></span></h3>
 
-        <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
+      <p class='version-info'><em><strong>Version:</strong> <span class='humanReadableBinaryVersion'></span> (<a href='https://www.npmjs.com/package/@small-tech/site.js'><span class='packageVersion'></span></a>-<a class='sourceUrl'><span class='sourceVersion'>)</span></a>). Includes Node.js v<span class='nodeVersion'></span> and Hugo v<span class='hugoVersion'></span>.</em></p>
 
-        <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/install.txt</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
-      </section>
+      <pre><code id='code-windows'>iex(iwr -UseBasicParsing <span class='token string'>https://sitejs.org/install.txt</span>).Content</code><button hidden class='copy-to-clipboard' onClick='copyInstallationInstructionsToClipboardFor("windows")'>Copy</button></pre>
+    </section>
 
-      <p id='links-to-instructions-for-other-platforms' hidden>
-        <strong>Instructions for other platforms:</strong>
-        <span id='link-linux'><a onClick='displayInstallationInstructionsFor("linux")'>Linux</a> | </span>
-        <span id='link-mac'><a onClick='displayInstallationInstructionsFor("mac")'>macOS</a><span id='pipe-before-windows'> | </span></span>
-        <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
-      </p>
+    <p id='links-to-instructions-for-other-platforms' hidden>
+      <strong>Instructions for other platforms:</strong>
+      <span id='link-linux'><a onClick='displayInstallationInstructionsFor("linux")'>Linux</a> | </span>
+      <span id='link-mac'><a onClick='displayInstallationInstructionsFor("mac")'>macOS</a><span id='pipe-before-windows'> | </span></span>
+      <a id='link-windows' onClick='displayInstallationInstructionsFor("windows")'>Windows</a>
+    </p>
 
-      <section id='advanced-customisation'>
-        <h4>Advanced: customise installation</h4>
-        <form name='advanced'>
-          <fieldset id='download-method'>
-            <legend>Download method</legend>
-            <input type='radio' name='download-mechanism' value='wget' checked onClick='customiseDownloadMethod("wget -qO-")'>wget</input>
-            <input type='radio' name='download-mechanism' value='curl' onClick='customiseDownloadMethod("curl -s")'>curl</input>
-          </fieldset>
-          <fieldset id='version'>
-            <legend>Version</legend>
-            <input type='radio' name='version' value='release' checked onClick='customiseVersion("")'>release</input>
-            <input type='radio' name='version' value='beta' onClick='customiseVersion(" -s -- beta")'>beta</input>
-            <input type='radio' name='version' value='alpha' onClick='customiseVersion(" -s -- alpha")'>alpha</input>
-          </fieldset>
-          <strong></strong>
+    <section id='advanced-customisation'>
+      <h4>Advanced: customise installation</h4>
+      <form name='advanced'>
+        <fieldset id='download-method'>
+          <legend>Download method</legend>
+          <input type='radio' name='download-mechanism' value='wget' checked onClick='customiseDownloadMethod("wget -qO-")'>wget</input>
+          <input type='radio' name='download-mechanism' value='curl' onClick='customiseDownloadMethod("curl -s")'>curl</input>
         </fieldset>
-        </form>
-        </section>
+        <fieldset id='version'>
+          <legend>Version</legend>
+          <input type='radio' name='version' value='release' checked onClick='customiseVersion("")'>release</input>
+          <input type='radio' name='version' value='beta' onClick='customiseVersion(" -s -- beta")'>beta</input>
+          <input type='radio' name='version' value='alpha' onClick='customiseVersion(" -s -- alpha")'>alpha</input>
+        </fieldset>
+        <strong></strong>
+      </fieldset>
+      </form>
+      </section>
 
-      <h2 id="update">Update</h2>
+    <h2 id="update">Update</h2>
 
-      <p>Production servers check for updates every six hours and automatically update themselves when necessary. On your development machine, manually check for updates using:</p>
+    <p>Production servers check for updates every six hours and automatically update themselves when necessary. On your development machine, manually check for updates using:</p>
 
-      <pre><code>site <span class='token keyword'>update</span></code></pre>
+    <pre><code>site <span class='token keyword'>update</span></code></pre>
 
-      <h2 id="uninstall">Uninstall</h2>
+    <h2 id="uninstall">Uninstall</h2>
 
-      <p>Uninstalling Site.js removes the app as well as any generated certificates and other data from your machine. You will be prompted for confirmation before any destructive action is taken.</p>
+    <p>Uninstalling Site.js removes the app as well as any generated certificates and other data from your machine. You will be prompted for confirmation before any destructive action is taken.</p>
 
-      <pre><code>site <span class='token keyword'>uninstall</span></code></pre>
+    <pre><code>site <span class='token keyword'>uninstall</span></code></pre>
 
-      <h2 id="use">Use</h2>
+    <h2 id="use">Use</h2>
 
-      <h3 id="as-a-development-server">As a development server</h3>
+    <h3 id="as-a-development-server">As a development server</h3>
 
-      <p>You can use Site.js as a local development server <strong>with locally-trusted TLS certificates</strong> (no certificate warnings) on Linux, macOS, and Windows.</p>
+    <p>You can use Site.js as a local development server <strong>with locally-trusted TLS certificates</strong> (no certificate warnings) on Linux, macOS, and Windows.</p>
 
-      <p>To start serving the current folder at <a href="https://localhost:">https://localhost:</a></p>
+    <p>To start serving the current folder at <a href="https://localhost:">https://localhost:</a></p>
 
-      <pre><code>site</code></pre>
+    <pre><code>site</code></pre>
 
-      <h3 id="as-a-local-proxy-server">As a proxy server</h3>
+    <h3 id="as-a-local-proxy-server">As a proxy server</h3>
 
-      <p>Say you have <a href='https://github.com/small-tech/site.js/blob/master/README.md#proxy-server'>a web app written in Python that runs on port 3000</a> and you want to test it via TLS:</p>
+    <p>Say you have <a href='https://github.com/small-tech/site.js/blob/master/README.md#proxy-server'>a web app written in Python that runs on port 3000</a> and you want to test it via TLS:</p>
 
-      <pre><code>site <span class="token keyword">:</span><span class="token number">3000</span></code></pre>
+    <pre><code>site <span class="token keyword">:</span><span class="token number">3000</span></code></pre>
 
-      <p>Now you can view it at <a href="https://localhost">https://localhost</a>.</p>
+    <p>Now you can view it at <a href="https://localhost">https://localhost</a>.</p>
 
-      <p>(Site.js’s proxy mode also proxies WebSockets.)</p>
+    <p>(Site.js’s proxy mode also proxies WebSockets.)</p>
 
-      <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
+    <h3 id="as-a-local-development-server-with-live-sync-of-changes-to-your-production-server">As a local development server with live sync of changes to your production server</h3>
 
-      <pre><code>site <span class="token keyword">--sync-to</span>=<span class="token string">my-demo.site</span></code></pre>
+    <pre><code>site <span class="token keyword">--sync-to</span>=<span class="token string">my-demo.site</span></code></pre>
 
-      <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/<em>current-folder-name</em>. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
+    <p>Any changes in your <em>current folder</em> will be synced via rsync over ssh to <em>your-account</em>@my-demo.site:/home/<em>your-account</em>/<em>current-folder-name</em>. You can customise all of those details by providing a fully-formed rsync remote connection string for the <code>--sync-to</code> option.</p>
 
-      <p><strong>The sync feature is not available on Windows</strong> as a viable free and open <a href='https://en.wikipedia.org/wiki/Rsync'>rsync</a> implementation does not exist for that platform.</p>
+    <p><strong>The sync feature is not available on Windows</strong> as a viable free and open <a href='https://en.wikipedia.org/wiki/Rsync'>rsync</a> implementation does not exist for that platform.</p>
 
-      <h3 id="as-a-staging-server">As a testing server</h3>
+    <h3 id="as-a-staging-server">As a testing server</h3>
 
-      <p>To give others access to your server without running as a deployment server (daemon):</p>
+    <p>To give others access to your server without running as a deployment server (daemon):</p>
 
-      <pre><code>site <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
+    <pre><code>site <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
 
-      <p>Similarly, can also test with proxy servers. For example, if you want to test your Hugo site from your phone, you can expose the local port at your hostname:</p>
+    <p>Similarly, can also test with proxy servers. For example, if you want to test your Hugo site from your phone, you can expose the local port at your hostname:</p>
 
-      <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span> <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
+    <pre><code>site <span class="token keyword">:</span><span class="token number">1313</span> <span class="windows-only" hidden>"</span><span class="token keyword">@hostname</span><span class="windows-only" hidden>"</span></code></pre>
 
-      <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <em>/etc/hostname</em> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your <a href='https://letsencrypt.org/'>Let’s Encrypt</a> certificates are being automatically provisioned by <a href='https://source.small-tech.org/hypha/tools/acme-tls'>ACME TLS</a>.</p>
+    <p>Then use, for example, <a href="https://ngrok.com/">ngrok</a> (Pro+) to point a custom domain name to your temporary staging server. Make sure you set your <code>hostname</code> file (e.g., in <em>/etc/hostname</em> or via <code>hostnamectl set-hostname &lt;hostname&gt;</code> or the equivalent for your platform) to match your domain name. The first time you hit your server via your hostname it will take a little longer to load as your <a href='https://letsencrypt.org/'>Let’s Encrypt</a> certificates are being automatically provisioned by <a href='https://source.small-tech.org/hypha/tools/acme-tls'>ACME TLS</a>.</p>
 
-      <p class='windows-only'>Note that on Windows, <a href='https://github.com/small-tech/site.js/blob/master/README.md#windows-10-notes'>your full computer name</a> is used as your hostname and you must put quotation marks around <code>@hostname</code> and <code>@localhost</code>, which you do not need to do on other platforms.</p>
+    <p class='windows-only'>Note that on Windows, <a href='https://github.com/small-tech/site.js/blob/master/README.md#windows-10-notes'>your full computer name</a> is used as your hostname and you must put quotation marks around <code>@hostname</code> and <code>@localhost</code>, which you do not need to do on other platforms.</p>
 
-      <h3 id="as-a-production-server">As a production server</h3>
+    <h3 id="as-a-production-server">As a production server</h3>
 
-      <pre><code>site <span class="token keyword">enable</span></code></pre>
+    <pre><code>site <span class="token keyword">enable</span></code></pre>
 
-      <p><strong>The production server feature requires Linux with <a href='https://www.freedesktop.org/wiki/Software/systemd/'>systemd</a>.</strong> We use Site.js in production at <a href='https://small-tech.org'>Small Technology Foundation</a> on Ubuntu 18.04 LTS.</p>
+    <p><strong>The production server feature requires Linux with <a href='https://www.freedesktop.org/wiki/Software/systemd/'>systemd</a>.</strong> We use Site.js in production at <a href='https://small-tech.org'>Small Technology Foundation</a> on Ubuntu 18.04 LTS.</p>
 
-      <p>Once your server is running, it will survive crashes and server restarts and you can use the following commands:</p>
+    <p>Once your server is running, it will survive crashes and server restarts and you can use the following commands:</p>
 
-      <ul>
-      <li><code>site status</code>: display the server status.</li>
-      <li><code>site logs</code>: display the server logs.</li>
-      <li><code>site disable</code>: stop the server and remove it from startup items.</li>
-      </ul>
+    <ul>
+    <li><code>site status</code>: display the server status.</li>
+    <li><code>site logs</code>: display the server logs.</li>
+    <li><code>site disable</code>: stop the server and remove it from startup items.</li>
+    </ul>
 
-      <h2 id="dynamic">Dynamic sites</h2>
+    <h2 id="dynamic">Dynamic sites</h2>
 
-      <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
+    <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
 
-      <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">count</span>/.dynamic</code>
+    <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">count</span>/.dynamic</code>
 <code>echo '<code class='language-js'>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> r</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>r<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">}</span></code>' <span class='token keyword'>></span> count/.dynamic/<span class='token string'>index.js</span></code>
 <code>site <span class="token string">count</span></code></pre>
 
-      <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
+    <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
 
-      <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
+    <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
 
-      <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
+    <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
 
-      <pre><code class='language-js'><span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span>
+    <pre><code class='language-js'><span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span>
 
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  response
-    <span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;You’ve visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> time</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+response
+  <span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;You’ve visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> time</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
 
-      <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
+    <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
 
-      <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+    <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
 
-      <h3>WebSockets</h3>
+    <h3>WebSockets</h3>
 
-      <p>In addition to static routes and dynamic HTTPS routes, you can also specify WebSocket (WSS) routes in DotJS. You can also mix them as you please.</p>
+    <p>In addition to static routes and dynamic HTTPS routes, you can also specify WebSocket (WSS) routes in DotJS. You can also mix them as you please.</p>
 
-      <p>For example, to create a very basic chat app:</p>
+    <p>For example, to create a very basic chat app:</p>
 
-      <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">basic-chat</span>/.dynamic/.wss</code>
+    <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">basic-chat</span>/.dynamic/.wss</code>
 <code>cat &lt;&lt; <span class="token keyword">EOF</span> > basic-chat/.dynamic/.wss/<span class="token string">chat.js</span></code>
 <code class='language-js'>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">client<span class="token punctuation">,</span> request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  client<span class="token punctuation">.</span><span class="token function">room</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>setRoom<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
-  client<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>broadcast<span class="token punctuation">(</span>client<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">)</span>
+client<span class="token punctuation">.</span><span class="token function">room</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>setRoom<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+client<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>broadcast<span class="token punctuation">(</span>client<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">EOF</span></code>
 <code>site <span class="token string">basic-chat</span></code></pre>
 
-      <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
+    <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
 
 <pre><code class='language-js'>socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'wss://localhost/chat'</span><span class="token punctuation">)</span>
 socket<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
 socket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span></code></pre>
 
-      <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
+    <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
 
-      <p>To run that example with a basic web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
+    <p>To run that example with a basic web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
 
-      <pre><code>git <span class='token keyword'>clone</span> <span class='token string'>https://github.com/small-tech/site.js</span></code>
+    <pre><code>git <span class='token keyword'>clone</span> <span class='token string'>https://github.com/small-tech/site.js</span></code>
 <code>cd <span class='token string'>app</span></code>
 <code>site <span class='token string'>examples/wss-basic-chat</span></code></pre>
 
-      <p>The WebSocket functionality is from <a href='https://github.com/aral/express-ws'>our fork of express-ws</a> (which in turn uses <a href='https://github.com/websockets/ws'>ws</a>). Both of those links have more usage details.</p>
+    <p>The WebSocket functionality is from <a href='https://github.com/aral/express-ws'>our fork of express-ws</a> (which in turn uses <a href='https://github.com/websockets/ws'>ws</a>). Both of those links have more usage details.</p>
 
-      <p>For full details, see the <a href='https://github.com/small-tech/site.js/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://github.com/small-tech/site.js/tree/master/examples'>examples</a>.</p>
+    <p>For full details, see the <a href='https://github.com/small-tech/site.js/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://github.com/small-tech/site.js/tree/master/examples'>examples</a>.</p>
 
-      <h2 id="static">Static Site Generation</h2>
+    <h2 id="static">Static Site Generation</h2>
 
-      <p>As of version 12.11.0, Site.js includes the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
+    <p>As of version 12.11.0, Site.js includes the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
 
-      <p>To create a new Hugo site and start serving it:</p>
+    <p>To create a new Hugo site and start serving it:</p>
 
-      <pre><code>mkdir <span class="token string">my-site</span></code> <code>cd <span class="token string">my-site</span></code> <code>site <span class="token keyword">hugo</span> new site <span class="token string">.hugo</span></code> <code>echo <span class="token string">'&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;'</span> > <span class="token string">.hugo/layouts/index.html</span></code> <code>site</code></pre>
+    <pre><code>mkdir <span class="token string">my-site</span></code> <code>cd <span class="token string">my-site</span></code> <code>site <span class="token keyword">hugo</span> new site <span class="token string">.hugo</span></code> <code>echo <span class="token string">'&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;'</span> > <span class="token string">.hugo/layouts/index.html</span></code> <code>site</code></pre>
 
-      <p>Note: During development, this feature uses Site.js’s live reload instead of Hugo’s. Your web page must have at least a <code>&lt;body&gt;</code> tag for it to work.</p>
+    <p>Note: During development, this feature uses Site.js’s live reload instead of Hugo’s. Your web page must have at least a <code>&lt;body&gt;</code> tag for it to work.</p>
 
-      <h3>How it works</h3>
+    <h3>How it works</h3>
 
-      <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
+    <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
 
-      <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:<pre><code>site <span class="token keyword">hugo</span> <span class="token string">[any valid Hugo command]</any></span></code></pre></p>
+    <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:<pre><code>site <span class="token keyword">hugo</span> <span class="token string">[any valid Hugo command]</any></span></code></pre></p>
 
-      <p>Please see <a href='https://gohugo.io/documentation/'>the Hugo documentation</a> for detailed information on how Hugo works.</p>
+    <p>Please see <a href='https://gohugo.io/documentation/'>the Hugo documentation</a> for detailed information on how Hugo works.</p>
 
-      <h3>Mounting Hugo sites</h3>
+    <h3>Mounting Hugo sites</h3>
 
-      <p>Site.js will automatically mount files in the <em>.hugo</em> directory at your site’s root.</p>
+    <p>Site.js will automatically mount files in the <em>.hugo</em> directory at your site’s root.</p>
 
-      <p>If you want the generated Hugo site to be mounted at a different path, include the path structure you want in the name of the hugo folder, separating paths using two dashes. For example:</p>
+    <p>If you want the generated Hugo site to be mounted at a different path, include the path structure you want in the name of the hugo folder, separating paths using two dashes. For example:</p>
 
-      <table class='paths-table'>
-        <th>Folder name</th>
-        <th>Mount path</th>
-        <tr>
-          <td>.hugo</td>
-          <td>/</td>
-        </tr>
-        <tr>
-          <td>.hugo--docs</td>
-          <td>/docs/</td>
-        </tr>
-        <tr>
-          <td>.hugo--second-level--blog</td>
-          <td>/second-level/blog</td>
-        </tr>
-      </table>
+    <table class='paths-table'>
+      <th>Folder name</th>
+      <th>Mount path</th>
+      <tr>
+        <td>.hugo</td>
+        <td>/</td>
+      </tr>
+      <tr>
+        <td>.hugo--docs</td>
+        <td>/docs/</td>
+      </tr>
+      <tr>
+        <td>.hugo--second-level--blog</td>
+        <td>/second-level/blog</td>
+      </tr>
+    </table>
 
-      <p>You can include any number of Hugo sites in your site and mount them at different paths and the results will be weaved together into the <em>.generated</em> folder. We call this feature… <em>ahem</em>… Hugo Weaving (we’ll show ourselves out).</p>
+    <p>You can include any number of Hugo sites in your site and mount them at different paths and the results will be weaved together into the <em>.generated</em> folder. We call this feature… <em>ahem</em>… Hugo Weaving (we’ll show ourselves out).</p>
 
-      <p>All regular Site.js functionality is still available when using Hugo generation. So you can, for example, have your blog statically-generated using Hugo and extend it using locally-hosted dynamic comments.</p>
+    <p>All regular Site.js functionality is still available when using Hugo generation. So you can, for example, have your blog statically-generated using Hugo and extend it using locally-hosted dynamic comments.</p>
 
-      <h2 id="extend">Use as a module</h2>
+    <h2 id="extend">Use as a module</h2>
 
-      <pre><code>npm <span class='token keyword'>i</span> <span class='token string'>@small-tech/site.js</span></code></pre>
+    <pre><code>npm <span class='token keyword'>i</span> <span class='token string'>@small-tech/site.js</span></code></pre>
 
-      <p>You can use Site.js as a module in your Node.js projects. See the <a href="https://github.com/small-tech/site.js#api">API documentation</a> for details.</p>
+    <p>You can use Site.js as a module in your Node.js projects. See the <a href="https://github.com/small-tech/site.js#api">API documentation</a> for details.</p>
 
-      <h2 id="learn-more">Learn more</h2>
+    <h2 id="learn-more">Learn more</h2>
 
-      <pre><code>site <span class='token keyword'>help</span></code></pre>
+    <pre><code>site <span class='token keyword'>help</span></code></pre>
 
-      <p><a href="https://github.com/small-tech/site.js/#sitejs">See the docs</a> for full details, like using <a href="https://github.com/small-tech/site.js#custom-error-pages">custom error pages</a>, <a href="https://github.com/small-tech/site.js#native-cascading-archives-support">cascading archives</a>, and <a href="https://github.com/small-tech/site.js#native-404-302-support">the 404→302 technique</a> for an evergreen web.</p>
+    <p><a href="https://github.com/small-tech/site.js/#sitejs">See the docs</a> for full details, like using <a href="https://github.com/small-tech/site.js#custom-error-pages">custom error pages</a>, <a href="https://github.com/small-tech/site.js#native-cascading-archives-support">cascading archives</a>, and <a href="https://github.com/small-tech/site.js#native-404-302-support">the 404→302 technique</a> for an evergreen web.</p>
 
-      <h2>Site.js in production</h2>
+    <h2>Site.js in production</h2>
 
-      <p>The following sites run on Site.js:</p>
+    <p>The following sites run on Site.js:</p>
 
-      <ul>
-        <li><a href='https://small-tech.org'>Small Technology Foundation</a></li>
-        <li><a href='https://better.fyi'>Better Blocker</a></li>
-        <li><a href='https://laurakalbag.com'>Laura’s site</a></li>
-        <li><a href='https://ar.al'>Aral’s site</a></li>
-      </ul>
+    <ul>
+      <li><a href='https://small-tech.org'>Small Technology Foundation</a></li>
+      <li><a href='https://better.fyi'>Better Blocker</a></li>
+      <li><a href='https://laurakalbag.com'>Laura’s site</a></li>
+      <li><a href='https://ar.al'>Aral’s site</a></li>
+    </ul>
 
-      <h2 id="about">About</h2>
+    <h2 id="about">About</h2>
 
-      <p>Made with <img class='emoji inline' src='images/emoji/0040_1f496.svg' alt='love'> by <a href='https://small-tech.org'>Small Technology Foundation</a>.</p>
+    <p>Made with <img class='emoji inline' src='images/emoji/0040_1f496.svg' alt='love'> by <a href='https://small-tech.org'>Small Technology Foundation</a>.</p>
 
-      <p>We are a tiny not-for-profit based in Ireland that makes tools for people like you – not for startups, enterprises, or governments. And we’re also funded by people like you. <strong>If you like our work and want to help us exist, please <a href="https://small-tech.org/fund-us/">fund us</a>.</strong></p>
+    <p>We are a tiny not-for-profit based in Ireland that makes tools for people like you – not for startups, enterprises, or governments. And we’re also funded by people like you. <strong>If you like our work and want to help us exist, please <a href="https://small-tech.org/fund-us/">fund us</a>.</strong></p>
 
-      <p>Site.js is <a href="https://small-tech.org/about#small-technology">Small Technology</a> and the foundations of <a href="https://small-tech.org/research-and-development">Tincan</a>.</p>
+    <p>Site.js is <a href="https://small-tech.org/about#small-technology">Small Technology</a> and the foundations of <a href="https://small-tech.org/research-and-development">Tincan</a>.</p>
 
-      <img id='logo' src='images/site.js-logo.svg' alt='Site.js logo: a sprouting sapling with a short brown stem and two green leaves'>
+    <img id='logo' src='images/site.js-logo.svg' alt='Site.js logo: a sprouting sapling with a short brown stem and two green leaves'>
 
-      <p class='copyright'><small>Copyright ⓒ 2019-2020, <a href='https://small-tech.org'>Small Technology Foundation</a>. All content on this site is released under <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons Attribution-ShareAlike</a>. Site.js is free software licensed under <a href='https://www.gnu.org/licenses/agpl-3.0.en.html'>AGPLv3 or later</a>. The background pattern is <a href='https://leaverou.github.io/css3patterns/#cross-dots'>Cross-Dots</a> by Natali Davydova from the <a href='https://leaverou.github.io/css3patterns/'>CSS3 Patterns Gallery</a>.</small></p>
-    </div>
+    <p class='copyright'><small>Copyright ⓒ 2019-2020, <a href='https://small-tech.org'>Small Technology Foundation</a>. All content on this site is released under <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons Attribution-ShareAlike</a>. Site.js is free software licensed under <a href='https://www.gnu.org/licenses/agpl-3.0.en.html'>AGPLv3 or later</a>. The background pattern is <a href='https://leaverou.github.io/css3patterns/#cross-dots'>Cross-Dots</a> by Natali Davydova from the <a href='https://leaverou.github.io/css3patterns/'>CSS3 Patterns Gallery</a>.</small></p>
   </main>
 
   <!-- Start: scripts -->

@@ -1,8 +1,8 @@
 /********************************************************************************
  *                                                                              *
- *                            Styles for sitejs.org                             *
+ *                            Styles for SiteJS.org                             *
  *                                                                              *
- *          Copyright ⓒ 2019 Aral Balkan. Published with ♥ by Ind.ie.          *
+ *                     Copyright ⓒ 2019-2020 Aral Balkan.                      *
  *                  License: Released under AGPLv3 or later.                    *
  *                                                                              *
  ********************************************************************************/
@@ -30,7 +30,6 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: no
 ol, ul { list-style: none; }
 img { max-width: 100%; height: auto; }
 
-
 /********************************************************************************
  *                                                                              *
  *                               General elements                               *
@@ -38,119 +37,19 @@ img { max-width: 100%; height: auto; }
  ********************************************************************************/
 
 html {
-  background-color:#151D1F;
   margin: 0;
   padding: 0;
+  background-color: whitesmoke;
 }
 
 body {
   position: relative;
+  max-width: 920px;
   margin-top: 0 auto;
-  background-color: whitesmoke;
-}
-
-
-header {
-  /* max-width: 920px; */
-  margin: 0 auto;
-  padding-bottom: 1.75rem;
-
-}
-
-header h2 {
-  font-size: 2em;
-  font-weight: 300;
-  text-align: center;
-  margin-top: -0.5em;
-  margin-bottom: 1.75em;
-}
-
-#small-web {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6em;
-}
-
-#small-web div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-basis: 27.5%;
-  margin-bottom: 3em;
-}
-
-#small-web div h2 {
-  margin-bottom: 1em;
-  /* flex-basis: 10%; */
-}
-
-#small-web div p {
-  margin-top: 1em;
-  text-align: center;
-  /* flex-basis: 10%; */
-}
-
-
-#small-web h2 {
-  margin: 0;
-  padding: 0;
-}
-
-#small-web div img {
-  max-width: 100%;
-}
-
-@media(max-width: 764px) {
-  #small-web {
-    display: block;
-  }
-
-  #small-web div p {
-    margin-top: 1.5em;
-    text-align: center;
-  }
-}
-
-/********************************************************************************
- *                                                                              *
- *                                  Navigation                                  *
- *                                                                              *
- ********************************************************************************/
-
-nav {
-  font-size: 1.25em;
-  text-align: center;
-  margin-top: -1.5em;
-  margin-bottom: 2.5em;
-  background-color: rgb(230,230,230);
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-}
-
-nav > ul {
-  list-style: none;
-}
-
-nav li, nav a {
-  color: #4D7072;
-}
-
-nav a:hover {
-  color:#334b4c;
-  border-bottom: 2px solid #334b4c;
-}
-
-nav li {
-  display: inline;
-  padding-right: 1em;
-}
-
-nav a {
-  text-decoration: none;
-}
-
-nav li:last-of-type {
-  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 /********************************************************************************
@@ -159,7 +58,7 @@ nav li:last-of-type {
  *                                                                              *
  ********************************************************************************/
 
-h1 {
+ h1 {
   color: #1D2C2E;
   font-size: 96px;
   text-align: center;
@@ -176,7 +75,7 @@ h2 {
   font-size: 46px;
   margin-top: 0.75em;
   margin-bottom: 0.25em;
-
+  font-weight: 300;
 }
 
 h2 + h3 {
@@ -240,30 +139,180 @@ pre, code[class*="language-"], pre[class*="language-"] {
 }
 
 main pre > pre {
-  /* margin-top: 1em; */
   padding: 0;
   line-height: 1;
-  /* margin-left: 1.25em; */
   margin-bottom: 1.5em;
   background-color: transparent;
   display: inline-block;
-  /* border: 1px solid red; */
 }
 
 /********************************************************************************
  *                                                                              *
- *                  Header area with interactive presentation                   *
+ *                                     Header                                   *
  *                                                                              *
  ********************************************************************************/
 
-#summary {
-  margin-top: 1.5em;
-  margin-bottom: 1em;
-  font-size: 1.75em;
-  color: black;
+header h2, #small-web-details h3 {
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  margin-top: -0.5em;
+  margin-bottom: 2.25em;
 }
 
-#browser p {
+/********************************************************************************
+ *                                                                              *
+ *                                  Navigation                                  *
+ *                                                                              *
+ ********************************************************************************/
+
+nav {
+  font-size: 1.25em;
+  text-align: center;
+  margin-top: -4%;
+  /* margin-bottom: 2.75em; */
+  background-color: rgb(230,230,230);
+  padding-top: 2em;
+  padding-bottom: 0.75em;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav li, nav a {
+  color: #4D7072;
+}
+
+nav a:hover {
+  color:#334b4c;
+  border-bottom: 2px solid #334b4c;
+}
+
+nav li {
+  display: inline;
+  padding-right: 1em;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav li:last-of-type {
+  padding-right: 0;
+}
+
+/********************************************************************************
+ *                                                                              *
+ *                              Small Web section                               *
+ *                                                                              *
+ ********************************************************************************/
+
+#small-web {
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+
+#small-web h2 {
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+#small-web-details {
+  border: 1em solid rgba(70,107,106, 0.5);
+  padding: 1em;
+}
+
+
+#small-web-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+#small-web-details div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 27.5%;
+  /* margin-bottom: 3em; */
+}
+
+#small-web-details div h3 {
+  margin-bottom: 1em;
+  /* flex-basis: 10%; */
+}
+
+#small-web-details div p {
+  margin-top: 1em;
+  text-align: center;
+  /* flex-basis: 10%; */
+}
+
+
+#small-web-details h3 {
+  margin: 0;
+  padding: 0;
+}
+
+#small-web-details div img {
+  max-width: 100%;
+}
+
+@media(max-width: 764px) {
+  #small-web-details {
+    display: block;
+  }
+
+  #small-web-details div p {
+    margin-top: 1.5em;
+    text-align: center;
+  }
+}
+
+/********************************************************************************
+ *                                                                              *
+ *                                   Highlights                                 *
+ *                                                                              *
+ ********************************************************************************/
+
+#highlights {
+  margin-top: -2em;
+}
+
+#highlights h2 {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+#highlights ul {
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+}
+
+#highlights li {
+  font-size: 1.5em;
+  font-weight: 300;
+  list-style-type: none;
+  margin-bottom: 0.5em;
+}
+
+#highlights li p {
+  margin-top: -0.5em;
+  margin-left: 1.66em;
+}
+
+/********************************************************************************
+ *                                                                              *
+ *                           Interactive presentation                           *
+ *                                                                              *
+ ********************************************************************************/
+
+ #browser p {
   font-size: 1.25em;
 }
 
@@ -273,7 +322,6 @@ main pre > pre {
   grid-template-columns: 100%;
   grid-column-gap: 1%;
   margin-bottom: 1rem;
-  /* height: 200px; */
 }
 
 .terminal {
@@ -361,11 +409,7 @@ main {
 }
 
 .content {
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
+
 }
 
 main p, main li, main fieldset {
@@ -707,6 +751,12 @@ table.paths-table td {
  ********************************************************************************/
 
 @media (max-width: 620px) {
+
+  body {
+    padding-left: 0rem;
+    padding-right: 0rem;
+
+  }
 
   #presentation {
     font-size: 0.78em;
