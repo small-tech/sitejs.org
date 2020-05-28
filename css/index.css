@@ -287,18 +287,24 @@ nav li:last-of-type {
   margin-bottom: 0.75em;
 }
 
+#highlights h3 {
+  margin-top: 0;
+}
+
 #highlights ul {
-  max-width: 75%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3em;
+  display: grid;
+  grid-template-columns: 47.5% 47.5%;
+  grid-column-gap: 5%;
 }
 
 #highlights li {
   font-size: 1.5em;
   font-weight: 300;
   list-style-type: none;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 
 #highlights li p {
