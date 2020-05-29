@@ -24,6 +24,7 @@ minify node_modules/typed.js/lib/typed.js >> tmp/scripts.js
 minify js/terminal-presentation.js >> tmp/scripts.js
 minify js/browser-presentation.js >> tmp/scripts.js
 minify js/site-js-terminal-presentation.js >> tmp/scripts.js
+minify js/index.js >> tmp/scripts.js
 
 # Inline the CSS and JS into the HTML.
 echo " > Inline minified CSS & JS into HTML"
