@@ -363,40 +363,63 @@ module.exports = (request, response) => {
 
     <p>For example, to create a very basic chat app:</p>
 
-    <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">basic-chat</span>/.dynamic/.wss</code>
-<code>cat &lt;&lt; <span class="token keyword">EOF</span> > basic-chat/.dynamic/.wss/<span class="token string">chat.js</span></code>
-<code class='language-js'>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">client<span class="token punctuation">,</span> request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-client<span class="token punctuation">.</span><span class="token function">room</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>setRoom<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
-client<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>broadcast<span class="token punctuation">(</span>client<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">EOF</span></code>
-<code>site <span class="token string">basic-chat</span></code></pre>
+    <ol>
+      <li>
+        <h3>Create project folders.</h3>
+        <pre><code class='language-bash'>mkdir -p basic-chat/.dynamic/.wss</code></pre>
+      </li>
+      <li>
+        <h3>Create the chat websocket route.</h3>
+        <p>Use the <code>cat</code> command in terminal to write everything until the <code>EOF</code> marker to a file called <em>chat.js</em> in the <em>.wss</em> folder. (If you’d rather, just create the file using your favourite editor instead.)</p>
+        <pre><code class='language-js'>cat << EOF > basic-chat/.dynamic/.wss/chat.js
 
-    <p>To test it, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
+module.exports = function (client, request) {
+  const a = 5
+  client.room = this.setRoom(request)
+  client.on('message', message => this.broadcast(client, message))
+}
 
-<pre><code class='language-js'>socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'wss://localhost/chat'</span><span class="token punctuation">)</span>
-socket<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token parameter">message</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-socket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span></code></pre>
+EOF</code></pre>
+      <aside>(Note that we did not use an arrow function to define the route this time. This is because we need access to higher-level built-in functionality on the route like setting the room and broadcasting a message to everyone in the room that we access via the <code>this</code> reference.)</aside>
+      </li>
+      <li>
+        <h3>Fire up the server.</h3>
+        <pre><code>site basic-chat</code></pre>
+      </li>
+    </ol>
 
+    <p>To test your chat app, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
+
+  <pre><code class='language-js'>socket = new WebSocket('wss://localhost/chat')
+socket.onmessage = message => console.log(message.data)
+socket.send('hello')</code></pre>
+
+  <aside class='tip'>
+    <h3>Tip</h3>
     <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
 
-    <p>To run that example with a basic web interface, do the following and then visit <a href='https://localhost'>https://localhost</a></p>
+    <p>To run that example with a basic web interface, first close the Site.js source code repository:</p>
 
-    <pre><code>git <span class='token keyword'>clone</span> <span class='token string'>https://github.com/small-tech/site.js</span></code>
-<code>cd <span class='token string'>app</span></code>
-<code>site <span class='token string'>examples/wss-basic-chat</span></code></pre>
+    <pre><code>git clone https://github.com/small-tech/site.js</code></pre>
+
+    <p>Then run the basic chat example using Site.js:</p>
+
+    <pre><code>site site.js/examples/wss-basic-chat</code></pre>
+
+    <p>Finally, open <a href='https://localhost'>https://localhost</a> in multiple browser windows and play with the chat interface.</p>
 
     <p>The WebSocket functionality is from <a href='https://github.com/aral/express-ws'>our fork of express-ws</a> (which in turn uses <a href='https://github.com/websockets/ws'>ws</a>). Both of those links have more usage details.</p>
 
     <p>For full details, see the <a href='https://github.com/small-tech/site.js/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://github.com/small-tech/site.js/tree/master/examples'>examples</a>.</p>
+  </aside>
 
-    <h2 id="about">About</h2>
+  <h2 id="about">About</h2>
 
-    <p>Made with <img class='emoji inline' src='images/emoji/0040_1f496.svg' alt='love'> by <a href='https://small-tech.org'>Small Technology Foundation</a>.</p>
+    <p>Made with love by <a href='https://small-tech.org'>Small Technology Foundation</a>.</p>
 
-    <p>We are a tiny not-for-profit based in Ireland that makes tools for people like you – not for startups, enterprises, or governments. And we’re also funded by people like you. <strong>If you like our work and want to help us exist, please <a href="https://small-tech.org/fund-us/">fund us</a>.</strong></p>
+    <p>We are a tiny not-for-profit based in Ireland that makes tools for people like you – not for startups, enterprises, or governments. And we’re also funded by people like you. <strong>If you like our work and want to help us continue to exist, please <a href="https://small-tech.org/fund-us/">fund us</a>.</strong></p>
 
-    <p>Site.js is <a href="https://small-tech.org/about#small-technology">Small Technology</a> and the foundations of <a href="https://small-tech.org/research-and-development">Tincan</a>.</p>
+    <p>Site.js is <a href="https://small-tech.org/about#small-technology">Small Technology</a>.</p>
 
     <img id='logo' src='images/site.js-logo.svg' alt='Site.js logo: a sprouting sapling with a short brown stem and two green leaves'>
 

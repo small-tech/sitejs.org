@@ -127,11 +127,11 @@ ol li {
   margin-bottom: 1.5em !important;
 }
 
-ol ol {
+ol ol, aside > ol {
   list-style-type: lower-roman;
 }
 
-ol ol li::marker {
+ol ol li::marker, aside > ol li::marker {
   font-size: 1em;
   font-weight: normal;
 }
@@ -199,6 +199,16 @@ pre, code[class*="language-"], pre[class*="language-"] {
 .code-marker {
   vertical-align: middle;
   margin-left: 0.25em;
+}
+
+/********************************************************************************
+ *                                                                              *
+ *                            Syntax highlighting                               *
+ *                                                                              *
+ ********************************************************************************/
+
+.hljs-keyword {
+  font-weight: 500;
 }
 
 
