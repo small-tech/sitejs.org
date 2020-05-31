@@ -40,17 +40,17 @@
         <div>
           <h3>One person.</h2>
           <img src='/images/person.svg'>
-          <p>Develop and test on <strong>your own device</strong> using Site.js.</p>
+          <p>Develop and test on <strong>your own device</strong>.</p>
         </div>
         <div>
           <h3>One server.</h2>
           <img src='/images/server.svg'>
-          <p>Sync and deploy to <strong>your VPS</strong> that runs Site.js.</p>
+          <p>Sync and deploy to <strong>your own VPS</strong>.</p>
         </div>
         <div>
           <h3>One site.</h2>
           <img src='/images/site.svg'>
-          <p>Host your site at your domain.</p>
+          <p>Host <strong>your own site</strong> at <strong>your own domain</strong>.</p>
         </div>
     </section>
 
@@ -72,7 +72,7 @@
         </li>
         <li>
           <h3>✅ For static sites.</h3>
-          <p>Write plain HTML, CSS, JS or use Hugo.</p></li>
+          <p>Write plain HTML, CSS, JS or use the bundled Hugo static site generator.</p></li>
         <li>
           <h3>✅ For dynamic sites.</h3>
           <p>Use simple DotJS or the full power of Node.js and Express.js.</p>
@@ -104,7 +104,7 @@
           <li>
             <p>Enter the folder.</p>
             <pre><code class='language-bash'>cd $_</code></pre>
-            <aside>(<code>$_</code> is shorthand that refers to the argument from your last command. In this case, <code>hello-world</code>.)</aside>
+            <aside>(<code>$_</code> is shorthand for the argument from your last command. In this case, it evaluates to <code>hello-world</code>.)</aside>
           </li>
           <li>
             <p>Write the string <code>'Hello, world'</code> into a file called <em>index.html</em>, creating or overwriting it as necessary.</p>
@@ -303,7 +303,7 @@
 
     <h2 id="dynamic">Dynamic sites</h2>
 
-    <p>With Site.js, you’re not limited to creating and serving static sites. You can easily add dynamic functionality to your static site or create fully-dynamic sites.</p>
+    <p>Site.js does not limit you to creating and serving fully static sites. You can easily add dynamic functionality to your static sites or create fully dynamic sites.</p>
 
     <p>The easiest way to get started with dynamic sites is to use DotJS. DotJS gives you PHP-like simplicity in JavaScript using simple <code>.js</code> files.</p>
 
@@ -351,13 +351,15 @@ module.exports = (request, response) => {
 
       <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
 
+      <p>Site.js does not limit you to using DotJS. If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.</p>
+
       <p>See the Site.js documentation for <a href='https://github.com/small-tech/site.js#dynamic-sites'>more information on building dynamic sites</a>.</p>
     </aside>
 
 
-    <h3>WebSockets</h3>
+    <h2>WebSockets</h2>
 
-    <p>In addition to static routes and dynamic HTTPS routes, you can also specify WebSocket (WSS) routes in DotJS. You can also mix them as you please.</p>
+    <p>In addition to static routes and dynamic HTTPS routes, you can also specify secure WebSocket (WSS) routes in DotJS. And you can mix all three types of routes as you please.</p>
 
     <p>For example, to create a very basic chat app:</p>
 
@@ -387,55 +389,6 @@ socket<span class="token punctuation">.</span><span class="token function">send<
     <p>The WebSocket functionality is from <a href='https://github.com/aral/express-ws'>our fork of express-ws</a> (which in turn uses <a href='https://github.com/websockets/ws'>ws</a>). Both of those links have more usage details.</p>
 
     <p>For full details, see the <a href='https://github.com/small-tech/site.js/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://github.com/small-tech/site.js/tree/master/examples'>examples</a>.</p>
-
-    <h2 id="static">Static Site Generation</h2>
-
-    <p>As of version 12.11.0, Site.js includes the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
-
-    <p>To create a new Hugo site and start serving it:</p>
-
-    <pre><code>mkdir <span class="token string">my-site</span></code> <code>cd <span class="token string">my-site</span></code> <code>site <span class="token keyword">hugo</span> new site <span class="token string">.hugo</span></code> <code>echo <span class="token string">'&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;'</span> > <span class="token string">.hugo/layouts/index.html</span></code> <code>site</code></pre>
-
-    <p>Note: During development, this feature uses Site.js’s live reload instead of Hugo’s. Your web page must have at least a <code>&lt;body&gt;</code> tag for it to work.</p>
-
-    <h3>How it works</h3>
-
-    <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
-
-
-
-    <h3>Mounting Hugo sites</h3>
-
-    <p>Site.js will automatically mount files in the <em>.hugo</em> directory at your site’s root.</p>
-
-    <p>If you want the generated Hugo site to be mounted at a different path, include the path structure you want in the name of the hugo folder, separating paths using two dashes. For example:</p>
-
-    <table class='paths-table'>
-      <th>Folder name</th>
-      <th>Mount path</th>
-      <tr>
-        <td>.hugo</td>
-        <td>/</td>
-      </tr>
-      <tr>
-        <td>.hugo--docs</td>
-        <td>/docs/</td>
-      </tr>
-      <tr>
-        <td>.hugo--second-level--blog</td>
-        <td>/second-level/blog</td>
-      </tr>
-    </table>
-
-    <p>You can include any number of Hugo sites in your site and mount them at different paths and the results will be weaved together into the <em>.generated</em> folder. We call this feature… <em>ahem</em>… Hugo Weaving (we’ll show ourselves out).</p>
-
-    <p>All regular Site.js functionality is still available when using Hugo generation. So you can, for example, have your blog statically-generated using Hugo and extend it using locally-hosted dynamic comments.</p>
-
-    <h2 id="extend">Use as a module</h2>
-
-    <pre><code>npm <span class='token keyword'>i</span> <span class='token string'>@small-tech/site.js</span></code></pre>
-
-    <p>You can use Site.js as a module in your Node.js projects. See the <a href="https://github.com/small-tech/site.js#api">API documentation</a> for details.</p>
 
     <h2 id="about">About</h2>
 
