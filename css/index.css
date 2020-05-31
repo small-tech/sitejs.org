@@ -113,7 +113,7 @@ a:hover {
   color: #466B6A;
 }
 
-aside {
+aside, aside p {
   font-style: italic;
   font-size: 1rem;
 }
@@ -123,11 +123,20 @@ ol {
 }
 
 ol li {
-  padding-bottom: 1.5em;
+  /* padding-bottom: 1.5em; */
+  margin-bottom: 1.5em !important;
 }
 
+ol ol {
+  list-style-type: lower-roman;
+}
 
-pre, code, .code-marker {
+ol ol li::marker {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+pre, code, code li, .code-marker {
   font-family: "SFMono-Regular",
   Consolas,
   "Fira Code",
@@ -394,96 +403,6 @@ aside.tip::before {
   margin-left: 1.66em;
 }
 
-/********************************************************************************
- *                                                                              *
- *                           Interactive presentation                           *
- *                                                                              *
- ********************************************************************************/
-
- #browser p {
-  font-size: 1.25em;
-}
-
-#presentation {
-  position: relative;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-column-gap: 1%;
-  margin-bottom: 1rem;
-}
-
-.terminal {
-  width: 100%;
-  position: relative;
-  background-color: black;
-  padding: 1em;
-  padding-top: 0;
-  overflow-y: scroll;
-  border: 1px solid #e8e8e8;
-}
-
-/* Force perfect scrollbar to appear on the right and make the track narrower. */
-.ps__rail-y {
-  left: unset !important;
-  right: 0 !important;
-  width: 11px;
-}
-
-.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
-  width: 6px;
-}
-
-.terminal > pre {
-  height: 100px;
-}
-
-/* Add Terminal chrome. */
-#terminal-presentation:before, #second-terminal-presentation:before {
-  content: attr(data-window-title) ' ';
-  width: 100%;
-  border-radius: 3px 3px 0 0;
-  background: url('data:image/svg+xml;charset=utf-8,<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="minimal-browser-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g id="Ellipse_1"><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="%23B3B3B3" cx="8" cy="8" r="5"/></g></g></svg>') 16px 8px no-repeat,
-    url('data:image/svg+xml;charset=utf-8,<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="minimal-browser-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g id="Ellipse_1"><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="%23B3B3B3" cx="8" cy="8" r="5"/></g></g></svg>') 32px 8px no-repeat,
-    url('data:image/svg+xml;charset=utf-8,<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="minimal-browser-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g id="Ellipse_1"><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="%23B3B3B3" cx="8" cy="8" r="5"/></g></g></svg>') 48px 8px no-repeat,
-    url('data:image/svg+xml;charset=utf-8,<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="minimal-browser-settings" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g id="Menu_icon"><g><path fill-rule="evenodd" clip-rule="evenodd" fill="%23B3B3B3" d="M1,1v3h14V1H1z M1,10h14V7H1V10z M1,16h14v-3H1V16z"/></g></g></svg>')  right 16px top 8px no-repeat, #e8e8e8;
-  color: #454545;
-  float: left;
-  line-height: 2;
-  text-align: center;
-}
-
-#terminal-presentation, #second-terminal-presentation {
-  position: relative;
-  background-color: black;
-  border-radius: 3px;
-}
-
-#second-terminal-presentation {
-  display: none;
-}
-
-.terminal > pre {
-  margin-top: 0.5em;
-}
-
-.terminal code {
-  padding-bottom: 1em;
-}
-
-.next-button {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-}
-
-.highlighted:after {
-  background-color: #C6C7BC !important;
-}
-
-.split-terminals {
-  grid-template-columns: 49.5% 49.5% !important;
-  grid-template-rows: 100% !important;
-}
 
 /********************************************************************************
  *                                                                              *
@@ -515,9 +434,6 @@ main li {
   margin-bottom: 0;
 }
 
-p code, li code {
-  font-weight: 500;
-}
 
 li.selected {
   color: #151D1F;

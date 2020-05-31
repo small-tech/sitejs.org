@@ -91,26 +91,39 @@
     <ol>
       <li>
         <h3>Install Site.js.</h3>
-        <p>Before you pipe the installation script into your shell, <span id='view-installation-script-source'>View the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span> and make sure you understand what it does.</p>
+        <p>The installation script downloads the correct Site.js binary for your platform and places it on your path (<span id='view-installation-script-source'>View the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span>).</p>
         <pre><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
-        <aside>This downloads the correct Site.js binary for your platform and places it on your path.</aside>
       </li>
       <li>
         <h3>Create a basic static web page.</h3>
-        <pre><code class='language-bash'><ol><li>mkdir hello-world</li><li>cd $_</li><li>echo 'Hello, world' > index.html</li></ol></code></pre>
-        <aside>This <span class='code-marker'>a</span> creates a folder, <span class='code-marker'>b</span> enters it, and <span class='code-marker'>c</span> pipes (writes) the message 'Hello, world' into a file called index.html, creating or overwriting it as necessary.</aside>
+        <ol>
+          <li>
+            <p>Create a folder</p>
+            <pre><code class='language-bash'>mkdir hello-world</code></pre>
+          </li>
+          <li>
+            <p>Enter the folder.</p>
+            <pre><code class='language-bash'>cd $_</code></pre>
+            <aside>(<code>$_</code> is shorthand that refers to the argument from your last command. In this case, <code>hello-world</code>.)</aside>
+          </li>
+          <li>
+            <p>Write the string <code>'Hello, world'</code> into a file called <em>index.html</em>, creating or overwriting it as necessary.</p>
+            <pre><code class='language-bash'>echo 'Hello, world' > index.html</code></pre>
+          </li>
+        </ol>
       </li>
       <li>
         <h3>Start a secure local development server.</h3>
         <pre><code class='language-bash'>site</code></pre>
-        <aside>This starts the Site.js server at <a href='https://localhost'>https://localhost</a>.</aside>
       </li>
     </ol>
+    <p>Site.js starts serving your hello-world site at <a href='https://localhost'>https://localhost</a>. Go there in your browser to see your “Hello, world!” message.</p>
 
-    <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
+    <p><strong>Congratulations, you’re up and running with Site.js!</strong></p>
 
     <aside class='tip'><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web daemon that survives errors/reboots and auto-updates itself.</aside>
 
+    <!--
     <h2 id="install">Install</h2>
 
     <p>Copy and paste the following command into <span id='terminal-copy'>your terminal</span>. <strong>Before you pipe any script into your computer, always <span id='view-installation-script-source'>view the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span> and make sure you understand what it does.</strong></p>
@@ -233,31 +246,114 @@
     <li><code>site disable</code>: stop the server and remove it from startup items.</li>
     </ul>
 
+  -->
+
+    <h2>Static sites</h2>
+
+    <p>The type of site you just created is an old-school static site. You can create static sites with Site.js using plain old HTML, CSS, and JavaScript. Site.js will automatically serve any files it finds in the folder you start it on as static files.</p>
+
+    <p>For larger sites, hand-rolling your static site might become cumbersome. That’s why Site.js comes bundled with the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
+
+    <h2>Static site generation</h2>
+
+    <p>To create a new Hugo site and start serving it:</p>
+
+    <ol>
+      <li>
+        <h3>Create a new project folder and switch to it.</h3>
+        <pre><code class='language-bash'>mkdir my-hugo-site && cd $_</code></pre>
+      </li>
+      <li>
+        <h3>Create a new Hugo site.</h3>
+        <pre><code class='language-bash'>site hugo new site .hugo</code></pre>
+        <aside>(You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance: <code>site hugo &lt;any valid Hugo command&gt;</code>. So the above command is equivalent to running <code>hugo new site .hugo</code> if you have Hugo installed separately.)</aside>
+      </li>
+      <li>
+        <h3>Create a basic initial index page layout.</h3>
+        <pre><code class='language-bash'>echo '&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' &gt; .hugo/layouts/index.html</code></pre>
+        <aside>(For Site.js’s live reload to work, your web page must contain at least a <code>&lt;body&gt;</code> tag.)</aside>
+      </li>
+      <li>
+        <h3>Start a secure local development server.</h3>
+        <pre><code class='language-bash'>site</code></pre>
+      </li>
+    </ol>
+
+    <p>Site.js starts serving your Hugo site at https://localhost. Go there in your browser to see your “Hello, world!” message.</p>
+
+    <aside><p>(If you alter the file you just created, Site.js will automatically rebuild it using Hugo and your browser will reflect the changes immediately using live reload.)</p></aside>
+
+    <p><strong>Congratulations, you just created your first Hugo site with Site.js!</strong></p>
+
+
+
+    <aside class='tip'>
+
+      <h3>How it works</h3>
+
+      <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
+
+      <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:
+        <pre><code>site hugo &lt;any valid Hugo command&gt;</code></pre>
+      </p>
+
+      <p>See the <a href='https://github.com/small-tech/site.js#static-site-generation'>Site.js Hugo documentation</a> and <a href='https://gohugo.io/documentation/'>the official Hugo documentation</a> for detailed information on how Hugo works and how it’s integrated into Site.js.</p>
+
+    </aside>
+
     <h2 id="dynamic">Dynamic sites</h2>
 
-    <p>Easily add dynamic functionality to your static site or create a fully-dynamic site. Get started with PHP-like simplicity in JavaScript using simple DotJS (.js) files:</p>
+    <p>With Site.js, you’re not limited to creating and serving static sites. You can easily add dynamic functionality to your static site or create fully-dynamic sites.</p>
 
-    <pre><code>mkdir <span class="token keyword">-p</span> <span class="token string">count</span>/.dynamic</code>
-<code>echo '<code class='language-js'>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> module<span class="token punctuation">.</span><span class="token function-variable function">exports</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> r</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>r<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">}</span></code>' <span class='token keyword'>></span> count/.dynamic/<span class='token string'>index.js</span></code>
-<code>site <span class="token string">count</span></code></pre>
+    <p>The easiest way to get started with dynamic sites is to use DotJS. DotJS gives you PHP-like simplicity in JavaScript using simple <code>.js</code> files.</p>
+
+    <h2>DotJS</h2>
+
+    <p>Follow along to create a very basic dynamic site that updates a counter every time the home page is reloaded.</p>
+
+    <ol>
+      <li>
+        <h3>Create the project structure.</h3>
+        <p>Make a project folder called <em>count</em> and a special nested folder in that called <em>.dynamic</em>:</p>
+        <pre><code class='language-bash'>mkdir -p count/.dynamic</code></pre>
+        <aside>(<strong>.dynamic</strong> is a special folder in that Site.js knows to look for it in your project. If it finds it, it knows to run its contents as a dynamic route instead of serving it as static content.)</aside>
+      </li>
+      <li>
+        <h3>Create a dynamic route.</h3>
+        <p>Make a file called index.js that holds the dynamic counter route:</p>
+        <pre><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > count/.dynamic/index.js</code></pre>
+        <aside>(If the code here looks cryptic to you, see the longer version, below.)</aside>
+      </li>
+      <li>
+        <h3>Serve your site.</h3>
+        <pre><code>site count</code></pre>
+        <aside>(You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command.)</aside>
+      </li>
+    </ol>
 
     <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
 
     <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
 
-    <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
+    <aside class='tip'>
+      <p>If you found the code in the dynamic route we created hard to read, you’re not alone. It was purposefully written to keep the example short enough to enter into terminal.</p>
+      <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand that you might want to enter using your favourite code editor:</p>
 
-    <pre><code class='language-js'>let counter = 0
+      <pre><code class='language-js'>let counter = 0
 
 module.exports = (request, response) => {
-response
-  .type('html')
-  .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
+  response
+    .type('html')
+    .end(`&lt;h1&gt;This page has been hit ${++counter} time${counter === 1 ? '': 's'} since the server started.&lt;/h1&gt;`)
 }</code></pre>
 
-    <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
+      <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
 
-    <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+      <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+
+      <p>See the Site.js documentation for <a href='https://github.com/small-tech/site.js#dynamic-sites'>more information on building dynamic sites</a>.</p>
+    </aside>
+
 
     <h3>WebSockets</h3>
 
@@ -306,9 +402,7 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
     <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
 
-    <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:<pre><code>site <span class="token keyword">hugo</span> <span class="token string">[any valid Hugo command]</any></span></code></pre></p>
 
-    <p>Please see <a href='https://gohugo.io/documentation/'>the Hugo documentation</a> for detailed information on how Hugo works.</p>
 
     <h3>Mounting Hugo sites</h3>
 
