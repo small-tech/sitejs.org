@@ -15,7 +15,7 @@
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Cantarell, Ubuntu,
- Helvetica, Arial, sans-serif
+ Helvetica, Arial, sans-serif;
 }
 
 /********************************************************************************
@@ -50,6 +50,7 @@ body {
   margin-right: auto;
   padding-left: 3rem;
   padding-right: 3rem;
+  color: #304349;
 }
 
 /********************************************************************************
@@ -59,7 +60,7 @@ body {
  ********************************************************************************/
 
  h1 {
-  color: #1D2C2E;
+  /* color: #1D2C2E; */
   font-size: 96px;
   text-align: center;
   font-weight: 200;
@@ -82,11 +83,11 @@ h2 + h3 {
   margin-top:0;
 }
 
-h3 {
+h3, ol li::marker {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.5;
-  margin-top: 1.5em;
+  /* margin-top: 1.5em; */
   margin-bottom: 0.5em;
 }
 
@@ -112,6 +113,19 @@ a:hover {
   color: #466B6A;
 }
 
+aside {
+  font-style: italic;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol li {
+  padding-bottom: 1.5em;
+}
+
+
 pre, code {
   font-family: "SFMono-Regular",
   Consolas,
@@ -120,11 +134,12 @@ pre, code {
   Menlo,
   Courier,
   monospace;
+  font-weight: 100 !important;
 }
 
 pre {
-  background-color: black;
-  color: white;
+  /* background-color:  snow; */
+  /* color: white; */
   line-height: 1.5;
 }
 
@@ -424,19 +439,6 @@ main p, main li, main fieldset {
   margin-bottom: 1em;
 }
 
-main pre {
-  padding: 1em;
-}
-
-main pre code {
-  display: block;
-  margin-top: -1em;
-}
-
-main pre code:nth-of-type(1) {
-  margin-top: 0;
-}
-
 main ul {
   list-style: disc;
   margin-bottom: 1.5em;
@@ -660,6 +662,19 @@ table.paths-table th {
 table.paths-table td {
   padding: 0.5em;
 }
+
+/********************************************************************************
+ *                                                                              *
+ *                            Advanced customisation                            *
+ *                                                                              *
+ ********************************************************************************/
+
+/* Hide on start; will be enabled if JavaScript is available. */
+
+#advanced-customisation {
+  display: none;
+}
+
 /********************************************************************************
  *                                                                              *
  *                                  SVG icons                                   *
@@ -759,9 +774,8 @@ table.paths-table td {
 @media (max-width: 620px) {
 
   body {
-    padding-left: 0rem;
-    padding-right: 0rem;
-
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   #presentation {

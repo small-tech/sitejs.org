@@ -7,7 +7,7 @@
   <!-- Start: styles -->
   <link rel='stylesheet' href='css/perfect-scrollbar.css'>
   <link rel='stylesheet' href='css/facade.css'>
-  <link rel='stylesheet' href='css/prism.css'>
+  <link rel='stylesheet' href='css/highlight.js/github.css'>
   <link rel='stylesheet' href='css/index.css'>
   <!-- End: styles -->
 </head>
@@ -86,16 +86,25 @@
 
     <h2>Get started in 30 seconds…</h2>
 
-    <h3>Install</h3>
+    <p>Fire up a terminal window and follow along.</p>
 
-    <p>In terminal, enter:</p>
-
-    <pre><code><span class='token comment'># Install.</span></code>
-<code>wget -qO- <span class='token string'>https://sitejs.org/install</span> <span class='token keyword'>| bash</span></code><pre class='token comment'># Create a basic web page.</pre>
-<code>echo <span class='token keyword'>'Hello, world' > index.html</span></code><pre class='token comment'># Start a secure local development server.</pre>
-<code>site</code></pre>
-
-    <p>Visit <a href='https://localhost'>https://localhost</a> to view your site.</p>
+    <ol>
+      <li>
+        <h3>Install Site.js.</h3>
+        <pre><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
+        <aside>Want to try alpha or beta releases? See advanced installation instructions.</aside>
+      </li>
+      <li>
+        <h3>Create a basic static web page.</h3>
+        <pre><code class='language-bash'>echo 'Hello, world' > index.html</code></pre>
+        <aside>This pipes (writes) the message 'Hello, world' into a file called index.html, creating/overwriting it.</aside>
+      </li>
+      <li>
+        <h3>Start a secure local development server.</h3>
+        <pre><code class='language-bash'>site</code></pre>
+        <aside>Now visit <strong>https://localhost</strong> to see your “Hello, world” message.</em></aside>
+      </li>
+    </ol>
 
     <p><strong>Congratulations, you’ve just set up a secure local web server.</strong></p>
 
@@ -181,7 +190,7 @@
 
     <p>Say you have <a href='https://github.com/small-tech/site.js/blob/master/README.md#proxy-server'>a web app written in Python that runs on port 3000</a> and you want to test it via TLS:</p>
 
-    <pre><code>site <span class="token keyword">:</span><span class="token number">3000</span></code></pre>
+    <pre><code>site:3000</code></pre>
 
     <p>Now you can view it at <a href="https://localhost">https://localhost</a>.</p>
 
@@ -237,13 +246,13 @@
 
     <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand:</p>
 
-    <pre><code class='language-js'><span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span>
+    <pre><code class='language-js'>let counter = 0
 
-module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+module.exports = (request, response) => {
 response
-  <span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;You’ve visited </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> time</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
+  .type('html')
+  .end(`&lt;h1&gt;You’ve visited ${++counter} time${counter > 1 ? 's': ''}.&lt;/h1&gt;`)
+}</code></pre>
 
     <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
 
@@ -333,37 +342,6 @@ socket<span class="token punctuation">.</span><span class="token function">send<
 
     <p>You can use Site.js as a module in your Node.js projects. See the <a href="https://github.com/small-tech/site.js#api">API documentation</a> for details.</p>
 
-    <section id='demo'>
-      <h2>Interactive demo</h2>
-
-      <!-- Browser presentation -->
-      <div id='browser' class='shadow' aria-hidden='true'></div>
-
-      <!-- Terminal presentation -->
-      <div id='presentation' aria-hidden='true'>
-        <div id='terminal-presentation' class='unfocused shadow'></div>
-        <div id='second-terminal-presentation' class='shadow'></div>
-        <button id='next-button' class='next-button' disabled>Next</button>
-      </div>
-    </section>
-
-    <h2 id="learn-more">Learn more</h2>
-
-    <pre><code>site <span class='token keyword'>help</span></code></pre>
-
-    <p><a href="https://github.com/small-tech/site.js/#sitejs">See the docs</a> for full details, like using <a href="https://github.com/small-tech/site.js#custom-error-pages">custom error pages</a>, <a href="https://github.com/small-tech/site.js#native-cascading-archives-support">cascading archives</a>, and <a href="https://github.com/small-tech/site.js#native-404-302-support">the 404→302 technique</a> for an evergreen web.</p>
-
-    <h2>Site.js in production</h2>
-
-    <p>The following sites run on Site.js:</p>
-
-    <ul>
-      <li><a href='https://small-tech.org'>Small Technology Foundation</a></li>
-      <li><a href='https://better.fyi'>Better Blocker</a></li>
-      <li><a href='https://laurakalbag.com'>Laura’s site</a></li>
-      <li><a href='https://ar.al'>Aral’s site</a></li>
-    </ul>
-
     <h2 id="about">About</h2>
 
     <p>Made with <img class='emoji inline' src='images/emoji/0040_1f496.svg' alt='love'> by <a href='https://small-tech.org'>Small Technology Foundation</a>.</p>
@@ -378,12 +356,8 @@ socket<span class="token punctuation">.</span><span class="token function">send<
   </main>
 
   <!-- Start: scripts -->
-  <script src='js/perfect-scrollbar.js'></script>
-  <script src='node_modules/typed.js/lib/typed.js'></script>
   <script src='node_modules/moment/min/moment.min.js'></script>
-  <script src='js/terminal-presentation.js'></script>
-  <script src='js/browser-presentation.js'></script>
-  <script src='js/site-js-terminal-presentation.js'></script>
+  <script src='js/highlight.pack.js'></script>
   <script src='js/index.js'></script>
 </body>
 </html>

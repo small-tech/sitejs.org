@@ -32,6 +32,8 @@ const versions = {
 // End of generated code.
 //////////////////////////////////////////////////////////////////////
 
+hljs.initHighlightingOnLoad()
+
 const $  = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
