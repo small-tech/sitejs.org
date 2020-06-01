@@ -67,7 +67,6 @@ body {
  ********************************************************************************/
 
  h1 {
-  /* color: #1D2C2E; */
   font-size: 96px;
   text-align: center;
   font-weight: 200;
@@ -129,7 +128,6 @@ ol {
 }
 
 ol li {
-  /* padding-bottom: 1.5em; */
   margin-bottom: 1.5em !important;
 }
 
@@ -160,34 +158,6 @@ pre {
 
 code {
   overflow: visible !important;
-}
-
-code > ol {
-  counter-reset: line;
-}
-
-code > ol > li {
-  counter-increment: line;
-  list-style-type: none;
-  padding-bottom: 0;
-}
-
-code > ol > li:before, .code-marker {
-  border-radius: 1em;
-  background-color: #eaeaea;
-  color: #777;
-  width: 1.5em;
-  display: inline-block;
-  text-align: center;
-  font-size: 0.75em;
-  font-style: normal;
-}
-
-code > ol > li:before {
-  content: counter(line, lower-latin);
-  -webkit-user-select: none;
-  margin-left: -2.5em;
-  margin-right: 1em;
 }
 
 /* Make sure all code wraps so we don’t overflow the page width. */
@@ -470,7 +440,6 @@ main li {
   margin-bottom: 0;
 }
 
-
 li.selected {
   color: #151D1F;
 }
@@ -596,6 +565,7 @@ main fieldset:disabled {
   opacity: 0;
 }
 
+
 /********************************************************************************
  *                                                                              *
  *                                 Break points                                 *
@@ -605,8 +575,8 @@ main fieldset:disabled {
 @media (max-width: 620px) {
 
   body {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   nav {
@@ -617,5 +587,22 @@ main fieldset:disabled {
 
   header > p {
     font-size: 1.5em;
+  }
+
+  ol, {
+    counter-reset: index;
+  }
+
+  ol li {
+    counter-increment: index;
+    list-style-type: none;
+  }
+
+  ol li h3::before {
+    content: counter(index) '. ';
+  }
+
+  ol ol li p::before  {
+    content: counter(index, lower-roman) '. ';
   }
 }
