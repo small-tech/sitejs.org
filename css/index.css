@@ -350,7 +350,6 @@ aside.tip::before {
   justify-content: space-between;
   flex-basis: 32%;
   margin-bottom:2em;
-  min-height: 27.5em;
 }
 
 #small-web-details div h3 {
@@ -372,8 +371,18 @@ aside.tip::before {
 }
 
 @media(max-width: 764px) {
-  #small-web-details {
+  /* #small-web-details {
     display: block;
+  } */
+
+  #small-web-details {
+    flex-wrap: wrap;
+  }
+
+  /* Make each card fill up the full width of the display so we get a
+     single column on narrower viewports. */
+  #small-web-details div {
+    flex-basis: 100%;
   }
 
   #small-web-details div p {
