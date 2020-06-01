@@ -208,6 +208,7 @@ pre, code[class*="language-"], pre[class*="language-"] {
   margin-left: 0.25em;
 }
 
+
 /********************************************************************************
  *                                                                              *
  *                            Syntax highlighting                               *
@@ -232,6 +233,7 @@ header h2, #small-web-details h3 {
   margin-top: -0.5em;
   margin-bottom: 2.25em;
 }
+
 
 /********************************************************************************
  *                                                                              *
@@ -275,17 +277,21 @@ nav li:last-of-type {
   padding-right: 0;
 }
 
+
 /********************************************************************************
  *                                                                              *
  *                                     Tips                                     *
  *                                                                              *
  ********************************************************************************/
 
-aside.tip, #small-web-details {
+aside.tip, #small-web-details div {
   border: 0.25em solid lightgrey;
   background-color: #ffffff;
   border-radius: 1em;
   padding: 1em;
+}
+
+aside.tip {
   margin-left: -1.5em;
   margin-right: -1.5em;
   margin-top: 2em;
@@ -328,7 +334,6 @@ aside.tip::before {
 }
 
 #small-web-details {
-  /* border: 1em solid rgba(70,107,106, 0.5); */
   padding: 1em;
 }
 
@@ -343,21 +348,19 @@ aside.tip::before {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-basis: 27.5%;
-  /* margin-bottom: 3em; */
+  flex-basis: 32%;
+  margin-bottom:2em;
+  min-height: 27.5em;
 }
 
 #small-web-details div h3 {
   margin-bottom: 1em;
-  /* flex-basis: 10%; */
 }
 
 #small-web-details div p {
   margin-top: 1em;
   text-align: center;
-  /* flex-basis: 10%; */
 }
-
 
 #small-web-details h3 {
   margin: 0;
@@ -379,6 +382,7 @@ aside.tip::before {
   }
 }
 
+
 /********************************************************************************
  *                                                                              *
  *                                   Highlights                                 *
@@ -386,7 +390,7 @@ aside.tip::before {
  ********************************************************************************/
 
 #highlights {
-  margin-top: -2em;
+  margin-top: -5em;
 }
 
 #highlights h2 {
@@ -430,10 +434,6 @@ aside.tip::before {
 main {
   width: 100%;
   padding: 1vw;
-}
-
-.content {
-
 }
 
 main p, main li, main fieldset {
@@ -485,6 +485,8 @@ li.selected {
 #update {
   margin-top: 0;
 }
+
+
 /********************************************************************************
  *                                                                              *
  *                          Custom installation form                            *
@@ -506,6 +508,7 @@ main fieldset:disabled {
   color: gray;
 }
 
+
 /********************************************************************************
  *                                                                              *
  *                            Advanced customisation                            *
@@ -517,6 +520,26 @@ main fieldset:disabled {
 #advanced-customisation {
   display: none;
 }
+
+
+/********************************************************************************
+ *                                                                              *
+ *                                     Footer                                   *
+ *                                                                              *
+ ********************************************************************************/
+
+.copyright {
+  margin-top: 1em;
+  text-align: center;
+}
+
+#logo {
+  display: block;
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 /********************************************************************************
  *                                                                              *
@@ -610,7 +633,7 @@ main fieldset:disabled {
 
 /********************************************************************************
  *                                                                              *
- *                               Responsiveness                                 *
+ *                                 Break points                                 *
  *                                                                              *
  ********************************************************************************/
 
@@ -621,61 +644,14 @@ main fieldset:disabled {
     padding-right: 1.5rem;
   }
 
-  #presentation {
-    font-size: 0.78em;
-  }
-
-  #browser {
-    font-size: 0.78em;
-  }
-
   nav {
     top: 1rem;
     right: 1.5rem;
     font-size: 1em;
   }
 
-  .content {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
   header > p {
     font-size: 1.5em;
   }
-
-  /* Split terminals vertically. */
-
-  .split-terminals {
-    grid-template-columns: 100% !important;
-    grid-template-rows: 50% 50% !important;
-  }
-
-  .split-terminals .terminal {
-    height: 100% !important;
-  }
-
-  .split-terminals .terminal > pre {
-    height: 31px !important;
-  }
-
-  .split-terminals #second-terminal-presentation {
-    border-radius: 0;
-  }
-
-  .split-terminals #second-terminal-presentation:before {
-    display: none;
-  }
 }
 
-.copyright {
-  margin-top: 1em;
-  text-align: center;
-}
-
-#logo {
-  display: block;
-  width: 10%;
-  margin-left: auto;
-  margin-right: auto;
-}
