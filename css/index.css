@@ -94,7 +94,6 @@ h3, ol li::marker {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.5;
-  /* margin-top: 1.5em; */
   margin-bottom: 0.5em;
 }
 
@@ -156,8 +155,6 @@ pre, code, code li, .code-marker {
 }
 
 pre {
-  /* background-color:  snow; */
-  /* color: white; */
   line-height: 1.5;
 }
 
@@ -245,7 +242,6 @@ nav {
   font-size: 1.25em;
   text-align: center;
   margin-top: -4%;
-  /* margin-bottom: 2.75em; */
   background-color: rgb(230,230,230);
   padding-top: 2em;
   padding-bottom: 0.75em;
@@ -371,10 +367,6 @@ aside.tip::before {
 }
 
 @media(max-width: 764px) {
-  /* #small-web-details {
-    display: block;
-  } */
-
   #small-web-details {
     flex-wrap: wrap;
   }
@@ -402,23 +394,14 @@ aside.tip::before {
   margin-top: -5em;
 }
 
-#highlights h2 {
-  text-align: center;
-  margin-top: 2em;
-  margin-bottom: 0.75em;
-}
-
-#highlights h3 {
-  margin-top: 0;
-}
-
 #highlights ul {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3em;
   display: grid;
   grid-template-columns: 47.5% 47.5%;
   grid-column-gap: 5%;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
 }
 
 #highlights li {
@@ -430,10 +413,37 @@ aside.tip::before {
 
 #highlights li p {
   margin-top: -0.5em;
-  margin-left: 1.66em;
+  margin-left: 1.9em;
 }
 
+#highlights h2 {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
 
+#highlights h3 {
+  margin-top: 0;
+}
+
+#highlights h3::before {
+  content: '';
+  display: inline-block;
+  background-image: url('../images/emoji/0010_2705.svg');
+  background-repeat: no-repeat;
+  height: 0.9em;
+  width: 0.9em;
+  margin-right: 0.5em;
+  vertical-align: -0.1em;
+}
+
+/* Break point: title wraps into two lines. */
+@media(max-width: 600px) {
+  /* Make the highlights grid a single column. */
+  #highlights ul {
+    grid-template-columns: 100%;
+  }
+}
 /********************************************************************************
  *                                                                              *
  *                                 Main content                                 *
@@ -567,21 +577,17 @@ main fieldset:disabled {
  *                                                                              *
  ********************************************************************************/
 
-.emoji, .icon {
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-  margin: 0 .05em 0 .1em;
-  vertical-align: -0.1em;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 1em 1em;
-  /* background-size: auto 100% !important; */
-}
-
-.icon {
-  vertical-align: -0.2em;
-}
+ /********************************************************************************
+ *                                                                              *
+ * To find a compound Twemoji’s name, find it on emojipedia and add the         *
+ * codepoints together, separated by dashes. You can find the SVGs in the       *
+ * Twemoji release downloads https://github.com/twitter/twemoji/releases (in    *
+ * the assets/svg folder).                                                      *
+ *                                                                              *
+ * e.g., From:    https://emojipedia.org/woman-running/                         *
+ *       We get:  1f3c3-200d-2640-fe0f.svg                                      *
+ *                                                                              *
+*********************************************************************************/
 
 .image-preloader {
   position:absolute;
@@ -589,56 +595,6 @@ main fieldset:disabled {
   left: -1000px;
   opacity: 0;
 }
-
-.emoji.inline {
-  margin: 0;
-}
-
-/********************************************************************************
-
-  Emoji and icons are kept in a single sprite sheet for performance reasons.
-
-  To generate the sprite sheet if you update the icons, use:
-
-  svg-sprite -w=16 -h=16 --css --css-render-css --css-example --css-layout=horizontal --css-prefix=.icon-%s --css-dimensions="" --css-sprite=icons.svg --css-render-css-dest=icons.css --css-example-dest=index.html --dest=out emoji/*.svg icons/*.svg
-
-  Icons are laid out horizontally and each icon is 36px wide so we control the
-  order via an integer prefix (0010, 0020, etc.) and offset the X coordinate of the
-  background by -36px each time.
-
-  To find a compound Twemoji’s URL, find it on emojipedia and add the codepoints
-  together, separated by dashes, following the base URL of the second version of the icons.
-
-  e.g., From:    https://emojipedia.org/woman-running/
-        We get:  https://twemoji.maxcdn.com/2/svg/1f3c3-200d-2640-fe0f.svg
-
-  You can also find them from https://twemoji.maxcdn.com/2/test/preview.html
-
-*********************************************************************************/
-
-.emoji-satellite                                { background-image: url('../images/emoji/0010_1f4e1.svg'); }
-.emoji-package                                  { background-image: url('../images/emoji/0020_1f4e6.svg'); }
-.emoji-party-popper                             { background-image: url('../images/emoji/0030_1f389.svg'); }
-.emoji-sparkling-heart                          { background-image: url('../images/emoji/0040_1f496.svg'); }
-.emoji-construction-sign                        { background-image: url('../images/emoji/0050_1f6a7.svg'); }
-.emoji-scroll                                   { background-image: url('../images/emoji/0060_1f4dc.svg'); }
-.emoji-dancer                                   { background-image: url('../images/emoji/0070_1f483.svg'); }
-.emoji-earth-globe-europe-africa                { background-image: url('../images/emoji/0080_1f30d.svg'); }
-.emoji-white-right-hand-pointing-backhand-index { background-image: url('../images/emoji/0090_1f449.svg'); }
-.emoji-smiling-face-with-horns                  { background-image: url('../images/emoji/0100_1f608.svg'); }
-.emoji-grinning-face-with-smiling-eyes          { background-image: url('../images/emoji/0110_1f601.svg'); }
-.emoji-thumbs-up-sign                           { background-image: url('../images/emoji/0120_1f44d.svg'); }
-.emoji-balloon                                  { background-image: url('../images/emoji/0130_1f388.svg'); }
-.emoji-woman-running                            { background-image: url('../images/emoji/0140_1f3c3-200d-2640-fe0f.svg')}
-.emoji-revolving-hearts                         { background-image: url('../images/emoji/0150_1f49e.svg') }
-.emoji-magnifying-glass-tilted-right            { background-image: url('../images/emoji/0160_1f50e.svg') }
-.emoji-new-button                               { background-image: url('../images/emoji/0170_1f195.svg') }
-.emoji-pen                                      { background-image: url('../images/emoji/0180_1f58a.svg') }
-.emoji-smiling-face-with-halo                   { background-image: url('../images/emoji/0190_1f607.svg') }
-.emoji-bar-chart                                { background-image: url('../images/emoji/0200_1f4ca.svg') }
-
-.icon-right-triangle                            { background-image: url('../images/icons/0010_right-triangle.svg') }
-.icon-cloud                                     { background-image: url('../images/icons/0020_cloud.svg') }
 
 /********************************************************************************
  *                                                                              *
@@ -663,4 +619,3 @@ main fieldset:disabled {
     font-size: 1.5em;
   }
 }
-
