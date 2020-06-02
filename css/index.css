@@ -55,8 +55,8 @@ body {
   margin-top: 0 auto;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  /* padding-left: 3rem;
+  padding-right: 3rem; */
   color: #304349;
 }
 
@@ -300,11 +300,6 @@ aside.tip::before {
 }
 
 #small-web-details {
-  padding: 1em;
-}
-
-
-#small-web-details {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
@@ -399,7 +394,9 @@ aside.tip::before {
 
 main {
   width: 100%;
-  padding: 1vw;
+  /* padding: 1vw; */
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 main p, main li, main fieldset {
@@ -572,7 +569,7 @@ main fieldset:disabled {
 @media (max-width: 620px) {
 
   /* Tighten up the margins and spacing. */
-  body {
+  main {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -585,6 +582,11 @@ main fieldset:disabled {
 
   header > p {
     font-size: 1.5em;
+  }
+
+  aside.tip {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /* Move the indentation inline. This basically recreates what list-style-position  */
