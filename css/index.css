@@ -336,23 +336,6 @@ aside.tip::before {
   max-width: 100%;
 }
 
-@media(max-width: 764px) {
-  #small-web-details {
-    flex-wrap: wrap;
-  }
-
-  /* Make each card fill up the full width of the display so we get a
-     single column on narrower viewports. */
-  #small-web-details div {
-    flex-basis: 100%;
-  }
-
-  #small-web-details div p {
-    margin-top: 1.5em;
-    text-align: center;
-  }
-}
-
 
 /********************************************************************************
  *                                                                              *
@@ -407,13 +390,7 @@ aside.tip::before {
   vertical-align: -0.1em;
 }
 
-/* Break point: title wraps into two lines. */
-@media(max-width: 600px) {
-  /* Make the highlights grid a single column. */
-  #highlights ul {
-    grid-template-columns: 100%;
-  }
-}
+
 /********************************************************************************
  *                                                                              *
  *                                 Main content                                 *
@@ -572,8 +549,29 @@ main fieldset:disabled {
  *                                                                              *
  ********************************************************************************/
 
+ /* Break point: The title in the first card wraps to two lines. */
+ @media(max-width: 815px) {
+  #small-web-details {
+    flex-wrap: wrap;
+  }
+
+  /* Make each card fill up the full width of the display so we get a */
+  /* single column on narrower viewports.                             */
+  #small-web-details div {
+    flex-basis: 100%;
+  }
+
+  #small-web-details div p {
+    margin-top: 1.5em;
+    text-align: center;
+  }
+}
+
+
+/* The viewport becomes too narrow to have such wide margins and indentation. */
 @media (max-width: 620px) {
 
+  /* Tighten up the margins and spacing. */
   body {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -589,7 +587,13 @@ main fieldset:disabled {
     font-size: 1.5em;
   }
 
-  ol, {
+  /* Move the indentation inline. This basically recreates what list-style-position  */
+  /* does but list-style-position is buggy on Firefox when the list item contains a  */
+  /* block level element like a header. By the way, this is a 20-year-old bug at the */
+  /* time of this writing:                                                           */
+  /* https://bugzilla.mozilla.org/show_bug.cgi?id=36854                              */
+
+  ol {
     counter-reset: index;
   }
 
@@ -605,4 +609,10 @@ main fieldset:disabled {
   ol ol li p::before  {
     content: counter(index, lower-roman) '. ';
   }
+
+  /* Make the highlights grid a single column as titles wrap into two lines otherwise. */
+  #highlights ul {
+    grid-template-columns: 100%;
+  }
+
 }
