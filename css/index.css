@@ -28,7 +28,7 @@
 
  html {
   /* Responsiveness is mainly defined by altering the root foot size (root em). */
-  font-size: clamp(11px, 2vw, 18px);
+  font-size: clamp(16px, 2vw, 18px);
 
   /* Use system fonts. */
   font-family:
@@ -194,6 +194,10 @@ header h2, #small-web-details h3 {
   text-align: center;
   margin-top: -0.5em;
   margin-bottom: 2.25em;
+}
+
+#header-image {
+  margin-top: -2.5em
 }
 
 
@@ -535,37 +539,46 @@ main fieldset:disabled {
   opacity: 0;
 }
 
-/*👉
-➡*******************************************************************************
+
+/********************************************************************************
  *                                                                              *
  *                                 Break points                                 *
  *                                                                              *
- *******************************************************************************⬅
+ ********************************************************************************/
 
+ /* Main content padding becomes too large. */
+ @media(max-width: 675px) {
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 
- ➡ Break point: The title in the first card wraps to two lines. ⬅
- @media(max-width: 815px) {
+ /* The title in the first card wraps to two lines. */
+ @media(max-width: 615px) {
   #small-web-details {
     flex-wrap: wrap;
   }
 
-  ➡ Make each card fill up the full width of the display so we get a ⬅
-  ➡ single column on narrower viewports.                             ⬅
+  /* Make each card fill up the full width of the display so we get a */
+  /* single column on narrower viewports.                             */
   #small-web-details div {
     flex-basis: 100%;
   }
 
+  #small-web-details div h3 {
+    font-size: 3rem;
+  }
+
   #small-web-details div p {
+    font-size: 1.5rem;
     margin-top: 1.5em;
     text-align: center;
   }
-}
 
+  /* Previously…*/
 
-➡ The viewport becomes too narrow to have such wide margins and indentation. ⬅
-@media (max-width: 620px) {
-
-  ➡ Tighten up the margins and spacing. ⬅
+  /* Tighten up the margins and spacing. */
   main {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -586,11 +599,11 @@ main fieldset:disabled {
     margin-right: 0;
   }
 
-  ➡ Move the indentation inline. This basically recreates what list-style-position  ⬅
-  ➡ does but list-style-position is buggy on Firefox when the list item contains a  ⬅
-  ➡ block level element like a header. By the way, this is a 20-year-old bug at the ⬅
-  ➡ time of this writing:                                                           ⬅
-  ➡ https://bugzilla.mozilla.org/show_bug.cgi?id=36854                              ⬅
+  /* Move the indentation inline. This basically recreates what list-style-position  */
+  /* does but list-style-position is buggy on Firefox when the list item contains a  */
+  /* block level element like a header. By the way, this is a 20-year-old bug at the */
+  /* time of this writing:                                                           */
+  /* https://bugzilla.mozilla.org/show_bug.cgi?id=36854                              */
 
   ol {
     counter-reset: index;
@@ -609,10 +622,9 @@ main fieldset:disabled {
     content: counter(index, lower-roman) '. ';
   }
 
-  ➡ Make the highlights grid a single column as titles wrap into two lines otherwise. ⬅
+  /* Make the highlights grid a single column as titles wrap into two lines otherwise. */
   #highlights ul {
     grid-template-columns: 100%;
   }
 
 }
-👈*/
