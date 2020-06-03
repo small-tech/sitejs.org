@@ -28,7 +28,7 @@
 
  html {
   /* Responsiveness is mainly defined by altering the root foot size (root em). */
-  font-size: clamp(14px, 2vw, 96px);
+  font-size: clamp(11px, 2vw, 18px);
 
   /* Use system fonts. */
   font-family:
@@ -47,14 +47,12 @@
 }
 
 body {
-  position: relative;
   max-width: 960px;
-  margin-top: 0 auto;
+  color: #304349;
+
+  /* Horizontally centre the body. */
   margin-left: auto;
   margin-right: auto;
-  /* padding-left: 3rem;
-  padding-right: 3rem; */
-  color: #304349;
 }
 
 /********************************************************************************
@@ -398,7 +396,7 @@ main {
 }
 
 main p, main li, main fieldset {
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1em;
 }
@@ -537,22 +535,22 @@ main fieldset:disabled {
   opacity: 0;
 }
 
-
-/********************************************************************************
+/*👉
+➡*******************************************************************************
  *                                                                              *
  *                                 Break points                                 *
  *                                                                              *
- ********************************************************************************/
+ *******************************************************************************⬅
 
 
- /* Break point: The title in the first card wraps to two lines. */
+ ➡ Break point: The title in the first card wraps to two lines. ⬅
  @media(max-width: 815px) {
   #small-web-details {
     flex-wrap: wrap;
   }
 
-  /* Make each card fill up the full width of the display so we get a */
-  /* single column on narrower viewports.                             */
+  ➡ Make each card fill up the full width of the display so we get a ⬅
+  ➡ single column on narrower viewports.                             ⬅
   #small-web-details div {
     flex-basis: 100%;
   }
@@ -564,10 +562,10 @@ main fieldset:disabled {
 }
 
 
-/* The viewport becomes too narrow to have such wide margins and indentation. */
+➡ The viewport becomes too narrow to have such wide margins and indentation. ⬅
 @media (max-width: 620px) {
 
-  /* Tighten up the margins and spacing. */
+  ➡ Tighten up the margins and spacing. ⬅
   main {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -588,11 +586,11 @@ main fieldset:disabled {
     margin-right: 0;
   }
 
-  /* Move the indentation inline. This basically recreates what list-style-position  */
-  /* does but list-style-position is buggy on Firefox when the list item contains a  */
-  /* block level element like a header. By the way, this is a 20-year-old bug at the */
-  /* time of this writing:                                                           */
-  /* https://bugzilla.mozilla.org/show_bug.cgi?id=36854                              */
+  ➡ Move the indentation inline. This basically recreates what list-style-position  ⬅
+  ➡ does but list-style-position is buggy on Firefox when the list item contains a  ⬅
+  ➡ block level element like a header. By the way, this is a 20-year-old bug at the ⬅
+  ➡ time of this writing:                                                           ⬅
+  ➡ https://bugzilla.mozilla.org/show_bug.cgi?id=36854                              ⬅
 
   ol {
     counter-reset: index;
@@ -611,9 +609,10 @@ main fieldset:disabled {
     content: counter(index, lower-roman) '. ';
   }
 
-  /* Make the highlights grid a single column as titles wrap into two lines otherwise. */
+  ➡ Make the highlights grid a single column as titles wrap into two lines otherwise. ⬅
   #highlights ul {
     grid-template-columns: 100%;
   }
 
 }
+👈*/
