@@ -13,7 +13,10 @@
  *                                                                              *
  ********************************************************************************/
 
- html { box-sizing: border-box; font-size: 16px; }
+ html {
+   box-sizing: border-box;
+   font-size: clamp(14px, 2vw, 96px);
+}
  *, *:before, *:after { box-sizing: inherit; }
  body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
  ol, ul { list-style: none; }
@@ -67,7 +70,7 @@ body {
  ********************************************************************************/
 
  h1 {
-  font-size: 96px;
+  font-size: 5rem;
   text-align: center;
   font-weight: 200;
   padding-top: 0.25em;
@@ -79,7 +82,7 @@ h1 > strong {
 }
 
 h2 {
-  font-size: 46px;
+  font-size: 2.5rem;
   margin-top: 0.75em;
   margin-bottom: 0.25em;
   font-weight: 300;
@@ -90,14 +93,14 @@ h2 + h3 {
 }
 
 h3, ol li::marker {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 0.5em;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
   margin-top: 1em;
@@ -322,6 +325,7 @@ aside.tip::before {
   text-align: center;
 }
 
+/* Also see header section for additional styles. */
 #small-web-details h3 {
   margin: 0;
   padding: 0;
@@ -545,6 +549,7 @@ main fieldset:disabled {
  *                                 Break points                                 *
  *                                                                              *
  ********************************************************************************/
+
 
  /* Break point: The title in the first card wraps to two lines. */
  @media(max-width: 815px) {
