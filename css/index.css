@@ -28,7 +28,7 @@
 
  html {
   /* Responsiveness is mainly defined by altering the root foot size (root em). */
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(14px, 2vw, 18px);
 
   /* Use system fonts. */
   font-family:
@@ -196,6 +196,11 @@ header h2, #small-web-details h3 {
   margin-bottom: 2.25em;
 }
 
+header h2 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 #header-image {
   margin-top: -2.5em
 }
@@ -354,14 +359,11 @@ aside.tip::before {
 
 #highlights li {
   font-size: 1.5em;
-  font-weight: 300;
   list-style-type: none;
-  margin-bottom: 0;
 }
 
 #highlights li p {
-  margin-top: -0.5em;
-  margin-left: 1.9em;
+  margin-left: 2.3em;
 }
 
 #highlights h2 {
@@ -371,7 +373,7 @@ aside.tip::before {
 }
 
 #highlights h3 {
-  margin-top: 0;
+  margin-bottom: 0.15rem;
 }
 
 #highlights h3::before {
@@ -379,10 +381,10 @@ aside.tip::before {
   display: inline-block;
   background-image: url('../images/emoji/0010_2705.svg');
   background-repeat: no-repeat;
-  height: 0.9em;
-  width: 0.9em;
-  margin-right: 0.5em;
-  vertical-align: -0.1em;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.75rem;
+  vertical-align: -0.2rem;
 }
 
 
@@ -574,24 +576,6 @@ main fieldset:disabled {
     font-size: 1.5rem;
     margin-top: 1.5em;
     text-align: center;
-  }
-
-  /* Previously…*/
-
-  /* Tighten up the margins and spacing. */
-  main {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  nav {
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 1em;
-  }
-
-  header > p {
-    font-size: 1.5em;
   }
 
   aside.tip {
