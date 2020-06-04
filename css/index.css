@@ -395,13 +395,11 @@ aside.tip::before {
  ********************************************************************************/
 
 main {
-  width: 100%;
-  /* padding: 1vw; */
   padding-left: 3rem;
   padding-right: 3rem;
 }
 
-main p, main li, main fieldset {
+main p, main li {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1em;
@@ -549,33 +547,10 @@ main fieldset:disabled {
  ********************************************************************************/
 
  /* Main content padding becomes too large. */
- @media(max-width: 675px) {
+ @media(max-width: 768px) {
   main {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-}
-
- /* The title in the first card wraps to two lines. */
- @media(max-width: 615px) {
-  #small-web-details {
-    flex-wrap: wrap;
-  }
-
-  /* Make each card fill up the full width of the display so we get a */
-  /* single column on narrower viewports.                             */
-  #small-web-details div {
-    flex-basis: 100%;
-  }
-
-  #small-web-details div h3 {
-    font-size: 3rem;
-  }
-
-  #small-web-details div p {
-    font-size: 1.5rem;
-    margin-top: 1.5em;
-    text-align: center;
   }
 
   aside.tip {
@@ -604,6 +579,29 @@ main fieldset:disabled {
 
   ol ol li p::before  {
     content: counter(index, lower-roman) '. ';
+  }
+}
+
+ /* The title in the first card wraps to two lines. */
+ @media(max-width: 615px) {
+  #small-web-details {
+    flex-wrap: wrap;
+  }
+
+  /* Make each card fill up the full width of the display so we get a */
+  /* single column on narrower viewports.                             */
+  #small-web-details div {
+    flex-basis: 100%;
+  }
+
+  #small-web-details div h3 {
+    font-size: 3rem;
+  }
+
+  #small-web-details div p {
+    font-size: 1.5rem;
+    margin-top: 1.5em;
+    text-align: center;
   }
 
   /* Make the highlights grid a single column as titles wrap into two lines otherwise. */
