@@ -1,183 +1,193 @@
-//////////////////////////////////////////////////////////////////////
-//
-// ⚠ GENERATED CODE. Please do not change.
-//
-// These are the latest versions of the various release channels.
-// They are automatically populated by the Site.js build script
-// on deployment.
-//
-//////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
+// //
+// // ⚠ GENERATED CODE. Please do not change.
+// //
+// // These are the latest versions of the various release channels.
+// // They are automatically populated by the Site.js build script
+// // on deployment.
+// //
+// //////////////////////////////////////////////////////////////////////
 
-const versions = {
-  alphaBinaryVersion: 00000000000000,
-  alphaNodeVersion: '00.00.00',
-  alphaHugoVersion: '00.00.00',
-  alphaPackageVersion: '00.00.00',
-  alphaSourceVersion: 'bedface',
+// const versions = {
+//   alphaBinaryVersion: 00000000000000,
+//   alphaNodeVersion: '00.00.00',
+//   alphaHugoVersion: '00.00.00',
+//   alphaPackageVersion: '00.00.00',
+//   alphaSourceVersion: 'bedface',
 
-  betaBinaryVersion: 00000000000000,
-  betaNodeVersion: '00.00.00',
-  betaHugoVersion: '00.00.00',
-  betaPackageVersion: '00.00.00',
-  betaSourceVersion: 'acecafe',
+//   betaBinaryVersion: 00000000000000,
+//   betaNodeVersion: '00.00.00',
+//   betaHugoVersion: '00.00.00',
+//   betaPackageVersion: '00.00.00',
+//   betaSourceVersion: 'acecafe',
 
-  releaseBinaryVersion: 00000000000000,
-  releaseNodeVersion: '00.00.00',
-  releaseHugoVersion: '00.00.00',
-  releasePackageVersion: '00.00.00',
-  releaseSourceVersion: 'decafAF',
-}
+//   releaseBinaryVersion: 00000000000000,
+//   releaseNodeVersion: '00.00.00',
+//   releaseHugoVersion: '00.00.00',
+//   releasePackageVersion: '00.00.00',
+//   releaseSourceVersion: 'decafAF',
+// }
 
-//////////////////////////////////////////////////////////////////////
-// End of generated code.
-//////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
+// // End of generated code.
+// //////////////////////////////////////////////////////////////////////
 
 hljs.initHighlightingOnLoad()
 
 const $  = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-function binaryVersionToHumanReadableDateString (binaryVersion) {
-  console.log(binaryVersion)
-  const m = moment(binaryVersion, 'YYYYMMDDHHmmss')
-  return `${m.format('MMMM Do, YYYY')} at ${m.format('HH:mm:ss')}`
-}
+// Progressive enhancement:
+// Add copy buttons to all code segments.
+const codeSegments = $$('pre code')
+const button = document.createElement('button')
+codeSegments.forEach(codeSegment => {
+  console.log(codeSegment)
+  codeSegment.innerHTML = '<button onclick="alert(`hello`)"><img src="images/emoji/0020_1f4cb.svg"><span>Copy</span></button>' + codeSegment.innerHTML
+})
 
-// Progressively enhance the installation instructions to only show the ones for the
-// detected platform (with links to the others), if we can detect a supported platform.
-let visiblePlatform = 'linux'
 
-function displayVersionInformation () {
+// function binaryVersionToHumanReadableDateString (binaryVersion) {
+//   console.log(binaryVersion)
+//   const m = moment(binaryVersion, 'YYYYMMDDHHmmss')
+//   return `${m.format('MMMM Do, YYYY')} at ${m.format('HH:mm:ss')}`
+// }
 
-  const _ = version => versions[`${document.advanced.version.value}${version}`]
+// // Progressively enhance the installation instructions to only show the ones for the
+// // detected platform (with links to the others), if we can detect a supported platform.
+// let visiblePlatform = 'linux'
 
-  $$('.humanReadableBinaryVersion').forEach(span =>
-    span.innerHTML = binaryVersionToHumanReadableDateString(_('BinaryVersion'))
-  )
-  $$('.packageVersion').forEach(span => span.innerHTML = _('PackageVersion'))
-  $$('.sourceVersion').forEach(span => span.innerHTML = _('SourceVersion'))
-  $$('.nodeVersion').forEach(span => span.innerHTML = _('NodeVersion'))
-  $$('.hugoVersion').forEach(span => span.innerHTML = _('HugoVersion'))
-  $$('.sourceUrl').forEach(a =>
-    a.setAttribute('href', `https://github.com/small-tech/site.js/-/tree/${_('SourceVersion')}`)
-  )
-}
+// function displayVersionInformation () {
 
-const defaultInstallationString = {
-  linux: $('#code-linux').innerHTML,
-  mac: $('#code-mac').innerHTML,
-  windows: $('#code-windows').innerHTML
-}
+//   const _ = version => versions[`${document.advanced.version.value}${version}`]
 
-function inputWithValue(value) {
-  return $(`input[value="${value}"]`)
-}
-const radioButtons = {
-  wget: inputWithValue('wget'),
-  curl: inputWithValue('curl'),
-  release: inputWithValue('release'),
-  alpha: inputWithValue('alpha'),
-  beta: inputWithValue('beta')
-}
+//   $$('.humanReadableBinaryVersion').forEach(span =>
+//     span.innerHTML = binaryVersionToHumanReadableDateString(_('BinaryVersion'))
+//   )
+//   $$('.packageVersion').forEach(span => span.innerHTML = _('PackageVersion'))
+//   $$('.sourceVersion').forEach(span => span.innerHTML = _('SourceVersion'))
+//   $$('.nodeVersion').forEach(span => span.innerHTML = _('NodeVersion'))
+//   $$('.hugoVersion').forEach(span => span.innerHTML = _('HugoVersion'))
+//   $$('.sourceUrl').forEach(a =>
+//     a.setAttribute('href', `https://github.com/small-tech/site.js/-/tree/${_('SourceVersion')}`)
+//   )
+// }
 
-const userAgent = navigator.userAgent.toLowerCase()
-let currentPlatform = 'unknown'
-if (userAgent.includes('linux')) { currentPlatform = 'linux' }
-if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
-if (userAgent.includes('windows')) { currentPlatform = 'windows'}
+// const defaultInstallationString = {
+//   linux: $('#code-linux').innerHTML,
+//   mac: $('#code-mac').innerHTML,
+//   windows: $('#code-windows').innerHTML
+// }
 
-displayInstallationInstructionsFor(currentPlatform)
+// function inputWithValue(value) {
+//   return $(`input[value="${value}"]`)
+// }
+// const radioButtons = {
+//   wget: inputWithValue('wget'),
+//   curl: inputWithValue('curl'),
+//   release: inputWithValue('release'),
+//   alpha: inputWithValue('alpha'),
+//   beta: inputWithValue('beta')
+// }
 
-function displayInstallationInstructionsFor(currentPlatform) {
-  if (currentPlatform !== 'unknown') {
-    visiblePlatform = currentPlatform
-    // Show the instructions for the detected platform and hide the ones for the other platforms.
-    ;['linux', 'mac', 'windows'].forEach(platform => {
-      $(`#install-${platform}`).hidden = !(platform === currentPlatform)
-      $(`#link-${platform}`).hidden = (platform === currentPlatform)
-    })
+// const userAgent = navigator.userAgent.toLowerCase()
+// let currentPlatform = 'unknown'
+// if (userAgent.includes('linux')) { currentPlatform = 'linux' }
+// if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
+// if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
-    // Cosmetic: don’t show the last separator if there’s no content after it.
-    $('#pipe-before-windows').hidden = (currentPlatform === 'windows')
+// displayInstallationInstructionsFor(currentPlatform)
 
-    // Show links to instructions for other platforms.
-    $('#links-to-instructions-for-other-platforms').hidden = false
+// function displayInstallationInstructionsFor(currentPlatform) {
+//   if (currentPlatform !== 'unknown') {
+//     visiblePlatform = currentPlatform
+//     // Show the instructions for the detected platform and hide the ones for the other platforms.
+//     ;['linux', 'mac', 'windows'].forEach(platform => {
+//       $(`#install-${platform}`).hidden = !(platform === currentPlatform)
+//       $(`#link-${platform}`).hidden = (platform === currentPlatform)
+//     })
 
-    // Show all the copy to clipboard buttons.
-    $$('.copy-to-clipboard').forEach(button => button.hidden = false)
+//     // Cosmetic: don’t show the last separator if there’s no content after it.
+//     $('#pipe-before-windows').hidden = (currentPlatform === 'windows')
 
-    // Rewrite the view installation script section copy to simplify it and link directly
-    // to the relevant script.
-    $('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://should-i-pipe.it/https://sitejs.org/install.txt">view the source code</a>' : '<a href="https://should-i-pipe.it/https://sitejs.org/install">view the source code</a>'
+//     // Show links to instructions for other platforms.
+//     $('#links-to-instructions-for-other-platforms').hidden = false
 
-    // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
-    // we support on Windows 10.
-    $('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
+//     // Show all the copy to clipboard buttons.
+//     $$('.copy-to-clipboard').forEach(button => button.hidden = false)
 
-    // Hide/display any Windows-only caveats.
-    $$('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
+//     // Rewrite the view installation script section copy to simplify it and link directly
+//     // to the relevant script.
+//     $('#view-installation-script-source').innerHTML = (currentPlatform === 'windows') ? '<a href="https://should-i-pipe.it/https://sitejs.org/install.txt">view the source code</a>' : '<a href="https://should-i-pipe.it/https://sitejs.org/install">view the source code</a>'
 
-    // Set the radio button states to match the installation instructions shown.
-    setRadioButtonStates()
+//     // Also rewrite the terminal-related bit of the copy to specify exactly the environment that
+//     // we support on Windows 10.
+//     $('#terminal-copy').innerHTML = (currentPlatform === 'windows') ? 'a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>' : 'your terminal'
 
-    // Display specific version-related information for the download.
-    displayVersionInformation()
+//     // Hide/display any Windows-only caveats.
+//     $$('.windows-only').forEach(node => node.hidden = !(currentPlatform === 'windows'))
 
-    // Disable the advanced customisation if for Windows. (At least for now, given that
-    // – surprise, surprise – Windows is again problematic in that you cannot pass arguments
-    // to downloaded scripts. See https://github.com/PowerShell/PowerShell/issues/8816#issuecomment-460327955)
-    $('#advanced-customisation').hidden = (currentPlatform === 'windows')
-  }
-}
+//     // Set the radio button states to match the installation instructions shown.
+//     setRadioButtonStates()
 
-function copyInstallationInstructionsToClipboardFor (platform) {
-  const installationCommand = $(`#code-${platform}`)
+//     // Display specific version-related information for the download.
+//     displayVersionInformation()
 
-  const selectedCode = document.createRange()
-  selectedCode.selectNode(installationCommand)
-  window.getSelection().addRange(selectedCode)
+//     // Disable the advanced customisation if for Windows. (At least for now, given that
+//     // – surprise, surprise – Windows is again problematic in that you cannot pass arguments
+//     // to downloaded scripts. See https://github.com/PowerShell/PowerShell/issues/8816#issuecomment-460327955)
+//     $('#advanced-customisation').hidden = (currentPlatform === 'windows')
+//   }
+// }
 
-  try {
-    const success = document.execCommand('copy')
-    if (!success) console.log('Failed to copy installation command.')
-  } catch(error) {
-    console.log('Copy command threw an error', error)
-  }
+// function copyInstallationInstructionsToClipboardFor (platform) {
+//   const installationCommand = $(`#code-${platform}`)
 
-  // Remove the selections - NOTE: Should use
-  // removeRange(range) when it is supported
-  window.getSelection().removeRange(selectedCode)
-}
+//   const selectedCode = document.createRange()
+//   selectedCode.selectNode(installationCommand)
+//   window.getSelection().addRange(selectedCode)
 
-function customiseDownloadMethod (type) {
-  const currentInstallationString = $(`#code-${visiblePlatform}`)
-  currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(type === 'wget -qO-' ? 'curl -s' : 'wget -qO-', type)
-  updateTitleState(currentInstallationString)
-}
+//   try {
+//     const success = document.execCommand('copy')
+//     if (!success) console.log('Failed to copy installation command.')
+//   } catch(error) {
+//     console.log('Copy command threw an error', error)
+//   }
 
-function customiseVersion (version) {
-  const currentInstallationString = $(`#code-${visiblePlatform}`)
-  currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(/(<span class="token keyword">\| bash<\/span>).*?$/, `$1${version}`)
-  updateTitleState(currentInstallationString)
-}
+//   // Remove the selections - NOTE: Should use
+//   // removeRange(range) when it is supported
+//   window.getSelection().removeRange(selectedCode)
+// }
 
-function updateTitleState (currentInstallationString) {
-  const currentInstallationSectionTitle = $(`#title-details-${visiblePlatform}`)
-  currentInstallationSectionTitle.innerHTML = currentInstallationString.innerHTML === defaultInstallationString[visiblePlatform] ? '' : ' (customised)'
+// function customiseDownloadMethod (type) {
+//   const currentInstallationString = $(`#code-${visiblePlatform}`)
+//   currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(type === 'wget -qO-' ? 'curl -s' : 'wget -qO-', type)
+//   updateTitleState(currentInstallationString)
+// }
 
-  console.log('current', currentInstallationString.innerHTML)
-  console.log('default', defaultInstallationString[visiblePlatform])
-}
+// function customiseVersion (version) {
+//   const currentInstallationString = $(`#code-${visiblePlatform}`)
+//   currentInstallationString.innerHTML = currentInstallationString.innerHTML.replace(/(<span class="token keyword">\| bash<\/span>).*?$/, `$1${version}`)
+//   updateTitleState(currentInstallationString)
+// }
 
-function setRadioButtonStates () {
-  const currentInstallationString = $(`#code-${visiblePlatform}`).innerHTML
-  Object.keys(radioButtons).forEach(function(radioButtonValue) {
-    if (currentInstallationString.includes(radioButtonValue)) {
-      radioButtons[radioButtonValue].checked = true
-    }
-  })
-  // Special case: release.
-  if (!currentInstallationString.includes('alpha') && !currentInstallationString.includes('beta')) {
-    radioButtons['release'].checked = true
-  }
-}
+// function updateTitleState (currentInstallationString) {
+//   const currentInstallationSectionTitle = $(`#title-details-${visiblePlatform}`)
+//   currentInstallationSectionTitle.innerHTML = currentInstallationString.innerHTML === defaultInstallationString[visiblePlatform] ? '' : ' (customised)'
+
+//   console.log('current', currentInstallationString.innerHTML)
+//   console.log('default', defaultInstallationString[visiblePlatform])
+// }
+
+// function setRadioButtonStates () {
+//   const currentInstallationString = $(`#code-${visiblePlatform}`).innerHTML
+//   Object.keys(radioButtons).forEach(function(radioButtonValue) {
+//     if (currentInstallationString.includes(radioButtonValue)) {
+//       radioButtons[radioButtonValue].checked = true
+//     }
+//   })
+//   // Special case: release.
+//   if (!currentInstallationString.includes('alpha') && !currentInstallationString.includes('beta')) {
+//     radioButtons['release'].checked = true
+//   }
+// }
