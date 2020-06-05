@@ -29,7 +29,7 @@
 
  html {
   /* Responsiveness is mainly defined by altering the root foot size (root em). */
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(100%, 2vw, 125%);
 
   /* Use system fonts. */
   font-family:
@@ -610,6 +610,20 @@ main li {
  @media(max-width: 615px) {
   #small-web-details {
     flex-wrap: wrap;
+  }
+
+  /* Tighten up the spacing and font sizes in the header and navigation. */
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  header h2 {
+    font-size: 1.6em;
+  }
+
+  nav li {
+    padding-right: 0.5em;
   }
 
   /* Make each card fill up the full width of the display so we get a */
