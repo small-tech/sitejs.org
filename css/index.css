@@ -240,12 +240,14 @@ nav {
   text-align: center;
   margin-top: -4%;
   background-color: rgb(230,230,230);
-  padding-top: 2em;
-  padding-bottom: 0.75em;
+  padding-top: 1.75em;
+  padding-bottom: 0.5em;
 }
 
 nav > ul {
   list-style: none;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
 }
 
 nav li, nav a {
@@ -260,6 +262,7 @@ nav a:hover {
 nav li {
   display: inline;
   padding-right: 1em;
+  line-height: 1.5;
 }
 
 nav a {
@@ -270,6 +273,10 @@ nav li:last-of-type {
   padding-right: 0;
 }
 
+nav li.selected {
+  color: #151D1F;
+
+}
 
 /********************************************************************************
  *                                                                              *
@@ -402,7 +409,7 @@ aside.tip::before {
 #highlights h3::before {
   content: '';
   display: inline-block;
-  background-image: url('../images/emoji/0010_2705.svg');
+  background-image: url('../images/emoji/0010_2705.svg'); /* Check mark. */
   background-repeat: no-repeat;
   height: 1.5rem;
   width: 1.5rem;
@@ -430,30 +437,6 @@ main p, main li {
 
 main li {
   margin-bottom: 0;
-}
-
-li.selected {
-  color: #151D1F;
-}
-
-.version-info {
-  font-size: 1em;
-}
-
-.unfocused {
-  filter: brightness(60%);
-}
-
-#links-to-instructions-for-other-platforms a {
-  cursor: pointer;
-}
-
-#install-linux > h3 {
-  margin-top: 0;
-}
-
-#update {
-  margin-top: 0;
 }
 
 /********************************************************************************
