@@ -114,11 +114,10 @@
       <li>
         <h3>Start a secure local development server.</h3>
         <pre><code class='language-bash'>site</code></pre>
-      </li>
-    </ol>
-    <p>Site.js starts serving your hello-world site at <a href='https://localhost'>https://localhost</a>. Go there in your browser to see your “Hello, world!” message.</p>
+        <p>Site.js starts serving your hello-world site at <a href='https://localhost'>https://localhost</a>. Go there in your browser to see your “Hello, world!” message.</p>
 
-    <p><strong>Congratulations, you’re up and running with Site.js!</strong></p>
+        <p><strong>Congratulations, you’re up and running with Site.js!</strong></p>      </li>
+    </ol>
 
     <aside class='tip'>
       <h3>Tip</h3>
@@ -153,14 +152,13 @@
       <li>
         <h3>Start a secure local development server.</h3>
         <pre><code class='language-bash'>site</code></pre>
+        <p>Site.js starts serving your Hugo site at https://localhost. Go there in your browser to see your “Hello, world!” message.</p>
+
+        <aside>If you alter the file you just created, Site.js will automatically rebuild it using Hugo and your browser will reflect the changes immediately using live reload.</aside>
+
+        <p><strong>Congratulations, you just created your first Hugo site with Site.js!</strong></p>
       </li>
     </ol>
-
-    <p>Site.js starts serving your Hugo site at https://localhost. Go there in your browser to see your “Hello, world!” message.</p>
-
-    <aside><p>(If you alter the file you just created, Site.js will automatically rebuild it using Hugo and your browser will reflect the changes immediately using live reload.)</p></aside>
-
-    <p><strong>Congratulations, you just created your first Hugo site with Site.js!</strong></p>
 
 
 
@@ -205,12 +203,10 @@
         <h3>Serve your site.</h3>
         <pre><code>site count</code></pre>
         <aside>(You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command.)</aside>
+        <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
+        <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
       </li>
     </ol>
-
-    <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
-
-    <p><strong>Congratulations, you just made your first fully-dynamic and secure DotJS site!</strong> (Seriously.)</p>
 
     <aside class='tip'>
       <h3>Tip</h3>
@@ -263,14 +259,14 @@ EOF</code></pre>
       <li>
         <h3>Fire up the server.</h3>
         <pre><code>site basic-chat</code></pre>
+        <p>To test your chat app, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
+
+        <pre><code class='language-js'>socket = new WebSocket('wss://localhost/chat')
+      socket.onmessage = message => console.log(message.data)
+      socket.send('hello')</code></pre>
       </li>
     </ol>
 
-    <p>To test your chat app, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
-
-  <pre><code class='language-js'>socket = new WebSocket('wss://localhost/chat')
-socket.onmessage = message => console.log(message.data)
-socket.send('hello')</code></pre>
 
   <aside class='tip'>
     <h3>Tip</h3>

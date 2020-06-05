@@ -69,6 +69,10 @@ body {
  *                                                                              *
  ********************************************************************************/
 
+ aside, p {
+   margin-bottom: 1em;
+ }
+
  h1 {
   font-size: 5rem;
   text-align: center;
@@ -162,7 +166,16 @@ pre, code {
 
 pre {
   line-height: 1.5;
-  padding: 1em;
+  /* padding: 1em; */
+
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+aside pre {
+  border-radius: 0;
 }
 
 code {
@@ -170,7 +183,7 @@ code {
 }
 
 pre {
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 /* Make sure all code wraps so we don’t overflow the page width. */
@@ -497,40 +510,6 @@ li.selected {
   100% { opacity: 0; }
 }
 
-/********************************************************************************
- *                                                                              *
- *                          Custom installation form                            *
- *                                                                              *
- ********************************************************************************/
-
-main fieldset {
-  display: inline;
-  border: 0;
-}
-
-main legend {
-  display: inline;
-  /* background-color: gray; */
-}
-
-main fieldset:disabled {
-
-  color: gray;
-}
-
-
-/********************************************************************************
- *                                                                              *
- *                            Advanced customisation                            *
- *                                                                              *
- ********************************************************************************/
-
-/* Hide on start; will be enabled if JavaScript is available. */
-
-#advanced-customisation {
-  display: none;
-}
-
 
 /********************************************************************************
  *                                                                              *
@@ -619,6 +598,22 @@ main fieldset:disabled {
   ol li {
     counter-increment: index;
     list-style-type: none;
+  }
+
+  ol li p, ol li aside {
+    margin-left: 1.5rem;
+  }
+
+  aside pre {
+    padding-left: 0.5rem;
+  }
+
+  pre {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0;
   }
 
   ol li h3::before {
