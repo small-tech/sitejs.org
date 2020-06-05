@@ -296,6 +296,7 @@ aside.tip {
   margin-right: -1.5em;
   margin-top: 2em;
   margin-bottom: 1.5em;
+  padding-bottom: 0;
 }
 
 aside.tip::before {
