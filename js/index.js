@@ -39,13 +39,25 @@ const $$ = document.querySelectorAll.bind(document)
 
 // Progressive enhancement:
 // Add copy buttons to all code segments.
-const codeSegments = $$('pre code')
-const button = document.createElement('button')
-codeSegments.forEach(codeSegment => {
-  console.log(codeSegment)
-  codeSegment.innerHTML = '<button onclick="alert(`hello`)"><img src="images/emoji/0020_1f4cb.svg"><span>Copy</span></button>' + codeSegment.innerHTML
-})
-
+// Note: only supported on evergreen browsers.
+if (navigator.clipboard !== undefined) {
+  $('#copy-tip').className = 'tip shown'
+  const copyAlert = $('#copy-alert')
+  const codeSegments = $$('pre code')
+  codeSegments.forEach(codeSegment => {
+    codeSegment.addEventListener('click', (event) => {
+      // If there is a selection, copy that. If not, copy the whole code section.
+      const selection = document.getSelection()
+      const codeToCopy = selection.toString() === '' ? event.target.innerText : selection.toString();
+      navigator.clipboard.writeText(codeToCopy).then(() => {
+        copyAlert.className = 'show-copy-alert'
+        setTimeout(() => { copyAlert.className = 'hide-copy-alert' }, 1000)
+      }, error => {
+        alert('Copy to clipboard failed. People copy the code manually.', error)
+      })
+    })
+  })
+}
 
 // function binaryVersionToHumanReadableDateString (binaryVersion) {
 //   console.log(binaryVersion)

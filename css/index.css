@@ -55,6 +55,14 @@ body {
   margin-right: auto;
 }
 
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
 /********************************************************************************
  *                                                                              *
  *                                  Typography                                  *
@@ -174,12 +182,6 @@ pre, code[class*="language-"], pre[class*="language-"] {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
-
-.code-marker {
-  vertical-align: middle;
-  margin-left: 0.25em;
-}
-
 
 /********************************************************************************
  *                                                                              *
@@ -423,28 +425,6 @@ li.selected {
   color: #151D1F;
 }
 
-pre code button {
-  float: right;
-  margin-top: -1.4em;
-  margin-right: -1.4em;
-  background-color: whitesmoke;
-  padding: 0.5em 1em 0.5em 1em;
-  border: 1px solid rgb(184, 184, 184);
-  border-radius: 1em;
-}
-
-pre code button span {
-  display: block;
-  margin-top: 0.35em;
-}
-
-pre code button img {
-  display: block;
-  width: 2em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .version-info {
   font-size: 1em;
 }
@@ -465,6 +445,57 @@ pre code button img {
   margin-top: 0;
 }
 
+/********************************************************************************
+ *                                                                              *
+ *                                    Copy Alert                                *
+ *                                                                              *
+ ********************************************************************************/
+
+
+:root {
+  --alert-height: 2.75rem;
+}
+
+#copy-alert {
+  display: block;
+  background-color: gray;
+  color: whitesmoke;
+  height: var(--alert-height);
+  position: fixed;
+  text-align: center;
+  top: calc(var(--alert-height) * -1);
+  left: 0;
+  width: 100%;
+  padding:0;
+  margin: 0;
+}
+
+#copy-alert p {
+  /* Vertically centre the paragraph in the alert. */
+  margin-top: .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.show-copy-alert {
+  animation: show-copy-alert 0.3s ease forwards;
+}
+
+.hide-copy-alert {
+  animation: hide-copy-alert 0.3s ease forwards;
+}
+
+@keyframes show-copy-alert {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 0; }
+}
+
+@keyframes hide-copy-alert {
+  0% { opacity: 1; top: 0;}
+  50% { top: calc(var(--alert-height) * -1); }
+  100% { opacity: 0; }
+}
 
 /********************************************************************************
  *                                                                              *
