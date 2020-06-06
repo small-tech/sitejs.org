@@ -340,11 +340,6 @@ aside.tip::before {
  *                                                                              *
  ********************************************************************************/
 
-#small-web {
-  /* margin-top: -1em; */
-  /* margin-bottom: 4rem; */
-}
-
 #small-web h2, #highlights h2, main h2 {
   text-align: center;
   margin-top: 4rem;
@@ -360,6 +355,7 @@ aside.tip::before {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 #small-web-details {
   display: flex;
@@ -582,8 +578,8 @@ main li {
  *                                                                              *
  ********************************************************************************/
 
- /* Main content padding becomes too large. */
- @media(max-width: 768px) {
+/* Main content padding becomes too large. */
+@media(max-width: 768px) {
   main {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -634,8 +630,8 @@ main li {
   }
 }
 
- /* The title in the first card wraps to two lines. */
- @media(max-width: 615px) {
+/* The title in the first card wraps to two lines. */
+@media(max-width: 615px) {
   #small-web-details {
     flex-wrap: wrap;
   }
@@ -652,6 +648,10 @@ main li {
 
   nav li {
     padding-right: 0.5em;
+  }
+
+  #small-web h2, #highlights h2, main h2 {
+    width: 90%
   }
 
   /* Make each card fill up the full width of the display so we get a */
@@ -688,7 +688,4 @@ main li {
   #highlights li:nth-last-of-type(2) p {
     margin-bottom: 1em;
   }
-}
-
-
 }
