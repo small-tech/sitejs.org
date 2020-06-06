@@ -31,6 +31,7 @@
  body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
  ol, ul { list-style: none; }
  img { max-width: 100%; height: auto; }
+ span { white-space: pre; } /* preserve whitespace in spans */
 
 
 /********************************************************************************
@@ -346,9 +347,6 @@ aside.tip::before {
 
 #small-web h2, #highlights h2, main h2 {
   text-align: center;
-/*👉  margin-top: 1.5em;
-  margin-bottom: 1em;
-👈*/
   margin-top: 4rem;
   margin-bottom: 4rem;
 
@@ -403,23 +401,26 @@ aside.tip::before {
  *                                                                              *
  ********************************************************************************/
 
-#highlights {
-  /* margin-top: -5em; */
-}
-
 #highlights ul {
   display: grid;
   grid-template-columns: 47.5% 47.5%;
   grid-column-gap: 5%;
-
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3em;
 }
 
 #highlights li {
   font-size: 1.5em;
   list-style-type: none;
+  margin-bottom: 0.5em;
+}
+
+/* Remove all margins from elements in the last row of highlights */
+#highlights li:nth-last-of-type(2),
+#highlights li:last-of-type,
+#highlights li:nth-last-of-type(2) p,
+#highlights li:last-of-type p {
+  margin-bottom: 0;
 }
 
 #highlights li p {
@@ -678,5 +679,16 @@ main li {
   #highlights ul {
     grid-template-columns: 100%;
   }
+
+  /* Restore the bottom margins on the next-to-last highlight. */
+  #highlights li:nth-last-of-type(2) {
+    margin-bottom: 0.5em;
+  }
+
+  #highlights li:nth-last-of-type(2) p {
+    margin-bottom: 1em;
+  }
+}
+
 
 }
