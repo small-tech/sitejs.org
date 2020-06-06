@@ -201,7 +201,7 @@ pre {
 /* Make sure all code wraps so we don’t overflow the page width. */
 /* Courtesy: https://gist.github.com/tcr/1321968                 */
 
-pre, code[class*="language-"], pre[class*="language-"] {
+pre, code[class*="language-"], pre[class*="language-"], pre code span {
   /* Make sure preformatted text wraps. */
   white-space: pre-wrap;       /* css-3 */
   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
