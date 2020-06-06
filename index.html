@@ -14,7 +14,6 @@
   <header>
       <!-- Title -->
       <h1><strong>Site</strong>.js</h1>
-
       <h2>Small Web construction set.</h2>
       <img id='header-image' src='/images/person.svg'>
 
@@ -57,7 +56,7 @@
       <ul>
         <li>
           <h3>Just works.</h3>
-          <p>No configuration or setup; install and go in 30 seconds.</p>
+          <p>No configuration or setup; <a href='#install'>install</a> and go in 30 seconds on <a href='https://source.small-tech.org/site.js/app#system-requirements'>Linux, macOS, and Windows</a>.</p>
         </li>
         <li>
           <h3>Free as in freedom.</h3>
@@ -83,15 +82,29 @@
 
     <h2>Get started in 30 seconds.</h2>
 
-    <p>Fire up a terminal window and follow along.</p>
+    <p>Fire up a terminal on Linux/macOS (only use Windows Terminal on Windows) and follow along.</p>
+
+    <aside id='switch-auto-detect'></aside>
 
     <aside id='copy-tip' class='tip hidden'><h3>Tip</h3><p>Click on the code samples to copy them to the clipboard.</p></aside>
 
-    <ol>
+    <ol id='install'>
       <li>
         <h3>Install Site.js.</h3>
-        <p>The installation script downloads the correct Site.js binary for your platform and places it on your path (<span id='view-installation-script-source'>View the source code (<a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a>, <a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a>)</span>).</p>
-        <pre><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
+        <p>The installation script downloads the correct Site.js binary for your platform and places it on your path</p>
+        <aside>
+          <p>(<strong>Make sure you understand what a script does before piping it into your shell.</strong> View the source of the <a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a><span class='no-js'> scripts.</span>)</p>
+        </aside>
+
+        <h4 class='no-js'>Linux</h4>
+        <pre class='linux'><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
+
+        <h4 class='no-js'>macOS</h4>
+        <pre class='macos'><code class='language-bash'>curl -s https://sitejs.org/install | bash</code></pre>
+
+        <h4 class='no-js'>Windows</h4>
+        <pre class='windows'><code class='language-bash'>iex(iwr -UseBasicParsing https://sitejs.org/install.txt).Content</code></pre>
+
       </li>
       <li>
         <h3>Create a basic static web page.</h3>
@@ -102,8 +115,13 @@
           </li>
           <li>
             <p>Enter the folder.</p>
-            <pre><code class='language-bash'>cd $_</code></pre>
-            <aside>(<code>$_</code> is shorthand for the argument from your last command. In this case, it evaluates to <code>hello-world</code>.)</aside>
+
+            <h4 class='no-js'>Linux and macOS</h4>
+            <pre class='linux-and-macos'><code class='language-bash'>cd $_</code></pre>
+            <aside class='linux-and-macos'>(<code>$_</code> is shorthand for the argument from your last command. In this case, it evaluates to <code>hello-world</code>.)</aside>
+
+            <h4 class='no-js'>Windows</h4>
+            <pre class='windows'><code>cd hello-world</code></pre>
           </li>
           <li>
             <p>Write the string <code>'Hello, world'</code> into a file called <em>index.html</em>, creating or overwriting it as necessary.</p>

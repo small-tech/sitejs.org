@@ -1,32 +1,32 @@
-// //////////////////////////////////////////////////////////////////////
-// //
-// // ⚠ GENERATED CODE. Please do not change.
-// //
-// // These are the latest versions of the various release channels.
-// // They are automatically populated by the Site.js build script
-// // on deployment.
-// //
-// //////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//
+// ⚠ GENERATED CODE. Please do not change.
+//
+// These are the latest versions of the various release channels.
+// They are automatically populated by the Site.js build script
+// on deployment.
+//
+//////////////////////////////////////////////////////////////////////
 
-// const versions = {
-//   alphaBinaryVersion: 00000000000000,
-//   alphaNodeVersion: '00.00.00',
-//   alphaHugoVersion: '00.00.00',
-//   alphaPackageVersion: '00.00.00',
-//   alphaSourceVersion: 'bedface',
+const versions = {
+  alphaBinaryVersion: 00000000000000,
+  alphaNodeVersion: '00.00.00',
+  alphaHugoVersion: '00.00.00',
+  alphaPackageVersion: '00.00.00',
+  alphaSourceVersion: 'bedface',
 
-//   betaBinaryVersion: 00000000000000,
-//   betaNodeVersion: '00.00.00',
-//   betaHugoVersion: '00.00.00',
-//   betaPackageVersion: '00.00.00',
-//   betaSourceVersion: 'acecafe',
+  betaBinaryVersion: 00000000000000,
+  betaNodeVersion: '00.00.00',
+  betaHugoVersion: '00.00.00',
+  betaPackageVersion: '00.00.00',
+  betaSourceVersion: 'acecafe',
 
-//   releaseBinaryVersion: 00000000000000,
-//   releaseNodeVersion: '00.00.00',
-//   releaseHugoVersion: '00.00.00',
-//   releasePackageVersion: '00.00.00',
-//   releaseSourceVersion: 'decafAF',
-// }
+  releaseBinaryVersion: 00000000000000,
+  releaseNodeVersion: '00.00.00',
+  releaseHugoVersion: '00.00.00',
+  releasePackageVersion: '00.00.00',
+  releaseSourceVersion: 'decafAF',
+}
 
 // //////////////////////////////////////////////////////////////////////
 // // End of generated code.

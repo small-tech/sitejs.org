@@ -9,6 +9,18 @@
 
 /********************************************************************************
  *                                                                              *
+ *                                Global variables                              *
+ *                                                                              *
+ ********************************************************************************/
+
+
+ :root {
+  --alert-height: 2.75rem;
+}
+
+
+/********************************************************************************
+ *                                                                              *
  *                               Minimal CSS reset                              *
  *                (https://alligator.io/css/minimal-css-reset/)                 *
  *                                                                              *
@@ -66,6 +78,10 @@ body {
 
  aside, p {
    margin-bottom: 1em;
+ }
+
+ aside span {
+   display: inline-block;
  }
 
  h1 {
@@ -324,20 +340,34 @@ aside.tip::before {
  ********************************************************************************/
 
 #small-web {
-  margin-top: -1em;
-  margin-bottom: 2em;
+  /* margin-top: -1em; */
+  /* margin-bottom: 4rem; */
 }
 
-#small-web h2 {
+#small-web h2, #highlights h2, main h2 {
   text-align: center;
-  margin-top: 1.5em;
+/*👉  margin-top: 1.5em;
   margin-bottom: 1em;
+👈*/
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #small-web-details {
   display: flex;
   justify-content: space-between;
-  margin-top: 2em;
+  /* margin-top: 2em; */
+  /* margin-bottom: 6em; */
 }
 
 #small-web-details div {
@@ -345,7 +375,6 @@ aside.tip::before {
   flex-direction: column;
   justify-content: space-between;
   flex-basis: 32%;
-  margin-bottom:2em;
 }
 
 #small-web-details div h3 {
@@ -375,7 +404,7 @@ aside.tip::before {
  ********************************************************************************/
 
 #highlights {
-  margin-top: -5em;
+  /* margin-top: -5em; */
 }
 
 #highlights ul {
@@ -397,11 +426,11 @@ aside.tip::before {
   margin-left: 2.3em;
 }
 
-#highlights h2 {
+/*👉#highlights h2 {
   text-align: center;
   margin-top: 2em;
   margin-bottom: 0.75em;
-}
+}👈*/
 
 #highlights h3 {
   margin-bottom: 0.15rem;
@@ -447,9 +476,6 @@ main li {
  ********************************************************************************/
 
 
-:root {
-  --alert-height: 2.75rem;
-}
 
 #copy-alert {
   display: block;
@@ -631,6 +657,11 @@ main li {
   /* single column on narrower viewports.                             */
   #small-web-details div {
     flex-basis: 100%;
+    margin-bottom:2em;
+  }
+
+  #small-web-details div:last-of-type {
+    margin-bottom: 0;
   }
 
   #small-web-details div h3 {
