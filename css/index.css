@@ -295,7 +295,7 @@ nav li.selected {
  *                                                                              *
  ********************************************************************************/
 
-aside.tip, #small-web-details div {
+aside.tip, #small-web-details li {
   border: 0.25em solid lightgrey;
   background-color: #ffffff;
   border-radius: 1em;
@@ -356,18 +356,18 @@ aside.tip::before {
   justify-content: space-between;
 }
 
-#small-web-details div {
+#small-web-details li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-basis: 32%;
 }
 
-#small-web-details div h3 {
+#small-web-details li h3 {
   margin-bottom: 1em;
 }
 
-#small-web-details div p {
+#small-web-details li p {
   margin-top: 1em;
   text-align: center;
 }
@@ -378,7 +378,7 @@ aside.tip::before {
   padding: 0;
 }
 
-#small-web-details div img {
+#small-web-details li img {
   max-width: 100%;
 }
 
@@ -662,20 +662,20 @@ footer {
 
   /* Make each card fill up the full width of the display so we get a */
   /* single column on narrower viewports.                             */
-  #small-web-details div {
+  #small-web-details li {
     flex-basis: 100%;
     margin-bottom:2em;
   }
 
-  #small-web-details div:last-of-type {
+  #small-web-details li:last-of-type {
     margin-bottom: 0;
   }
 
-  #small-web-details div h3 {
+  #small-web-details li h3 {
     font-size: 3rem;
   }
 
-  #small-web-details div p {
+  #small-web-details li p {
     font-size: 1.5rem;
     margin-top: 1.5em;
     text-align: center;
