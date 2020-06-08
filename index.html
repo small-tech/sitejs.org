@@ -166,7 +166,7 @@
           </ol>
         </li>
         <li>
-          <h3>Start a secure local development server.</h3>
+          <h3>Start the server.</h3>
           <pre><code class='language-bash'>site</code></pre>
           <p>Site.js starts serving your hello-world site at <a href='https://localhost'>https://localhost</a>. Go there in your browser to see your “Hello, world!” message.</p>
 
@@ -189,11 +189,13 @@
     <section id='static-sites'>
       <h2>Static sites with Hugo</h2>
 
-      <p>The type of site you just created is an old-school static site. You can create static sites with Site.js using plain old HTML, CSS, and JavaScript. Site.js will automatically serve any files it finds in the folder you start it on as static files.</p>
+      <div class='introduction'>
+        <p>The type of site you just created is an old-school static site. You can create static sites with Site.js using plain old HTML, CSS, and JavaScript. Site.js will automatically serve any files it finds in the folder you start it on as static files.</p>
 
-      <p>For larger sites, hand-rolling your static site might become cumbersome. That’s why Site.js comes bundled with the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
+        <p>For larger sites, hand-rolling your static site might become cumbersome. That’s why Site.js comes bundled with the <a href='https://gohugo.io'>Hugo static site generator</a>.</p>
 
-      <p>To create a new Hugo site and start serving it:</p>
+        <p>Let’s create a new Hugo site and start serving it.</p>
+      </div>
 
       <ol>
         <li>
@@ -220,7 +222,7 @@
           <aside>(For Site.js’s live reload to work, your web page must contain at least a <code>&lt;body&gt;</code> tag.)</aside>
         </li>
         <li>
-          <h3>Start a secure local development server.</h3>
+          <h3>Start the server.</h3>
           <pre><code class='language-bash'>site</code></pre>
           <p>Site.js starts serving your Hugo site at https://localhost. Go there in your browser to see your “Hello, world!” message.</p>
 
@@ -252,11 +254,13 @@
     <section id='dynamic-sites'>
       <h2 id="dynamic">Dynamic sites with DotJS</h2>
 
-      <p>Site.js does not limit you to creating and serving fully static sites. You can easily add dynamic functionality to your static sites or create fully dynamic sites.</p>
+      <div class='introduction'>
+        <p>Site.js does not limit you to creating and serving fully static sites. You can easily add dynamic functionality to your static sites or create fully dynamic sites.</p>
 
-      <p>The easiest way to get started with dynamic sites is to use DotJS. DotJS gives you PHP-like simplicity in JavaScript using simple <code>.js</code> files.</p>
+        <p>The easiest way to get started with dynamic sites is to use DotJS. DotJS gives you PHP-like simplicity in JavaScript using simple <code>.js</code> files.</p>
 
-      <p>Follow along to create a very basic dynamic site that updates a counter every time the home page is reloaded.</p>
+        <p>Follow along to create a very basic dynamic site that updates a counter every time the home page is reloaded.</p>
+      </div>
 
       <ol>
         <li>
@@ -323,9 +327,11 @@ module.exports = (request, response) => {
     <section id='websockets'>
       <h2>WebSockets</h2>
 
-      <p>In addition to static routes and dynamic HTTPS routes, you can also specify secure WebSocket (WSS) routes in DotJS. And you can mix all three types of routes as you please.</p>
+      <div class='introduction'>
+        <p>In addition to static routes and dynamic HTTPS routes, you can also specify secure WebSocket (WSS) routes in DotJS. And you can mix all three types of routes as you please.</p>
 
-      <p>For example, to create a very basic chat app:</p>
+        <p>To see WebSockets in action, let’s create a very basic chat.</p>
+      </div>
 
       <ol>
         <li>

@@ -373,7 +373,6 @@ aside.tip::before {
   margin-right: auto;
 }
 
-
 #small-web-details {
   display: flex;
   justify-content: space-between;
@@ -481,6 +480,23 @@ main p, main li, footer p {
 main li {
   margin-bottom: 0;
 }
+
+
+/********************************************************************************
+ *                                                                              *
+ *                                 Introductions                                *
+ *                                                                              *
+ ********************************************************************************/
+
+.introduction {
+  margin-bottom: 3rem;
+}
+
+.introduction p {
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
 
 /********************************************************************************
  *                                                                              *
