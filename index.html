@@ -124,8 +124,8 @@
         <li>
           <h3>Install Site.js.</h3>
           <p>Launch a terminal on Linux/macOS (only use Windows Terminal on Windows) and follow along.</p>
-          <p>The installation script downloads the correct Site.js binary for your platform and places it on your path</p>
-          <aside>(<strong>Make sure you understand what a script does before piping it into your shell.</strong> View the source of the <a class='linux macos' href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a class='windows' href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a> installation script<span class='no-js'>s</span>.)</aside>
+
+          <aside>The following command pipes the installation script into your shell. The installation script downloads the correct Site.js binary for your platform and places it on your path. <strong>Make sure you understand what any script does before piping it into your shell.</strong> View the source of the <a class='linux macos' href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a class='windows' href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a> installation script<span class='no-js'>s</span>.</aside>
 
           <aside id='copy-tip' class='tip hidden'><h3>Tip</h3><p>Click on the code samples to copy them to the clipboard.</p></aside>
 
@@ -137,7 +137,6 @@
 
           <h4 class='no-js'>Windows</h4>
           <pre class='windows'><code class='language-bash'>iex(iwr -UseBasicParsing https://sitejs.org/install.txt).Content</code></pre>
-
         </li>
         <li>
           <h3>Create a basic static web page.</h3>
@@ -226,9 +225,8 @@
 
         <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
 
-        <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:
-          <pre><code class='language-none'>site hugo &lt;any valid Hugo command&gt;</code></pre>
-        </p>
+        <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:</p>
+        <pre><code class='plaintext'>site hugo &lt;any valid Hugo command&gt;</code></pre>
 
         <p>See the <a href='https://github.com/small-tech/site.js#static-site-generation'>Site.js Hugo documentation</a> and <a href='https://gohugo.io/documentation/'>the official Hugo documentation</a> for detailed information on how Hugo works and how it’s integrated into Site.js.</p>
       </aside>
