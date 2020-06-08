@@ -1,43 +1,26 @@
-//////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //
-// ⚠ GENERATED CODE. Please do not change.
+// Site.js
 //
-// These are the latest versions of the various release channels.
-// They are automatically populated by the Site.js build script
-// on deployment.
+// JavaScript for the index file. None of this JavaScript is required.
+// It’s all just progressive enhancement.
 //
-//////////////////////////////////////////////////////////////////////
+// Copyright ⓒ 2020 Aral Balkan. Licensed under AGPLv3 or later.
+// Shared with ♥ by the Small Technology Foundation.
+//
+// Like this? Fund us!
+// https://small-tech.org/fund-us
+//
+////////////////////////////////////////////////////////////////////////////////
 
-const versions = {
-  alphaBinaryVersion: 00000000000000,
-  alphaNodeVersion: '00.00.00',
-  alphaHugoVersion: '00.00.00',
-  alphaPackageVersion: '00.00.00',
-  alphaSourceVersion: 'bedface',
-
-  betaBinaryVersion: 00000000000000,
-  betaNodeVersion: '00.00.00',
-  betaHugoVersion: '00.00.00',
-  betaPackageVersion: '00.00.00',
-  betaSourceVersion: 'acecafe',
-
-  releaseBinaryVersion: 00000000000000,
-  releaseNodeVersion: '00.00.00',
-  releaseHugoVersion: '00.00.00',
-  releasePackageVersion: '00.00.00',
-  releaseSourceVersion: 'decafAF',
-}
-
-// //////////////////////////////////////////////////////////////////////
-// // End of generated code.
-// //////////////////////////////////////////////////////////////////////
-
+// Start the syntax highlighter.
+// TODO: Move this to the server side build script.
 hljs.initHighlightingOnLoad()
 
+// Useful shortcuts for DOM lookups.
 const $  = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-// Progressive enhancement:
 // Add copy buttons to all code segments.
 // Note: only supported on evergreen browsers.
 if (navigator.clipboard !== undefined) {
@@ -59,54 +42,21 @@ if (navigator.clipboard !== undefined) {
   })
 }
 
-// function binaryVersionToHumanReadableDateString (binaryVersion) {
-//   console.log(binaryVersion)
-//   const m = moment(binaryVersion, 'YYYYMMDDHHmmss')
-//   return `${m.format('MMMM Do, YYYY')} at ${m.format('HH:mm:ss')}`
-// }
+// Platform detection.
+const userAgent = navigator.userAgent.toLowerCase()
+let currentPlatform = 'unknown'
+if (userAgent.includes('linux')) { currentPlatform = 'linux' }
+if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
+if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
-// // Progressively enhance the installation instructions to only show the ones for the
-// // detected platform (with links to the others), if we can detect a supported platform.
-// let visiblePlatform = 'linux'
+// If we know the platform, remove instructions that are not
+// relevant for the current person
+if (currentPlatform !== 'unknown') {
 
-// function displayVersionInformation () {
+}
 
-//   const _ = version => versions[`${document.advanced.version.value}${version}`]
+// TODO: Add option to display the page as if the person was on a different platform.
 
-//   $$('.humanReadableBinaryVersion').forEach(span =>
-//     span.innerHTML = binaryVersionToHumanReadableDateString(_('BinaryVersion'))
-//   )
-//   $$('.packageVersion').forEach(span => span.innerHTML = _('PackageVersion'))
-//   $$('.sourceVersion').forEach(span => span.innerHTML = _('SourceVersion'))
-//   $$('.nodeVersion').forEach(span => span.innerHTML = _('NodeVersion'))
-//   $$('.hugoVersion').forEach(span => span.innerHTML = _('HugoVersion'))
-//   $$('.sourceUrl').forEach(a =>
-//     a.setAttribute('href', `https://github.com/small-tech/site.js/-/tree/${_('SourceVersion')}`)
-//   )
-// }
-
-// const defaultInstallationString = {
-//   linux: $('#code-linux').innerHTML,
-//   mac: $('#code-mac').innerHTML,
-//   windows: $('#code-windows').innerHTML
-// }
-
-// function inputWithValue(value) {
-//   return $(`input[value="${value}"]`)
-// }
-// const radioButtons = {
-//   wget: inputWithValue('wget'),
-//   curl: inputWithValue('curl'),
-//   release: inputWithValue('release'),
-//   alpha: inputWithValue('alpha'),
-//   beta: inputWithValue('beta')
-// }
-
-// const userAgent = navigator.userAgent.toLowerCase()
-// let currentPlatform = 'unknown'
-// if (userAgent.includes('linux')) { currentPlatform = 'linux' }
-// if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
-// if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
 // displayInstallationInstructionsFor(currentPlatform)
 

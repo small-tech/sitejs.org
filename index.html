@@ -278,8 +278,8 @@
         </li>
         <li>
           <h3>Serve your site.</h3>
-          <pre><code class='language-bash'>site count</code></pre>
-          <aside>(You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command.)</aside>
+          <pre><code class='language-bash'>site ..</code></pre>
+          <aside>(You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command. In this case, we want to serve the whole site from the parent folder, not just the <code>.dynamic</code> folder.)</aside>
           <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
           <p><strong>Congratulations, you just made your first fully-dynamic DotJS site!</strong></p>
         </li>
@@ -359,7 +359,16 @@ EOF</code></pre>
         </li>
         <li>
           <h3>Launch the server.</h3>
-          <pre><code class='language-bash'>site basic-chat</code></pre>
+          <ol>
+            <li>
+              <p>Return to the parent folder that contains the project folder.</p>
+              <pre><code class='language-bash'>cd ../../..</code></pre>
+            </li>
+            <li>
+              <p>Start the server.</p>
+              <pre><code class='language-bash'>site basic-chat</code></pre>
+            </li>
+          </ol>
           <p>To test your chat app, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:</p>
 
           <pre><code class='language-js'>// Create the web socket connection.
