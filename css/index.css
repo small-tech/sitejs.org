@@ -447,7 +447,7 @@ aside.tip::before {
   background-image: url('../images/emoji/0010_2705.svg'); /* Check mark. */
 }
 
-#learn-more h3::before {
+#further-reading h3::before {
   background-image: url('../images/emoji/0030_1f4d6.svg'); /* Open book. */
 }
 
