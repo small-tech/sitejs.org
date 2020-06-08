@@ -147,8 +147,8 @@ ol {
   list-style-type: decimal;
 }
 
-ol li {
-  margin-bottom: 1.5em !important;
+main ol li {
+  margin-bottom: 1.5em;
 }
 
 ol ol, aside > ol {
@@ -199,10 +199,6 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
 
 .hidden {
   display: none;
-}
-
-.shown {
-  display: block;
 }
 
 
