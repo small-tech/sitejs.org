@@ -204,6 +204,33 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
 
 /********************************************************************************
  *                                                                              *
+ *                                     Tabs                                     *
+ *                                                                              *
+ ********************************************************************************/
+
+#platform-tabs {
+  text-align: center;
+  border-bottom: 0.25em solid lightblue;
+  margin-bottom: 2em;
+}
+
+#platform-tabs li {
+  font-size: 1.5em;
+  display: inline-block;
+  margin-left: 0.25em;
+  padding-bottom: 0.25em;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-top: 0.25em;
+}
+
+#platform-tabs li.active {
+  background-color: lightblue;
+}
+
+
+/********************************************************************************
+ *                                                                              *
  *                            Syntax highlighting                               *
  *                                                                              *
  ********************************************************************************/
@@ -623,7 +650,7 @@ footer {
     border-radius: 0;
   }
 
-  ol li h3::before {
+  ol li > h3:first-of-type::before {
     content: counter(index) '. ';
   }
 

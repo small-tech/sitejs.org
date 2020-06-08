@@ -50,7 +50,7 @@ if (userAgent.includes('mac os x')) { currentPlatform = 'macos' }
 if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
 // If we know the platform, remove instructions that are not
-// relevant for the current person
+// relevant for the current platform.
 if (currentPlatform !== 'unknown') {
   $$('.no-js').forEach(node => node.className='hidden')
 
