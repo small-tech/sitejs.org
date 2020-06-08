@@ -215,17 +215,24 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
 }
 
 #platform-tabs li {
-  font-size: 1.5em;
   display: inline-block;
   margin-left: 0.25em;
-  padding-bottom: 0.25em;
-  padding-right: 1em;
-  padding-left: 1em;
-  padding-top: 0.25em;
 }
 
-#platform-tabs li.active {
+#platform-tabs li button.active {
   background-color: lightblue;
+}
+
+#platform-tabs li button {
+  font-family: inherit;
+  font-size: 1.5em;
+  border: none;
+  background-color: transparent;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1.15rem;
+  margin: 0;
 }
 
 
