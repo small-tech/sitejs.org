@@ -122,15 +122,15 @@
       <h2>Get started in seconds</h2>
 
       <ul id='platform-tabs'>
-        <li class='active'>Linux</li>
-        <li>macOS</li>
-        <li>Windows</li>
+        <li data-platform='linux' tabindex='0' role='button' aria-pressed='false'>Linux</li>
+        <li data-platform='macos' tabindex='0' role='button' aria-pressed='false'>macOS</li>
+        <li data-platform='windows' tabindex='0' role='button' aria-pressed='false'>Windows</li>
       </ul>
 
       <ol id='install'>
         <li>
           <h3>Install Site.js.</h3>
-          <p>Launch a terminal on Linux/macOS (only use Windows Terminal on Windows) and follow along.</p>
+          <p>Launch <span class='linux macos'>a terminal window</span> <span class='no-js'>(on Windows, </span><span class='windows'>a PowerShell session running under <a href="https://github.com/Microsoft/Terminal">Windows Terminal</a></span><span class='no-js'>)</span> and follow along.</p>
 
           <aside>The following command pipes the installation script into your shell. The installation script downloads the correct Site.js binary for your platform and places it on your path. <strong>Make sure you understand what any script does before piping it into your shell.</strong> View the source of the <a class='linux macos' href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a class='windows' href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a> installation script<span class='no-js'>s</span>.</aside>
 

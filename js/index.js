@@ -52,16 +52,46 @@ if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 // If we know the platform, remove instructions that are not
 // relevant for the current platform.
 if (currentPlatform !== 'unknown') {
+
+  function displayInstructionsForPlatform(platform) {
+    console.log('displaying instructions for', platform, $$)
+    ;['.linux', '.macos', '.windows'].forEach(className => {
+      $$(className).forEach(node => {
+        if (node.classList.contains(platform)) {
+          node.classList.remove('hidden')
+        } else {
+          node.classList.add('hidden')
+        }
+      })
+    })
+  }
+
+  // Display the tab control that allows people to see instructions for
+  // platforms other than their own.
+  const platformTabs = $$('#platform-tabs li')
+  platformTabs.forEach(platformTab => {
+    if (platformTab.dataset.platform === currentPlatform) {
+      platformTab.className = 'active'
+    }
+
+    const operationHandler = event => {
+      const requestedPlatform = event.target.dataset.platform
+      platformTabs.forEach(platformTab => {
+        platformTab.className = requestedPlatform === platformTab.dataset.platform ? 'active' : ''
+      })
+      displayInstructionsForPlatform(requestedPlatform)
+    }
+
+    platformTab.addEventListener('click', operationHandler)
+    platformTab.addEventListener('keydown', operationHandler)
+  })
+
+  // Hide all the elements that only make sense to show if JavaScript
+  // is not being executed.
   $$('.no-js').forEach(node => node.className='hidden')
 
-  ;['.linux', '.macos', '.windows'].forEach(className => {
-    $$(className).forEach(node => {
-      if (!node.classList.contains(currentPlatform)) {
-        console.log('hiding')
-        node.className = 'hidden'
-      }
-    })
-  })
+  // Show only the elements that pertain to the current platform.
+  displayInstructionsForPlatform(currentPlatform)
 }
 
 // TODO: Add option to display the page as if the person was on a different platform.
