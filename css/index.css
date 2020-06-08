@@ -170,24 +170,15 @@ pre, code {
 
 pre {
   line-height: 1.5;
-  /* padding: 1em; */
-
   margin-left: -1em;
   margin-right: -1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  border-radius: 0.5em;
 }
 
 aside pre {
   border-radius: 0;
-}
-
-code {
-  overflow: visible !important;
-}
-
-pre {
-  border-radius: 0.5em;
 }
 
 /* Make sure all code wraps so we don’t overflow the page width. */
@@ -449,12 +440,12 @@ aside.tip::before {
  *                                                                              *
  ********************************************************************************/
 
-main {
+main, footer {
   padding-left: 3rem;
   padding-right: 3rem;
 }
 
-main p, main li {
+main p, main li, footer p {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1em;
@@ -514,9 +505,24 @@ main li {
 
 /********************************************************************************
  *                                                                              *
+ *                                      About                                   *
+ *                                                                              *
+ ********************************************************************************/
+
+#about {
+  margin-bottom: 3rem;
+}
+
+
+/********************************************************************************
+ *                                                                              *
  *                                     Footer                                   *
  *                                                                              *
  ********************************************************************************/
+
+footer {
+  margin-bottom: 2rem;
+}
 
 #copyright {
   margin-top: 1em;
@@ -576,7 +582,7 @@ main li {
 
 /* Main content padding becomes too large. */
 @media(max-width: 768px) {
-  main {
+  main, footer {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -621,7 +627,7 @@ main li {
     content: counter(index) '. ';
   }
 
-  ol ol li p::before  {
+  ol ol li p:first-of-type::before  {
     content: counter(index, lower-roman) '. ';
   }
 }
