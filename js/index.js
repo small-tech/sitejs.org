@@ -46,13 +46,22 @@ if (navigator.clipboard !== undefined) {
 const userAgent = navigator.userAgent.toLowerCase()
 let currentPlatform = 'unknown'
 if (userAgent.includes('linux')) { currentPlatform = 'linux' }
-if (userAgent.includes('mac os x')) { currentPlatform = 'mac' }
+if (userAgent.includes('mac os x')) { currentPlatform = 'macos' }
 if (userAgent.includes('windows')) { currentPlatform = 'windows'}
 
 // If we know the platform, remove instructions that are not
 // relevant for the current person
 if (currentPlatform !== 'unknown') {
+  $$('.no-js').forEach(node => node.className='hidden')
 
+  ;['.linux', '.macos', '.windows'].forEach(className => {
+    $$(className).forEach(node => {
+      if (!node.classList.contains(currentPlatform)) {
+        console.log('hiding')
+        node.className = 'hidden'
+      }
+    })
+  })
 }
 
 // TODO: Add option to display the page as if the person was on a different platform.

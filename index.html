@@ -125,12 +125,9 @@
           <h3>Install Site.js.</h3>
           <p>Launch a terminal on Linux/macOS (only use Windows Terminal on Windows) and follow along.</p>
           <p>The installation script downloads the correct Site.js binary for your platform and places it on your path</p>
-          <aside>
-            <p>(<strong>Make sure you understand what a script does before piping it into your shell.</strong> View the source of the <a href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a><span class='no-js'> scripts.</span>)</p>
-          </aside>
+          <aside>(<strong>Make sure you understand what a script does before piping it into your shell.</strong> View the source of the <a class='linux macos' href="https://should-i-pipe.it/https://sitejs.org/install">Linux and macOS</a><span class='no-js'> and </span><a class='windows' href="https://should-i-pipe.it/https://sitejs.org/install.txt">Windows</a> installation script<span class='no-js'>s</span>.)</aside>
 
           <aside id='copy-tip' class='tip hidden'><h3>Tip</h3><p>Click on the code samples to copy them to the clipboard.</p></aside>
-
 
           <h4 class='no-js'>Linux</h4>
           <pre class='linux'><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
@@ -294,11 +291,11 @@
         <!-- ===== erroneously placing the closing parenthesis on the next line.          -->
         <pre><code class='language-js'>let counter = 0
 
-  module.exports = (request, response) => {
-    response
-      .type('html')
-      .end(`&lt;h1&gt;Hit count: ${++counter}&lt;/h1&gt;`)
-  }</code></pre>
+module.exports = (request, response) => {
+  response
+    .type('html')
+    .end(`&lt;h1&gt;Hit count: ${++counter}&lt;/h1&gt;`)
+}</code></pre>
 
         <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
 
