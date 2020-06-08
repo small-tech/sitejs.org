@@ -14,7 +14,8 @@ const fs = require('fs')
 let index = fs.readFileSync('../tmp/index-minified.html', 'utf8')
 
 const emoji = fs.readdirSync('../images/emoji').map(f => `../images/emoji/${f}`)
-const icons = fs.readdirSync('../images/icons').map(f => `../images/icons/${f}`)
+
+const icons = [] // Nothing yet.
 
 const SVGs = emoji.concat(icons)
 
