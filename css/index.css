@@ -31,7 +31,6 @@
  body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
  ol, ul { list-style: none; }
  img { max-width: 100%; height: auto; }
- span { white-space: pre; }
 
 
 /********************************************************************************
@@ -217,6 +216,10 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
 #platform-tabs li {
   display: inline-block;
   margin-left: 0.25em;
+}
+
+#platform-tabs li:first-of-type {
+  margin-left: 0;
 }
 
 #platform-tabs li button.active {
@@ -740,5 +743,22 @@ footer {
 
   .highlights li:nth-last-of-type(2) p {
     margin-bottom: 1em;
+  }
+}
+
+/* The tab bar splits into two lines */
+@media(max-width: 472px) {
+  #platform-tabs li button {
+    font-size: 1.25em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* The tab bar split into two lines again */
+@media(max-width: 337px) {
+  #platform-tabs li button {
+    font-size: 1em;
+    font-weight: 500;
   }
 }
