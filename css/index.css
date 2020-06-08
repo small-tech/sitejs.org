@@ -13,8 +13,7 @@
  *                                                                              *
  ********************************************************************************/
 
-
- :root {
+:root {
   --alert-height: 2.75rem;
 }
 
@@ -26,11 +25,11 @@
  *                                                                              *
  ********************************************************************************/
 
- html { box-sizing: border-box; }
- *, *:before, *:after { box-sizing: inherit; }
- body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
- ol, ul { list-style: none; }
- img { max-width: 100%; height: auto; }
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
+ol, ul { list-style: none; }
+img { max-width: 100%; height: auto; }
 
 
 /********************************************************************************
@@ -39,7 +38,7 @@
  *                                                                              *
  ********************************************************************************/
 
- html {
+html {
   /* Responsiveness is mainly defined by altering the root foot size (root em). */
   font-size: clamp(100%, 2vw, 125%);
 
@@ -68,15 +67,15 @@ body {
   margin-right: auto;
 }
 
- aside, p {
-   margin-bottom: 1em;
- }
+aside, p {
+  margin-bottom: 1em;
+}
 
- aside span {
-   display: inline-block;
- }
+aside span {
+  display: inline-block;
+}
 
- h1 {
+h1 {
   font-size: 5rem;
   text-align: center;
   font-weight: 200;
@@ -755,7 +754,22 @@ footer {
   }
 }
 
-/* The tab bar split into two lines again */
+/* The second-level heading in the title wraps to two lines. */
+@media(max-width: 367px) {
+  header h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* The navigation splits into two lines again. */
+@media(max-width: 361px) {
+  nav, nav li, nav a {
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
+
+/* The tab bar split into two lines again. */
 @media(max-width: 337px) {
   #platform-tabs li button {
     font-size: 1em;
