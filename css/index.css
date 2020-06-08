@@ -230,8 +230,8 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
   background-color: transparent;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1.15rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   margin: 0;
 }
 
