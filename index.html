@@ -50,7 +50,7 @@
         </div>
     </section>
 
-    <section id='highlights'>
+    <section id='features' class='highlights'>
       <h2><strong>Develop, test, sync, and deploy</strong> <small>(using a single tool that comes in a single binary).</small></h2>
 
       <ul>
@@ -108,18 +108,12 @@
         <h3>Create a basic static web page.</h3>
         <ol>
           <li>
-            <p>Create a folder</p>
+            <p>Create a folder.</p>
             <pre><code class='language-bash'>mkdir hello-world</code></pre>
           </li>
           <li>
             <p>Enter the folder.</p>
-
-            <h4 class='no-js'>Linux and macOS</h4>
-            <pre class='linux-and-macos'><code class='language-bash'>cd $_</code></pre>
-            <aside class='linux-and-macos'>(<code>$_</code> is shorthand for the argument from your last command. In this case, it evaluates to <code>hello-world</code>.)</aside>
-
-            <h4 class='no-js'>Windows</h4>
-            <pre class='windows'><code>cd hello-world</code></pre>
+            <pre><code class='language-bash'>cd hello-world</code></pre>
           </li>
           <li>
             <p>Write the string <code>'Hello, world'</code> into a file called <em>index.html</em>, creating or overwriting it as necessary.</p>
@@ -150,8 +144,17 @@
 
     <ol>
       <li>
-        <h3>Create a new project folder and switch to it.</h3>
-        <pre><code class='language-bash'>mkdir my-hugo-site && cd $_</code></pre>
+        <h3>Set up a new project.</h3>
+        <ol>
+          <li>
+            <h4>Create a folder.</h4>
+            <pre><code class='language-bash'>mkdir my-hugo-site</code></pre>
+          </li>
+          <li>
+            <h4>Enter the folder.</h4>
+            <pre><code class='language-bash'>cd my-hugo-site</code></pre>
+          </li>
+        </ol>
       </li>
       <li>
         <h3>Create a new Hugo site.</h3>
@@ -295,6 +298,37 @@ EOF</code></pre>
 
     <p>For full details, see the <a href='https://github.com/small-tech/site.js/blob/master/README.md#dynamic-sites'>Dynamic Sites documentation</a> and view the <a href='https://github.com/small-tech/site.js/tree/master/examples'>examples</a>.</p>
   </aside>
+
+  <section id='learn-more' class='highlights'>
+    <h2>Learn more</h2>
+
+    <ul>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#testing-servers-hostname'>Multi-device testing</a></h3>
+        <p>Start a server with <code>site @hostname</code> and use a service like ngrok to test on all your devices with live reload or to test your site with others over the Internet.</p>
+      </li>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#deployment-live-and-one-time-sync'>Sync</a></h3>
+        <p>Deploy using <a href='https://github.com/small-tech/site.js#deployment-live-and-one-time-sync'>the built-in sync feature</a>. Live blog with continuous sync.</p>
+      </li>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#native-support-for-an-evergreen-web'>Evergreen Web</a></h3>
+        <p>Migrate your existing sites without breaking links on the web with native support for <a href='https://github.com/small-tech/site.js#the-archival-cascade'>archival cascades</a> and <a href='https://github.com/small-tech/site.js#native-404--302-support'>native 404 → 302 support</a>.</p>
+      </li>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#custom-error-pages'>Custom error pages</a></h3>
+        <p>Easily create <a href='https://github.com/small-tech/site.js#custom-error-pages'>custom 404 and 500 error pages</a>.</p>
+      </li>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#ephemeral-statistics'>Ephemeral statistics</a></h3>
+        <p>See your most popular pages and discover broken links using privacy-respecting, <a href='https://github.com/small-tech/site.js#ephemeral-statistics'>ephemeral statistics</a> that are reset on every server start.</p>
+      </li>
+      <li>
+        <h3><a href='https://github.com/small-tech/site.js#sitejs'>Documentation</a></h3>
+        <p>Learn more about building static and dynamic web sites and applications using Site.js in the <a href='https://github.com/small-tech/site.js#testing-servers-hostname'>Site.js documentation</a>.</p>
+      </li>
+    </ul>
+  </section>
 
   <h2 id="about">About</h2>
 
