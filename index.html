@@ -25,7 +25,7 @@
       <!-- Title -->
       <h1><strong>Site</strong>.js</h1>
       <h2>Small Web construction set.</h2>
-      <img id='header-image' src='/images/person.svg' alt=''>
+      <img src='/images/illustrations/person.svg' id='header-image' alt=''>
 
 
       <!------------------------------------------------------------------------------------>
@@ -65,17 +65,17 @@
       <ul id='small-web-details'>
         <li>
           <h3>One person.</h3>
-          <img src='/images/one-person.svg' alt=''>
+          <img src='/images/illustrations/one-person.svg' alt=''>
           <p>Develop and test on <strong>your own device</strong>.</p>
         </li>
         <li>
           <h3>One server.</h3>
-          <img src='/images/one-server.svg' alt=''>
+          <img src='/images/illustrations/one-server.svg' alt=''>
           <p>Sync and deploy to <strong>your own VPS</strong>.</p>
         </li>
         <li>
           <h3>One site.</h3>
-          <img src='/images/one-site.svg' alt=''>
+          <img src='/images/illustrations/one-site.svg' alt=''>
           <p>Host <strong>your own site</strong> at <strong>your own domain</strong>.</p>
         </li>
       </ul>
@@ -356,7 +356,7 @@ module.exports = (request, response) => {
         <li>
           <h3>Create the chat websocket route.</h3>
           <p>Use the <code class='language-bash'>cat</code> command in terminal to write everything until the <code class='language-bash'>EOF</code> marker to a file called <em>chat.js</em>. (If you’d rather, just create the file using your favourite editor instead.)</p>
-          <pre><code class='language-js'>cat << EOF > chat.js
+          <pre><code class='language-js'>cat &lt;&lt; EOF &gt; chat.js
 
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
@@ -482,7 +482,7 @@ socket.send('hello')</code></pre>
   <!------------------------------------------------------------------------------------>
 
   <footer>
-    <img id='logo' src='images/site.js-logo.svg' alt='Site.js logo: a sprouting sapling with a short brown stem and two green leaves'>
+    <img src='/images/illustrations/site.js-logo.svg' id='logo' alt='Site.js logo: a sprouting sapling with a short brown stem and two green leaves'>
 
     <p id='copyright'><small>Copyright ⓒ 2019-2020, <a href='https://small-tech.org'>Small Technology Foundation</a>. All content on this site is released under <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons Attribution-ShareAlike</a>. Site.js is free software licensed under <a href='https://www.gnu.org/licenses/agpl-3.0.en.html'>AGPLv3 or later</a>. The illustration in the header is modified from the work of Katerina Limpitsouni on <a href='https://undraw.co/'>unDraw</a>. The Site.js sprout logo, Site.js, and Small Technology Foundation are trademarks of Small Technology Foundation.</small></p>
   </footer>

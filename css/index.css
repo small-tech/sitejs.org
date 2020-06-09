@@ -9,6 +9,17 @@
 
 /********************************************************************************
  *                                                                              *
+ *                             Cross-platform emoji                             *
+ *                                                                              *
+ * Emoji graphics copyright ⓒ Twitter, Inc and other contributors. Licensed    *
+ * under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/. With thanks   *
+ * to https://github.com/ellekasai/twemoji-awesome for the emoji mappings.      *
+ * (We are using the strict subset necessary for the terminal presentation.     *
+ *                                                                              *
+ ********************************************************************************/
+
+/********************************************************************************
+ *                                                                              *
  *                                Global variables                              *
  *                                                                              *
  ********************************************************************************/
@@ -344,7 +355,7 @@ aside.tip {
 }
 
 aside.tip::before {
-  background-image: url(/images/site.js-logo.svg);
+  background-image: url(../images/emoji/site.js-logo.svg);
   background-color: gainsboro;
   background-repeat: no-repeat;
   border-radius: 1.5em;
@@ -462,11 +473,11 @@ aside.tip::before {
 }
 
 #features h3::before {
-  background-image: url('../images/emoji/0010_2705.svg'); /* Check mark. */
+  background-image: url('../images/emoji/2705.svg'); /* Check mark. */
 }
 
 #further-reading h3::before {
-  background-image: url('../images/emoji/0030_1f4d6.svg'); /* Open book. */
+  background-image: url('../images/emoji/1f4d6.svg'); /* Open book. */
 }
 
 
@@ -588,44 +599,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
-
-
-/********************************************************************************
- *                                                                              *
- *                                  SVG icons                                   *
- *                                                                              *
- ********************************************************************************/
-
-/********************************************************************************
- *                                                                              *
- *                             Cross-platform emoji                             *
- *                                                                              *
- * Emoji graphics copyright ⓒ Twitter, Inc and other contributors. Licensed    *
- * under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/. With thanks   *
- * to https://github.com/ellekasai/twemoji-awesome for the emoji mappings.      *
- * (We are using the strict subset necessary for the terminal presentation.     *
- *                                                                              *
- ********************************************************************************/
-
- /********************************************************************************
- *                                                                              *
- * To find a compound Twemoji’s name, find it on emojipedia and add the         *
- * codepoints together, separated by dashes. You can find the SVGs in the       *
- * Twemoji release downloads https://github.com/twitter/twemoji/releases (in    *
- * the assets/svg folder).                                                      *
- *                                                                              *
- * e.g., From:    https://emojipedia.org/woman-running/                         *
- *       We get:  1f3c3-200d-2640-fe0f.svg                                      *
- *                                                                              *
-*********************************************************************************/
-
-.image-preloader {
-  position:absolute;
-  top: -1000px;
-  left: -1000px;
-  opacity: 0;
-}
-
 
 /********************************************************************************
  *                                                                              *
