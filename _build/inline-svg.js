@@ -13,8 +13,6 @@ const fs = require('fs')
 
 let index = fs.readFileSync('../tmp/index-minified.html', 'utf8')
 
-console.log(index)
-
 const emoji = fs.readdirSync('../images/emoji').map(f => `../images/emoji/${f}`)
 
 const illustrations =  fs.readdirSync('../images/illustrations').map(f => `/images/illustrations/${f}`)

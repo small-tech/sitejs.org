@@ -12,10 +12,12 @@ mkdir dist
 
 # CSS (temporary; to be collated into index later).
 echo " > Minify CSS"
+minify css/highlight.js/github.css >> tmp/styles.css
 minify css/index.css >> tmp/styles.css
 
 # JS (temporary; to be collated into index later).
 echo " > Minify JS"
+minify js/highlight.pack.js >> tmp/scripts.js
 minify js/index.js >> tmp/scripts.js
 
 # Inline the CSS and JS into the HTML.
