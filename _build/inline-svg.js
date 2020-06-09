@@ -26,12 +26,10 @@ function escapeRegExp(str) {
 SVGs.forEach(svg => {
   // Inline SVGs used as CSS background images.
   if (svg.includes('emoji')) {
-    console.log('Adding emoji', svg)
     index = index.replace(new RegExp(escapeRegExp(`background-image:url(${svg})`), 'g'), `background-image:url('data:image/svg+xml;utf8,${encodeURIComponent(fs.readFileSync(svg, 'utf8'))}')`)
   } else if (svg.includes('illustrations')) {
     // Inline SVGs in image tags.
     // Note: no quotes around the src attribute as HtML has already been minified.
-    console.log('Adding illustration', svg, new RegExp(escapeRegExp(`img src=${svg}`), 'g'))
     index = index.replace(new RegExp(escapeRegExp(`img src=${svg}`), 'g'), `img src=data:image/svg+xml;utf8,${encodeURIComponent(fs.readFileSync(`../${svg}`, 'utf8'))}`)
   } else {
     throw new Error('Unknown SVG type encountered:', svg)
