@@ -602,6 +602,25 @@ footer {
 
 /********************************************************************************
  *                                                                              *
+ *                                Feature-specific                              *
+ *                                                                              *
+ ********************************************************************************/
+
+/* If they can hover, they can click. */
+@media (hover: hover) {
+  .just-tap      { display: none; }
+  .click-and-tap { display: none; }
+}
+
+/* If they can’t hover, they can tap. */
+@media (hover: none) {
+  .just-click    { display: none; }
+  .click-and-tap { display: none; }
+}
+
+
+/********************************************************************************
+ *                                                                              *
  *                                 Break points                                 *
  *                                                                              *
  ********************************************************************************/
