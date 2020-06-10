@@ -339,14 +339,14 @@ nav li.selected {
  *                                                                              *
  ********************************************************************************/
 
-aside.tip, #small-web-details li {
+aside, #small-web-details li {
   border: 0.25em solid lightgrey;
   background-color: #ffffff;
   border-radius: 1em;
   padding: 1em;
 }
 
-aside.tip {
+aside {
   margin-left: -1.5em;
   margin-right: -1.5em;
   margin-top: 2em;
@@ -354,7 +354,7 @@ aside.tip {
   padding-bottom: 0;
 }
 
-aside.tip::before {
+aside::before {
   background-image: url(../images/emoji/site.js-logo.svg);
   background-color: gainsboro;
   background-repeat: no-repeat;
@@ -613,7 +613,7 @@ footer {
     padding-right: 1rem;
   }
 
-  aside.tip {
+  aside {
     margin-left: 0;
     margin-right: 0;
   }

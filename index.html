@@ -140,7 +140,13 @@
           <h3>Install Site.js.</h3>
           <p>Launch <span class='linux macos'>a terminal window</span> <span class='no-js'>(on Windows, </span><span class='windows'>a PowerShell session running under <a href='https://github.com/Microsoft/Terminal'>Windows Terminal</a></span><span class='no-js'>)</span> and follow along.</p>
 
-          <aside>The following command pipes the installation script into your shell. The installation script downloads the correct Site.js binary for your platform and places it on your path. <strong>Make sure you understand what any script does before piping it into your shell.</strong> View the source of the <a class='linux macos' href='https://should-i-pipe.it/https://sitejs.org/install'>Linux and macOS</a><span class='no-js'> and </span><a class='windows' href='https://should-i-pipe.it/https://sitejs.org/install.txt'>Windows</a> installation script<span class='no-js'>s</span>.</aside>
+          <aside>
+            <h3>Tip</h3>
+            <p>The following command pipes the installation script into your shell. <strong>Make sure you understand what any script does before piping it into your shell.</strong></p>
+
+            <p>The installation script downloads the correct Site.js binary for your platform and places it on your path.  View the source of the <a class='linux macos' href='https://should-i-pipe.it/https://sitejs.org/install'>Linux and macOS</a><span class='no-js'> and </span><a class='windows' href='https://should-i-pipe.it/https://sitejs.org/install.txt'>Windows</a> installation script<span class='no-js'>s</span>.</p>
+            <p id='copy-tip' class='hidden'>You can click/tap on the code samples to copy them to the clipboard.</p>
+          </aside>
 
           <h4 class='no-js'>Linux</h4>
           <pre class='linux'><code class='language-bash'>wget -qO- https://sitejs.org/install | bash</code></pre>
@@ -150,11 +156,6 @@
 
           <h4 class='no-js'>Windows</h4>
           <pre class='windows'><code class='language-bash'>iex(iwr -UseBasicParsing https://sitejs.org/install.txt).Content</code></pre>
-
-          <aside id='copy-tip' class='tip hidden'>
-            <h3>Tip</h3>
-            <p>Click on the code samples to copy them to the clipboard.</p>
-          </aside>
         </li>
         <li>
           <h3>Create a basic static web page.</h3>
@@ -181,7 +182,7 @@
           <p><strong>Congratulations, you’re up and running with Site.js!</strong></p>      </li>
       </ol>
 
-      <aside class='tip'>
+      <aside>
         <h3>Tip</h3>
         <p><strong>Do the same thing on a VPS server</strong> and start the server using <code>site enable</code> and you’ll have a secure production web daemon that survives errors/reboots and auto-updates itself.</p>
       </aside>
@@ -222,31 +223,46 @@
         <li>
           <h3>Create a new Hugo site.</h3>
           <pre><code class='language-bash'>site hugo new site .hugo</code></pre>
-          <aside>(You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance: <code>site hugo &lt;any valid Hugo command&gt;</code>. So the above command is equivalent to running <code>hugo new site .hugo</code> if you have Hugo installed separately.)</aside>
+          <aside>
+            <h3>Tip</h3>
+            <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance: <code>site hugo &lt;any valid Hugo command&gt;</code>. So the above command is equivalent to running <code>hugo new site .hugo</code> if you have Hugo installed separately.)
+            </p>
+          </aside>
         </li>
         <li>
           <h3>Create a basic initial index page layout.</h3>
           <pre><code class='language-bash'>echo '&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' &gt; .hugo/layouts/index.html</code></pre>
-          <aside>(For Site.js’s live reload to work, your web page must contain at least a <code>&lt;body&gt;</code> tag.)</aside>
+          <aside>
+            <h3>Tip</h3>
+            <p>For Site.js’s live reload to work, your web page must contain at least a <code>&lt;body&gt;</code> tag.</p>
+          </aside>
         </li>
         <li>
           <h3>Start the server.</h3>
           <pre><code class='language-bash'>site</code></pre>
           <p>Site.js starts serving your Hugo site at https://localhost. Go there in your browser to see your “Hello, world!” message.</p>
 
-          <aside>If you alter the file you just created, Site.js will automatically rebuild it using Hugo and your browser will reflect the changes immediately using live reload.</aside>
+          <p>
+            <strong>Congratulations, you just created your first Hugo site with Site.js!</strong>
+          </p>
 
-          <p><strong>Congratulations, you just created your first Hugo site with Site.js!</strong></p>
+          <aside>
+            <h3>Tip</h3>
+
+            <p>
+              If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.
+            </p>
+
+            <p>
+              If you alter the file you created in this example, Site.js will automatically rebuild it using Hugo and your browser will reflect the changes immediately using live reload.
+            </p>
+
+            <p>
+              See the <a href='https://github.com/small-tech/site.js#static-site-generation'>Site.js Hugo documentation</a> and <a href='https://gohugo.io/documentation/'>the official Hugo documentation</a> for detailed information on how Hugo works and how it’s integrated into Site.js.
+            </p>
+          </aside>
         </li>
       </ol>
-
-      <aside class='tip'>
-        <h3>How it works</h3>
-
-        <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
-
-        <p>See the <a href='https://github.com/small-tech/site.js#static-site-generation'>Site.js Hugo documentation</a> and <a href='https://gohugo.io/documentation/'>the official Hugo documentation</a> for detailed information on how Hugo works and how it’s integrated into Site.js.</p>
-      </aside>
     </section>
 
 
@@ -282,27 +298,50 @@
             <pre><code class='language-bash'>cd count/.dynamic</code></pre>
           </li>
           </ol>
-          <aside>(<strong>.dynamic</strong> is a special folder in that Site.js knows to look for it in your project. If it finds it, it knows to run its contents as a dynamic route instead of serving it as static content.)</aside>
+          <aside>
+            <h3>Tip</h3>
+            <p><strong>.dynamic</strong> is a special folder in that Site.js knows to look for it in your project. If it finds it, it knows to run its contents as a dynamic route instead of serving it as static content.</p>
+          </aside>
         </li>
         <li>
           <h3>Create a dynamic route.</h3>
-          <p>Make a file called index.js that holds the dynamic counter route:</p>
+          <p>
+            Make a file called index.js that holds the dynamic counter route:
+          </p>
           <pre><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > index.js</code></pre>
-          <aside>(If the code here looks cryptic to you, <a href='#dynamic-route-longer-example'>see the longer version</a>.)</aside>
+          <aside>
+            <h3>Tip</h3>
+            <p>
+              If the code here looks cryptic to you, <a href='#dynamic-route-longer-example'>see the longer version</a>.
+            </p>
+          </aside>
         </li>
         <li>
           <h3>Serve your site.</h3>
           <pre><code class='language-bash'>site ..</code></pre>
-          <aside>(You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command. In this case, we want to serve the whole site from the parent folder, not just the <code>.dynamic</code> folder.)</aside>
-          <p>Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.</p>
-          <p><strong>Congratulations, you just made your first fully-dynamic DotJS site!</strong></p>
+          <aside>
+            <h3>Tip</h3>
+            <p>
+              You don’t have to be in the folder you want Site.js to serve, as in the previous examples. As shown here, you can specify the folder as an argument to the <code>site</code> command. In this case, we want to serve the whole site from the parent folder, not just the <code>.dynamic</code> folder.)
+            </p>
+          </aside>
+          <p>
+            Hit <a href='https://localhost'>https://localhost</a> and refresh to see the counter update.
+          </p>
+          <p>
+            <strong>Congratulations, you just made your first fully-dynamic DotJS site!</strong>
+          </p>
         </li>
       </ol>
 
       <aside id='dynamic-route-longer-example' class='tip'>
         <h3>Tip</h3>
-        <p>If you found the code in the dynamic route we created hard to read, you’re not alone. It was purposefully written to keep the example short enough to enter into terminal.</p>
-        <p>Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand that you might want to enter using your favourite code editor:</p>
+        <p>
+          If you found the code in the dynamic route we created hard to read, you’re not alone. It was purposefully written to keep the example short enough to enter into terminal.
+        </p>
+        <p>
+          Here’s a slightly more verbose version of <code>index.js</code> that’s easier to understand that you might want to enter using your favourite code editor:
+        </p>
 
         <pre><code class='language-js'>let counter = 0
 
@@ -312,13 +351,21 @@ module.exports = (request, response) => {
     .end(`&lt;h1&gt;Hit count: ${++counter}&lt;/h1&gt;`)
 }</code></pre>
 
-        <p>If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.</p>
+        <p>
+          If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.
+        </p>
 
-        <p>The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.</p>
+        <p>
+          The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.
+        </p>
 
-        <p>Site.js does not limit you to using DotJS. If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.</p>
+        <p>
+          Site.js does not limit you to using DotJS. If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.
+        </p>
 
-        <p>See the Site.js documentation for <a href='https://github.com/small-tech/site.js#dynamic-sites'>more information on building dynamic sites</a>.</p>
+        <p>
+          See the Site.js documentation for <a href='https://github.com/small-tech/site.js#dynamic-sites'>more information on building dynamic sites</a>.
+        </p>
       </aside>
     </section>
 
@@ -369,7 +416,12 @@ module.exports = (request, response) => {
   }
 
 EOF</code></pre>
-        <aside>(Note that we did not use an arrow function to define the route this time. This is because we need access to higher-level built-in functionality on the route like setting the room and broadcasting a message to everyone in the room that we access via the <code>this</code> reference.)</aside>
+        <aside>
+          <h3>Tip</h3>
+          <p>
+            Note that we did not use an arrow function to define the route this time. This is because we need access to higher-level built-in functionality on the route like setting the room and broadcasting a message to everyone in the room that we access via the <code>this</code> reference.
+          </p>
+        </aside>
         </li>
         <li>
           <h3>Launch the server.</h3>
@@ -396,7 +448,7 @@ socket.send('hello')</code></pre>
         </li>
       </ol>
 
-      <aside class='tip'>
+      <aside>
         <h3>Tip</h3>
         <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
 
