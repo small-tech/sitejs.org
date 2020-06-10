@@ -27,18 +27,33 @@ if (navigator.clipboard !== undefined) {
   $('#copy-tip').className = 'tip shown'
   const copyAlert = $('#copy-alert')
   const codeSegments = $$('pre code')
-  codeSegments.forEach(codeSegment => {
-    codeSegment.addEventListener('click', (event) => {
-      // If there is a selection, copy that. If not, copy the whole code section.
-      const selection = document.getSelection()
-      const codeToCopy = selection.toString() === '' ? event.target.innerText : selection.toString();
-      navigator.clipboard.writeText(codeToCopy).then(() => {
-        copyAlert.className = 'show-copy-alert'
-        setTimeout(() => { copyAlert.className = 'hide-copy-alert' }, 1000)
-      }, error => {
-        alert('Copy to clipboard failed. People copy the code manually.', error)
+
+  const clickEventListener = event => {
+    // If there is a selection, copy that. If not, copy the whole code section.
+    const selection = document.getSelection()
+    const codeToCopy = selection.toString() === '' ? event.target.innerText : selection.toString();
+    navigator.clipboard.writeText(codeToCopy).then(() => {
+      copyAlert.className = 'show-copy-alert'
+      setTimeout(() => { copyAlert.className = 'hide-copy-alert' }, 1000)
+    }, error => {
+      // We got a permission error. Remove the feature and alert the person
+      // that our progressive enhancement isn’t working as we told them it
+      // would so they don’t feel like they’re losing their minds :)
+      // (This seems to happen on Android sometimes. I tried querying the
+      // Permissions API for clipboard / clipboard.write permissions but did
+      // not get a response.)
+      $('#copy-tip').className = 'tip hidden'
+      copyAlert.innerHTML = '<p>Auto-copy failed. Please copy manually.</p>'
+      copyAlert.className = 'show-copy-alert'
+      setTimeout(() => { copyAlert.className = 'hide-copy-alert' }, 2500)
+      codeSegments.forEach(codeSegment => {
+        codeSegment.removeEventListener('click', clickEventListener)
       })
     })
+  }
+
+  codeSegments.forEach(codeSegment => {
+    codeSegment.addEventListener('click', clickEventListener)
   })
 }
 
