@@ -654,19 +654,30 @@ footer {
     list-style-type: none;
   }
 
-  ol li p, ol li aside {
+  ol li p {
+    margin-left: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  aside {
+    padding-left: 0;
+  }
+
+  aside::before {
     margin-left: 1.5rem;
   }
 
   aside pre {
-    padding-left: 0.5rem;
+    /* padding-left: 1rem; */
+    margin-left: 0;
+    padding-left: 1.5rem;
   }
 
   pre {
     margin-left: -1rem;
     margin-right: -1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     border-radius: 0;
   }
 
