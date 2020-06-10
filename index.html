@@ -245,9 +245,6 @@
 
         <p>If Site.js finds a folder called <em>.hugo</em> in your site’s root, it will build it using its integrated Hugo instance (you don’t need to install Hugo separately) and place the generated files into a folder called <em>.generated</em> in your site’s root. It will also automatically serve these files.</p>
 
-        <p>You can pass any command you would normally pass to Hugo using Site.js’s integrated Hugo instance:</p>
-        <pre><code class='plaintext'>site hugo &lt;any valid Hugo command&gt;</code></pre>
-
         <p>See the <a href='https://github.com/small-tech/site.js#static-site-generation'>Site.js Hugo documentation</a> and <a href='https://gohugo.io/documentation/'>the official Hugo documentation</a> for detailed information on how Hugo works and how it’s integrated into Site.js.</p>
       </aside>
     </section>
@@ -403,7 +400,7 @@ socket.send('hello')</code></pre>
         <h3>Tip</h3>
         <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
 
-        <p>To run that example with a basic web interface, first close the Site.js source code repository:</p>
+        <p>To run that example with a basic web interface, first clone the Site.js source code repository:</p>
 
         <pre><code class='language-bash'>git clone https://github.com/small-tech/site.js</code></pre>
 
