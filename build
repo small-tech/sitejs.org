@@ -17,8 +17,11 @@ minify css/index.css >> tmp/styles.css
 
 # JS (temporary; to be collated into index later).
 echo " > Minify JS"
-minify js/highlight.pack.js >> tmp/scripts.js
 minify js/index.js >> tmp/scripts.js
+
+# Highlight code.
+echo " > Highlight code"
+_build/highlight-code.js
 
 # Inline the CSS and JS into the HTML.
 echo " > Inline minified CSS & JS into HTML"

@@ -13,10 +13,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-// Start the syntax highlighter.
-// TODO: Move this to the server side build script.
-hljs.initHighlightingOnLoad()
-
 // Useful shortcuts for DOM lookups.
 const $  = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)

@@ -5,7 +5,11 @@ set -e
 echo "Installing site.js site for development…"
 
 # Install build dependencies.
-echo " > Build dependencies"
+echo " > Build-time global dependencies"
 npm install --global minify
+
+# Install node modules.
+echo " > Node.js dependencies"
+npm install
 
 echo " Done."

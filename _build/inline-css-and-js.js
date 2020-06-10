@@ -8,7 +8,7 @@
 
 const fs = require('fs')
 
-let index = fs.readFileSync('index.html', 'utf-8')
+let index = fs.readFileSync('tmp/index.html', 'utf-8')
 const styles = fs.readFileSync('tmp/styles.css', 'utf-8')
 
 // Note: the odd-looking replace is necessary because, after 24 years of using JavaScript, I just discovered

@@ -181,8 +181,10 @@ pre {
   line-height: 1.5;
   margin-left: -1em;
   margin-right: -1em;
-  padding-left: 0.5em;
+  padding-left: 1em;
   padding-right: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   border-radius: 0.5em;
 }
 

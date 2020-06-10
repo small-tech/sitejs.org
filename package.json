@@ -11,5 +11,8 @@
     "email": "aral@small-tech.org",
     "url": "https://ar.al"
   },
-  "license": "AGPL-3.0-or-later"
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "highlight.js": "^10.0.3"
+  }
 }
