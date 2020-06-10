@@ -82,8 +82,9 @@ aside, p {
   margin-bottom: 1em;
 }
 
-aside span {
-  display: inline-block;
+aside, aside p {
+  font-style: italic;
+  font-size: 1rem;
 }
 
 h1 {
@@ -147,11 +148,6 @@ a:hover {
   color: #466B6A;
 }
 
-aside, aside p {
-  font-style: italic;
-  font-size: 1rem;
-}
-
 ol {
   list-style-type: decimal;
 }
@@ -204,6 +200,10 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
   white-space: -pre-wrap;      /* Opera 4-6 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.preserve-whitespace {
+  white-space: pre;
 }
 
 .hidden {
