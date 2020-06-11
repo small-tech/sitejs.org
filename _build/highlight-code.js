@@ -39,8 +39,6 @@ while (codeMatch !== null) {
       const nestedLanguage = nestedCodeMatch[1]
       let nestedCode = nestedCodeMatch[2]
 
-      console.log(nestedLanguage, nestedCode, fullNestedMatch)
-
       const highlightedCode = highlightJs.highlight(nestedLanguage, unescapeHtml(nestedCode)).value
       index = index.replace(fullNestedMatch, unescapeReplacementString(highlightedCode))
 
@@ -56,7 +54,5 @@ while (codeMatch !== null) {
   // Update the conditional for the next check of the loop.
   codeMatch = codeRegExp.exec(index)
 }
-
-// console.log(index)
 
 fs.writeFileSync('tmp/index.html', index)
