@@ -201,7 +201,13 @@
               <p>
                 Write the string <code>'Hello, world'</code> into a file called <em>index.html</em>, creating or overwriting it as necessary.
               </p>
-              <pre><code class='language-bash'>echo 'Hello, world' > index.html</code></pre>
+
+              <h4 class='no-js'>Linux and macOS</h4>
+              <pre class='linux macos'><code class='language-bash'>echo 'Hello, world' > index.html</code></pre>
+
+              <h4 class='no-js'>Windows</h4>
+              <pre class='windows'><code class='language-bash'>echo 'Hello, world' | Out-File -Encoding UTF8 index.html</code></pre>
+
             </li>
           </ol>
         </li>
@@ -276,7 +282,13 @@
         </li>
         <li>
           <h3>Create a basic page layout.</h3>
-          <pre><code class='language-bash'>echo '<body>&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' &gt; .hugo/layouts/index.html</code></pre>
+
+          <h4 class='no-js'>Linux and macOS</h4>
+          <pre class='linux macos'><code class='language-bash'>echo '<body>&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' &gt; .hugo/layouts/index.html</code></pre>
+
+          <h4 class='no-js'>Windows</h4>
+          <pre class='windows'><code class='language-bash'>echo '<body>&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' | Out-File -Encoding UTF8 .hugo/layouts/index.html</code></pre>
+
           <aside>
             <h3>Tip</h3>
             <p>
@@ -366,7 +378,13 @@
           <p>
             Make a file called index.js that holds the dynamic counter route:
           </p>
-          <pre><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > index.js</code></pre>
+
+          <h4 class='no-js'>Linux and macOS</h4>
+          <pre class='linux macos'><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > index.js</code></pre>
+
+          <h4 class='no-js'>Windows</h4>
+          <pre class='windows'><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' | Out-File -Encoding UTF8 index.js</code></pre>
+
           <aside>
             <h3>Tip</h3>
             <p>
@@ -436,35 +454,20 @@ module.exports = (request, response) => {
           In addition to static routes and dynamic HTTPS routes, you can also specify secure WebSocket (WSS) routes in DotJS. And you can mix all three types of routes as you please.
         </p>
         <p>
-          To see WebSockets in action, let’s create a very basic chat.
+          To see WebSockets in action, let’s create a very simple chat app.
         </p>
       </div>
 
       <ol>
         <li>
           <h3>Create the project structure.</h3>
-          <ol>
-            <li>
-              <p>
-                Create folders.
-              </p>
-              <pre><code class='language-bash'>mkdir -p basic-chat/.dynamic/.wss</code></pre>
-            </li>
-            <li>
-              <p>
-                Enter the web socket routes folder.
-              </p>
-              <pre><code class='language-bash'>cd basic-chat/.dynamic/.wss</code></pre>
-            </li>
-          </ol>
+          <pre><code class='language-bash'>mkdir -p chat/.dynamic/.wss</code></pre>
         </li>
         <li>
-          <h3>Create the chat websocket route.</h3>
-          <p>
-            Use the <code class='language-bash'>cat</code> command in terminal to write everything until the <code class='language-bash'>EOF</code> marker to a file called <em>chat.js</em>. (If you’d rather, just create the file using your favourite editor instead.)
-          </p>
-          <pre><code class='language-js'>cat &lt;&lt; EOF &gt; chat.js
+          <h3>Create the chat server.</h3>
 
+          <h4 class='no-js'>Linux and macOS</h4>
+          <pre class='linux macos'><code class='language-js'>echo "
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
     client.room = this.setRoom(request)
@@ -475,8 +478,24 @@ module.exports = (request, response) => {
       this.broadcast(client, message)
     })
   }
+" > chat/.dynamic/.wss/chat.js</code></pre>
 
-EOF</code></pre>
+        <h4 class='no-js'>Windows</h4>
+        <p class='windows'>
+          Use the <code class='language-bash'>cat</code> command in terminal to write everything until the <code class='language-bash'>EOF</code> marker to a file called <em>chat.js</em>. (If you’d rather, just create the file using your favourite editor instead.)
+        </p>
+        <pre class='windows'><code class='language-js'>echo "
+  module.exports = function (client, request) {
+    // Set the room based on the route’s URL.
+    client.room = this.setRoom(request)
+
+    // Create a message handler.
+    client.on('message', message => {
+      // Broadcast a received message to everyone in the room.
+      this.broadcast(client, message)
+    })
+  }
+" | Out-File -Encoding UTF8 chat/.dynamic/.wss/chat.js</code></pre>
         <aside>
           <h3>Tip</h3>
           <p>
@@ -485,43 +504,69 @@ EOF</code></pre>
         </aside>
         </li>
         <li>
-          <h3>Launch the server.</h3>
-          <ol>
-            <li>
-              <p>
-                Return to the parent folder that contains the project folder.
-              </p>
-              <pre><code class='language-bash'>cd ../../..</code></pre>
-            </li>
-            <li>
-              <p>
-                Start the server.
-              </p>
-              <pre><code class='language-bash'>site basic-chat</code></pre>
-            </li>
-          </ol>
+          <h3>Create the chat client.</h3>
+          <pre><code class='language-js'>echo "
+  &lt;!doctype html&gt;
+  &lt;html lang='en'&gt;
+  &lt;title&gt;Chat&lt;/title&gt;
+  &lt;h1&gt;Chat&lt;/h1&gt;
+  &lt;form name='messageForm'&gt;
+    &lt;input name='message' type='text'&gt;
+    &lt;button&gt;Send&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;h2&gt;Messages&lt;/h2&gt;
+  &lt;ul id='messageList'&gt;&lt;/ul&gt;
+  &lt;script&gt;
+    const socket = new WebSocket('wss://dev.ar.al/chat')
+
+    const showMessage = message =&gt; {
+      const messageList = document.querySelector('#messageList')
+      messageList.innerHTML += `&lt;li&gt;${message}&lt;/li&gt;`
+    }
+
+    socket.onmessage = message =&gt; showMessage(message.data)
+
+    document.messageForm.addEventListener('submit', event =&gt; {
+      const message = event.target.message.value
+      socket.send(message)
+      showMessage(`&lt;strong&gt;${message}&lt;/strong&gt;`)
+      event.preventDefault()
+    })
+  &lt;/script&gt;
+" > chat/index.html</code></pre>
+        <aside>
+          <h3>Tip</h3>
           <p>
-            To test your chat app, open up two web browser windows and enter the following into the web developer (JavaScript) console on both of them:
+            You can mix static and dynamic routes in your projects. Anything outside of the <code>.dynamic</code> folder – like our chat client here – will be served as a static page.
           </p>
-          <pre><code class='language-js'>// Create the web socket connection.
-socket = new WebSocket('wss://localhost/chat')
-
-// Create the message handler.
-socket.onmessage = message => console.log(message.data)
-
-// Send a message to the chat room.
-socket.send('hello')</code></pre>
+        </aside>
+        </li>
+        <li>
+          <h3>Launch the server.</h3>
+          <pre><code class='language-bash'>site chat</code></pre>
+           <p>
+             Start the server.
+           </p>
+          <p>
+            To test your chat app, open up two or more web browser windows at <a href='https://localhost'>https://localhost</a> and play with the chat interface.
+          </p>
           <aside>
             <h3>Tip</h3>
-            <p>The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”). For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/blob/master/examples/wss-basic-chat/.dynamic/.wss/chat.js'>the source code for the Basic Chat example.</a></p>
+            <p>
+              The broadcast method, by default, has rudimentary client filtering and only sends a message to clients other than the one that originally sent the message and only to clients connected to the same route (or “room”).
+            </p>
 
-            <p>To run that example with a basic web interface, first clone the Site.js source code repository:</p>
+            <p>
+              For a fully-documented version of the above example, see <a href='https://github.com/small-tech/site.js/tree/master/examples/simple-chat'>the source code for the Simple Chat example.</a>
+            </p>
+
+            <p>To run that example, first clone the Site.js source code repository:</p>
 
             <pre><code class='language-bash'>git clone https://github.com/small-tech/site.js</code></pre>
 
-            <p>Then run the basic chat example using Site.js:</p>
+            <p>Then run the simple chat example using Site.js:</p>
 
-            <pre><code class='language-bash'>site site.js/examples/wss-basic-chat</code></pre>
+            <pre><code class='language-bash'>site site.js/examples/simple-chat</code></pre>
 
             <p>Finally, open <a href='https://localhost'>https://localhost</a> in multiple browser windows and play with the chat interface.</p>
 
