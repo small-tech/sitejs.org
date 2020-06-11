@@ -467,7 +467,7 @@ module.exports = (request, response) => {
           <h3>Create the chat server.</h3>
 
           <h4 class='no-js'>Linux and macOS</h4>
-          <pre class='linux macos'><code class='language-js'>echo "
+          <pre class='linux macos'><code class='language-bash'>echo "
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
     client.room = this.setRoom(request)
@@ -484,7 +484,7 @@ module.exports = (request, response) => {
         <p class='windows'>
           Use the <code class='language-bash'>cat</code> command in terminal to write everything until the <code class='language-bash'>EOF</code> marker to a file called <em>chat.js</em>. (If you’d rather, just create the file using your favourite editor instead.)
         </p>
-        <pre class='windows'><code class='language-js'>echo "
+        <pre class='windows'><code class='language-bash'>echo "
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
     client.room = this.setRoom(request)
@@ -505,7 +505,7 @@ module.exports = (request, response) => {
         </li>
         <li>
           <h3>Create the chat client.</h3>
-          <pre><code class='language-js'>echo "
+          <pre><code class='language-html'>echo "
   &lt;!doctype html&gt;
   &lt;html lang='en'&gt;
   &lt;title&gt;Chat&lt;/title&gt;
