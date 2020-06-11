@@ -180,7 +180,7 @@
           <pre class='macos'><code class='language-bash'>curl -s https://sitejs.org/install | bash</code></pre>
 
           <h4 class='no-js'>Windows</h4>
-          <pre class='windows'><code class='language-bash'>iex(iwr -UseBasicParsing https://sitejs.org/install.txt).Content</code></pre>
+          <pre class='windows'><code class='language-powershell'>iex(iwr -UseBasicParsing https://sitejs.org/install.txt).Content</code></pre>
         </li>
         <li>
           <h3>Create a basic static web page.</h3>
@@ -206,7 +206,7 @@
               <pre class='linux macos'><code class='language-bash'>echo 'Hello, world' > index.html</code></pre>
 
               <h4 class='no-js'>Windows</h4>
-              <pre class='windows'><code class='language-bash'>echo 'Hello, world' | Out-File -Encoding UTF8 index.html</code></pre>
+              <pre class='windows'><code class='language-powershell'>echo 'Hello, world' | Out-File -Encoding UTF8 index.html</code></pre>
 
             </li>
           </ol>
@@ -284,10 +284,10 @@
           <h3>Create a basic page layout.</h3>
 
           <h4 class='no-js'>Linux and macOS</h4>
-          <pre class='linux macos'><code class='language-bash'>echo '<body>&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' &gt; .hugo/layouts/index.html</code></pre>
+          <pre class='linux macos'><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-html'>&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;</span><span class='hljs-string'>'</span><span class='language-bash'> &gt; .hugo/layouts/index.html</span></code></pre>
 
           <h4 class='no-js'>Windows</h4>
-          <pre class='windows'><code class='language-bash'>echo '<body>&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;' | Out-File -Encoding UTF8 .hugo/layouts/index.html</code></pre>
+          <pre class='windows'><code class='language-mixed'><span class='language-powershell'>echo '</span><span class='language-html'>&lt;body&gt;&lt;h1&gt;Hello, world!&lt;h1&gt;&lt;body&gt;</span><span class='hljs-string'>'</span><span class='language-powershell'> | Out-File -Encoding UTF8 .hugo/layouts/index.html</span></code></pre>
 
           <aside>
             <h3>Tip</h3>
@@ -380,10 +380,10 @@
           </p>
 
           <h4 class='no-js'>Linux and macOS</h4>
-          <pre class='linux macos'><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' > index.js</code></pre>
+          <pre class='linux macos'><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</span><span class='hljs-string'>'</span><span class='language-bash'> > index.js</span></code></pre>
 
           <h4 class='no-js'>Windows</h4>
-          <pre class='windows'><code class='language-bash'>echo 'i=0; module.exports=(_, r)=>{r.end(`${++i}`)}' | Out-File -Encoding UTF8 index.js</code></pre>
+          <pre class='windows'><code class='language-mixed'><span class='language-powershell'>echo '</span><span class='language-js'>i=0; module.exports=(_, r)=>{r.end(`${++i}`)}</span><span class='hljs-string'>'</span><span class='language-powershell'> | Out-File -Encoding UTF8 index.js</span></code></pre>
 
           <aside>
             <h3>Tip</h3>
@@ -467,7 +467,7 @@ module.exports = (request, response) => {
           <h3>Create the chat server.</h3>
 
           <h4 class='no-js'>Linux and macOS</h4>
-          <pre class='linux macos'><code class='language-bash'>echo "
+          <pre class='linux macos'><code class='language-mixed'><span class='language-bash'>echo "</span><span class='language-js'>
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
     client.room = this.setRoom(request)
@@ -477,14 +477,11 @@ module.exports = (request, response) => {
       // Broadcast a received message to everyone in the room.
       this.broadcast(client, message)
     })
-  }
-" > chat/.dynamic/.wss/chat.js</code></pre>
+  }</span>
+<span class='hljs-string'>"</span><span class='language-bash'> > chat/.dynamic/.wss/chat.js</span></code></pre>
 
         <h4 class='no-js'>Windows</h4>
-        <p class='windows'>
-          Use the <code class='language-bash'>cat</code> command in terminal to write everything until the <code class='language-bash'>EOF</code> marker to a file called <em>chat.js</em>. (If you’d rather, just create the file using your favourite editor instead.)
-        </p>
-        <pre class='windows'><code class='language-bash'>echo "
+        <pre class='windows'><code class='language-mixed'><span class='language-powershell'>echo "</span><span class='language-js'>
   module.exports = function (client, request) {
     // Set the room based on the route’s URL.
     client.room = this.setRoom(request)
@@ -494,8 +491,8 @@ module.exports = (request, response) => {
       // Broadcast a received message to everyone in the room.
       this.broadcast(client, message)
     })
-  }
-" | Out-File -Encoding UTF8 chat/.dynamic/.wss/chat.js</code></pre>
+  }</span>
+<span class='hljs-string'>"</span> <span class='language-powershell'>| Out-File -Encoding UTF8 chat/.dynamic/.wss/chat.js</span></code></pre>
         <aside>
           <h3>Tip</h3>
           <p>
@@ -505,7 +502,7 @@ module.exports = (request, response) => {
         </li>
         <li>
           <h3>Create the chat client.</h3>
-          <pre><code class='language-html'>echo "
+          <pre><code class='language-mixed'><span class='language-bash'>echo "</span><span class='language-html'>
   &lt;!doctype html&gt;
   &lt;html lang='en'&gt;
   &lt;title&gt;Chat&lt;/title&gt;
@@ -516,7 +513,7 @@ module.exports = (request, response) => {
   &lt;/form&gt;
   &lt;h2&gt;Messages&lt;/h2&gt;
   &lt;ul id='messageList'&gt;&lt;/ul&gt;
-  &lt;script&gt;
+  &lt;script&gt;</span><span class='language-js'>
     const socket = new WebSocket('wss://dev.ar.al/chat')
 
     const showMessage = message =&gt; {
@@ -531,9 +528,9 @@ module.exports = (request, response) => {
       socket.send(message)
       showMessage(`&lt;strong&gt;${message}&lt;/strong&gt;`)
       event.preventDefault()
-    })
+    })</span><span class='language-html'>
   &lt;/script&gt;
-" > chat/index.html</code></pre>
+</span><span class='hljs-string'>"</span><span class='language-bash'> > chat/index.html</span></code></pre>
         <aside>
           <h3>Tip</h3>
           <p>

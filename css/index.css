@@ -165,7 +165,7 @@ ol ol li::marker, aside > ol li::marker {
   font-weight: normal;
 }
 
-pre, code {
+pre, code, code span {
   font-family: "SFMono-Regular",
   Consolas,
   "Fira Code",

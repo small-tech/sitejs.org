@@ -9,18 +9,54 @@
 const fs = require('fs')
 const highlightJs = require('highlight.js')
 
+function unescapeHtml(code) {
+  return code.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+}
+
+function unescapeReplacementString(str) {
+  return str.replace(/\$/g, '$$$$')
+}
+
 let index = fs.readFileSync('index.html', 'utf-8')
 
 const codeRegExp = /<code class='language-(.*?)'>(.*?)<\/code>/gs
 
-let codeSegment = codeRegExp.exec(index)
-while (codeSegment !== null) {
-  const highlightedCode = highlightJs.highlight(codeSegment[1], codeSegment[2].replace(/&lt;/g, '<').replace(/&gt;/g, '>')).value
+let codeMatch = codeRegExp.exec(index)
 
-  // Note: the $ escaping is done in case the code being replaced contains $$ or $<n>, etc.
-  index = index.replace(codeSegment[0], highlightedCode.replace(/\$/g, '$$$$'))
+while (codeMatch !== null) {
+  const fullMatch = codeMatch[0]
+  const language = codeMatch[1]
+  let code = codeMatch[2]
 
-  codeSegment = codeRegExp.exec(index)
+  if (language === 'mixed' ) {
+    // There is a mix of languages. Loop through the segments demarcated by
+    // span tags and highlight each in its own language.
+    const nestedCodeRegExp = /<span class='language-(.*?)'>(.*?)<\/span>/gs
+    let nestedCodeMatch = nestedCodeRegExp.exec(code)
+
+    while (nestedCodeMatch !== null) {
+      const fullNestedMatch = nestedCodeMatch[0]
+      const nestedLanguage = nestedCodeMatch[1]
+      let nestedCode = nestedCodeMatch[2]
+
+      console.log(nestedLanguage, nestedCode, fullNestedMatch)
+
+      const highlightedCode = highlightJs.highlight(nestedLanguage, unescapeHtml(nestedCode)).value
+      index = index.replace(fullNestedMatch, unescapeReplacementString(highlightedCode))
+
+      // Update the conditional for the next check of the loop.
+      nestedCodeMatch = nestedCodeRegExp.exec(code)
+    }
+  } else {
+    // Single language. Highlight it.
+    const highlightedCode = highlightJs.highlight(language, unescapeHtml(code)).value
+    index = index.replace(fullMatch, `<code>${unescapeReplacementString(highlightedCode)}</code>`)
+  }
+
+  // Update the conditional for the next check of the loop.
+  codeMatch = codeRegExp.exec(index)
 }
+
+// console.log(index)
 
 fs.writeFileSync('tmp/index.html', index)
