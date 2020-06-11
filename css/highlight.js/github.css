@@ -1,7 +1,5 @@
 /*
-
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-
+  Based on github.com style (c) Vasily Polovnyov <vast@whiteants.net> with modifications by Aral Balkan.
 */
 
 .hljs {
@@ -9,7 +7,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   overflow-x: auto;
   padding: 0.5em;
   color: #333;
-  background: #f8f8f8;
+  background: #f6f8fa;
 }
 
 .hljs-comment,
@@ -21,8 +19,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst {
-  color: #333;
-  font-weight: bold;
+  color: #005cc5;
 }
 
 .hljs-number,
@@ -42,11 +39,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-section,
 .hljs-selector-id {
   color: #900;
-  font-weight: bold;
-}
-
-.hljs-subst {
-  font-weight: normal;
 }
 
 .hljs-type,
