@@ -502,35 +502,35 @@ module.exports = (request, response) => {
         </li>
         <li>
           <h3>Create the chat client.</h3>
-          <pre><code class='language-mixed'><span class='language-bash'>echo "</span><span class='language-html'>
+          <pre><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-html'>
   &lt;!doctype html&gt;
-  &lt;html lang='en'&gt;
+  &lt;html lang="en"&gt;
   &lt;title&gt;Chat&lt;/title&gt;
   &lt;h1&gt;Chat&lt;/h1&gt;
-  &lt;form name='messageForm'&gt;
-    &lt;input name='message' type='text'&gt;
+  &lt;form name="messageForm"&gt;
+    &lt;input name="message" type="text"&gt;
     &lt;button&gt;Send&lt;/button&gt;
   &lt;/form&gt;
   &lt;h2&gt;Messages&lt;/h2&gt;
-  &lt;ul id='messageList'&gt;&lt;/ul&gt;
+  &lt;ul id="messageList"&gt;&lt;/ul&gt;
   &lt;script&gt;</span><span class='language-js'>
-    const socket = new WebSocket('wss://dev.ar.al/chat')
+    const socket = new WebSocket("wss://localhost/chat")
 
     const showMessage = message =&gt; {
-      const messageList = document.querySelector('#messageList')
+      const messageList = document.querySelector("#messageList")
       messageList.innerHTML += `&lt;li&gt;${message}&lt;/li&gt;`
     }
 
     socket.onmessage = message =&gt; showMessage(message.data)
 
-    document.messageForm.addEventListener('submit', event =&gt; {
+    document.messageForm.addEventListener("submit", event =&gt; {
       const message = event.target.message.value
       socket.send(message)
       showMessage(`&lt;strong&gt;${message}&lt;/strong&gt;`)
       event.preventDefault()
     })</span><span class='language-html'>
   &lt;/script&gt;
-</span><span class='hljs-string'>"</span><span class='language-bash'> > chat/index.html</span></code></pre>
+</span><span class='hljs-string'>'</span><span class='language-bash'> > chat/index.html</span></code></pre>
         <aside>
           <h3>Tip</h3>
           <p>
