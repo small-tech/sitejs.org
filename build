@@ -43,6 +43,7 @@ rm -rf tmp
 # Copy binary releases.
 echo " > Copy Site.js binary releases"
 cp -R releases dist/
+cp -R binaries dist/
 
 # Copy Nexe Node builds.
 echo " > Copy Nexe Node builds"
