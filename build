@@ -40,9 +40,8 @@ cd ..
 # Remove the tmp directory.
 rm -rf tmp
 
-# Copy binary releases.
+# Copy binaries.
 echo " > Copy Site.js binary releases"
-cp -R releases dist/
 cp -R binaries dist/
 
 # Copy Nexe Node builds.
