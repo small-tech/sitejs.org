@@ -380,10 +380,10 @@
           </p>
 
           <h4 class='no-js'>Linux and macOS</h4>
-          <pre class='linux macos'><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-js'>i=0; module.exports=(_, r)=>{r.type("html").end(`${++i}`)}</span><span class='hljs-string'>'</span><span class='language-bash'> > index.js</span></code></pre>
+          <pre class='linux macos'><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-js'>i=0; module.exports=(_, res) => res.html(`${++i}`)</span><span class='hljs-string'>'</span><span class='language-bash'> > index.js</span></code></pre>
 
           <h4 class='no-js'>Windows</h4>
-          <pre class='windows'><code class='language-mixed'><span class='language-powershell'>echo '</span><span class='language-js'>i=0; module.exports=(_, r)=>{r.type("html").end(`${++i}`)}</span><span class='hljs-string'>'</span><span class='language-powershell'> | Out-File -Encoding UTF8 index.js</span></code></pre>
+          <pre class='windows'><code class='language-mixed'><span class='language-powershell'>echo '</span><span class='language-js'>i=0; module.exports=(_, res) => res.html(`${++i}`)</span><span class='hljs-string'>'</span><span class='language-powershell'> | Out-File -Encoding UTF8 index.js</span></code></pre>
 
           <aside>
             <h3>Tip</h3>
@@ -418,15 +418,16 @@
             <pre><code class='language-js'>let counter = 0
 
 module.exports = (request, response) => {
-  response
-    .type('html')
-    .end(`&lt;h1&gt;Hit count: ${++counter}&lt;/h1&gt;`)
+  response.html(`&lt;h1&gt;Hit count: ${++counter}&lt;/h1&gt;`)
 }</code></pre>
             <p>
               If this reminds you of a route in <a href='https://expressjs.com'>Express</a>, that’s because that’s exactly what it is.
             </p>
             <p>
               The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.
+            </p>
+            <p>
+              (Also, you might not recognise the `.html()` method on the `response` object as that’s a Site.js addition to make your life easier. It corresponds to writing `.type('html').end()` in Express.)
             </p>
             <p>
               Site.js does not limit you to using DotJS. If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.
