@@ -427,10 +427,13 @@ module.exports = (request, response) => {
               The only difference is that you don’t have to write any other code or worry about anything else including installing Node.js, provisioning TLS certificates, ensuring your site automatically restarts on reboots, etc.
             </p>
             <p>
-              (Also, you might not recognise the `.html()` method on the `response` object as that’s a Site.js addition to make your life easier. It corresponds to writing `.type('html').end()` in Express.)
+              (You might not recognise the <code>.html()</code> method on the <code>response</code> object as that’s a Site.js addition to make your life easier. It corresponds to writing <code>.type('html').end()</code> in Express.)
             </p>
             <p>
-              Site.js does not limit you to using DotJS. If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.
+              You can also define <a href='https://github.com/small-tech/site.js/blob/master/README.md#specifying-parameters'>named parameters</a> for your DotJS routes and Site.js does not limit you to using DotJS, either.
+            </p>
+            <p>
+              If you want to, you can use the full power of Express and Node.js with <a href='https://github.com/small-tech/site.js#advanced-routing-routesjs-file'>advanced routing</a>. And, since it is just Node.js under the hood, you can do anything you can with Node.js including <a href='https://github.com/small-tech/site.js#using-node-modules'>using node modules</a>, etc.
             </p>
             <p>
               See the Site.js documentation for <a href='https://github.com/small-tech/site.js#dynamic-sites'>more information on building dynamic sites</a>.
