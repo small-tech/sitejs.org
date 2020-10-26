@@ -527,7 +527,7 @@ module.exports = (request, response) => {
 
     const showMessage = message =&gt; {
       const list = document.querySelector("#messageList")
-      list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
+      list.innerHTML += `&lt;li&gt;${message.text}&lt;/li&gt;`
     }
 
     socket.onmessage = message =&gt; {
@@ -561,7 +561,7 @@ module.exports = (request, response) => {
 
   const showMessage = message =&gt; {
     const list = document.querySelector("#messageList")
-    list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
+    list.innerHTML += `&lt;li&gt;${message.text}&lt;/li&gt;`
   }
 
   socket.onmessage = message =&gt; {
@@ -683,7 +683,7 @@ module.exports = (request, response) => {
 
   const showMessage = message =&gt; {
     const list = document.querySelector("#messageList")
-    list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
+    list.innerHTML += `&lt;li&gt;${message.text}&lt;/li&gt;`
   }
 
   </span><span class='language-js strong'>socket.onmessage = websocketMessage => {

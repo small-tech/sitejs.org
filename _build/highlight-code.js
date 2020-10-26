@@ -64,7 +64,7 @@ while (codeMatch !== null) {
   } else {
     // Single language. Highlight it.
     const highlightedCode = highlightJs.highlight(language, unescapeHtml(code)).value
-    index = index.replace(fullMatch, `<code>${unescapeReplacementString(highlightedCode)}</code>`)
+    index = index.replace(fullMatch, `<code style='font-weight: 100;'>${unescapeReplacementString(highlightedCode)}</code>`)
   }
 
   // Update the conditional for the next check of the loop.
