@@ -173,7 +173,7 @@ pre, code, code span {
   Menlo,
   Courier,
   monospace !important;
-  font-weight: 100 !important;
+  /* font-weight: 100 !important; */
   background-color: #eaeaea !important;
 }
 
@@ -258,10 +258,13 @@ pre, code[class*="language-"], pre[class*="language-"], pre code span {
  *                                                                              *
  ********************************************************************************/
 
-.hljs-keyword {
-  font-weight: 500;
+ .hljs-attribute, .hljs-name, .hljs-tag{
+  font-weight: inherit;
 }
 
+.hljs-meta {
+  font-weight: inherit;
+}
 
 /********************************************************************************
  *                                                                              *

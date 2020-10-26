@@ -28,6 +28,7 @@ while (codeMatch !== null) {
   const language = codeMatch[1]
   let code = codeMatch[2]
 
+
   if (language === 'mixed' ) {
     // There is a mix of languages. Loop through the segments demarcated by
     // span tags and highlight each in its own language.
@@ -35,12 +36,27 @@ while (codeMatch !== null) {
     let nestedCodeMatch = nestedCodeRegExp.exec(code)
 
     while (nestedCodeMatch !== null) {
+      let boldface = false
+
       const fullNestedMatch = nestedCodeMatch[0]
-      const nestedLanguage = nestedCodeMatch[1]
+      let nestedLanguage = nestedCodeMatch[1]
       let nestedCode = nestedCodeMatch[2]
 
-      const highlightedCode = highlightJs.highlight(nestedLanguage, unescapeHtml(nestedCode)).value
-      index = index.replace(fullNestedMatch, unescapeReplacementString(highlightedCode))
+      if (nestedLanguage.includes('strong')) {
+        nestedLanguage = nestedLanguage.replace('strong', '').trim()
+        boldface = true
+      }
+
+      let highlightedCode = highlightJs.highlight(nestedLanguage, unescapeHtml(nestedCode)).value
+
+      let boldfaceStart = '<span style="font-weight: 100;">'
+      let boldfaceEnd = '</span>'
+      if (boldface) {
+        boldfaceStart = '<strong>'
+        boldfaceEnd = '</strong>'
+      }
+
+      index = index.replace(fullNestedMatch, boldfaceStart + unescapeReplacementString(highlightedCode) + boldfaceEnd)
 
       // Update the conditional for the next check of the loop.
       nestedCodeMatch = nestedCodeRegExp.exec(code)

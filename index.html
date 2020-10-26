@@ -639,36 +639,36 @@ module.exports = (request, response) => {
         <li>
           <h3>Update the server.</h3>
           <p>The code you need to add is presented <strong>in boldface.</strong></p>
-          <pre><code class='language-javascript'>module.exports = function (client, request) {
-  <strong>// Ensure the messages table exists.
+          <pre><code class='language-mixed'><span class='language-javascript'>module.exports = function (client, request) {</span>
+  <span class='language-javascript strong'>// Ensure the messages table exists.
   if (!db.messages) {
     db.messages = []
-  }</strong>
+  }</span><span class='language-javascript'>
 
   // Set the room based on the route’s URL.
   client.room = this.setRoom(request)
 
-  <strong>// Send new clients all existing messages.
-  client.send(JSON.stringify(db.messages))</strong>
+  </span><span class='language-javascript strong'>// Send new clients all existing messages.
+  client.send(JSON.stringify(db.messages))</span><span class='language-javascript'>
 
   // Create a message handler.
   client.on('message', message => {
-    <strong>// Parse the message JSON string into a JavaScript object.
+    </span><span class='language-javascript strong'>// Parse the message JSON string into a JavaScript object.
     const parsedMessage = JSON.parse(message)
 
     // Persist the message.
-    db.messages.push(parsedMessage)</strong>
+    db.messages.push(parsedMessage)</span><span class='language-javascript'>
 
     // Broadcast a received message to everyone in the room.
     this.broadcast(client, message)
   })
-}</code></pre>
+}</span></code></pre>
         </li>
         <li>
           <h3>Update the client.</h3>
           <p>You need to update the client so that it can handle the initial list of messages that is sent when someone joins the chat.</p>
           <p>Again, the code you need to add is presented <strong>in boldface.</strong></p>
-          <pre><code class='language-mixed'>&lt;!doctype html&gt;
+          <pre><code class='language-mixed'><span class='language-html'>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;title&gt;Chat&lt;/title&gt;
 &lt;h1&gt;Chat&lt;/h1&gt;
@@ -686,7 +686,7 @@ module.exports = (request, response) => {
     list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
   }
 
-  <strong>socket.onmessage = websocketMessage => {
+  </span><span class='language-js strong'>socket.onmessage = websocketMessage => {
     // Deserialise the data.
     const data = JSON.parse(websocketMessage.data)
 
@@ -697,7 +697,7 @@ module.exports = (request, response) => {
       // Display a single message.
       showMessage(data)
     }
-  }</strong>
+  }</span><span class='language-js'>
 
   document.messageForm.addEventListener("submit", event =&gt; {
     const message = { text: event.target.message.value }
