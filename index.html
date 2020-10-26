@@ -526,16 +526,18 @@ module.exports = (request, response) => {
     const socket = new WebSocket("wss://localhost/chat")
 
     const showMessage = message =&gt; {
-      const messageList = document.querySelector("#messageList")
-      messageList.innerHTML += `&lt;li&gt;${message}&lt;/li&gt;`
+      const list = document.querySelector("#messageList")
+      list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
     }
 
-    socket.onmessage = message =&gt; showMessage(message.data)
+    socket.onmessage = message =&gt; {
+      showMessage(JSON.parse(message.data))
+    }
 
     document.messageForm.addEventListener("submit", event =&gt; {
-      const message = event.target.message.value
-      socket.send(message)
-      showMessage(`&lt;strong&gt;${message}&lt;/strong&gt;`)
+      const message ={ text: event.target.message.value }
+      socket.send(JSON.stringify(message))
+      showMessage(message)
       event.preventDefault()
     })</span><span class='language-html'>
   &lt;/script&gt;
@@ -544,33 +546,35 @@ module.exports = (request, response) => {
           <h4 class='no-js'>Windows</h4>
 
           <pre class='windows'><code class='language-mixed'><span class='language-bash'>echo '</span><span class='language-html'>
-  &lt;!doctype html&gt;
-  &lt;html lang="en"&gt;
-  &lt;title&gt;Chat&lt;/title&gt;
-  &lt;h1&gt;Chat&lt;/h1&gt;
-  &lt;form name="messageForm"&gt;
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;title&gt;Chat&lt;/title&gt;
+&lt;h1&gt;Chat&lt;/h1&gt;
+&lt;form name="messageForm"&gt;
   &lt;input name="message" type="text"&gt;
   &lt;button&gt;Send&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;h2&gt;Messages&lt;/h2&gt;
-  &lt;ul id="messageList"&gt;&lt;/ul&gt;
-  &lt;script&gt;</span><span class='language-js'>
+&lt;/form&gt;
+&lt;h2&gt;Messages&lt;/h2&gt;
+&lt;ul id="messageList"&gt;&lt;/ul&gt;
+&lt;script&gt;</span><span class='language-js'>
   const socket = new WebSocket("wss://localhost/chat")
 
   const showMessage = message =&gt; {
-  const messageList = document.querySelector("#messageList")
-  messageList.innerHTML += `&lt;li&gt;${message}&lt;/li&gt;`
+    const list = document.querySelector("#messageList")
+    list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
   }
 
-  socket.onmessage = message =&gt; showMessage(message.data)
+  socket.onmessage = message =&gt; {
+    showMessage(JSON.parse(message.data))
+  }
 
   document.messageForm.addEventListener("submit", event =&gt; {
-  const message = event.target.message.value
-  socket.send(message)
-  showMessage(`&lt;strong&gt;${message}&lt;/strong&gt;`)
-  event.preventDefault()
+    const message ={ text: event.target.message.value }
+    socket.send(JSON.stringify(message))
+    showMessage(message)
+    event.preventDefault()
   })</span><span class='language-html'>
-  &lt;/script&gt;
+&lt;/script&gt;
 </span><span class='hljs-string'>'</span><span class='language-powershell'>| Out-File -Encoding UTF8 chat/index.html</span></code></pre>
         <aside>
           <h3>Tip</h3>
@@ -616,6 +620,107 @@ module.exports = (request, response) => {
           </aside>
         </li>
       </ol>
+    </section>
+
+    <!------------------------------------------------------------------------------------>
+    <!--                                                                                -->
+    <!--                                    Database                                    -->
+    <!--                                                                                -->
+    <!------------------------------------------------------------------------------------>
+
+    <section id='database'>
+      <h2>Database</h2>
+      <div class='introduction'>
+        <p>Site.js also has a fast and simple JavaScript Database (JSDB) built into it. You can refer to the database for your app any of your routes using the global <code>db</code> instance.</p>
+        <p>Let’s see how easy it is to use JSDB by persisting the messages our simple chat app.</p>
+      </div>
+
+      <ol>
+        <li>
+          <h3>Update the server.</h3>
+          <p>The code you need to add is presented <strong>in boldface.</strong></p>
+          <pre><code class='language-javascript'>module.exports = function (client, request) {
+  <strong>// Ensure the messages table exists.
+  if (!db.messages) {
+    db.messages = []
+  }</strong>
+
+  // Set the room based on the route’s URL.
+  client.room = this.setRoom(request)
+
+  <strong>// Send new clients all existing messages.
+  client.send(JSON.stringify(db.messages))</strong>
+
+  // Create a message handler.
+  client.on('message', message => {
+    <strong>// Parse the message JSON string into a JavaScript object.
+    const parsedMessage = JSON.parse(message)
+
+    // Persist the message.
+    db.messages.push(parsedMessage)</strong>
+
+    // Broadcast a received message to everyone in the room.
+    this.broadcast(client, message)
+  })
+}</code></pre>
+        </li>
+        <li>
+          <h3>Update the client.</h3>
+          <p>You need to update the client so that it can handle the initial list of messages that is sent when someone joins the chat.</p>
+          <p>Again, the code you need to add is presented <strong>in boldface.</strong></p>
+          <pre><code class='language-mixed'>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;title&gt;Chat&lt;/title&gt;
+&lt;h1&gt;Chat&lt;/h1&gt;
+&lt;form name="messageForm"&gt;
+  &lt;input name="message" type="text"&gt;
+  &lt;button&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+&lt;h2&gt;Messages&lt;/h2&gt;
+&lt;ul id="messageList"&gt;&lt;/ul&gt;
+&lt;script&gt;</span><span class='language-js'>
+  const socket = new WebSocket("wss://localhost/chat")
+
+  const showMessage = message =&gt; {
+    const list = document.querySelector("#messageList")
+    list.innerHTML += `&lt;li&gt;&lt;strong&gt;${message.text}&lt;/strong&gt;&lt;/li&gt;`
+  }
+
+  <strong>socket.onmessage = websocketMessage => {
+    // Deserialise the data.
+    const data = JSON.parse(websocketMessage.data)
+
+    if (Array.isArray(data)) {
+      // Display initial list of messages we get when we join a room.
+      data.forEach(message =&gt; showMessage(message))
+    } else {
+      // Display a single message.
+      showMessage(data)
+    }
+  }</strong>
+
+  document.messageForm.addEventListener("submit", event =&gt; {
+    const message = { text: event.target.message.value }
+    socket.send(JSON.stringify(message))
+    showMessage(message)
+    event.preventDefault()
+  })</span><span class='language-html'>
+&lt;/script&gt;</code></pre>
+        </li>
+      </ol>
+      <aside>
+        <h3>Tip</h3>
+        <p>This barely scratches the surface of what JSDB is and what you can do with it.</p>
+
+        <p>JSDB is an in-memory JavaScript database that persists tables to append-only transaction logs in <a href='https://github.com/small-tech/jsdb/blob/master/README.md#javascript-data-format-jsdf'>JavaScript Data Format (JSDF)</a> which is a subset of JavaScript.</p>
+
+        <p>It also has its own query language called <a href='https://github.com/small-tech/jsdb/blob/master/README.md#javascript-query-language-jsql'>JavaScript Query Language (JSQL)</a>. So, for example, if you wanted to get a list of messages that contained the hashtag <code>#BLM</code>, you could do so like this:</p>
+
+        <pre><code class='language-javascript'>db.messages.where('text').includesCaseInsensitive('#blm').get()</code></pre>
+
+        <p>Find out more about JSDB in this <a href="https://ar.al/2020/10/20/introducing-jsdb/">introductory blog post</a>, in <a href="https://source.small-tech.org/site.js/app#persisting-data-on-the-server-with-javascript-database-jsdb">the Site.js JSDB documentation</a>, and in <a href="https://github.com/small-tech/jsdb/blob/master/README.md">the JSDB documentation</a>. See <a href="https://github.com/small-tech/site.js/tree/master/examples/persisted-chat">the source code for the persisted chat example</a> for a more comprehensive version of the sample presented here.</p>
+        </p>
+      </aside>
     </section>
 
 
