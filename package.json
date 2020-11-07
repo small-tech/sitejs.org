@@ -1,6 +1,6 @@
 {
   "name": "site.js-site",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "description": "Site.js web site",
   "main": "index.js",
   "scripts": {
