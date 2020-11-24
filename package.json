@@ -13,6 +13,6 @@
   },
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
-    "highlight.js": "^10.0.3"
+    "highlight.js": "^10.1.2"
   }
 }
