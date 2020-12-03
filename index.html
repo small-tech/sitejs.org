@@ -523,7 +523,7 @@ module.exports = (request, response) => {
   &lt;h2&gt;Messages&lt;/h2&gt;
   &lt;ul id="messageList"&gt;&lt;/ul&gt;
   &lt;script&gt;</span><span class='language-js'>
-    const socket = new WebSocket("wss://localhost/chat")
+    const socket = new WebSocket(`wss://${window.location.hostname}/chat`)
 
     const showMessage = message =&gt; {
       const list = document.querySelector("#messageList")
@@ -557,7 +557,7 @@ module.exports = (request, response) => {
 &lt;h2&gt;Messages&lt;/h2&gt;
 &lt;ul id="messageList"&gt;&lt;/ul&gt;
 &lt;script&gt;</span><span class='language-js'>
-  const socket = new WebSocket("wss://localhost/chat")
+  const socket = new WebSocket(`wss://${window.location.hostname}/chat`)
 
   const showMessage = message =&gt; {
     const list = document.querySelector("#messageList")
@@ -679,7 +679,7 @@ module.exports = (request, response) => {
 &lt;h2&gt;Messages&lt;/h2&gt;
 &lt;ul id="messageList"&gt;&lt;/ul&gt;
 &lt;script&gt;</span><span class='language-js'>
-  const socket = new WebSocket("wss://localhost/chat")
+  const socket = new WebSocket(`wss://${window.location.hostname}/chat`)
 
   const showMessage = message =&gt; {
     const list = document.querySelector("#messageList")
