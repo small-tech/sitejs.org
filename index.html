@@ -132,7 +132,7 @@
         <li>
           <h3>And more…</h3>
           <p>
-            <a href='#websockets'>WebSockets</a>, <a href='#database'>a database</a>, live reload, sync, auto-updates, statistics, etc.
+            <a href='#websockets'>WebSockets</a>, <a href='#database'>database</a>, <a href='#proxy-servers'>proxy</a>, live reload, sync, auto-update, statistics, etc.
           </p>
         </li>
       </ul>
@@ -723,6 +723,51 @@ module.exports = (request, response) => {
       </aside>
     </section>
 
+
+    <!------------------------------------------------------------------------------------>
+    <!--                                                                                -->
+    <!--                                  Proxy Servers                                 -->
+    <!--                                                                                -->
+    <!------------------------------------------------------------------------------------>
+
+    <section id='proxy-servers'>
+      <h2>Proxy servers</h2>
+      <div class='introduction'>
+        <p>You can use Site.js as a proxy to add automatic TLS for HTTP and WebSocket to any web app.</p>
+
+      </div>
+
+      <ol>
+        <li>
+          <h3>Create a simple insecure service</h3>
+          <p>ForThe following is a simple HTTP server written in Python 3 (<em>server.py</em>) that runs insecurely on port 3000:</p>
+          <pre><code class='language-python'>from http.server import HTTPServer, BaseHTTPRequestHandler
+class MyRequestHandler(BaseHTTPRequestHandler):
+  def do_GET(self):
+    self.send_response(200)
+    self.end_headers()
+    self.wfile.write(b'Hello, from Python!')
+
+server = HTTPServer(('localhost', 3000), MyRequestHandler)
+server.serve_forever()
+            </code></pre>
+        </li>
+        <li>
+          <h3>Run it</h3>
+          <p>To keep things simple, the following command will simply run it in the background.</p>
+          <pre><code class='language-bash'>$ python3 server &</code></pre>
+        </li>
+        <li>
+          <h3>Serve it securely using Site.js</h3>
+          <pre><code class='language-bash'>$ site enable :3000</code></pre>
+        </li>
+      </ol>
+      <aside>
+        <h3>Tip</h3>
+        <p>Of course, in a real-world scenario, you would also install and run the python app as a systemd service so it too survives restarts, etc., but that is beyond the scope of Site.js.</p>
+        <p>(To stop the python server, run <code>fg</code> to bring it into the foreground and then press <em>Ctrl+C</em> to exit the process.)</p>
+      </aside>
+    </section>
 
     <!------------------------------------------------------------------------------------>
     <!--                                                                                -->
