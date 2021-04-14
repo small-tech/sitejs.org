@@ -62,6 +62,19 @@
     <!--                                                                                -->
     <!------------------------------------------------------------------------------------>
 
+    <aside id='news'>
+      <h3><strong>New:</strong> Site.js ❤️ Owncast</h3>
+      <img src='/images/other/owncast-splash.png' alt='Owncast running on a laptop and a phone. The screens show Gabe’s Owncast Server. He’s playing a track called The Second Wave: Fallen Star (original mix). There are chat messages filling up one side of the screen.'>
+      <p>Site.js is now the easiest way to set up and run your own <a href='https://owncast.online'>Owncast</a> instance.</p>
+      <p><strong>On your production server, run:</strong></p>
+      <p><pre><code>site enable --owncast</code></pre></p>
+      <p><em>That’s it!</em></p>
+      <p>This will <a href='https://owncast.online/quickstart/'>install Owncast</a>, <a href='https://owncast.online/docs/systemservice/'>set it up as a systemd service</a>, and <a href='https://owncast.online/docs/sslproxies/'>serve it securely</a> at your hostname.</p>
+      <p>As usual, your <a href='https://letsencrypt.org/'>Let’s Encrypt</a> certificates will be automatically provisioned when you first hit your server and get renewed automatically for you from there on.</p>
+      <hr>
+      <p><small>Note that while Site.js will get automatic updates, Owncast will not. However, newer versions of Site.js will always include the latest Owncast install script. Currently, to update Owncast, simply disable your server using <code>site disable</code> and re-enable it using the command above.</small></p>
+    </aside>
+
     <section id='small-web'>
       <h2><strong>The Small Web is for people</strong> <small>(not startups, enterprises, or governments).</small></h2>
       <ul id='small-web-details'>
