@@ -40,6 +40,11 @@ cd ..
 # Remove the tmp directory.
 rm -rf tmp
 
+# Copy images.
+echo " > Copy images"
+mkdir dist/images
+cp -R images/other dist/images
+
 # Copy binaries.
 echo " > Copy Site.js binary releases"
 cp -R binaries dist/
