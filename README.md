@@ -70,11 +70,11 @@ We exist in part thanks to patronage by people like you. If you share [our visio
 
 ## Copyright
 
-&copy; 2019-2020 [Aral Balkan](https://ar.al), [Small Technology Foundation](https://small-tech.org).
+&copy; 2019-present [Aral Balkan](https://ar.al), [Small Technology Foundation](https://small-tech.org).
 
 ## License
 
-[AGPL version 3.0 or later.](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[AGPL version 3.0](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
 <!-- Yes, this has to be coded like it’s 1999 for it to work, sadly. -->
 <p align='center'><img width='76' src='images/illustrations/site.js-logo.svg' alt='Site.js logo: a small sprouting plant with a green leaf on either side of a brown stem'></p>
