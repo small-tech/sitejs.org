@@ -2,6 +2,21 @@
 
 Source code for [the Site.js web site](https://sitejs.org).
 
+## Clone
+
+> __⚠️ Do not clone this repository from GitHub.__
+>
+> The GitHub version is a mirror and _does not contain the Git LFS objects_. Feel free to report issues here, etc., but do not clone from here if you’re going to deploy the site.
+
+1. Make sure you have [the Git LFS git extension](https://git-lfs.github.com/) installed (e.g., for Ubuntu):
+
+    ```shell
+    sudo apt install git-lfs
+    git lfs install
+    ```
+
+2. Clone the repository via the links on the canonical repository at https://source.small-tech.org/site.js/site 
+
 ## Install
 
 ```sh
