@@ -190,6 +190,7 @@ pre {
 
 aside pre {
   border-radius: 0;
+  padding-left: 2.5em;
 }
 
 /* Make sure all code wraps so we don’t overflow the page width. */
